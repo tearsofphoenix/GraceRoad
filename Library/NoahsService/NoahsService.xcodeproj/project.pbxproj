@@ -1,0 +1,381 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		60CB9E1A1771519B00E539A0 /* ERService.m in Sources */ = {isa = PBXBuildFile; fileRef = E3D145D8159814C3001EB7EA /* ERService.m */; };
+		60CB9E1B1771519B00E539A0 /* ERServiceNilResultException.m in Sources */ = {isa = PBXBuildFile; fileRef = E3CF4D7B171EE23100832671 /* ERServiceNilResultException.m */; };
+		60CB9E6D1771547600E539A0 /* AddressBookService.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = E3523DBF17154E790091654D /* AddressBookService.h */; };
+		60CB9E6E1771547600E539A0 /* ApplicationService.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = E3523DC017154E790091654D /* ApplicationService.h */; };
+		60CB9E6F1771547600E539A0 /* ArticleService.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = E3523DC117154E790091654D /* ArticleService.h */; };
+		60CB9E701771547600E539A0 /* BusinessService.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = E3523DC217154E790091654D /* BusinessService.h */; };
+		60CB9E711771547600E539A0 /* CacheService.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = E3523DC317154E790091654D /* CacheService.h */; };
+		60CB9E721771547600E539A0 /* CrashService.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = E3523DC417154E790091654D /* CrashService.h */; };
+		60CB9E731771547600E539A0 /* CryptographyService.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = E3523DC517154E790091654D /* CryptographyService.h */; };
+		60CB9E741771547600E539A0 /* DatabaseService.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = E3523DC617154E790091654D /* DatabaseService.h */; };
+		60CB9E751771547600E539A0 /* DataService.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = E3523DC717154E790091654D /* DataService.h */; };
+		60CB9E761771547600E539A0 /* EventService.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = E3523DC817154E790091654D /* EventService.h */; };
+		60CB9E771771547600E539A0 /* InputService.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = E3523DC917154E790091654D /* InputService.h */; };
+		60CB9E781771547600E539A0 /* LocaleService.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = E3523DCA17154E790091654D /* LocaleService.h */; };
+		60CB9E791771547600E539A0 /* LogService.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = E3523DCB17154E790091654D /* LogService.h */; };
+		60CB9E7A1771547600E539A0 /* NetworkService.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = E3523DCC17154E790091654D /* NetworkService.h */; };
+		60CB9E7B1771547600E539A0 /* PopUpService.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = E3523DCD17154E790091654D /* PopUpService.h */; };
+		60CB9E7C1771547600E539A0 /* SecurityService.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = E3523DCE17154E790091654D /* SecurityService.h */; };
+		60CB9E7D1771547600E539A0 /* SocialService.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = E3523DCF17154E790091654D /* SocialService.h */; };
+		60CB9E7E1771547600E539A0 /* SynchronizationService.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = E3523DD017154E790091654D /* SynchronizationService.h */; };
+		60CB9E7F1771547600E539A0 /* TopicService.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = E3523DD117154E790091654D /* TopicService.h */; };
+		60CB9E801771547600E539A0 /* ViewService.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = E3523DD217154E790091654D /* ViewService.h */; };
+		60CB9E811771547600E539A0 /* CommonService.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = E3D145D6159814C3001EB7EA /* CommonService.h */; };
+		60CB9E821771547600E539A0 /* ERService.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = E3D145D7159814C3001EB7EA /* ERService.h */; };
+		60CB9E831771547600E539A0 /* ERServiceNilResultException.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = E3CF4D7A171EE23100832671 /* ERServiceNilResultException.h */; };
+		60CB9E841771547600E539A0 /* NoahsService.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = E3EFBC34159054F5004C3C2C /* NoahsService.h */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		60CB9E0C1771516D00E539A0 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = include/NoahsService;
+			dstSubfolderSpec = 16;
+			files = (
+				60CB9E6D1771547600E539A0 /* AddressBookService.h in CopyFiles */,
+				60CB9E6E1771547600E539A0 /* ApplicationService.h in CopyFiles */,
+				60CB9E6F1771547600E539A0 /* ArticleService.h in CopyFiles */,
+				60CB9E701771547600E539A0 /* BusinessService.h in CopyFiles */,
+				60CB9E711771547600E539A0 /* CacheService.h in CopyFiles */,
+				60CB9E721771547600E539A0 /* CrashService.h in CopyFiles */,
+				60CB9E731771547600E539A0 /* CryptographyService.h in CopyFiles */,
+				60CB9E741771547600E539A0 /* DatabaseService.h in CopyFiles */,
+				60CB9E751771547600E539A0 /* DataService.h in CopyFiles */,
+				60CB9E761771547600E539A0 /* EventService.h in CopyFiles */,
+				60CB9E771771547600E539A0 /* InputService.h in CopyFiles */,
+				60CB9E781771547600E539A0 /* LocaleService.h in CopyFiles */,
+				60CB9E791771547600E539A0 /* LogService.h in CopyFiles */,
+				60CB9E7A1771547600E539A0 /* NetworkService.h in CopyFiles */,
+				60CB9E7B1771547600E539A0 /* PopUpService.h in CopyFiles */,
+				60CB9E7C1771547600E539A0 /* SecurityService.h in CopyFiles */,
+				60CB9E7D1771547600E539A0 /* SocialService.h in CopyFiles */,
+				60CB9E7E1771547600E539A0 /* SynchronizationService.h in CopyFiles */,
+				60CB9E7F1771547600E539A0 /* TopicService.h in CopyFiles */,
+				60CB9E801771547600E539A0 /* ViewService.h in CopyFiles */,
+				60CB9E811771547600E539A0 /* CommonService.h in CopyFiles */,
+				60CB9E821771547600E539A0 /* ERService.h in CopyFiles */,
+				60CB9E831771547600E539A0 /* ERServiceNilResultException.h in CopyFiles */,
+				60CB9E841771547600E539A0 /* NoahsService.h in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		60CB9E0E1771516D00E539A0 /* libNoahsServiceStatic.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libNoahsServiceStatic.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E347A16B171E299A006607C5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		E3523DBF17154E790091654D /* AddressBookService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddressBookService.h; sourceTree = "<group>"; };
+		E3523DC017154E790091654D /* ApplicationService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApplicationService.h; sourceTree = "<group>"; };
+		E3523DC117154E790091654D /* ArticleService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArticleService.h; sourceTree = "<group>"; };
+		E3523DC217154E790091654D /* BusinessService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusinessService.h; sourceTree = "<group>"; };
+		E3523DC317154E790091654D /* CacheService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CacheService.h; sourceTree = "<group>"; };
+		E3523DC417154E790091654D /* CrashService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CrashService.h; sourceTree = "<group>"; };
+		E3523DC517154E790091654D /* CryptographyService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CryptographyService.h; sourceTree = "<group>"; };
+		E3523DC617154E790091654D /* DatabaseService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatabaseService.h; sourceTree = "<group>"; };
+		E3523DC717154E790091654D /* DataService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataService.h; sourceTree = "<group>"; };
+		E3523DC817154E790091654D /* EventService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventService.h; sourceTree = "<group>"; };
+		E3523DC917154E790091654D /* InputService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InputService.h; sourceTree = "<group>"; };
+		E3523DCA17154E790091654D /* LocaleService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocaleService.h; sourceTree = "<group>"; };
+		E3523DCB17154E790091654D /* LogService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogService.h; sourceTree = "<group>"; };
+		E3523DCC17154E790091654D /* NetworkService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkService.h; sourceTree = "<group>"; };
+		E3523DCD17154E790091654D /* PopUpService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopUpService.h; sourceTree = "<group>"; };
+		E3523DCE17154E790091654D /* SecurityService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecurityService.h; sourceTree = "<group>"; };
+		E3523DCF17154E790091654D /* SocialService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocialService.h; sourceTree = "<group>"; };
+		E3523DD017154E790091654D /* SynchronizationService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SynchronizationService.h; sourceTree = "<group>"; };
+		E3523DD117154E790091654D /* TopicService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopicService.h; sourceTree = "<group>"; };
+		E3523DD217154E790091654D /* ViewService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewService.h; sourceTree = "<group>"; };
+		E3CF4D7A171EE23100832671 /* ERServiceNilResultException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ERServiceNilResultException.h; sourceTree = "<group>"; };
+		E3CF4D7B171EE23100832671 /* ERServiceNilResultException.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ERServiceNilResultException.m; sourceTree = "<group>"; };
+		E3D145D6159814C3001EB7EA /* CommonService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonService.h; sourceTree = "<group>"; };
+		E3D145D7159814C3001EB7EA /* ERService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ERService.h; sourceTree = "<group>"; };
+		E3D145D8159814C3001EB7EA /* ERService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ERService.m; sourceTree = "<group>"; };
+		E3EFBC2B159054F5004C3C2C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		E3EFBC2F159054F5004C3C2C /* NoahsService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "NoahsService-Info.plist"; sourceTree = "<group>"; };
+		E3EFBC33159054F5004C3C2C /* NoahsService-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NoahsService-Prefix.pch"; sourceTree = "<group>"; };
+		E3EFBC34159054F5004C3C2C /* NoahsService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NoahsService.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		60CB9E0B1771516D00E539A0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		E3523DBE17154E470091654D /* CommonService */ = {
+			isa = PBXGroup;
+			children = (
+				E3523DBF17154E790091654D /* AddressBookService.h */,
+				E3523DC017154E790091654D /* ApplicationService.h */,
+				E3523DC117154E790091654D /* ArticleService.h */,
+				E3523DC217154E790091654D /* BusinessService.h */,
+				E3523DC317154E790091654D /* CacheService.h */,
+				E3523DC417154E790091654D /* CrashService.h */,
+				E3523DC517154E790091654D /* CryptographyService.h */,
+				E3523DC617154E790091654D /* DatabaseService.h */,
+				E3523DC717154E790091654D /* DataService.h */,
+				E3523DC817154E790091654D /* EventService.h */,
+				E3523DC917154E790091654D /* InputService.h */,
+				E3523DCA17154E790091654D /* LocaleService.h */,
+				E3523DCB17154E790091654D /* LogService.h */,
+				E3523DCC17154E790091654D /* NetworkService.h */,
+				E3523DCD17154E790091654D /* PopUpService.h */,
+				E3523DCE17154E790091654D /* SecurityService.h */,
+				E3523DCF17154E790091654D /* SocialService.h */,
+				E3523DD017154E790091654D /* SynchronizationService.h */,
+				E3523DD117154E790091654D /* TopicService.h */,
+				E3523DD217154E790091654D /* ViewService.h */,
+			);
+			path = CommonService;
+			sourceTree = "<group>";
+		};
+		E3D145D5159814C3001EB7EA /* Foundation */ = {
+			isa = PBXGroup;
+			children = (
+				E3D145D6159814C3001EB7EA /* CommonService.h */,
+				E3D145D7159814C3001EB7EA /* ERService.h */,
+				E3D145D8159814C3001EB7EA /* ERService.m */,
+				E3CF4D7A171EE23100832671 /* ERServiceNilResultException.h */,
+				E3CF4D7B171EE23100832671 /* ERServiceNilResultException.m */,
+			);
+			path = Foundation;
+			sourceTree = "<group>";
+		};
+		E3EFBC1C159054F5004C3C2C = {
+			isa = PBXGroup;
+			children = (
+				E3EFBC2D159054F5004C3C2C /* NoahsService */,
+				E3EFBC2A159054F5004C3C2C /* Frameworks */,
+				E3EFBC29159054F5004C3C2C /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		E3EFBC29159054F5004C3C2C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				60CB9E0E1771516D00E539A0 /* libNoahsServiceStatic.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		E3EFBC2A159054F5004C3C2C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E3EFBC2B159054F5004C3C2C /* Foundation.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E3EFBC2D159054F5004C3C2C /* NoahsService */ = {
+			isa = PBXGroup;
+			children = (
+				E3523DBE17154E470091654D /* CommonService */,
+				E3D145D5159814C3001EB7EA /* Foundation */,
+				E3EFBC34159054F5004C3C2C /* NoahsService.h */,
+				E3EFBC2E159054F5004C3C2C /* Supporting Files */,
+			);
+			path = NoahsService;
+			sourceTree = "<group>";
+		};
+		E3EFBC2E159054F5004C3C2C /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				E347A16C171E299A006607C5 /* InfoPlist.strings */,
+				E3EFBC2F159054F5004C3C2C /* NoahsService-Info.plist */,
+				E3EFBC33159054F5004C3C2C /* NoahsService-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		60CB9E0D1771516D00E539A0 /* NoahsServiceStatic */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 60CB9E191771516D00E539A0 /* Build configuration list for PBXNativeTarget "NoahsServiceStatic" */;
+			buildPhases = (
+				60CB9E0A1771516D00E539A0 /* Sources */,
+				60CB9E0B1771516D00E539A0 /* Frameworks */,
+				60CB9E0C1771516D00E539A0 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = NoahsServiceStatic;
+			productName = NoahsServiceStatic;
+			productReference = 60CB9E0E1771516D00E539A0 /* libNoahsServiceStatic.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		E3EFBC1E159054F5004C3C2C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0460;
+				ORGANIZATIONNAME = "Shanghai e-Intelli Software Technology Co., Ltd.";
+			};
+			buildConfigurationList = E3EFBC21159054F5004C3C2C /* Build configuration list for PBXProject "NoahsService" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = E3EFBC1C159054F5004C3C2C;
+			productRefGroup = E3EFBC29159054F5004C3C2C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				60CB9E0D1771516D00E539A0 /* NoahsServiceStatic */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		60CB9E0A1771516D00E539A0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				60CB9E1A1771519B00E539A0 /* ERService.m in Sources */,
+				60CB9E1B1771519B00E539A0 /* ERServiceNilResultException.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		E347A16C171E299A006607C5 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E347A16B171E299A006607C5 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		60CB9E171771516D00E539A0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_EMPTY_BODY = YES;
+				DSTROOT = /tmp/NoahsServiceStatic.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "NoahsService/NoahsService-Prefix.pch";
+				HEADER_SEARCH_PATHS = "$(BUILD_DIR)";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		60CB9E181771516D00E539A0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_EMPTY_BODY = YES;
+				DSTROOT = /tmp/NoahsServiceStatic.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "NoahsService/NoahsService-Prefix.pch";
+				HEADER_SEARCH_PATHS = "$(BUILD_DIR)";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		E3EFBC37159054F5004C3C2C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		E3EFBC38159054F5004C3C2C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		60CB9E191771516D00E539A0 /* Build configuration list for PBXNativeTarget "NoahsServiceStatic" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				60CB9E171771516D00E539A0 /* Debug */,
+				60CB9E181771516D00E539A0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E3EFBC21159054F5004C3C2C /* Build configuration list for PBXProject "NoahsService" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E3EFBC37159054F5004C3C2C /* Debug */,
+				E3EFBC38159054F5004C3C2C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = E3EFBC1E159054F5004C3C2C /* Project object */;
+}

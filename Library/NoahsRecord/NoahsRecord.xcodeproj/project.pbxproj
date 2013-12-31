@@ -1,0 +1,464 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		60CBA12F17715BC500E539A0 /* ERSQLBatchStatements.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = E3D1460715983135001EB7EA /* ERSQLBatchStatements.h */; };
+		60CBA13017715BC500E539A0 /* ERSQLDatabase.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = E3D1460815983135001EB7EA /* ERSQLDatabase.h */; };
+		60CBA13117715BC500E539A0 /* ERSQLRecord.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = E3D1460915983135001EB7EA /* ERSQLRecord.h */; };
+		60CBA13217715BC500E539A0 /* ERSQLResultSet.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = E3D1460A15983135001EB7EA /* ERSQLResultSet.h */; };
+		60CBA13317715BC500E539A0 /* ERSQLStatement.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = E3D1460B15983135001EB7EA /* ERSQLStatement.h */; };
+		60CBA13417715BC500E539A0 /* ERSQLiteBatchStatements.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = E3D1460D15983135001EB7EA /* ERSQLiteBatchStatements.h */; };
+		60CBA13517715BC500E539A0 /* ERSQLiteDatabase+ApplicationDirectories.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = E3D1460F15983135001EB7EA /* ERSQLiteDatabase+ApplicationDirectories.h */; };
+		60CBA13617715BC500E539A0 /* ERSQLiteDatabase.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = E3D1461115983135001EB7EA /* ERSQLiteDatabase.h */; };
+		60CBA13717715BC500E539A0 /* ERSQLiteRecord.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = E3D1461315983135001EB7EA /* ERSQLiteRecord.h */; };
+		60CBA13817715BC500E539A0 /* ERSQLiteResultSet.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = E3D1461515983135001EB7EA /* ERSQLiteResultSet.h */; };
+		60CBA13917715BC500E539A0 /* ERSQLiteSimpleStatement.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = E3D1461715983135001EB7EA /* ERSQLiteSimpleStatement.h */; };
+		60CBA13A17715BC500E539A0 /* ERSQLiteStatement.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = E3D1461915983135001EB7EA /* ERSQLiteStatement.h */; };
+		60CBA13B17715BC500E539A0 /* NoahsRecord.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = E3D145FE159830E9001EB7EA /* NoahsRecord.h */; };
+		60CBA13D17715BD200E539A0 /* ERSQLiteBatchStatements.m in Sources */ = {isa = PBXBuildFile; fileRef = E3D1460E15983135001EB7EA /* ERSQLiteBatchStatements.m */; };
+		60CBA13E17715BD200E539A0 /* ERSQLiteDatabase+ApplicationDirectories.m in Sources */ = {isa = PBXBuildFile; fileRef = E3D1461015983135001EB7EA /* ERSQLiteDatabase+ApplicationDirectories.m */; };
+		60CBA13F17715BD200E539A0 /* ERSQLiteDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = E3D1461215983135001EB7EA /* ERSQLiteDatabase.m */; };
+		60CBA14017715BD200E539A0 /* ERSQLiteRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = E3D1461415983135001EB7EA /* ERSQLiteRecord.m */; };
+		60CBA14117715BD200E539A0 /* ERSQLiteResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = E3D1461615983135001EB7EA /* ERSQLiteResultSet.m */; };
+		60CBA14217715BD200E539A0 /* ERSQLiteSimpleStatement.m in Sources */ = {isa = PBXBuildFile; fileRef = E3D1461815983135001EB7EA /* ERSQLiteSimpleStatement.m */; };
+		60CBA14317715BD200E539A0 /* ERSQLiteStatement.m in Sources */ = {isa = PBXBuildFile; fileRef = E3D1461A15983135001EB7EA /* ERSQLiteStatement.m */; };
+		926733A2187266E300249E37 /* libNoahsServiceStatic.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9267335A1872591800249E37 /* libNoahsServiceStatic.a */; };
+		926733A3187266E300249E37 /* libNoahsUtilityStatic.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9267339B1872648500249E37 /* libNoahsUtilityStatic.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		926733591872591800249E37 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9267334F1872591800249E37 /* NoahsService.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 60CB9E0E1771516D00E539A0;
+			remoteInfo = NoahsServiceStatic;
+		};
+		9267335B1872592200249E37 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9267334F1872591800249E37 /* NoahsService.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 60CB9E0D1771516D00E539A0;
+			remoteInfo = NoahsServiceStatic;
+		};
+		9267339A1872648500249E37 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9267338F1872648500249E37 /* NoahsUtility.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 60CB9E20177151C800E539A0;
+			remoteInfo = NoahsUtilityStatic;
+		};
+		9267339C1872649E00249E37 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9267338F1872648500249E37 /* NoahsUtility.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 60CB9E1F177151C800E539A0;
+			remoteInfo = NoahsUtilityStatic;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		60CBA11417715BA200E539A0 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = include/NoahsRecord;
+			dstSubfolderSpec = 16;
+			files = (
+				60CBA12F17715BC500E539A0 /* ERSQLBatchStatements.h in CopyFiles */,
+				60CBA13017715BC500E539A0 /* ERSQLDatabase.h in CopyFiles */,
+				60CBA13117715BC500E539A0 /* ERSQLRecord.h in CopyFiles */,
+				60CBA13217715BC500E539A0 /* ERSQLResultSet.h in CopyFiles */,
+				60CBA13317715BC500E539A0 /* ERSQLStatement.h in CopyFiles */,
+				60CBA13417715BC500E539A0 /* ERSQLiteBatchStatements.h in CopyFiles */,
+				60CBA13517715BC500E539A0 /* ERSQLiteDatabase+ApplicationDirectories.h in CopyFiles */,
+				60CBA13617715BC500E539A0 /* ERSQLiteDatabase.h in CopyFiles */,
+				60CBA13717715BC500E539A0 /* ERSQLiteRecord.h in CopyFiles */,
+				60CBA13817715BC500E539A0 /* ERSQLiteResultSet.h in CopyFiles */,
+				60CBA13917715BC500E539A0 /* ERSQLiteSimpleStatement.h in CopyFiles */,
+				60CBA13A17715BC500E539A0 /* ERSQLiteStatement.h in CopyFiles */,
+				60CBA13B17715BC500E539A0 /* NoahsRecord.h in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		60CBA11617715BA200E539A0 /* libNoahsRecordStatic.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libNoahsRecordStatic.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		9267334F1872591800249E37 /* NoahsService.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = NoahsService.xcodeproj; path = ../NoahsService/NoahsService.xcodeproj; sourceTree = "<group>"; };
+		9267338F1872648500249E37 /* NoahsUtility.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = NoahsUtility.xcodeproj; path = ../NoahsUtility/NoahsUtility.xcodeproj; sourceTree = "<group>"; };
+		E325AFB91598375800890D93 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		E347A172171E2A0D006607C5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		E3D145F5159830E9001EB7EA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		E3D145F9159830E9001EB7EA /* NoahsRecord-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "NoahsRecord-Info.plist"; sourceTree = "<group>"; };
+		E3D145FD159830E9001EB7EA /* NoahsRecord-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NoahsRecord-Prefix.pch"; sourceTree = "<group>"; };
+		E3D145FE159830E9001EB7EA /* NoahsRecord.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NoahsRecord.h; sourceTree = "<group>"; };
+		E3D1460715983135001EB7EA /* ERSQLBatchStatements.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ERSQLBatchStatements.h; sourceTree = "<group>"; };
+		E3D1460815983135001EB7EA /* ERSQLDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ERSQLDatabase.h; sourceTree = "<group>"; };
+		E3D1460915983135001EB7EA /* ERSQLRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ERSQLRecord.h; sourceTree = "<group>"; };
+		E3D1460A15983135001EB7EA /* ERSQLResultSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ERSQLResultSet.h; sourceTree = "<group>"; };
+		E3D1460B15983135001EB7EA /* ERSQLStatement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ERSQLStatement.h; sourceTree = "<group>"; };
+		E3D1460D15983135001EB7EA /* ERSQLiteBatchStatements.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ERSQLiteBatchStatements.h; sourceTree = "<group>"; };
+		E3D1460E15983135001EB7EA /* ERSQLiteBatchStatements.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ERSQLiteBatchStatements.m; sourceTree = "<group>"; };
+		E3D1460F15983135001EB7EA /* ERSQLiteDatabase+ApplicationDirectories.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ERSQLiteDatabase+ApplicationDirectories.h"; sourceTree = "<group>"; };
+		E3D1461015983135001EB7EA /* ERSQLiteDatabase+ApplicationDirectories.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ERSQLiteDatabase+ApplicationDirectories.m"; sourceTree = "<group>"; };
+		E3D1461115983135001EB7EA /* ERSQLiteDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ERSQLiteDatabase.h; sourceTree = "<group>"; };
+		E3D1461215983135001EB7EA /* ERSQLiteDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ERSQLiteDatabase.m; sourceTree = "<group>"; };
+		E3D1461315983135001EB7EA /* ERSQLiteRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ERSQLiteRecord.h; sourceTree = "<group>"; };
+		E3D1461415983135001EB7EA /* ERSQLiteRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ERSQLiteRecord.m; sourceTree = "<group>"; };
+		E3D1461515983135001EB7EA /* ERSQLiteResultSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ERSQLiteResultSet.h; sourceTree = "<group>"; };
+		E3D1461615983135001EB7EA /* ERSQLiteResultSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ERSQLiteResultSet.m; sourceTree = "<group>"; };
+		E3D1461715983135001EB7EA /* ERSQLiteSimpleStatement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ERSQLiteSimpleStatement.h; sourceTree = "<group>"; };
+		E3D1461815983135001EB7EA /* ERSQLiteSimpleStatement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ERSQLiteSimpleStatement.m; sourceTree = "<group>"; };
+		E3D1461915983135001EB7EA /* ERSQLiteStatement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ERSQLiteStatement.h; sourceTree = "<group>"; };
+		E3D1461A15983135001EB7EA /* ERSQLiteStatement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ERSQLiteStatement.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		60CBA11317715BA200E539A0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				926733A2187266E300249E37 /* libNoahsServiceStatic.a in Frameworks */,
+				926733A3187266E300249E37 /* libNoahsUtilityStatic.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		926733501872591800249E37 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9267335A1872591800249E37 /* libNoahsServiceStatic.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		926733901872648500249E37 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9267339B1872648500249E37 /* libNoahsUtilityStatic.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		E325AFBB1598376F00890D93 /* Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				E325AFB91598375800890D93 /* libsqlite3.dylib */,
+			);
+			name = Libraries;
+			sourceTree = "<group>";
+		};
+		E3D145E6159830E9001EB7EA = {
+			isa = PBXGroup;
+			children = (
+				E3D145F7159830E9001EB7EA /* NoahsRecord */,
+				E325AFBB1598376F00890D93 /* Libraries */,
+				E3D145F4159830E9001EB7EA /* Frameworks */,
+				E3D145F3159830E9001EB7EA /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		E3D145F3159830E9001EB7EA /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				60CBA11617715BA200E539A0 /* libNoahsRecordStatic.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		E3D145F4159830E9001EB7EA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9267338F1872648500249E37 /* NoahsUtility.xcodeproj */,
+				9267334F1872591800249E37 /* NoahsService.xcodeproj */,
+				E3D145F5159830E9001EB7EA /* Foundation.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E3D145F7159830E9001EB7EA /* NoahsRecord */ = {
+			isa = PBXGroup;
+			children = (
+				E3D1460615983135001EB7EA /* SQLDatabase */,
+				E3D1460C15983135001EB7EA /* SQLiteDatabase */,
+				E3D145FE159830E9001EB7EA /* NoahsRecord.h */,
+				E3D145F8159830E9001EB7EA /* Supporting Files */,
+			);
+			path = NoahsRecord;
+			sourceTree = "<group>";
+		};
+		E3D145F8159830E9001EB7EA /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				E347A171171E2A0D006607C5 /* InfoPlist.strings */,
+				E3D145F9159830E9001EB7EA /* NoahsRecord-Info.plist */,
+				E3D145FD159830E9001EB7EA /* NoahsRecord-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		E3D1460615983135001EB7EA /* SQLDatabase */ = {
+			isa = PBXGroup;
+			children = (
+				E3D1460715983135001EB7EA /* ERSQLBatchStatements.h */,
+				E3D1460815983135001EB7EA /* ERSQLDatabase.h */,
+				E3D1460915983135001EB7EA /* ERSQLRecord.h */,
+				E3D1460A15983135001EB7EA /* ERSQLResultSet.h */,
+				E3D1460B15983135001EB7EA /* ERSQLStatement.h */,
+			);
+			path = SQLDatabase;
+			sourceTree = "<group>";
+		};
+		E3D1460C15983135001EB7EA /* SQLiteDatabase */ = {
+			isa = PBXGroup;
+			children = (
+				E3D1460D15983135001EB7EA /* ERSQLiteBatchStatements.h */,
+				E3D1460E15983135001EB7EA /* ERSQLiteBatchStatements.m */,
+				E3D1460F15983135001EB7EA /* ERSQLiteDatabase+ApplicationDirectories.h */,
+				E3D1461015983135001EB7EA /* ERSQLiteDatabase+ApplicationDirectories.m */,
+				E3D1461115983135001EB7EA /* ERSQLiteDatabase.h */,
+				E3D1461215983135001EB7EA /* ERSQLiteDatabase.m */,
+				E3D1461315983135001EB7EA /* ERSQLiteRecord.h */,
+				E3D1461415983135001EB7EA /* ERSQLiteRecord.m */,
+				E3D1461515983135001EB7EA /* ERSQLiteResultSet.h */,
+				E3D1461615983135001EB7EA /* ERSQLiteResultSet.m */,
+				E3D1461715983135001EB7EA /* ERSQLiteSimpleStatement.h */,
+				E3D1461815983135001EB7EA /* ERSQLiteSimpleStatement.m */,
+				E3D1461915983135001EB7EA /* ERSQLiteStatement.h */,
+				E3D1461A15983135001EB7EA /* ERSQLiteStatement.m */,
+			);
+			path = SQLiteDatabase;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		60CBA11517715BA200E539A0 /* NoahsRecordStatic */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 60CBA12D17715BA200E539A0 /* Build configuration list for PBXNativeTarget "NoahsRecordStatic" */;
+			buildPhases = (
+				60CBA11417715BA200E539A0 /* CopyFiles */,
+				60CBA11217715BA200E539A0 /* Sources */,
+				60CBA11317715BA200E539A0 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				9267339D1872649E00249E37 /* PBXTargetDependency */,
+				9267335C1872592200249E37 /* PBXTargetDependency */,
+			);
+			name = NoahsRecordStatic;
+			productName = NoahsRecordStatic;
+			productReference = 60CBA11617715BA200E539A0 /* libNoahsRecordStatic.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		E3D145E8159830E9001EB7EA /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0460;
+				ORGANIZATIONNAME = "Shanghai e-Intelli Software Technology Co., Ltd.";
+			};
+			buildConfigurationList = E3D145EB159830E9001EB7EA /* Build configuration list for PBXProject "NoahsRecord" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = E3D145E6159830E9001EB7EA;
+			productRefGroup = E3D145F3159830E9001EB7EA /* Products */;
+			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 926733501872591800249E37 /* Products */;
+					ProjectRef = 9267334F1872591800249E37 /* NoahsService.xcodeproj */;
+				},
+				{
+					ProductGroup = 926733901872648500249E37 /* Products */;
+					ProjectRef = 9267338F1872648500249E37 /* NoahsUtility.xcodeproj */;
+				},
+			);
+			projectRoot = "";
+			targets = (
+				60CBA11517715BA200E539A0 /* NoahsRecordStatic */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		9267335A1872591800249E37 /* libNoahsServiceStatic.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libNoahsServiceStatic.a;
+			remoteRef = 926733591872591800249E37 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		9267339B1872648500249E37 /* libNoahsUtilityStatic.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libNoahsUtilityStatic.a;
+			remoteRef = 9267339A1872648500249E37 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
+/* Begin PBXSourcesBuildPhase section */
+		60CBA11217715BA200E539A0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				60CBA13D17715BD200E539A0 /* ERSQLiteBatchStatements.m in Sources */,
+				60CBA13E17715BD200E539A0 /* ERSQLiteDatabase+ApplicationDirectories.m in Sources */,
+				60CBA13F17715BD200E539A0 /* ERSQLiteDatabase.m in Sources */,
+				60CBA14017715BD200E539A0 /* ERSQLiteRecord.m in Sources */,
+				60CBA14117715BD200E539A0 /* ERSQLiteResultSet.m in Sources */,
+				60CBA14217715BD200E539A0 /* ERSQLiteSimpleStatement.m in Sources */,
+				60CBA14317715BD200E539A0 /* ERSQLiteStatement.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		9267335C1872592200249E37 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = NoahsServiceStatic;
+			targetProxy = 9267335B1872592200249E37 /* PBXContainerItemProxy */;
+		};
+		9267339D1872649E00249E37 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = NoahsUtilityStatic;
+			targetProxy = 9267339C1872649E00249E37 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		E347A171171E2A0D006607C5 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E347A172171E2A0D006607C5 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		60CBA11F17715BA200E539A0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_EMPTY_BODY = YES;
+				DSTROOT = /tmp/NoahsRecordStatic.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "NoahsRecord/NoahsRecord-Prefix.pch";
+				HEADER_SEARCH_PATHS = /usr/include/libxml2/;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		60CBA12017715BA200E539A0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_EMPTY_BODY = YES;
+				DSTROOT = /tmp/NoahsRecordStatic.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "NoahsRecord/NoahsRecord-Prefix.pch";
+				HEADER_SEARCH_PATHS = /usr/include/libxml2/;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		E3D14601159830E9001EB7EA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		E3D14602159830E9001EB7EA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		60CBA12D17715BA200E539A0 /* Build configuration list for PBXNativeTarget "NoahsRecordStatic" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				60CBA11F17715BA200E539A0 /* Debug */,
+				60CBA12017715BA200E539A0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E3D145EB159830E9001EB7EA /* Build configuration list for PBXProject "NoahsRecord" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E3D14601159830E9001EB7EA /* Debug */,
+				E3D14602159830E9001EB7EA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = E3D145E8159830E9001EB7EA /* Project object */;
+}

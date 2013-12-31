@@ -1,0 +1,37 @@
+//
+//  PopUpService.h
+//  NoahsService
+//
+//  Created by Minun Dragonation on 4/10/13.
+//  Copyright (c) 2013 Shanghai e-Intelli Software Technology Co., Ltd. All rights reserved.
+//
+
+#define ERPopUpServiceIdentifier @"com.eintsoft.gopher-wood.noahs-service.pop-up"
+
+#define ERPopUpServiceAlertWithTitle_Message_ButtonTitles_Action @"alertWithTitle:message:buttonTitles:"
+#define ERPopUpServiceAlertViewWithTitle_Message_ButtonTitles_Callback_Action @"alertViewWithTitle:message:buttonTitles:callback:"
+#define ERPopUpServiceRequireInputWithTitle_Message_ButtonTitles_Action @"requireInputWithTitle:message:buttonTitles:"
+#define ERPopUpServiceRequireSecureInputWithTitle_Message_ButtonTitles_Action @"requireSecureInputWithTitle:message:buttonTitles:"
+#define ERPopUpServiceRequireIdentificationWithTitle_Message_ButtonTitles_Action @"requireIdentificationWithTitle:message:buttonTitles:"
+#define ERPopUpServiceShowPopoverPanelWithView_AtLocation_ArrowDirections_ContentSize_Action @"showPopoverPanelWithView:atLocation:arrowDirections:contentSize:"
+#define ERPopUpServiceShowPopoverPanelWithView_ForRect_InView_ArrowDirections_ContentSize_Action @"showPopoverPanelWithView:forRect:inView:arrowDirections:contentSize:"
+#define ERPopUpServiceShowPopoverPanelWithView_Title_AtLocation_ArrowDirections_ContentSize_Action @"showPopoverPanelWithView:title:atLocation:arrowDirections:contentSize:"
+#define ERPopUpServiceShowPopoverPanelWithView_Title_ForRect_InView_ArrowDirections_ContentSize_Action @"showPopoverPanelWithView:title:forRect:inView:arrowDirections:contentSize:"
+#define ERPopUpServiceShowContextMenuWithItems_AtLocation_ArrowDirections_Action @"showContextMenuWithItems:atLocation:arrowDirections:"
+#define ERPopUpServiceShowContextMenuWithItems_ForRect_InView_ArrowDirections_Action @"showContextMenuWithItems:forRect:inView:arrowDirections:"
+#define ERPopUpServiceShowLightPanelWithView_AtLocation_ArrowDirections_ContentSize_Action @"showLightPanelWithView:atLocation:arrowDirections:contentSize:"
+#define ERPopUpServiceShowLightPanelWithView_ForRect_InView_ArrowDirections_ContentSize_Action @"showLightPanelWithView:forRect:inView:arrowDirections:contentSize:"
+#define ERPopUpServiceShowHintPanelWithView_AtLocation_ArrowDirections_ContentSize_Action @"showHintPanelWithView:atLocation:arrowDirections:contentSize:"
+#define ERPopUpServiceShowHintPanelWithView_ForRect_InView_ArrowDirections_ContentSize_Action @"showHintPanelWithView:forRect:inView:arrowDirections:contentSize:"
+#define ERPopUpServiceShowHintWithText_AtLocation_ArrowDirections_Action @"showHintWithText:atLocation:arrowDirections:"
+#define ERPopUpServiceShowHintWithText_ForRect_InView_ArrowDirections_Action @"showHintWithText:forRect:inView:arrowDirections:"
+#define ERPopUpServicePopUpWithView_AtLocation_ArrowDirections_ContentSize_BackgroundViewClass_Action @"popUpWithView:atLocation:arrowDirections:contentSize:backgroundViewClass:"
+#define ERPopUpServicePopUpWithView_ForRect_InView_ArrowDirections_ContentSize_BackgroundViewClass_Action @"popUpWithView:forRect:inView:arrowDirections:contentSize:backgroundViewClass:"
+#define ERPopUpServicePopUpForChoices_Title_AtLocation_ArrowDirections_ContentSize_Action @"popUpForChoices:title:atLocation:arrowDirections:contentSize:"
+#define ERPopUpServicePopUpForChoices_Title_ForRect_InView_ArrowDirections_ContentSize_Action @"popUpForChoices:title:forRect:inView:arrowDirections:contentSize:"
+
+#define ERPopUpServiceUserButtonPressedIndexKey @"com.eintsoft.gopher-wood.noahs-service.pop-up.parameters.button-index"
+#define ERPopUpServiceUserTextInputtedKey @"com.eintsoft.gopher-wood.noahs-service.pop-up.parameters.text-inputted"
+#define ERPopUpServiceUserPasswordInputtedKey @"com.eintsoft.gopher-wood.noahs-service.pop-up.parameters.password-inputted"
+
+typedef void (^ERPopUpServiceMenuCallback)(NSInteger menuIndex);

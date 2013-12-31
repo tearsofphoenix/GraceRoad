@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>262E2865-3831-41C3-BB1D-D1762A65C309</string>
+	<key>IDESourceControlProjectName</key>
+	<string>GraceRoad</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>EBDC1327-0B0B-4C41-B163-301EC18BCFFF</key>
+		<string>https://github.com/tearsofphoenix/GraceRoad.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>GraceRoad.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>EBDC1327-0B0B-4C41-B163-301EC18BCFFF</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/tearsofphoenix/GraceRoad.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>EBDC1327-0B0B-4C41-B163-301EC18BCFFF</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>EBDC1327-0B0B-4C41-B163-301EC18BCFFF</string>
+			<key>IDESourceControlWCCName</key>
+			<string>GraceRoad</string>
+		</dict>
+	</array>
+</dict>
+</plist>

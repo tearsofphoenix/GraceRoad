@@ -9,6 +9,11 @@
 /* Begin PBXBuildFile section */
 		600A73D7187059BE0089679A /* GRIntroductView.m in Sources */ = {isa = PBXBuildFile; fileRef = 600A73D6187059BE0089679A /* GRIntroductView.m */; };
 		60F8024B186E725400503117 /* GRNavigationBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 60F8024A186E725400503117 /* GRNavigationBarView.m */; };
+		9267334E187258C500249E37 /* libNoahsRecordStatic.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9267334B1872588400249E37 /* libNoahsRecordStatic.a */; };
+		9267339F187266C600249E37 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9267339E187266C600249E37 /* libsqlite3.dylib */; };
+		926733D91872A84100249E37 /* GRDataService.m in Sources */ = {isa = PBXBuildFile; fileRef = 926733D81872A84100249E37 /* GRDataService.m */; };
+		926733DC1872B9DD00249E37 /* GRResourceInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 926733DB1872B9DD00249E37 /* GRResourceInfoView.m */; };
+		926733DF1872BA1200249E37 /* GRResourceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 926733DE1872BA1200249E37 /* GRResourceManager.m */; };
 		927C9FA3186D66DC00DC0EDC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 927C9FA2186D66DC00DC0EDC /* Foundation.framework */; };
 		927C9FA5186D66DC00DC0EDC /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 927C9FA4186D66DC00DC0EDC /* CoreGraphics.framework */; };
 		927C9FA7186D66DC00DC0EDC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 927C9FA6186D66DC00DC0EDC /* UIKit.framework */; };
@@ -32,6 +37,20 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		9267334A1872588400249E37 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9267333D1872588400249E37 /* NoahsRecord.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 60CBA11617715BA200E539A0;
+			remoteInfo = NoahsRecordStatic;
+		};
+		9267334C187258B600249E37 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9267333D1872588400249E37 /* NoahsRecord.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 60CBA11517715BA200E539A0;
+			remoteInfo = NoahsRecordStatic;
+		};
 		927C9FBF186D66DC00DC0EDC /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 927C9F97186D66DC00DC0EDC /* Project object */;
@@ -61,6 +80,15 @@
 		60F80249186E725400503117 /* GRNavigationBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRNavigationBarView.h; sourceTree = "<group>"; };
 		60F8024A186E725400503117 /* GRNavigationBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GRNavigationBarView.m; sourceTree = "<group>"; };
 		60F8024C186E730300503117 /* GRContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRContentView.h; sourceTree = "<group>"; };
+		9267333C187254F500249E37 /* GRResourceKey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRResourceKey.h; sourceTree = "<group>"; };
+		9267333D1872588400249E37 /* NoahsRecord.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = NoahsRecord.xcodeproj; path = NoahsRecord/NoahsRecord.xcodeproj; sourceTree = "<group>"; };
+		9267339E187266C600249E37 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		926733D71872A84100249E37 /* GRDataService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRDataService.h; sourceTree = "<group>"; };
+		926733D81872A84100249E37 /* GRDataService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GRDataService.m; sourceTree = "<group>"; };
+		926733DA1872B9DD00249E37 /* GRResourceInfoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRResourceInfoView.h; sourceTree = "<group>"; };
+		926733DB1872B9DD00249E37 /* GRResourceInfoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GRResourceInfoView.m; sourceTree = "<group>"; };
+		926733DD1872BA1200249E37 /* GRResourceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRResourceManager.h; sourceTree = "<group>"; };
+		926733DE1872BA1200249E37 /* GRResourceManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GRResourceManager.m; sourceTree = "<group>"; };
 		927C9F9F186D66DC00DC0EDC /* GraceRoad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GraceRoad.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		927C9FA2186D66DC00DC0EDC /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		927C9FA4186D66DC00DC0EDC /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -97,6 +125,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9267339F187266C600249E37 /* libsqlite3.dylib in Frameworks */,
+				9267334E187258C500249E37 /* libNoahsRecordStatic.a in Frameworks */,
 				927CA091186D7A3200DC0EDC /* libKal.a in Frameworks */,
 				927C9FA5186D66DC00DC0EDC /* CoreGraphics.framework in Frameworks */,
 				927C9FA7186D66DC00DC0EDC /* UIKit.framework in Frameworks */,
@@ -117,6 +147,37 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9267333E1872588400249E37 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9267334B1872588400249E37 /* libNoahsRecordStatic.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		926733D61872A82900249E37 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				60F80249186E725400503117 /* GRNavigationBarView.h */,
+				60F8024A186E725400503117 /* GRNavigationBarView.m */,
+				60F8024C186E730300503117 /* GRContentView.h */,
+				927CA09D186D7FE300DC0EDC /* GRCommunicationView.h */,
+				927CA09E186D7FE300DC0EDC /* GRCommunicationView.m */,
+				9267333C187254F500249E37 /* GRResourceKey.h */,
+				927CA09A186D7FD600DC0EDC /* GRResourceView.h */,
+				927CA09B186D7FD600DC0EDC /* GRResourceView.m */,
+				926733DA1872B9DD00249E37 /* GRResourceInfoView.h */,
+				926733DB1872B9DD00249E37 /* GRResourceInfoView.m */,
+				927C9FD6186D69A700DC0EDC /* GRServeView.h */,
+				927C9FD7186D69A700DC0EDC /* GRServeView.m */,
+				927CA097186D7E7700DC0EDC /* GRPreferenceView.h */,
+				927CA098186D7E7700DC0EDC /* GRPreferenceView.m */,
+				600A73D5187059BE0089679A /* GRIntroductView.h */,
+				600A73D6187059BE0089679A /* GRIntroductView.m */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
 		927C9F96186D66DC00DC0EDC = {
 			isa = PBXGroup;
 			children = (
@@ -140,6 +201,7 @@
 		927C9FA1186D66DC00DC0EDC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9267339E187266C600249E37 /* libsqlite3.dylib */,
 				927C9FA2186D66DC00DC0EDC /* Foundation.framework */,
 				927C9FA4186D66DC00DC0EDC /* CoreGraphics.framework */,
 				927C9FA6186D66DC00DC0EDC /* UIKit.framework */,
@@ -151,21 +213,13 @@
 		927C9FA8186D66DC00DC0EDC /* GraceRoad */ = {
 			isa = PBXGroup;
 			children = (
+				926733D71872A84100249E37 /* GRDataService.h */,
+				926733D81872A84100249E37 /* GRDataService.m */,
+				926733DD1872BA1200249E37 /* GRResourceManager.h */,
+				926733DE1872BA1200249E37 /* GRResourceManager.m */,
+				926733D61872A82900249E37 /* View */,
 				927C9FB1186D66DC00DC0EDC /* GRAppDelegate.h */,
 				927C9FB2186D66DC00DC0EDC /* GRAppDelegate.m */,
-				60F80249186E725400503117 /* GRNavigationBarView.h */,
-				60F8024A186E725400503117 /* GRNavigationBarView.m */,
-				60F8024C186E730300503117 /* GRContentView.h */,
-				927CA09D186D7FE300DC0EDC /* GRCommunicationView.h */,
-				927CA09E186D7FE300DC0EDC /* GRCommunicationView.m */,
-				927CA09A186D7FD600DC0EDC /* GRResourceView.h */,
-				927CA09B186D7FD600DC0EDC /* GRResourceView.m */,
-				927C9FD6186D69A700DC0EDC /* GRServeView.h */,
-				927C9FD7186D69A700DC0EDC /* GRServeView.m */,
-				927CA097186D7E7700DC0EDC /* GRPreferenceView.h */,
-				927CA098186D7E7700DC0EDC /* GRPreferenceView.m */,
-				600A73D5187059BE0089679A /* GRIntroductView.h */,
-				600A73D6187059BE0089679A /* GRIntroductView.m */,
 				927C9FD1186D675100DC0EDC /* GRMainViewController.h */,
 				927C9FD2186D675100DC0EDC /* GRMainViewController.m */,
 				927C9FD3186D675100DC0EDC /* GRMainViewController.xib */,
@@ -207,6 +261,7 @@
 		927CA014186D6FD500DC0EDC /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				9267333D1872588400249E37 /* NoahsRecord.xcodeproj */,
 				927CA095186D7E2000DC0EDC /* Kal.bundle */,
 				927CA089186D7A2200DC0EDC /* Kal.xcodeproj */,
 			);
@@ -235,6 +290,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				9267334D187258B600249E37 /* PBXTargetDependency */,
 				927CA090186D7A2D00DC0EDC /* PBXTargetDependency */,
 			);
 			name = GraceRoad;
@@ -290,6 +346,10 @@
 					ProductGroup = 927CA08A186D7A2200DC0EDC /* Products */;
 					ProjectRef = 927CA089186D7A2200DC0EDC /* Kal.xcodeproj */;
 				},
+				{
+					ProductGroup = 9267333E1872588400249E37 /* Products */;
+					ProjectRef = 9267333D1872588400249E37 /* NoahsRecord.xcodeproj */;
+				},
 			);
 			projectRoot = "";
 			targets = (
@@ -300,6 +360,13 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
+		9267334B1872588400249E37 /* libNoahsRecordStatic.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libNoahsRecordStatic.a;
+			remoteRef = 9267334A1872588400249E37 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		927CA08E186D7A2200DC0EDC /* libKal.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -336,14 +403,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				926733D91872A84100249E37 /* GRDataService.m in Sources */,
 				927CA09F186D7FE300DC0EDC /* GRCommunicationView.m in Sources */,
 				60F8024B186E725400503117 /* GRNavigationBarView.m in Sources */,
 				600A73D7187059BE0089679A /* GRIntroductView.m in Sources */,
+				926733DC1872B9DD00249E37 /* GRResourceInfoView.m in Sources */,
 				927C9FD4186D675100DC0EDC /* GRMainViewController.m in Sources */,
 				927CA09C186D7FD600DC0EDC /* GRResourceView.m in Sources */,
 				927C9FD8186D69A700DC0EDC /* GRServeView.m in Sources */,
 				927CA099186D7E7700DC0EDC /* GRPreferenceView.m in Sources */,
 				927C9FAF186D66DC00DC0EDC /* main.m in Sources */,
+				926733DF1872BA1200249E37 /* GRResourceManager.m in Sources */,
 				927C9FB3186D66DC00DC0EDC /* GRAppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -359,6 +429,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		9267334D187258B600249E37 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = NoahsRecordStatic;
+			targetProxy = 9267334C187258B600249E37 /* PBXContainerItemProxy */;
+		};
 		927C9FC0186D66DC00DC0EDC /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 927C9F9E186D66DC00DC0EDC /* GraceRoad */;

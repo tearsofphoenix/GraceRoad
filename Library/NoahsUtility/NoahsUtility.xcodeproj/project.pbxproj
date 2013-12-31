@@ -1,0 +1,884 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		605F3A1E17864DBC00D71D73 /* NSArray+Merging.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = E3AAD38717856E8C00E661E8 /* NSArray+Merging.h */; };
+		60CB9E2F177151FB00E539A0 /* ERLocale.m in Sources */ = {isa = PBXBuildFile; fileRef = E3E6D3BA16E823D00043835A /* ERLocale.m */; };
+		60CB9E30177151FB00E539A0 /* ERLocaleSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = E3E6D3BC16E823D00043835A /* ERLocaleSettings.m */; };
+		60CB9E31177151FB00E539A0 /* NSBundle+ConditionalFileResourceLoading.m in Sources */ = {isa = PBXBuildFile; fileRef = E35691C415A88040003DCA2B /* NSBundle+ConditionalFileResourceLoading.m */; };
+		60CB9E32177151FB00E539A0 /* NSThread+ClosureBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = E3D1454E15981280001EB7EA /* NSThread+ClosureBlock.m */; };
+		60CB9E33177151FB00E539A0 /* NSTimer+ClosureBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = E3D1455015981280001EB7EA /* NSTimer+ClosureBlock.m */; };
+		60CB9E34177151FB00E539A0 /* NSThread+BackgroundTask.m in Sources */ = {isa = PBXBuildFile; fileRef = E3F505E315B45677001921B8 /* NSThread+BackgroundTask.m */; };
+		60CB9E35177151FB00E539A0 /* NSOperationQueue+GeneralBackgroundTask.m in Sources */ = {isa = PBXBuildFile; fileRef = E3BC1D6315E7C79B00F697C1 /* NSOperationQueue+GeneralBackgroundTask.m */; };
+		60CB9E36177151FB00E539A0 /* ERGeneralBackgroundOperationQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = E3BC1D6815E7E94300F697C1 /* ERGeneralBackgroundOperationQueue.m */; };
+		60CB9E37177151FB00E539A0 /* ERPMObject.m in Sources */ = {isa = PBXBuildFile; fileRef = E3E7E53316EED67500D2AEF9 /* ERPMObject.m */; };
+		60CB9E38177151FB00E539A0 /* NSArray+NSNull.m in Sources */ = {isa = PBXBuildFile; fileRef = E3D1455315981280001EB7EA /* NSArray+NSNull.m */; };
+		60CB9E39177151FB00E539A0 /* NSArray+ReversedArray.m in Sources */ = {isa = PBXBuildFile; fileRef = E3EEBADA15CB6211006E863D /* NSArray+ReversedArray.m */; };
+		60CB9E3A177151FB00E539A0 /* NSArray+ToggledMatrixArray.m in Sources */ = {isa = PBXBuildFile; fileRef = E306D7931652351F0071013B /* NSArray+ToggledMatrixArray.m */; };
+		60CB9E3B177151FB00E539A0 /* NSMutableArray+NSNull.m in Sources */ = {isa = PBXBuildFile; fileRef = E391A8E91598810A00145142 /* NSMutableArray+NSNull.m */; };
+		60CB9E3C177151FB00E539A0 /* NSDictionary+NSNull.m in Sources */ = {isa = PBXBuildFile; fileRef = E3D1455515981280001EB7EA /* NSDictionary+NSNull.m */; };
+		60CB9E3D177151FB00E539A0 /* NSMutableDictionary+NSNull.m in Sources */ = {isa = PBXBuildFile; fileRef = E3D1455715981280001EB7EA /* NSMutableDictionary+NSNull.m */; };
+		60CB9E3E177151FB00E539A0 /* NSArray+ShuffledArray.m in Sources */ = {isa = PBXBuildFile; fileRef = E306D78E16522F530071013B /* NSArray+ShuffledArray.m */; };
+		60CB9E3F177151FB00E539A0 /* NSArray+CollectionPath.m in Sources */ = {isa = PBXBuildFile; fileRef = E3377BF516DDED7D005A44F9 /* NSArray+CollectionPath.m */; };
+		60CB9E40177151FB00E539A0 /* NSDictionary+CollectionPath.m in Sources */ = {isa = PBXBuildFile; fileRef = E3377BF916DDEF54005A44F9 /* NSDictionary+CollectionPath.m */; };
+		60CB9E41177151FB00E539A0 /* NSSet+CollectionPath.m in Sources */ = {isa = PBXBuildFile; fileRef = E30936BF17126D3600E11E19 /* NSSet+CollectionPath.m */; };
+		60CB9E42177151FB00E539A0 /* NSArray+LocaleComparision.m in Sources */ = {isa = PBXBuildFile; fileRef = E3823D9A16DF40BD00E9F081 /* NSArray+LocaleComparision.m */; };
+		60CB9E43177151FB00E539A0 /* NSMutableDictionary+Merging.m in Sources */ = {isa = PBXBuildFile; fileRef = E3E6D3B516E814F50043835A /* NSMutableDictionary+Merging.m */; };
+		60CB9E44177151FB00E539A0 /* NSMutableArray+CollectionPath.m in Sources */ = {isa = PBXBuildFile; fileRef = E30936D31712DC6600E11E19 /* NSMutableArray+CollectionPath.m */; };
+		60CB9E45177151FB00E539A0 /* NSMutableDictionary+CollectionPath.m in Sources */ = {isa = PBXBuildFile; fileRef = E3D7171E16F7E95E00E8A3EF /* NSMutableDictionary+CollectionPath.m */; };
+		60CB9E46177151FB00E539A0 /* NSDictionary+Merging.m in Sources */ = {isa = PBXBuildFile; fileRef = E3D7174316F940E700E8A3EF /* NSDictionary+Merging.m */; };
+		60CB9E47177151FB00E539A0 /* ERConversionConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = E30936C71712B88E00E11E19 /* ERConversionConfiguration.m */; };
+		60CB9E48177151FB00E539A0 /* ERConversionProcedure.m in Sources */ = {isa = PBXBuildFile; fileRef = E30936CF1712D33200E11E19 /* ERConversionProcedure.m */; };
+		60CB9E49177151FB00E539A0 /* ERConversionMap.m in Sources */ = {isa = PBXBuildFile; fileRef = E30936CB1712CF6100E11E19 /* ERConversionMap.m */; };
+		60CB9E4A177151FB00E539A0 /* ERConversionSet.m in Sources */ = {isa = PBXBuildFile; fileRef = E30936DF1712E8B600E11E19 /* ERConversionSet.m */; };
+		60CB9E4B177151FB00E539A0 /* ERConditionalConversionSet.m in Sources */ = {isa = PBXBuildFile; fileRef = E30936E3171384E400E11E19 /* ERConditionalConversionSet.m */; };
+		60CB9E4C177151FB00E539A0 /* NSObject+CollectionPath.m in Sources */ = {isa = PBXBuildFile; fileRef = E30936E71713B16F00E11E19 /* NSObject+CollectionPath.m */; };
+		60CB9E4D177151FB00E539A0 /* NSArray+Filtering.m in Sources */ = {isa = PBXBuildFile; fileRef = E30937251714E4FD00E11E19 /* NSArray+Filtering.m */; };
+		60CB9E4E177151FB00E539A0 /* NSSet+Filtering.m in Sources */ = {isa = PBXBuildFile; fileRef = E30937291714E59600E11E19 /* NSSet+Filtering.m */; };
+		60CB9E4F177151FB00E539A0 /* NSDictionary+Filtering.m in Sources */ = {isa = PBXBuildFile; fileRef = E309372D1714E5A500E11E19 /* NSDictionary+Filtering.m */; };
+		60CB9E50177151FB00E539A0 /* NSArray+ObjectSharing.m in Sources */ = {isa = PBXBuildFile; fileRef = E35DE22A1741FB13003F097B /* NSArray+ObjectSharing.m */; };
+		60CB9E51177151FB00E539A0 /* ERRequestPool.m in Sources */ = {isa = PBXBuildFile; fileRef = E3DC2FC21727709A00540EA9 /* ERRequestPool.m */; };
+		60CB9E52177151FB00E539A0 /* NSString+LatinTransliteration.m in Sources */ = {isa = PBXBuildFile; fileRef = E3823DCC16E031EB00E9F081 /* NSString+LatinTransliteration.m */; };
+		60CB9E53177151FB00E539A0 /* NSData+HEXStringDescription.m in Sources */ = {isa = PBXBuildFile; fileRef = E3D1455A15981280001EB7EA /* NSData+HEXStringDescription.m */; };
+		60CB9E54177151FB00E539A0 /* NSDate+Calendar.m in Sources */ = {isa = PBXBuildFile; fileRef = E3D1455C15981280001EB7EA /* NSDate+Calendar.m */; };
+		60CB9E55177151FB00E539A0 /* NSDate+Formatting.m in Sources */ = {isa = PBXBuildFile; fileRef = E3D1455E15981280001EB7EA /* NSDate+Formatting.m */; };
+		60CB9E56177151FB00E539A0 /* NSFileManager+DirectoryOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = E3D1456015981280001EB7EA /* NSFileManager+DirectoryOperation.m */; };
+		60CB9E57177151FB00E539A0 /* NSString+NumberOfOccurrence.m in Sources */ = {isa = PBXBuildFile; fileRef = E3D1456215981280001EB7EA /* NSString+NumberOfOccurrence.m */; };
+		60CB9E58177151FB00E539A0 /* NSString+XMLTextEscaping.m in Sources */ = {isa = PBXBuildFile; fileRef = E3EEBA7115CA0398006E863D /* NSString+XMLTextEscaping.m */; };
+		60CB9E59177151FB00E539A0 /* NSString+RegularExpression.m in Sources */ = {isa = PBXBuildFile; fileRef = E3E7F07015D24A2D00C8692A /* NSString+RegularExpression.m */; };
+		60CB9E5A177151FB00E539A0 /* NSObject+DeallocationCallback.m in Sources */ = {isa = PBXBuildFile; fileRef = E33A038515EB225D008A4B69 /* NSObject+DeallocationCallback.m */; };
+		60CB9E5B177151FB00E539A0 /* ERObjectDeallocationCallbackController.m in Sources */ = {isa = PBXBuildFile; fileRef = E33A038E15EB2653008A4B69 /* ERObjectDeallocationCallbackController.m */; };
+		60CB9E5C177151FB00E539A0 /* NSNotificationCenter+Application.m in Sources */ = {isa = PBXBuildFile; fileRef = E3084D2D16030771000C973D /* NSNotificationCenter+Application.m */; };
+		60CB9E5D177151FB00E539A0 /* NSString+Words.m in Sources */ = {isa = PBXBuildFile; fileRef = E3C37AA6169AC07D007E7AEE /* NSString+Words.m */; };
+		60CB9E5E177151FB00E539A0 /* NSString+XMLTextStripping.m in Sources */ = {isa = PBXBuildFile; fileRef = E3BC7C59169AE749005FF0A6 /* NSString+XMLTextStripping.m */; };
+		60CB9E5F177151FB00E539A0 /* NSString+Transform.m in Sources */ = {isa = PBXBuildFile; fileRef = E3823DD116E0363300E9F081 /* NSString+Transform.m */; };
+		60CB9E60177151FB00E539A0 /* NSString+DictionaryDescription.m in Sources */ = {isa = PBXBuildFile; fileRef = E3D716C016F6F3CC00E8A3EF /* NSString+DictionaryDescription.m */; };
+		60CB9E61177151FB00E539A0 /* NSString+Quotation.m in Sources */ = {isa = PBXBuildFile; fileRef = E3D7175A16F983DF00E8A3EF /* NSString+Quotation.m */; };
+		60CB9E62177151FB00E539A0 /* NSString+EditingMatch.m in Sources */ = {isa = PBXBuildFile; fileRef = E396AA8917002541007EC42C /* NSString+EditingMatch.m */; };
+		60CB9E63177151FB00E539A0 /* ERDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = E3E8C7511749C50400CA2F44 /* ERDevice.m */; };
+		60CB9E64177151FB00E539A0 /* UIApplication+ApplicationInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = E3E8C7571749D5E800CA2F44 /* UIApplication+ApplicationInfo.m */; };
+		60CB9E65177151FB00E539A0 /* ERPDFDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = E32A23CE15B7FE1900AE6F74 /* ERPDFDocument.m */; };
+		60CB9E66177151FB00E539A0 /* ERPDFPage.m in Sources */ = {isa = PBXBuildFile; fileRef = E32A23D215B7FE2A00AE6F74 /* ERPDFPage.m */; };
+		60CB9E67177151FB00E539A0 /* NSIndexPath+ERPDFDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = E32A23D615B8202900AE6F74 /* NSIndexPath+ERPDFDocument.m */; };
+		60CB9E68177151FB00E539A0 /* ERUUID.m in Sources */ = {isa = PBXBuildFile; fileRef = E3D1456515981280001EB7EA /* ERUUID.m */; };
+		60CB9E85177154F500E539A0 /* ERLocale.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = E3E6D3B916E823D00043835A /* ERLocale.h */; };
+		60CB9E86177154F500E539A0 /* ERLocaleSettings.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = E3E6D3BB16E823D00043835A /* ERLocaleSettings.h */; };
+		60CB9E87177154F500E539A0 /* NSBundle+ConditionalFileResourceLoading.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = E35691C315A88040003DCA2B /* NSBundle+ConditionalFileResourceLoading.h */; };
+		60CB9E88177154F500E539A0 /* NSThread+ClosureBlock.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = E3D1454D15981280001EB7EA /* NSThread+ClosureBlock.h */; };
+		60CB9E89177154F500E539A0 /* NSTimer+ClosureBlock.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = E3D1454F15981280001EB7EA /* NSTimer+ClosureBlock.h */; };
+		60CB9E8A177154F500E539A0 /* NSThread+BackgroundTask.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = E3F505E215B45677001921B8 /* NSThread+BackgroundTask.h */; };
+		60CB9E8B177154F500E539A0 /* NSOperationQueue+GeneralBackgroundTask.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = E3BC1D6215E7C79B00F697C1 /* NSOperationQueue+GeneralBackgroundTask.h */; };
+		60CB9E8C177154F500E539A0 /* ERGeneralBackgroundOperationQueue.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = E3BC1D6715E7E94300F697C1 /* ERGeneralBackgroundOperationQueue.h */; };
+		60CB9E8D177154F500E539A0 /* ERPM.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = E3E7E53516EED69900D2AEF9 /* ERPM.h */; };
+		60CB9E8E177154F500E539A0 /* NSArray+NSNull.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = E3D1455215981280001EB7EA /* NSArray+NSNull.h */; };
+		60CB9E8F177154F500E539A0 /* NSArray+ReversedArray.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = E3EEBAD915CB6211006E863D /* NSArray+ReversedArray.h */; };
+		60CB9E90177154F500E539A0 /* NSArray+ToggledMatrixArray.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = E306D7921652351F0071013B /* NSArray+ToggledMatrixArray.h */; };
+		60CB9E91177154F500E539A0 /* NSMutableArray+NSNull.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = E391A8E81598810A00145142 /* NSMutableArray+NSNull.h */; };
+		60CB9E92177154F500E539A0 /* NSDictionary+NSNull.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = E3D1455415981280001EB7EA /* NSDictionary+NSNull.h */; };
+		60CB9E93177154F500E539A0 /* NSMutableDictionary+NSNull.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = E3D1455615981280001EB7EA /* NSMutableDictionary+NSNull.h */; };
+		60CB9E94177154F500E539A0 /* NSArray+ShuffledArray.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = E306D78D16522F530071013B /* NSArray+ShuffledArray.h */; };
+		60CB9E95177154F500E539A0 /* NSArray+CollectionPath.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = E3377BF416DDED7D005A44F9 /* NSArray+CollectionPath.h */; };
+		60CB9E96177154F500E539A0 /* NSDictionary+CollectionPath.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = E3377BF816DDEF54005A44F9 /* NSDictionary+CollectionPath.h */; };
+		60CB9E97177154F500E539A0 /* NSSet+CollectionPath.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = E30936BE17126D3600E11E19 /* NSSet+CollectionPath.h */; };
+		60CB9E98177154F500E539A0 /* NSArray+LocaleComparision.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = E3823D9916DF40BD00E9F081 /* NSArray+LocaleComparision.h */; };
+		60CB9E99177154F500E539A0 /* NSMutableDictionary+Merging.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = E3E6D3B416E814F50043835A /* NSMutableDictionary+Merging.h */; };
+		60CB9E9A177154F500E539A0 /* NSMutableArray+CollectionPath.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = E30936D21712DC6500E11E19 /* NSMutableArray+CollectionPath.h */; };
+		60CB9E9B177154F500E539A0 /* NSMutableDictionary+CollectionPath.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = E3D7171D16F7E95E00E8A3EF /* NSMutableDictionary+CollectionPath.h */; };
+		60CB9E9C177154F500E539A0 /* NSDictionary+Merging.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = E3D7174216F940E700E8A3EF /* NSDictionary+Merging.h */; };
+		60CB9E9D177154F500E539A0 /* ERConversionConfiguration.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = E30936C61712B88E00E11E19 /* ERConversionConfiguration.h */; };
+		60CB9E9E177154F500E539A0 /* ERConversionProcedure.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = E30936CE1712D33100E11E19 /* ERConversionProcedure.h */; };
+		60CB9E9F177154F500E539A0 /* ERConversionMap.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = E30936CA1712CF6000E11E19 /* ERConversionMap.h */; };
+		60CB9EA0177154F500E539A0 /* ERConversionSet.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = E30936DE1712E8B500E11E19 /* ERConversionSet.h */; };
+		60CB9EA1177154F500E539A0 /* ERConditionalConversionSet.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = E30936E2171384E400E11E19 /* ERConditionalConversionSet.h */; };
+		60CB9EA2177154F500E539A0 /* NSObject+CollectionPath.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = E30936E61713B16E00E11E19 /* NSObject+CollectionPath.h */; };
+		60CB9EA3177154F500E539A0 /* NSArray+Filtering.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = E30937241714E4FC00E11E19 /* NSArray+Filtering.h */; };
+		60CB9EA4177154F500E539A0 /* NSSet+Filtering.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = E30937281714E59500E11E19 /* NSSet+Filtering.h */; };
+		60CB9EA5177154F500E539A0 /* NSDictionary+Filtering.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = E309372C1714E5A400E11E19 /* NSDictionary+Filtering.h */; };
+		60CB9EA6177154F500E539A0 /* NSArray+ObjectSharing.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = E35DE2291741FB13003F097B /* NSArray+ObjectSharing.h */; };
+		60CB9EA7177154F500E539A0 /* IOKit.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = E3E8C7541749D2A100CA2F44 /* IOKit.h */; };
+		60CB9EA8177154F500E539A0 /* ERRequestPool.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = E3DC2FC11727709A00540EA9 /* ERRequestPool.h */; };
+		60CB9EA9177154F500E539A0 /* NSString+LatinTransliteration.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = E3823DCB16E031EB00E9F081 /* NSString+LatinTransliteration.h */; };
+		60CB9EAA177154F500E539A0 /* NSData+HEXStringDescription.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = E3D1455915981280001EB7EA /* NSData+HEXStringDescription.h */; };
+		60CB9EAB177154F500E539A0 /* NSDate+Calendar.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = E3D1455B15981280001EB7EA /* NSDate+Calendar.h */; };
+		60CB9EAC177154F500E539A0 /* NSDate+Formatting.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = E3D1455D15981280001EB7EA /* NSDate+Formatting.h */; };
+		60CB9EAD177154F500E539A0 /* NSFileManager+DirectoryOperation.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = E3D1455F15981280001EB7EA /* NSFileManager+DirectoryOperation.h */; };
+		60CB9EAE177154F500E539A0 /* NSString+NumberOfOccurrence.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = E3D1456115981280001EB7EA /* NSString+NumberOfOccurrence.h */; };
+		60CB9EAF177154F500E539A0 /* NSString+XMLTextEscaping.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = E3EEBA7015CA0398006E863D /* NSString+XMLTextEscaping.h */; };
+		60CB9EB0177154F500E539A0 /* NSString+RegularExpression.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = E3E7F06F15D24A2D00C8692A /* NSString+RegularExpression.h */; };
+		60CB9EB1177154F500E539A0 /* NSObject+DeallocationCallback.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = E33A038415EB225D008A4B69 /* NSObject+DeallocationCallback.h */; };
+		60CB9EB2177154F500E539A0 /* ERObjectDeallocationCallbackController.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = E33A038D15EB2653008A4B69 /* ERObjectDeallocationCallbackController.h */; };
+		60CB9EB3177154F500E539A0 /* NSNotificationCenter+Application.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = E3084D2C16030771000C973D /* NSNotificationCenter+Application.h */; };
+		60CB9EB4177154F500E539A0 /* NSString+Words.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = E3C37AA5169AC07D007E7AEE /* NSString+Words.h */; };
+		60CB9EB5177154F500E539A0 /* NSString+XMLTextStripping.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = E3BC7C58169AE749005FF0A6 /* NSString+XMLTextStripping.h */; };
+		60CB9EB6177154F500E539A0 /* NSString+Transform.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = E3823DD016E0363300E9F081 /* NSString+Transform.h */; };
+		60CB9EB7177154F500E539A0 /* NSString+DictionaryDescription.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = E3D716BF16F6F3CC00E8A3EF /* NSString+DictionaryDescription.h */; };
+		60CB9EB8177154F500E539A0 /* NSString+Quotation.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = E3D7175916F983DE00E8A3EF /* NSString+Quotation.h */; };
+		60CB9EB9177154F500E539A0 /* NSString+EditingMatch.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = E396AA8817002541007EC42C /* NSString+EditingMatch.h */; };
+		60CB9EBA177154F500E539A0 /* ERDevice.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = E3E8C7501749C50400CA2F44 /* ERDevice.h */; };
+		60CB9EBB177154F500E539A0 /* UIApplication+ApplicationInfo.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = E3E8C7561749D5E800CA2F44 /* UIApplication+ApplicationInfo.h */; };
+		60CB9EBC177154F500E539A0 /* ERPDFDocument.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = E32A23CD15B7FE1900AE6F74 /* ERPDFDocument.h */; };
+		60CB9EBD177154F500E539A0 /* ERPDFPage.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = E32A23D115B7FE2A00AE6F74 /* ERPDFPage.h */; };
+		60CB9EBE177154F500E539A0 /* NSIndexPath+ERPDFDocument.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = E32A23D515B8202800AE6F74 /* NSIndexPath+ERPDFDocument.h */; };
+		60CB9EBF177154F500E539A0 /* ERUUID.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = E3D1456415981280001EB7EA /* ERUUID.h */; };
+		60CB9EC0177154F500E539A0 /* NoahsUtility.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = E3EFBC0A15905318004C3C2C /* NoahsUtility.h */; };
+		E31EFE73179E6E7E0075EEC0 /* NSURL+ApplicationURL.m in Sources */ = {isa = PBXBuildFile; fileRef = E31EFE6F179E6DC10075EEC0 /* NSURL+ApplicationURL.m */; };
+		E31EFE75179E6EA80075EEC0 /* NSURL+ApplicationURL.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = E31EFE6E179E6DC10075EEC0 /* NSURL+ApplicationURL.h */; };
+		E33F1102178F7ADE00549535 /* NSArray+Groupping.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = E3941BE717865120001F742F /* NSArray+Groupping.h */; };
+		E3524BC717951B2000603049 /* NSArray+Groupping.m in Sources */ = {isa = PBXBuildFile; fileRef = E3941BE817865120001F742F /* NSArray+Groupping.m */; };
+		E3AAD38D17856ED400E661E8 /* NSArray+Merging.m in Sources */ = {isa = PBXBuildFile; fileRef = E3AAD38817856E8C00E661E8 /* NSArray+Merging.m */; };
+		E3D3D20F17B8B8B7003393C1 /* ERFileInput.m in Sources */ = {isa = PBXBuildFile; fileRef = E3D3D20A17B8B8A8003393C1 /* ERFileInput.m */; };
+		E3EE0E2E17CFADB20040C2C9 /* ERBlockOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = E3EE0E2917CFADB20040C2C9 /* ERBlockOperation.m */; };
+		E3EE0E2F17CFAEBD0040C2C9 /* ERBlockOperation.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = E3EE0E2817CFADB20040C2C9 /* ERBlockOperation.h */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		60CB9E2C177151C800E539A0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E36E414E163F5AF100A9DE4E /* NoahsService.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 60CB9E0E1771516D00E539A0;
+			remoteInfo = NoahsServiceStatic;
+		};
+		60CB9E691771520700E539A0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E36E414E163F5AF100A9DE4E /* NoahsService.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 60CB9E0D1771516D00E539A0;
+			remoteInfo = NoahsServiceStatic;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		60CB9E1E177151C800E539A0 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = include/NoahsUtility;
+			dstSubfolderSpec = 16;
+			files = (
+				E31EFE75179E6EA80075EEC0 /* NSURL+ApplicationURL.h in CopyFiles */,
+				E3EE0E2F17CFAEBD0040C2C9 /* ERBlockOperation.h in CopyFiles */,
+				E33F1102178F7ADE00549535 /* NSArray+Groupping.h in CopyFiles */,
+				605F3A1E17864DBC00D71D73 /* NSArray+Merging.h in CopyFiles */,
+				60CB9E85177154F500E539A0 /* ERLocale.h in CopyFiles */,
+				60CB9E86177154F500E539A0 /* ERLocaleSettings.h in CopyFiles */,
+				60CB9E87177154F500E539A0 /* NSBundle+ConditionalFileResourceLoading.h in CopyFiles */,
+				60CB9E88177154F500E539A0 /* NSThread+ClosureBlock.h in CopyFiles */,
+				60CB9E89177154F500E539A0 /* NSTimer+ClosureBlock.h in CopyFiles */,
+				60CB9E8A177154F500E539A0 /* NSThread+BackgroundTask.h in CopyFiles */,
+				60CB9E8B177154F500E539A0 /* NSOperationQueue+GeneralBackgroundTask.h in CopyFiles */,
+				60CB9E8C177154F500E539A0 /* ERGeneralBackgroundOperationQueue.h in CopyFiles */,
+				60CB9E8D177154F500E539A0 /* ERPM.h in CopyFiles */,
+				60CB9E8E177154F500E539A0 /* NSArray+NSNull.h in CopyFiles */,
+				60CB9E8F177154F500E539A0 /* NSArray+ReversedArray.h in CopyFiles */,
+				60CB9E90177154F500E539A0 /* NSArray+ToggledMatrixArray.h in CopyFiles */,
+				60CB9E91177154F500E539A0 /* NSMutableArray+NSNull.h in CopyFiles */,
+				60CB9E92177154F500E539A0 /* NSDictionary+NSNull.h in CopyFiles */,
+				60CB9E93177154F500E539A0 /* NSMutableDictionary+NSNull.h in CopyFiles */,
+				60CB9E94177154F500E539A0 /* NSArray+ShuffledArray.h in CopyFiles */,
+				60CB9E95177154F500E539A0 /* NSArray+CollectionPath.h in CopyFiles */,
+				60CB9E96177154F500E539A0 /* NSDictionary+CollectionPath.h in CopyFiles */,
+				60CB9E97177154F500E539A0 /* NSSet+CollectionPath.h in CopyFiles */,
+				60CB9E98177154F500E539A0 /* NSArray+LocaleComparision.h in CopyFiles */,
+				60CB9E99177154F500E539A0 /* NSMutableDictionary+Merging.h in CopyFiles */,
+				60CB9E9A177154F500E539A0 /* NSMutableArray+CollectionPath.h in CopyFiles */,
+				60CB9E9B177154F500E539A0 /* NSMutableDictionary+CollectionPath.h in CopyFiles */,
+				60CB9E9C177154F500E539A0 /* NSDictionary+Merging.h in CopyFiles */,
+				60CB9E9D177154F500E539A0 /* ERConversionConfiguration.h in CopyFiles */,
+				60CB9E9E177154F500E539A0 /* ERConversionProcedure.h in CopyFiles */,
+				60CB9E9F177154F500E539A0 /* ERConversionMap.h in CopyFiles */,
+				60CB9EA0177154F500E539A0 /* ERConversionSet.h in CopyFiles */,
+				60CB9EA1177154F500E539A0 /* ERConditionalConversionSet.h in CopyFiles */,
+				60CB9EA2177154F500E539A0 /* NSObject+CollectionPath.h in CopyFiles */,
+				60CB9EA3177154F500E539A0 /* NSArray+Filtering.h in CopyFiles */,
+				60CB9EA4177154F500E539A0 /* NSSet+Filtering.h in CopyFiles */,
+				60CB9EA5177154F500E539A0 /* NSDictionary+Filtering.h in CopyFiles */,
+				60CB9EA6177154F500E539A0 /* NSArray+ObjectSharing.h in CopyFiles */,
+				60CB9EA7177154F500E539A0 /* IOKit.h in CopyFiles */,
+				60CB9EA8177154F500E539A0 /* ERRequestPool.h in CopyFiles */,
+				60CB9EA9177154F500E539A0 /* NSString+LatinTransliteration.h in CopyFiles */,
+				60CB9EAA177154F500E539A0 /* NSData+HEXStringDescription.h in CopyFiles */,
+				60CB9EAB177154F500E539A0 /* NSDate+Calendar.h in CopyFiles */,
+				60CB9EAC177154F500E539A0 /* NSDate+Formatting.h in CopyFiles */,
+				60CB9EAD177154F500E539A0 /* NSFileManager+DirectoryOperation.h in CopyFiles */,
+				60CB9EAE177154F500E539A0 /* NSString+NumberOfOccurrence.h in CopyFiles */,
+				60CB9EAF177154F500E539A0 /* NSString+XMLTextEscaping.h in CopyFiles */,
+				60CB9EB0177154F500E539A0 /* NSString+RegularExpression.h in CopyFiles */,
+				60CB9EB1177154F500E539A0 /* NSObject+DeallocationCallback.h in CopyFiles */,
+				60CB9EB2177154F500E539A0 /* ERObjectDeallocationCallbackController.h in CopyFiles */,
+				60CB9EB3177154F500E539A0 /* NSNotificationCenter+Application.h in CopyFiles */,
+				60CB9EB4177154F500E539A0 /* NSString+Words.h in CopyFiles */,
+				60CB9EB5177154F500E539A0 /* NSString+XMLTextStripping.h in CopyFiles */,
+				60CB9EB6177154F500E539A0 /* NSString+Transform.h in CopyFiles */,
+				60CB9EB7177154F500E539A0 /* NSString+DictionaryDescription.h in CopyFiles */,
+				60CB9EB8177154F500E539A0 /* NSString+Quotation.h in CopyFiles */,
+				60CB9EB9177154F500E539A0 /* NSString+EditingMatch.h in CopyFiles */,
+				60CB9EBA177154F500E539A0 /* ERDevice.h in CopyFiles */,
+				60CB9EBB177154F500E539A0 /* UIApplication+ApplicationInfo.h in CopyFiles */,
+				60CB9EBC177154F500E539A0 /* ERPDFDocument.h in CopyFiles */,
+				60CB9EBD177154F500E539A0 /* ERPDFPage.h in CopyFiles */,
+				60CB9EBE177154F500E539A0 /* NSIndexPath+ERPDFDocument.h in CopyFiles */,
+				60CB9EBF177154F500E539A0 /* ERUUID.h in CopyFiles */,
+				60CB9EC0177154F500E539A0 /* NoahsUtility.h in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		60CB9E20177151C800E539A0 /* libNoahsUtilityStatic.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libNoahsUtilityStatic.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E306D78D16522F530071013B /* NSArray+ShuffledArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+ShuffledArray.h"; sourceTree = "<group>"; };
+		E306D78E16522F530071013B /* NSArray+ShuffledArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+ShuffledArray.m"; sourceTree = "<group>"; };
+		E306D7921652351F0071013B /* NSArray+ToggledMatrixArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+ToggledMatrixArray.h"; sourceTree = "<group>"; };
+		E306D7931652351F0071013B /* NSArray+ToggledMatrixArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+ToggledMatrixArray.m"; sourceTree = "<group>"; };
+		E3084D2C16030771000C973D /* NSNotificationCenter+Application.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSNotificationCenter+Application.h"; sourceTree = "<group>"; };
+		E3084D2D16030771000C973D /* NSNotificationCenter+Application.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSNotificationCenter+Application.m"; sourceTree = "<group>"; };
+		E30936BE17126D3600E11E19 /* NSSet+CollectionPath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSSet+CollectionPath.h"; sourceTree = "<group>"; };
+		E30936BF17126D3600E11E19 /* NSSet+CollectionPath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSSet+CollectionPath.m"; sourceTree = "<group>"; };
+		E30936C61712B88E00E11E19 /* ERConversionConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ERConversionConfiguration.h; sourceTree = "<group>"; };
+		E30936C71712B88E00E11E19 /* ERConversionConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ERConversionConfiguration.m; sourceTree = "<group>"; };
+		E30936CA1712CF6000E11E19 /* ERConversionMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ERConversionMap.h; sourceTree = "<group>"; };
+		E30936CB1712CF6100E11E19 /* ERConversionMap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ERConversionMap.m; sourceTree = "<group>"; };
+		E30936CE1712D33100E11E19 /* ERConversionProcedure.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ERConversionProcedure.h; sourceTree = "<group>"; };
+		E30936CF1712D33200E11E19 /* ERConversionProcedure.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ERConversionProcedure.m; sourceTree = "<group>"; };
+		E30936D21712DC6500E11E19 /* NSMutableArray+CollectionPath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+CollectionPath.h"; sourceTree = "<group>"; };
+		E30936D31712DC6600E11E19 /* NSMutableArray+CollectionPath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+CollectionPath.m"; sourceTree = "<group>"; };
+		E30936DE1712E8B500E11E19 /* ERConversionSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ERConversionSet.h; sourceTree = "<group>"; };
+		E30936DF1712E8B600E11E19 /* ERConversionSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ERConversionSet.m; sourceTree = "<group>"; };
+		E30936E2171384E400E11E19 /* ERConditionalConversionSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ERConditionalConversionSet.h; sourceTree = "<group>"; };
+		E30936E3171384E400E11E19 /* ERConditionalConversionSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ERConditionalConversionSet.m; sourceTree = "<group>"; };
+		E30936E61713B16E00E11E19 /* NSObject+CollectionPath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+CollectionPath.h"; sourceTree = "<group>"; };
+		E30936E71713B16F00E11E19 /* NSObject+CollectionPath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+CollectionPath.m"; sourceTree = "<group>"; };
+		E30937241714E4FC00E11E19 /* NSArray+Filtering.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+Filtering.h"; sourceTree = "<group>"; };
+		E30937251714E4FD00E11E19 /* NSArray+Filtering.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+Filtering.m"; sourceTree = "<group>"; };
+		E30937281714E59500E11E19 /* NSSet+Filtering.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSSet+Filtering.h"; sourceTree = "<group>"; };
+		E30937291714E59600E11E19 /* NSSet+Filtering.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSSet+Filtering.m"; sourceTree = "<group>"; };
+		E309372C1714E5A400E11E19 /* NSDictionary+Filtering.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+Filtering.h"; sourceTree = "<group>"; };
+		E309372D1714E5A500E11E19 /* NSDictionary+Filtering.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+Filtering.m"; sourceTree = "<group>"; };
+		E31EFE6E179E6DC10075EEC0 /* NSURL+ApplicationURL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURL+ApplicationURL.h"; sourceTree = "<group>"; };
+		E31EFE6F179E6DC10075EEC0 /* NSURL+ApplicationURL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURL+ApplicationURL.m"; sourceTree = "<group>"; };
+		E32A23CD15B7FE1900AE6F74 /* ERPDFDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ERPDFDocument.h; sourceTree = "<group>"; };
+		E32A23CE15B7FE1900AE6F74 /* ERPDFDocument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ERPDFDocument.m; sourceTree = "<group>"; };
+		E32A23D115B7FE2A00AE6F74 /* ERPDFPage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ERPDFPage.h; sourceTree = "<group>"; };
+		E32A23D215B7FE2A00AE6F74 /* ERPDFPage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ERPDFPage.m; sourceTree = "<group>"; };
+		E32A23D515B8202800AE6F74 /* NSIndexPath+ERPDFDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSIndexPath+ERPDFDocument.h"; sourceTree = "<group>"; };
+		E32A23D615B8202900AE6F74 /* NSIndexPath+ERPDFDocument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSIndexPath+ERPDFDocument.m"; sourceTree = "<group>"; };
+		E32A23D915B8241600AE6F74 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		E3377BF416DDED7D005A44F9 /* NSArray+CollectionPath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+CollectionPath.h"; sourceTree = "<group>"; };
+		E3377BF516DDED7D005A44F9 /* NSArray+CollectionPath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+CollectionPath.m"; sourceTree = "<group>"; };
+		E3377BF816DDEF54005A44F9 /* NSDictionary+CollectionPath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+CollectionPath.h"; sourceTree = "<group>"; };
+		E3377BF916DDEF54005A44F9 /* NSDictionary+CollectionPath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+CollectionPath.m"; sourceTree = "<group>"; };
+		E33A038415EB225D008A4B69 /* NSObject+DeallocationCallback.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+DeallocationCallback.h"; sourceTree = "<group>"; };
+		E33A038515EB225D008A4B69 /* NSObject+DeallocationCallback.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+DeallocationCallback.m"; sourceTree = "<group>"; };
+		E33A038D15EB2653008A4B69 /* ERObjectDeallocationCallbackController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ERObjectDeallocationCallbackController.h; sourceTree = "<group>"; };
+		E33A038E15EB2653008A4B69 /* ERObjectDeallocationCallbackController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ERObjectDeallocationCallbackController.m; sourceTree = "<group>"; };
+		E35691C315A88040003DCA2B /* NSBundle+ConditionalFileResourceLoading.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSBundle+ConditionalFileResourceLoading.h"; sourceTree = "<group>"; };
+		E35691C415A88040003DCA2B /* NSBundle+ConditionalFileResourceLoading.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSBundle+ConditionalFileResourceLoading.m"; sourceTree = "<group>"; };
+		E35691C715A8840A003DCA2B /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		E35DE2291741FB13003F097B /* NSArray+ObjectSharing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+ObjectSharing.h"; sourceTree = "<group>"; };
+		E35DE22A1741FB13003F097B /* NSArray+ObjectSharing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+ObjectSharing.m"; sourceTree = "<group>"; };
+		E36E414E163F5AF100A9DE4E /* NoahsService.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = NoahsService.xcodeproj; path = ../NoahsService/NoahsService.xcodeproj; sourceTree = "<group>"; };
+		E3823D9916DF40BD00E9F081 /* NSArray+LocaleComparision.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+LocaleComparision.h"; sourceTree = "<group>"; };
+		E3823D9A16DF40BD00E9F081 /* NSArray+LocaleComparision.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+LocaleComparision.m"; sourceTree = "<group>"; };
+		E3823DCB16E031EB00E9F081 /* NSString+LatinTransliteration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+LatinTransliteration.h"; sourceTree = "<group>"; };
+		E3823DCC16E031EB00E9F081 /* NSString+LatinTransliteration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+LatinTransliteration.m"; sourceTree = "<group>"; };
+		E3823DD016E0363300E9F081 /* NSString+Transform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Transform.h"; sourceTree = "<group>"; };
+		E3823DD116E0363300E9F081 /* NSString+Transform.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Transform.m"; sourceTree = "<group>"; };
+		E391A8E81598810A00145142 /* NSMutableArray+NSNull.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+NSNull.h"; sourceTree = "<group>"; };
+		E391A8E91598810A00145142 /* NSMutableArray+NSNull.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+NSNull.m"; sourceTree = "<group>"; };
+		E3941BE717865120001F742F /* NSArray+Groupping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+Groupping.h"; sourceTree = "<group>"; };
+		E3941BE817865120001F742F /* NSArray+Groupping.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+Groupping.m"; sourceTree = "<group>"; };
+		E396AA8817002541007EC42C /* NSString+EditingMatch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+EditingMatch.h"; sourceTree = "<group>"; };
+		E396AA8917002541007EC42C /* NSString+EditingMatch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+EditingMatch.m"; sourceTree = "<group>"; };
+		E3AAD38717856E8C00E661E8 /* NSArray+Merging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+Merging.h"; sourceTree = "<group>"; };
+		E3AAD38817856E8C00E661E8 /* NSArray+Merging.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+Merging.m"; sourceTree = "<group>"; };
+		E3BC1D6215E7C79B00F697C1 /* NSOperationQueue+GeneralBackgroundTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSOperationQueue+GeneralBackgroundTask.h"; sourceTree = "<group>"; };
+		E3BC1D6315E7C79B00F697C1 /* NSOperationQueue+GeneralBackgroundTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSOperationQueue+GeneralBackgroundTask.m"; sourceTree = "<group>"; };
+		E3BC1D6715E7E94300F697C1 /* ERGeneralBackgroundOperationQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ERGeneralBackgroundOperationQueue.h; sourceTree = "<group>"; };
+		E3BC1D6815E7E94300F697C1 /* ERGeneralBackgroundOperationQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ERGeneralBackgroundOperationQueue.m; sourceTree = "<group>"; };
+		E3BC7C58169AE749005FF0A6 /* NSString+XMLTextStripping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+XMLTextStripping.h"; sourceTree = "<group>"; };
+		E3BC7C59169AE749005FF0A6 /* NSString+XMLTextStripping.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+XMLTextStripping.m"; sourceTree = "<group>"; };
+		E3C37AA5169AC07D007E7AEE /* NSString+Words.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Words.h"; sourceTree = "<group>"; };
+		E3C37AA6169AC07D007E7AEE /* NSString+Words.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Words.m"; sourceTree = "<group>"; };
+		E3D1454D15981280001EB7EA /* NSThread+ClosureBlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSThread+ClosureBlock.h"; sourceTree = "<group>"; };
+		E3D1454E15981280001EB7EA /* NSThread+ClosureBlock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSThread+ClosureBlock.m"; sourceTree = "<group>"; };
+		E3D1454F15981280001EB7EA /* NSTimer+ClosureBlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSTimer+ClosureBlock.h"; sourceTree = "<group>"; };
+		E3D1455015981280001EB7EA /* NSTimer+ClosureBlock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSTimer+ClosureBlock.m"; sourceTree = "<group>"; };
+		E3D1455215981280001EB7EA /* NSArray+NSNull.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+NSNull.h"; sourceTree = "<group>"; };
+		E3D1455315981280001EB7EA /* NSArray+NSNull.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+NSNull.m"; sourceTree = "<group>"; };
+		E3D1455415981280001EB7EA /* NSDictionary+NSNull.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+NSNull.h"; sourceTree = "<group>"; };
+		E3D1455515981280001EB7EA /* NSDictionary+NSNull.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+NSNull.m"; sourceTree = "<group>"; };
+		E3D1455615981280001EB7EA /* NSMutableDictionary+NSNull.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableDictionary+NSNull.h"; sourceTree = "<group>"; };
+		E3D1455715981280001EB7EA /* NSMutableDictionary+NSNull.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableDictionary+NSNull.m"; sourceTree = "<group>"; };
+		E3D1455915981280001EB7EA /* NSData+HEXStringDescription.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+HEXStringDescription.h"; sourceTree = "<group>"; };
+		E3D1455A15981280001EB7EA /* NSData+HEXStringDescription.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+HEXStringDescription.m"; sourceTree = "<group>"; };
+		E3D1455B15981280001EB7EA /* NSDate+Calendar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Calendar.h"; sourceTree = "<group>"; };
+		E3D1455C15981280001EB7EA /* NSDate+Calendar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Calendar.m"; sourceTree = "<group>"; };
+		E3D1455D15981280001EB7EA /* NSDate+Formatting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Formatting.h"; sourceTree = "<group>"; };
+		E3D1455E15981280001EB7EA /* NSDate+Formatting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Formatting.m"; sourceTree = "<group>"; };
+		E3D1455F15981280001EB7EA /* NSFileManager+DirectoryOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSFileManager+DirectoryOperation.h"; sourceTree = "<group>"; };
+		E3D1456015981280001EB7EA /* NSFileManager+DirectoryOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSFileManager+DirectoryOperation.m"; sourceTree = "<group>"; };
+		E3D1456115981280001EB7EA /* NSString+NumberOfOccurrence.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+NumberOfOccurrence.h"; sourceTree = "<group>"; };
+		E3D1456215981280001EB7EA /* NSString+NumberOfOccurrence.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+NumberOfOccurrence.m"; sourceTree = "<group>"; };
+		E3D1456415981280001EB7EA /* ERUUID.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ERUUID.h; sourceTree = "<group>"; };
+		E3D1456515981280001EB7EA /* ERUUID.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ERUUID.m; sourceTree = "<group>"; };
+		E3D3D20917B8B8A8003393C1 /* ERFileInput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ERFileInput.h; sourceTree = "<group>"; };
+		E3D3D20A17B8B8A8003393C1 /* ERFileInput.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ERFileInput.m; sourceTree = "<group>"; };
+		E3D716BF16F6F3CC00E8A3EF /* NSString+DictionaryDescription.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+DictionaryDescription.h"; sourceTree = "<group>"; };
+		E3D716C016F6F3CC00E8A3EF /* NSString+DictionaryDescription.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+DictionaryDescription.m"; sourceTree = "<group>"; };
+		E3D7171D16F7E95E00E8A3EF /* NSMutableDictionary+CollectionPath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableDictionary+CollectionPath.h"; sourceTree = "<group>"; };
+		E3D7171E16F7E95E00E8A3EF /* NSMutableDictionary+CollectionPath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableDictionary+CollectionPath.m"; sourceTree = "<group>"; };
+		E3D7174216F940E700E8A3EF /* NSDictionary+Merging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+Merging.h"; sourceTree = "<group>"; };
+		E3D7174316F940E700E8A3EF /* NSDictionary+Merging.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+Merging.m"; sourceTree = "<group>"; };
+		E3D7175916F983DE00E8A3EF /* NSString+Quotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Quotation.h"; sourceTree = "<group>"; };
+		E3D7175A16F983DF00E8A3EF /* NSString+Quotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Quotation.m"; sourceTree = "<group>"; };
+		E3DC2FC11727709A00540EA9 /* ERRequestPool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ERRequestPool.h; sourceTree = "<group>"; };
+		E3DC2FC21727709A00540EA9 /* ERRequestPool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ERRequestPool.m; sourceTree = "<group>"; };
+		E3E6D3B416E814F50043835A /* NSMutableDictionary+Merging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableDictionary+Merging.h"; sourceTree = "<group>"; };
+		E3E6D3B516E814F50043835A /* NSMutableDictionary+Merging.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableDictionary+Merging.m"; sourceTree = "<group>"; };
+		E3E6D3B916E823D00043835A /* ERLocale.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ERLocale.h; sourceTree = "<group>"; };
+		E3E6D3BA16E823D00043835A /* ERLocale.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ERLocale.m; sourceTree = "<group>"; };
+		E3E6D3BB16E823D00043835A /* ERLocaleSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ERLocaleSettings.h; sourceTree = "<group>"; };
+		E3E6D3BC16E823D00043835A /* ERLocaleSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ERLocaleSettings.m; sourceTree = "<group>"; };
+		E3E7E53316EED67500D2AEF9 /* ERPMObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ERPMObject.m; sourceTree = "<group>"; };
+		E3E7E53516EED69900D2AEF9 /* ERPM.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ERPM.h; sourceTree = "<group>"; };
+		E3E7F06F15D24A2D00C8692A /* NSString+RegularExpression.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+RegularExpression.h"; sourceTree = "<group>"; };
+		E3E7F07015D24A2D00C8692A /* NSString+RegularExpression.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+RegularExpression.m"; sourceTree = "<group>"; };
+		E3E8C7501749C50400CA2F44 /* ERDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ERDevice.h; sourceTree = "<group>"; };
+		E3E8C7511749C50400CA2F44 /* ERDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ERDevice.m; sourceTree = "<group>"; };
+		E3E8C7541749D2A100CA2F44 /* IOKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IOKit.h; sourceTree = "<group>"; };
+		E3E8C7561749D5E800CA2F44 /* UIApplication+ApplicationInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIApplication+ApplicationInfo.h"; sourceTree = "<group>"; };
+		E3E8C7571749D5E800CA2F44 /* UIApplication+ApplicationInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIApplication+ApplicationInfo.m"; sourceTree = "<group>"; };
+		E3E8C75A1749DD4400CA2F44 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		E3EE0E2817CFADB20040C2C9 /* ERBlockOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ERBlockOperation.h; sourceTree = "<group>"; };
+		E3EE0E2917CFADB20040C2C9 /* ERBlockOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ERBlockOperation.m; sourceTree = "<group>"; };
+		E3EEBA7015CA0398006E863D /* NSString+XMLTextEscaping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+XMLTextEscaping.h"; sourceTree = "<group>"; };
+		E3EEBA7115CA0398006E863D /* NSString+XMLTextEscaping.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+XMLTextEscaping.m"; sourceTree = "<group>"; };
+		E3EEBAD915CB6211006E863D /* NSArray+ReversedArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+ReversedArray.h"; sourceTree = "<group>"; };
+		E3EEBADA15CB6211006E863D /* NSArray+ReversedArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+ReversedArray.m"; sourceTree = "<group>"; };
+		E3EFBC0115905317004C3C2C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		E3EFBC0515905317004C3C2C /* NoahsUtility-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "NoahsUtility-Info.plist"; sourceTree = "<group>"; };
+		E3EFBC0915905317004C3C2C /* NoahsUtility-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NoahsUtility-Prefix.pch"; sourceTree = "<group>"; };
+		E3EFBC0A15905318004C3C2C /* NoahsUtility.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NoahsUtility.h; sourceTree = "<group>"; };
+		E3EFBC4915905803004C3C2C /* InfoPlist.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = InfoPlist.strings; sourceTree = "<group>"; };
+		E3F505E215B45677001921B8 /* NSThread+BackgroundTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSThread+BackgroundTask.h"; sourceTree = "<group>"; };
+		E3F505E315B45677001921B8 /* NSThread+BackgroundTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSThread+BackgroundTask.m"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		60CB9E1D177151C800E539A0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		E32A23CB15B7FDE700AE6F74 /* PDF */ = {
+			isa = PBXGroup;
+			children = (
+				E32A23CD15B7FE1900AE6F74 /* ERPDFDocument.h */,
+				E32A23CE15B7FE1900AE6F74 /* ERPDFDocument.m */,
+				E32A23D115B7FE2A00AE6F74 /* ERPDFPage.h */,
+				E32A23D215B7FE2A00AE6F74 /* ERPDFPage.m */,
+				E32A23D515B8202800AE6F74 /* NSIndexPath+ERPDFDocument.h */,
+				E32A23D615B8202900AE6F74 /* NSIndexPath+ERPDFDocument.m */,
+			);
+			path = PDF;
+			sourceTree = "<group>";
+		};
+		E35691BD15A87FF8003DCA2B /* Bundle */ = {
+			isa = PBXGroup;
+			children = (
+				E35691C315A88040003DCA2B /* NSBundle+ConditionalFileResourceLoading.h */,
+				E35691C415A88040003DCA2B /* NSBundle+ConditionalFileResourceLoading.m */,
+			);
+			path = Bundle;
+			sourceTree = "<group>";
+		};
+		E36E414C163F5AE500A9DE4E /* Subprojects */ = {
+			isa = PBXGroup;
+			children = (
+				E36E414E163F5AF100A9DE4E /* NoahsService.xcodeproj */,
+			);
+			name = Subprojects;
+			sourceTree = "<group>";
+		};
+		E36E414F163F5AF100A9DE4E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				60CB9E2D177151C800E539A0 /* libNoahsServiceStatic.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		E3D1454C15981280001EB7EA /* ClosureBlock */ = {
+			isa = PBXGroup;
+			children = (
+				E3D1454D15981280001EB7EA /* NSThread+ClosureBlock.h */,
+				E3D1454E15981280001EB7EA /* NSThread+ClosureBlock.m */,
+				E3D1454F15981280001EB7EA /* NSTimer+ClosureBlock.h */,
+				E3D1455015981280001EB7EA /* NSTimer+ClosureBlock.m */,
+				E3F505E215B45677001921B8 /* NSThread+BackgroundTask.h */,
+				E3F505E315B45677001921B8 /* NSThread+BackgroundTask.m */,
+				E3BC1D6215E7C79B00F697C1 /* NSOperationQueue+GeneralBackgroundTask.h */,
+				E3BC1D6315E7C79B00F697C1 /* NSOperationQueue+GeneralBackgroundTask.m */,
+				E3BC1D6715E7E94300F697C1 /* ERGeneralBackgroundOperationQueue.h */,
+				E3BC1D6815E7E94300F697C1 /* ERGeneralBackgroundOperationQueue.m */,
+				E3E7E53516EED69900D2AEF9 /* ERPM.h */,
+				E3E7E53316EED67500D2AEF9 /* ERPMObject.m */,
+				E3EE0E2817CFADB20040C2C9 /* ERBlockOperation.h */,
+				E3EE0E2917CFADB20040C2C9 /* ERBlockOperation.m */,
+			);
+			path = ClosureBlock;
+			sourceTree = "<group>";
+		};
+		E3D1455115981280001EB7EA /* Collection */ = {
+			isa = PBXGroup;
+			children = (
+				E3941BE717865120001F742F /* NSArray+Groupping.h */,
+				E3941BE817865120001F742F /* NSArray+Groupping.m */,
+				E3D1455215981280001EB7EA /* NSArray+NSNull.h */,
+				E3D1455315981280001EB7EA /* NSArray+NSNull.m */,
+				E3EEBAD915CB6211006E863D /* NSArray+ReversedArray.h */,
+				E3EEBADA15CB6211006E863D /* NSArray+ReversedArray.m */,
+				E306D7921652351F0071013B /* NSArray+ToggledMatrixArray.h */,
+				E306D7931652351F0071013B /* NSArray+ToggledMatrixArray.m */,
+				E391A8E81598810A00145142 /* NSMutableArray+NSNull.h */,
+				E391A8E91598810A00145142 /* NSMutableArray+NSNull.m */,
+				E3D1455415981280001EB7EA /* NSDictionary+NSNull.h */,
+				E3D1455515981280001EB7EA /* NSDictionary+NSNull.m */,
+				E3D1455615981280001EB7EA /* NSMutableDictionary+NSNull.h */,
+				E3D1455715981280001EB7EA /* NSMutableDictionary+NSNull.m */,
+				E306D78D16522F530071013B /* NSArray+ShuffledArray.h */,
+				E306D78E16522F530071013B /* NSArray+ShuffledArray.m */,
+				E3377BF416DDED7D005A44F9 /* NSArray+CollectionPath.h */,
+				E3377BF516DDED7D005A44F9 /* NSArray+CollectionPath.m */,
+				E3377BF816DDEF54005A44F9 /* NSDictionary+CollectionPath.h */,
+				E3377BF916DDEF54005A44F9 /* NSDictionary+CollectionPath.m */,
+				E30936BE17126D3600E11E19 /* NSSet+CollectionPath.h */,
+				E30936BF17126D3600E11E19 /* NSSet+CollectionPath.m */,
+				E3823D9916DF40BD00E9F081 /* NSArray+LocaleComparision.h */,
+				E3823D9A16DF40BD00E9F081 /* NSArray+LocaleComparision.m */,
+				E3E6D3B416E814F50043835A /* NSMutableDictionary+Merging.h */,
+				E3E6D3B516E814F50043835A /* NSMutableDictionary+Merging.m */,
+				E30936D21712DC6500E11E19 /* NSMutableArray+CollectionPath.h */,
+				E30936D31712DC6600E11E19 /* NSMutableArray+CollectionPath.m */,
+				E3D7171D16F7E95E00E8A3EF /* NSMutableDictionary+CollectionPath.h */,
+				E3D7171E16F7E95E00E8A3EF /* NSMutableDictionary+CollectionPath.m */,
+				E3D7174216F940E700E8A3EF /* NSDictionary+Merging.h */,
+				E3D7174316F940E700E8A3EF /* NSDictionary+Merging.m */,
+				E30936C61712B88E00E11E19 /* ERConversionConfiguration.h */,
+				E30936C71712B88E00E11E19 /* ERConversionConfiguration.m */,
+				E30936CE1712D33100E11E19 /* ERConversionProcedure.h */,
+				E30936CF1712D33200E11E19 /* ERConversionProcedure.m */,
+				E30936CA1712CF6000E11E19 /* ERConversionMap.h */,
+				E30936CB1712CF6100E11E19 /* ERConversionMap.m */,
+				E30936DE1712E8B500E11E19 /* ERConversionSet.h */,
+				E30936DF1712E8B600E11E19 /* ERConversionSet.m */,
+				E30936E2171384E400E11E19 /* ERConditionalConversionSet.h */,
+				E30936E3171384E400E11E19 /* ERConditionalConversionSet.m */,
+				E30936E61713B16E00E11E19 /* NSObject+CollectionPath.h */,
+				E30936E71713B16F00E11E19 /* NSObject+CollectionPath.m */,
+				E30937241714E4FC00E11E19 /* NSArray+Filtering.h */,
+				E30937251714E4FD00E11E19 /* NSArray+Filtering.m */,
+				E30937281714E59500E11E19 /* NSSet+Filtering.h */,
+				E30937291714E59600E11E19 /* NSSet+Filtering.m */,
+				E309372C1714E5A400E11E19 /* NSDictionary+Filtering.h */,
+				E309372D1714E5A500E11E19 /* NSDictionary+Filtering.m */,
+				E35DE2291741FB13003F097B /* NSArray+ObjectSharing.h */,
+				E35DE22A1741FB13003F097B /* NSArray+ObjectSharing.m */,
+				E3AAD38717856E8C00E661E8 /* NSArray+Merging.h */,
+				E3AAD38817856E8C00E661E8 /* NSArray+Merging.m */,
+			);
+			path = Collection;
+			sourceTree = "<group>";
+		};
+		E3D1455815981280001EB7EA /* Foundation */ = {
+			isa = PBXGroup;
+			children = (
+				E3E8C7541749D2A100CA2F44 /* IOKit.h */,
+				E3DC2FC11727709A00540EA9 /* ERRequestPool.h */,
+				E3DC2FC21727709A00540EA9 /* ERRequestPool.m */,
+				E3823DCB16E031EB00E9F081 /* NSString+LatinTransliteration.h */,
+				E3823DCC16E031EB00E9F081 /* NSString+LatinTransliteration.m */,
+				E3D1455915981280001EB7EA /* NSData+HEXStringDescription.h */,
+				E3D1455A15981280001EB7EA /* NSData+HEXStringDescription.m */,
+				E3D1455B15981280001EB7EA /* NSDate+Calendar.h */,
+				E3D1455C15981280001EB7EA /* NSDate+Calendar.m */,
+				E3D1455D15981280001EB7EA /* NSDate+Formatting.h */,
+				E3D1455E15981280001EB7EA /* NSDate+Formatting.m */,
+				E3D1455F15981280001EB7EA /* NSFileManager+DirectoryOperation.h */,
+				E3D1456015981280001EB7EA /* NSFileManager+DirectoryOperation.m */,
+				E3D1456115981280001EB7EA /* NSString+NumberOfOccurrence.h */,
+				E3D1456215981280001EB7EA /* NSString+NumberOfOccurrence.m */,
+				E3EEBA7015CA0398006E863D /* NSString+XMLTextEscaping.h */,
+				E3EEBA7115CA0398006E863D /* NSString+XMLTextEscaping.m */,
+				E3E7F06F15D24A2D00C8692A /* NSString+RegularExpression.h */,
+				E3E7F07015D24A2D00C8692A /* NSString+RegularExpression.m */,
+				E33A038415EB225D008A4B69 /* NSObject+DeallocationCallback.h */,
+				E33A038515EB225D008A4B69 /* NSObject+DeallocationCallback.m */,
+				E33A038D15EB2653008A4B69 /* ERObjectDeallocationCallbackController.h */,
+				E33A038E15EB2653008A4B69 /* ERObjectDeallocationCallbackController.m */,
+				E3084D2C16030771000C973D /* NSNotificationCenter+Application.h */,
+				E3084D2D16030771000C973D /* NSNotificationCenter+Application.m */,
+				E3C37AA5169AC07D007E7AEE /* NSString+Words.h */,
+				E3C37AA6169AC07D007E7AEE /* NSString+Words.m */,
+				E3BC7C58169AE749005FF0A6 /* NSString+XMLTextStripping.h */,
+				E3BC7C59169AE749005FF0A6 /* NSString+XMLTextStripping.m */,
+				E3823DD016E0363300E9F081 /* NSString+Transform.h */,
+				E3823DD116E0363300E9F081 /* NSString+Transform.m */,
+				E3D716BF16F6F3CC00E8A3EF /* NSString+DictionaryDescription.h */,
+				E3D716C016F6F3CC00E8A3EF /* NSString+DictionaryDescription.m */,
+				E3D7175916F983DE00E8A3EF /* NSString+Quotation.h */,
+				E3D7175A16F983DF00E8A3EF /* NSString+Quotation.m */,
+				E396AA8817002541007EC42C /* NSString+EditingMatch.h */,
+				E396AA8917002541007EC42C /* NSString+EditingMatch.m */,
+				E3E8C7501749C50400CA2F44 /* ERDevice.h */,
+				E3E8C7511749C50400CA2F44 /* ERDevice.m */,
+				E3E8C7561749D5E800CA2F44 /* UIApplication+ApplicationInfo.h */,
+				E3E8C7571749D5E800CA2F44 /* UIApplication+ApplicationInfo.m */,
+				E31EFE6E179E6DC10075EEC0 /* NSURL+ApplicationURL.h */,
+				E31EFE6F179E6DC10075EEC0 /* NSURL+ApplicationURL.m */,
+				E3D3D20917B8B8A8003393C1 /* ERFileInput.h */,
+				E3D3D20A17B8B8A8003393C1 /* ERFileInput.m */,
+			);
+			path = Foundation;
+			sourceTree = "<group>";
+		};
+		E3D1456315981280001EB7EA /* UUID */ = {
+			isa = PBXGroup;
+			children = (
+				E3D1456415981280001EB7EA /* ERUUID.h */,
+				E3D1456515981280001EB7EA /* ERUUID.m */,
+			);
+			path = UUID;
+			sourceTree = "<group>";
+		};
+		E3E6D3B816E823970043835A /* Locale */ = {
+			isa = PBXGroup;
+			children = (
+				E3E6D3B916E823D00043835A /* ERLocale.h */,
+				E3E6D3BA16E823D00043835A /* ERLocale.m */,
+				E3E6D3BB16E823D00043835A /* ERLocaleSettings.h */,
+				E3E6D3BC16E823D00043835A /* ERLocaleSettings.m */,
+			);
+			path = Locale;
+			sourceTree = "<group>";
+		};
+		E3EFBBF215905317004C3C2C = {
+			isa = PBXGroup;
+			children = (
+				E3EFBC0315905317004C3C2C /* NoahsUtility */,
+				E36E414C163F5AE500A9DE4E /* Subprojects */,
+				E3EFBC0015905317004C3C2C /* Frameworks */,
+				E3EFBBFF15905317004C3C2C /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		E3EFBBFF15905317004C3C2C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				60CB9E20177151C800E539A0 /* libNoahsUtilityStatic.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		E3EFBC0015905317004C3C2C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E3E8C75A1749DD4400CA2F44 /* CoreLocation.framework */,
+				E32A23D915B8241600AE6F74 /* CoreGraphics.framework */,
+				E35691C715A8840A003DCA2B /* UIKit.framework */,
+				E3EFBC0115905317004C3C2C /* Foundation.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E3EFBC0315905317004C3C2C /* NoahsUtility */ = {
+			isa = PBXGroup;
+			children = (
+				E3E6D3B816E823970043835A /* Locale */,
+				E35691BD15A87FF8003DCA2B /* Bundle */,
+				E3D1454C15981280001EB7EA /* ClosureBlock */,
+				E3D1455115981280001EB7EA /* Collection */,
+				E3D1455815981280001EB7EA /* Foundation */,
+				E32A23CB15B7FDE700AE6F74 /* PDF */,
+				E3D1456315981280001EB7EA /* UUID */,
+				E3EFBC0A15905318004C3C2C /* NoahsUtility.h */,
+				E3EFBC0415905317004C3C2C /* Supporting Files */,
+			);
+			path = NoahsUtility;
+			sourceTree = "<group>";
+		};
+		E3EFBC0415905317004C3C2C /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				E3EFBC4915905803004C3C2C /* InfoPlist.strings */,
+				E3EFBC0515905317004C3C2C /* NoahsUtility-Info.plist */,
+				E3EFBC0915905317004C3C2C /* NoahsUtility-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		60CB9E1F177151C800E539A0 /* NoahsUtilityStatic */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 60CB9E2E177151C800E539A0 /* Build configuration list for PBXNativeTarget "NoahsUtilityStatic" */;
+			buildPhases = (
+				60CB9E1E177151C800E539A0 /* CopyFiles */,
+				60CB9E1C177151C800E539A0 /* Sources */,
+				60CB9E1D177151C800E539A0 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				60CB9E6A1771520700E539A0 /* PBXTargetDependency */,
+			);
+			name = NoahsUtilityStatic;
+			productName = NoahsUtilityStatic;
+			productReference = 60CB9E20177151C800E539A0 /* libNoahsUtilityStatic.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		E3EFBBF415905317004C3C2C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0460;
+				ORGANIZATIONNAME = "Shanghai e-Intelli Software Technology Co., Ltd.";
+			};
+			buildConfigurationList = E3EFBBF715905317004C3C2C /* Build configuration list for PBXProject "NoahsUtility" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = E3EFBBF215905317004C3C2C;
+			productRefGroup = E3EFBBFF15905317004C3C2C /* Products */;
+			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = E36E414F163F5AF100A9DE4E /* Products */;
+					ProjectRef = E36E414E163F5AF100A9DE4E /* NoahsService.xcodeproj */;
+				},
+			);
+			projectRoot = "";
+			targets = (
+				60CB9E1F177151C800E539A0 /* NoahsUtilityStatic */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		60CB9E2D177151C800E539A0 /* libNoahsServiceStatic.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libNoahsServiceStatic.a;
+			remoteRef = 60CB9E2C177151C800E539A0 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
+/* Begin PBXSourcesBuildPhase section */
+		60CB9E1C177151C800E539A0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				60CB9E2F177151FB00E539A0 /* ERLocale.m in Sources */,
+				60CB9E30177151FB00E539A0 /* ERLocaleSettings.m in Sources */,
+				60CB9E31177151FB00E539A0 /* NSBundle+ConditionalFileResourceLoading.m in Sources */,
+				60CB9E32177151FB00E539A0 /* NSThread+ClosureBlock.m in Sources */,
+				60CB9E33177151FB00E539A0 /* NSTimer+ClosureBlock.m in Sources */,
+				60CB9E34177151FB00E539A0 /* NSThread+BackgroundTask.m in Sources */,
+				60CB9E35177151FB00E539A0 /* NSOperationQueue+GeneralBackgroundTask.m in Sources */,
+				60CB9E36177151FB00E539A0 /* ERGeneralBackgroundOperationQueue.m in Sources */,
+				60CB9E37177151FB00E539A0 /* ERPMObject.m in Sources */,
+				60CB9E38177151FB00E539A0 /* NSArray+NSNull.m in Sources */,
+				60CB9E39177151FB00E539A0 /* NSArray+ReversedArray.m in Sources */,
+				60CB9E3A177151FB00E539A0 /* NSArray+ToggledMatrixArray.m in Sources */,
+				60CB9E3B177151FB00E539A0 /* NSMutableArray+NSNull.m in Sources */,
+				60CB9E3C177151FB00E539A0 /* NSDictionary+NSNull.m in Sources */,
+				60CB9E3D177151FB00E539A0 /* NSMutableDictionary+NSNull.m in Sources */,
+				60CB9E3E177151FB00E539A0 /* NSArray+ShuffledArray.m in Sources */,
+				60CB9E3F177151FB00E539A0 /* NSArray+CollectionPath.m in Sources */,
+				60CB9E40177151FB00E539A0 /* NSDictionary+CollectionPath.m in Sources */,
+				60CB9E41177151FB00E539A0 /* NSSet+CollectionPath.m in Sources */,
+				60CB9E42177151FB00E539A0 /* NSArray+LocaleComparision.m in Sources */,
+				60CB9E43177151FB00E539A0 /* NSMutableDictionary+Merging.m in Sources */,
+				60CB9E44177151FB00E539A0 /* NSMutableArray+CollectionPath.m in Sources */,
+				60CB9E45177151FB00E539A0 /* NSMutableDictionary+CollectionPath.m in Sources */,
+				60CB9E46177151FB00E539A0 /* NSDictionary+Merging.m in Sources */,
+				60CB9E47177151FB00E539A0 /* ERConversionConfiguration.m in Sources */,
+				60CB9E48177151FB00E539A0 /* ERConversionProcedure.m in Sources */,
+				60CB9E49177151FB00E539A0 /* ERConversionMap.m in Sources */,
+				60CB9E4A177151FB00E539A0 /* ERConversionSet.m in Sources */,
+				60CB9E4B177151FB00E539A0 /* ERConditionalConversionSet.m in Sources */,
+				60CB9E4C177151FB00E539A0 /* NSObject+CollectionPath.m in Sources */,
+				60CB9E4D177151FB00E539A0 /* NSArray+Filtering.m in Sources */,
+				60CB9E4E177151FB00E539A0 /* NSSet+Filtering.m in Sources */,
+				60CB9E4F177151FB00E539A0 /* NSDictionary+Filtering.m in Sources */,
+				60CB9E50177151FB00E539A0 /* NSArray+ObjectSharing.m in Sources */,
+				60CB9E51177151FB00E539A0 /* ERRequestPool.m in Sources */,
+				60CB9E52177151FB00E539A0 /* NSString+LatinTransliteration.m in Sources */,
+				60CB9E53177151FB00E539A0 /* NSData+HEXStringDescription.m in Sources */,
+				60CB9E54177151FB00E539A0 /* NSDate+Calendar.m in Sources */,
+				60CB9E55177151FB00E539A0 /* NSDate+Formatting.m in Sources */,
+				60CB9E56177151FB00E539A0 /* NSFileManager+DirectoryOperation.m in Sources */,
+				60CB9E57177151FB00E539A0 /* NSString+NumberOfOccurrence.m in Sources */,
+				60CB9E58177151FB00E539A0 /* NSString+XMLTextEscaping.m in Sources */,
+				60CB9E59177151FB00E539A0 /* NSString+RegularExpression.m in Sources */,
+				60CB9E5A177151FB00E539A0 /* NSObject+DeallocationCallback.m in Sources */,
+				60CB9E5B177151FB00E539A0 /* ERObjectDeallocationCallbackController.m in Sources */,
+				60CB9E5C177151FB00E539A0 /* NSNotificationCenter+Application.m in Sources */,
+				60CB9E5D177151FB00E539A0 /* NSString+Words.m in Sources */,
+				60CB9E5E177151FB00E539A0 /* NSString+XMLTextStripping.m in Sources */,
+				60CB9E5F177151FB00E539A0 /* NSString+Transform.m in Sources */,
+				60CB9E60177151FB00E539A0 /* NSString+DictionaryDescription.m in Sources */,
+				60CB9E61177151FB00E539A0 /* NSString+Quotation.m in Sources */,
+				60CB9E62177151FB00E539A0 /* NSString+EditingMatch.m in Sources */,
+				60CB9E63177151FB00E539A0 /* ERDevice.m in Sources */,
+				60CB9E64177151FB00E539A0 /* UIApplication+ApplicationInfo.m in Sources */,
+				60CB9E65177151FB00E539A0 /* ERPDFDocument.m in Sources */,
+				60CB9E66177151FB00E539A0 /* ERPDFPage.m in Sources */,
+				60CB9E67177151FB00E539A0 /* NSIndexPath+ERPDFDocument.m in Sources */,
+				60CB9E68177151FB00E539A0 /* ERUUID.m in Sources */,
+				E3AAD38D17856ED400E661E8 /* NSArray+Merging.m in Sources */,
+				E3524BC717951B2000603049 /* NSArray+Groupping.m in Sources */,
+				E31EFE73179E6E7E0075EEC0 /* NSURL+ApplicationURL.m in Sources */,
+				E3D3D20F17B8B8B7003393C1 /* ERFileInput.m in Sources */,
+				E3EE0E2E17CFADB20040C2C9 /* ERBlockOperation.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		60CB9E6A1771520700E539A0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = NoahsServiceStatic;
+			targetProxy = 60CB9E691771520700E539A0 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		60CB9E29177151C800E539A0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_EMPTY_BODY = YES;
+				DSTROOT = /tmp/NoahsUtilityStatic.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "NoahsUtility/NoahsUtility-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"APPLE_STORE_DISTRIBUTION=1",
+					"$(inherited)",
+				);
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		60CB9E2A177151C800E539A0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_EMPTY_BODY = YES;
+				DSTROOT = /tmp/NoahsUtilityStatic.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "NoahsUtility/NoahsUtility-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = "APPLE_STORE_DISTRIBUTION=1";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		E3EFBC0D15905318004C3C2C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		E3EFBC0E15905318004C3C2C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		60CB9E2E177151C800E539A0 /* Build configuration list for PBXNativeTarget "NoahsUtilityStatic" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				60CB9E29177151C800E539A0 /* Debug */,
+				60CB9E2A177151C800E539A0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E3EFBBF715905317004C3C2C /* Build configuration list for PBXProject "NoahsUtility" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E3EFBC0D15905318004C3C2C /* Debug */,
+				E3EFBC0E15905318004C3C2C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = E3EFBBF415905317004C3C2C /* Project object */;
+}
