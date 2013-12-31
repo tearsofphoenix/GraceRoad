@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		600A73D7187059BE0089679A /* GRIntroductView.m in Sources */ = {isa = PBXBuildFile; fileRef = 600A73D6187059BE0089679A /* GRIntroductView.m */; };
+		60F8024B186E725400503117 /* GRNavigationBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 60F8024A186E725400503117 /* GRNavigationBarView.m */; };
 		927C9FA3186D66DC00DC0EDC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 927C9FA2186D66DC00DC0EDC /* Foundation.framework */; };
 		927C9FA5186D66DC00DC0EDC /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 927C9FA4186D66DC00DC0EDC /* CoreGraphics.framework */; };
 		927C9FA7186D66DC00DC0EDC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 927C9FA6186D66DC00DC0EDC /* UIKit.framework */; };
@@ -19,6 +21,14 @@
 		927C9FBE186D66DC00DC0EDC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 927C9FA6186D66DC00DC0EDC /* UIKit.framework */; };
 		927C9FC6186D66DC00DC0EDC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 927C9FC4186D66DC00DC0EDC /* InfoPlist.strings */; };
 		927C9FC8186D66DC00DC0EDC /* GraceRoadTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 927C9FC7186D66DC00DC0EDC /* GraceRoadTests.m */; };
+		927C9FD4186D675100DC0EDC /* GRMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 927C9FD2186D675100DC0EDC /* GRMainViewController.m */; };
+		927C9FD5186D675100DC0EDC /* GRMainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 927C9FD3186D675100DC0EDC /* GRMainViewController.xib */; };
+		927C9FD8186D69A700DC0EDC /* GRServeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 927C9FD7186D69A700DC0EDC /* GRServeView.m */; };
+		927CA091186D7A3200DC0EDC /* libKal.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 927CA08E186D7A2200DC0EDC /* libKal.a */; };
+		927CA096186D7E2000DC0EDC /* Kal.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 927CA095186D7E2000DC0EDC /* Kal.bundle */; };
+		927CA099186D7E7700DC0EDC /* GRPreferenceView.m in Sources */ = {isa = PBXBuildFile; fileRef = 927CA098186D7E7700DC0EDC /* GRPreferenceView.m */; };
+		927CA09C186D7FD600DC0EDC /* GRResourceView.m in Sources */ = {isa = PBXBuildFile; fileRef = 927CA09B186D7FD600DC0EDC /* GRResourceView.m */; };
+		927CA09F186D7FE300DC0EDC /* GRCommunicationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 927CA09E186D7FE300DC0EDC /* GRCommunicationView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,9 +39,28 @@
 			remoteGlobalIDString = 927C9F9E186D66DC00DC0EDC;
 			remoteInfo = GraceRoad;
 		};
+		927CA08D186D7A2200DC0EDC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 927CA089186D7A2200DC0EDC /* Kal.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D2AAC07E0554694100DB518D;
+			remoteInfo = Kal;
+		};
+		927CA08F186D7A2D00DC0EDC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 927CA089186D7A2200DC0EDC /* Kal.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = D2AAC07D0554694100DB518D;
+			remoteInfo = Kal;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		600A73D5187059BE0089679A /* GRIntroductView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRIntroductView.h; sourceTree = "<group>"; };
+		600A73D6187059BE0089679A /* GRIntroductView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GRIntroductView.m; sourceTree = "<group>"; };
+		60F80249186E725400503117 /* GRNavigationBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRNavigationBarView.h; sourceTree = "<group>"; };
+		60F8024A186E725400503117 /* GRNavigationBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GRNavigationBarView.m; sourceTree = "<group>"; };
+		60F8024C186E730300503117 /* GRContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRContentView.h; sourceTree = "<group>"; };
 		927C9F9F186D66DC00DC0EDC /* GraceRoad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GraceRoad.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		927C9FA2186D66DC00DC0EDC /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		927C9FA4186D66DC00DC0EDC /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -48,6 +77,19 @@
 		927C9FC3186D66DC00DC0EDC /* GraceRoadTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GraceRoadTests-Info.plist"; sourceTree = "<group>"; };
 		927C9FC5186D66DC00DC0EDC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		927C9FC7186D66DC00DC0EDC /* GraceRoadTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GraceRoadTests.m; sourceTree = "<group>"; };
+		927C9FD1186D675100DC0EDC /* GRMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRMainViewController.h; sourceTree = "<group>"; };
+		927C9FD2186D675100DC0EDC /* GRMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GRMainViewController.m; sourceTree = "<group>"; };
+		927C9FD3186D675100DC0EDC /* GRMainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GRMainViewController.xib; sourceTree = "<group>"; };
+		927C9FD6186D69A700DC0EDC /* GRServeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRServeView.h; sourceTree = "<group>"; };
+		927C9FD7186D69A700DC0EDC /* GRServeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GRServeView.m; sourceTree = "<group>"; };
+		927CA089186D7A2200DC0EDC /* Kal.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Kal.xcodeproj; path = Kal/Kal.xcodeproj; sourceTree = "<group>"; };
+		927CA095186D7E2000DC0EDC /* Kal.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Kal.bundle; path = Kal/Kal.bundle; sourceTree = "<group>"; };
+		927CA097186D7E7700DC0EDC /* GRPreferenceView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRPreferenceView.h; sourceTree = "<group>"; };
+		927CA098186D7E7700DC0EDC /* GRPreferenceView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GRPreferenceView.m; sourceTree = "<group>"; };
+		927CA09A186D7FD600DC0EDC /* GRResourceView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRResourceView.h; sourceTree = "<group>"; };
+		927CA09B186D7FD600DC0EDC /* GRResourceView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GRResourceView.m; sourceTree = "<group>"; };
+		927CA09D186D7FE300DC0EDC /* GRCommunicationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRCommunicationView.h; sourceTree = "<group>"; };
+		927CA09E186D7FE300DC0EDC /* GRCommunicationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GRCommunicationView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +97,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				927CA091186D7A3200DC0EDC /* libKal.a in Frameworks */,
 				927C9FA5186D66DC00DC0EDC /* CoreGraphics.framework in Frameworks */,
 				927C9FA7186D66DC00DC0EDC /* UIKit.framework in Frameworks */,
 				927C9FA3186D66DC00DC0EDC /* Foundation.framework in Frameworks */,
@@ -77,6 +120,7 @@
 		927C9F96186D66DC00DC0EDC = {
 			isa = PBXGroup;
 			children = (
+				927CA014186D6FD500DC0EDC /* Library */,
 				927C9FA8186D66DC00DC0EDC /* GraceRoad */,
 				927C9FC1186D66DC00DC0EDC /* GraceRoadTests */,
 				927C9FA1186D66DC00DC0EDC /* Frameworks */,
@@ -109,6 +153,22 @@
 			children = (
 				927C9FB1186D66DC00DC0EDC /* GRAppDelegate.h */,
 				927C9FB2186D66DC00DC0EDC /* GRAppDelegate.m */,
+				60F80249186E725400503117 /* GRNavigationBarView.h */,
+				60F8024A186E725400503117 /* GRNavigationBarView.m */,
+				60F8024C186E730300503117 /* GRContentView.h */,
+				927CA09D186D7FE300DC0EDC /* GRCommunicationView.h */,
+				927CA09E186D7FE300DC0EDC /* GRCommunicationView.m */,
+				927CA09A186D7FD600DC0EDC /* GRResourceView.h */,
+				927CA09B186D7FD600DC0EDC /* GRResourceView.m */,
+				927C9FD6186D69A700DC0EDC /* GRServeView.h */,
+				927C9FD7186D69A700DC0EDC /* GRServeView.m */,
+				927CA097186D7E7700DC0EDC /* GRPreferenceView.h */,
+				927CA098186D7E7700DC0EDC /* GRPreferenceView.m */,
+				600A73D5187059BE0089679A /* GRIntroductView.h */,
+				600A73D6187059BE0089679A /* GRIntroductView.m */,
+				927C9FD1186D675100DC0EDC /* GRMainViewController.h */,
+				927C9FD2186D675100DC0EDC /* GRMainViewController.m */,
+				927C9FD3186D675100DC0EDC /* GRMainViewController.xib */,
 				927C9FB4186D66DC00DC0EDC /* Images.xcassets */,
 				927C9FA9186D66DC00DC0EDC /* Supporting Files */,
 			);
@@ -144,6 +204,23 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		927CA014186D6FD500DC0EDC /* Library */ = {
+			isa = PBXGroup;
+			children = (
+				927CA095186D7E2000DC0EDC /* Kal.bundle */,
+				927CA089186D7A2200DC0EDC /* Kal.xcodeproj */,
+			);
+			path = Library;
+			sourceTree = "<group>";
+		};
+		927CA08A186D7A2200DC0EDC /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				927CA08E186D7A2200DC0EDC /* libKal.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -158,6 +235,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				927CA090186D7A2D00DC0EDC /* PBXTargetDependency */,
 			);
 			name = GraceRoad;
 			productName = GraceRoad;
@@ -207,6 +285,12 @@
 			mainGroup = 927C9F96186D66DC00DC0EDC;
 			productRefGroup = 927C9FA0186D66DC00DC0EDC /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 927CA08A186D7A2200DC0EDC /* Products */;
+					ProjectRef = 927CA089186D7A2200DC0EDC /* Kal.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				927C9F9E186D66DC00DC0EDC /* GraceRoad */,
@@ -215,12 +299,24 @@
 		};
 /* End PBXProject section */
 
+/* Begin PBXReferenceProxy section */
+		927CA08E186D7A2200DC0EDC /* libKal.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libKal.a;
+			remoteRef = 927CA08D186D7A2200DC0EDC /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
 /* Begin PBXResourcesBuildPhase section */
 		927C9F9D186D66DC00DC0EDC /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				927CA096186D7E2000DC0EDC /* Kal.bundle in Resources */,
 				927C9FAD186D66DC00DC0EDC /* InfoPlist.strings in Resources */,
+				927C9FD5186D675100DC0EDC /* GRMainViewController.xib in Resources */,
 				927C9FB5186D66DC00DC0EDC /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -240,6 +336,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				927CA09F186D7FE300DC0EDC /* GRCommunicationView.m in Sources */,
+				60F8024B186E725400503117 /* GRNavigationBarView.m in Sources */,
+				600A73D7187059BE0089679A /* GRIntroductView.m in Sources */,
+				927C9FD4186D675100DC0EDC /* GRMainViewController.m in Sources */,
+				927CA09C186D7FD600DC0EDC /* GRResourceView.m in Sources */,
+				927C9FD8186D69A700DC0EDC /* GRServeView.m in Sources */,
+				927CA099186D7E7700DC0EDC /* GRPreferenceView.m in Sources */,
 				927C9FAF186D66DC00DC0EDC /* main.m in Sources */,
 				927C9FB3186D66DC00DC0EDC /* GRAppDelegate.m in Sources */,
 			);
@@ -260,6 +363,11 @@
 			isa = PBXTargetDependency;
 			target = 927C9F9E186D66DC00DC0EDC /* GraceRoad */;
 			targetProxy = 927C9FBF186D66DC00DC0EDC /* PBXContainerItemProxy */;
+		};
+		927CA090186D7A2D00DC0EDC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Kal;
+			targetProxy = 927CA08F186D7A2D00DC0EDC /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -360,9 +468,19 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_OBJC_ARC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "GraceRoad/GraceRoad-Prefix.pch";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"$(BUILT_PRODUCTS_DIR)/include/",
+				);
 				INFOPLIST_FILE = "GraceRoad/GraceRoad-Info.plist";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-all_load",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -373,9 +491,19 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_OBJC_ARC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "GraceRoad/GraceRoad-Prefix.pch";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"$(BUILT_PRODUCTS_DIR)/include/",
+				);
 				INFOPLIST_FILE = "GraceRoad/GraceRoad-Info.plist";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-all_load",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -442,6 +570,7 @@
 				927C9FCD186D66DC00DC0EDC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		927C9FCE186D66DC00DC0EDC /* Build configuration list for PBXNativeTarget "GraceRoadTests" */ = {
 			isa = XCConfigurationList;
@@ -450,6 +579,7 @@
 				927C9FD0186D66DC00DC0EDC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
