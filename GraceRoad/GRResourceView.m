@@ -131,12 +131,18 @@
     return [_resourceCategories count];
 }
 
-- (NSString *)tableView: (UITableView *)tableView
-titleForHeaderInSection: (NSInteger)section
+- (UIView *) tableView: (UITableView *)tableView
+viewForHeaderInSection: (NSInteger)section
 {
+    UILabel *headerLabel = [[UILabel alloc] init];
+    
     NSDictionary *resourceTypeInfo = _resourceCategories[section];
     
-    return resourceTypeInfo[GRResourceCategoryName];
+    [headerLabel setBackgroundColor: [UIColor colorWithRed:0.96f green:0.96f blue:0.96f alpha: 1.0f]];
+    [headerLabel setTextColor: [UIColor colorWithRed:0.55f green:0.55f blue:0.55f alpha:1.00f]];
+    [headerLabel setText: [@"    " stringByAppendingString: resourceTypeInfo[GRResourceCategoryName]]];
+    
+    return [headerLabel autorelease];
 }
 
 - (NSInteger)tableView: (UITableView *)tableView
@@ -161,6 +167,8 @@ titleForHeaderInSection: (NSInteger)section
     UITableViewCell *cell = [[UITableViewCell alloc] init];
     
     [[cell textLabel] setText: resourceInfo[GRResourceName]];
+    
+    [[cell imageView] setImage: [UIImage imageNamed: @"GRIconPDF"]];
     
     return [cell autorelease];
 }

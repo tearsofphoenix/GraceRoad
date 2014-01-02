@@ -14,6 +14,8 @@
 #define GRDataServiceAllResourcesAction          @"allResources"
 #define GRDataServiceAllResourceCategoriesAction @"allResourceCategories"
 
+#define GRDataServiceAllSermonsAction            @"allSermons"
+
 
 @interface GRDataService : ERService
 

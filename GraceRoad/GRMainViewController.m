@@ -13,6 +13,7 @@
 #import "GRPreferenceView.h"
 #import "GRNavigationBarView.h"
 #import "GRIntroductView.h"
+#import "GRSermonView.h"
 
 #define GRTabCount 4
 
@@ -46,6 +47,9 @@
 {
     [super viewDidLoad];
 
+    //[_tabbar setBackgroundColor: [UIColor colorWithRed:0.17f green:0.17f blue:0.17f alpha:1.00f]];
+    [_tabbar setBackgroundColor: [UIColor colorWithRed:0.31f green:0.32f blue:0.33f alpha:1.00f]];
+    
     CGRect contentBounds = [_contentView bounds];
     
     GRIntroductView *introductView = [[GRIntroductView alloc] initWithFrame: contentBounds];
@@ -58,10 +62,10 @@
     [_contentView addSubview: resourceView];
     [resourceView release];
     
-    GRServeView *serveView = [[GRServeView alloc] initWithFrame: contentBounds];
-    [_viewStacks addObject: [NSMutableArray arrayWithObject: serveView]];
-    [_contentView addSubview: serveView];
-    [serveView release];
+    GRSermonView *sermonView = [[GRSermonView alloc] initWithFrame: contentBounds];
+    [_viewStacks addObject: [NSMutableArray arrayWithObject: sermonView]];
+    [_contentView addSubview: sermonView];
+    [sermonView release];
     
     GRPreferenceView *preferenceView = [[GRPreferenceView alloc] initWithFrame: contentBounds];
     [_viewStacks addObject: [NSMutableArray arrayWithObject: preferenceView]];

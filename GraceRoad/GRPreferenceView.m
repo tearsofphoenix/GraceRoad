@@ -22,7 +22,7 @@
     self = [super initWithFrame: frame];
     if (self)
     {
-        _titles = [@[ @"教会基本信息"] retain];
+        _titles = [@[ @"我的信息"] retain];
 
         _tableView = [[UITableView alloc] initWithFrame: [self bounds]];
         [_tableView setDataSource: self];

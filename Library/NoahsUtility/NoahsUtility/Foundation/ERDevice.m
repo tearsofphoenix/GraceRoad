@@ -35,7 +35,7 @@
 static ERDevice *ERDeviceCurrentDevice;
 //static CLLocationManager *ERDeviceCurrentLocationManager;
 
-static long long ERDeviceGetSystemInformation(unsigned int typeSpecifier)
+static int ERDeviceGetSystemInformation(unsigned int typeSpecifier)
 {
 
     size_t size = sizeof(int);
