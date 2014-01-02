@@ -19,6 +19,15 @@
 
 - (void)_initializeContent
 {
+//    [self setBackgroundColor: [UIColor colorWithRed: 0.16f
+//                                              green: 0.53f
+//                                               blue: 0.78f
+//                                              alpha: 1.00f]];
+    
+    [self setBackgroundColor: [UIColor colorWithRed: 0.16f
+                                              green: 0.56f
+                                               blue: 0.87f
+                                              alpha: 1.00f]];
     CGRect rect = [self bounds];
     rect.size.height -= 2;
     
@@ -26,6 +35,7 @@
     [_titleLabel setBackgroundColor: [UIColor clearColor]];
     [_titleLabel setTextAlignment: NSTextAlignmentCenter];
     [_titleLabel setFont: [UIFont boldSystemFontOfSize: 24]];
+    [_titleLabel setTextColor: [UIColor whiteColor]];
     
     [self addSubview: _titleLabel];
 

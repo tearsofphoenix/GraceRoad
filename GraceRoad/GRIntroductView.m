@@ -15,7 +15,10 @@
     self = [super initWithFrame: frame];
     if (self)
     {
-        [self setBackgroundColor: [UIColor whiteColor]];
+        [self setBackgroundColor: [UIColor colorWithRed: 0.93f
+                                                  green: 0.95f
+                                                   blue: 0.96f
+                                                  alpha: 1.00f]];
         
         CGRect rect = CGRectMake(0, 20, frame.size.width, 44);
         UILabel *titleLabel = [[UILabel alloc] initWithFrame: rect];
@@ -32,8 +35,11 @@
         rect.size.height = frame.size.height - rect.origin.y;
         
         UITextView *contentView = [[UITextView alloc] initWithFrame: rect];
+        
+        [contentView setBackgroundColor: [UIColor clearColor]];
         [contentView setFont: [UIFont systemFontOfSize: 16]];
         [contentView setTextAlignment: NSTextAlignmentLeft];
+        [contentView setEditable: NO];
         
         [contentView setText: (@"以马内利！新松江恩典教会欢迎您！\n"
                                 "进入会堂请把手机关机或者静音。\n"

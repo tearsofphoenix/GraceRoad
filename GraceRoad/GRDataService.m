@@ -8,12 +8,15 @@
 
 #import "GRDataService.h"
 #import "GRResourceKey.h"
+#import "GRSermonKeys.h"
+
 #import <NoahsUtility/NoahsUtility.h>
 
 @interface GRDataService ()
 {
     NSMutableArray *_resourceCategories;
     NSMutableDictionary *_resources;
+    NSMutableArray *_sermons;
 }
 @end
 
@@ -148,6 +151,25 @@
                                      }),
                                   ])
                        forKey: typeLooper[GRResourceCategoryID]];
+        
+        _sermons = [[NSMutableArray alloc] init];
+        
+        [_sermons addObject: (@{
+                                GRSermonID : [[ERUUID UUID] stringDescription],
+                                GRSermonPath : @"sermon1.mp3",
+                                GRSermonTitle : @"教导孩子",
+                                GRSermonUploadDate : [NSDate date],
+                                })];
+        
+        [_sermons addObject: (@{
+                                GRSermonID : [[ERUUID UUID] stringDescription],
+                                GRSermonPath : @"sermon2.mp3",
+                                GRSermonTitle : @"传福音",
+                                GRSermonUploadDate : [NSDate dateWithYear: year
+                                                                    month: month
+                                                                      day: day - 1],
+                                })];
+
     }
     
     return self;
@@ -161,6 +183,11 @@
 - (NSArray *)allResourceCategories
 {
     return _resourceCategories;
+}
+
+- (NSArray *)allSermons
+{
+    return _sermons;
 }
 
 @end

@@ -34,6 +34,14 @@
 		927CA099186D7E7700DC0EDC /* GRPreferenceView.m in Sources */ = {isa = PBXBuildFile; fileRef = 927CA098186D7E7700DC0EDC /* GRPreferenceView.m */; };
 		927CA09C186D7FD600DC0EDC /* GRResourceView.m in Sources */ = {isa = PBXBuildFile; fileRef = 927CA09B186D7FD600DC0EDC /* GRResourceView.m */; };
 		927CA09F186D7FE300DC0EDC /* GRCommunicationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 927CA09E186D7FE300DC0EDC /* GRCommunicationView.m */; };
+		92CE91391874F9DB00C7D3A1 /* GRSermonView.m in Sources */ = {isa = PBXBuildFile; fileRef = 92CE91381874F9DB00C7D3A1 /* GRSermonView.m */; };
+		92CE914318755BEB00C7D3A1 /* gr.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 92CE913C18755BEB00C7D3A1 /* gr.sqlite */; };
+		92CE914418755BEB00C7D3A1 /* GRLocationTab@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 92CE913F18755BEB00C7D3A1 /* GRLocationTab@2x.png */; };
+		92CE914518755BEB00C7D3A1 /* GRPreferenceTab@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 92CE914018755BEB00C7D3A1 /* GRPreferenceTab@2x.png */; };
+		92CE914618755BEB00C7D3A1 /* GRResourceTab@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 92CE914118755BEB00C7D3A1 /* GRResourceTab@2x.png */; };
+		92CE914718755BEB00C7D3A1 /* GRSermonTab@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 92CE914218755BEB00C7D3A1 /* GRSermonTab@2x.png */; };
+		92CE914A1875699A00C7D3A1 /* GRIconPDF.png in Resources */ = {isa = PBXBuildFile; fileRef = 92CE91481875699A00C7D3A1 /* GRIconPDF.png */; };
+		92CE914B1875699A00C7D3A1 /* GRIconPDF@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 92CE91491875699A00C7D3A1 /* GRIconPDF@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -118,6 +126,16 @@
 		927CA09B186D7FD600DC0EDC /* GRResourceView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GRResourceView.m; sourceTree = "<group>"; };
 		927CA09D186D7FE300DC0EDC /* GRCommunicationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRCommunicationView.h; sourceTree = "<group>"; };
 		927CA09E186D7FE300DC0EDC /* GRCommunicationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GRCommunicationView.m; sourceTree = "<group>"; };
+		92CE91371874F9DB00C7D3A1 /* GRSermonView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRSermonView.h; sourceTree = "<group>"; };
+		92CE91381874F9DB00C7D3A1 /* GRSermonView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GRSermonView.m; sourceTree = "<group>"; };
+		92CE913A1875067400C7D3A1 /* GRSermonKeys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRSermonKeys.h; sourceTree = "<group>"; };
+		92CE913C18755BEB00C7D3A1 /* gr.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = gr.sqlite; sourceTree = "<group>"; };
+		92CE913F18755BEB00C7D3A1 /* GRLocationTab@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "GRLocationTab@2x.png"; sourceTree = "<group>"; };
+		92CE914018755BEB00C7D3A1 /* GRPreferenceTab@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "GRPreferenceTab@2x.png"; sourceTree = "<group>"; };
+		92CE914118755BEB00C7D3A1 /* GRResourceTab@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "GRResourceTab@2x.png"; sourceTree = "<group>"; };
+		92CE914218755BEB00C7D3A1 /* GRSermonTab@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "GRSermonTab@2x.png"; sourceTree = "<group>"; };
+		92CE91481875699A00C7D3A1 /* GRIconPDF.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GRIconPDF.png; sourceTree = "<group>"; };
+		92CE91491875699A00C7D3A1 /* GRIconPDF@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "GRIconPDF@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -174,6 +192,9 @@
 				927CA098186D7E7700DC0EDC /* GRPreferenceView.m */,
 				600A73D5187059BE0089679A /* GRIntroductView.h */,
 				600A73D6187059BE0089679A /* GRIntroductView.m */,
+				92CE913A1875067400C7D3A1 /* GRSermonKeys.h */,
+				92CE91371874F9DB00C7D3A1 /* GRSermonView.h */,
+				92CE91381874F9DB00C7D3A1 /* GRSermonView.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -213,6 +234,7 @@
 		927C9FA8186D66DC00DC0EDC /* GraceRoad */ = {
 			isa = PBXGroup;
 			children = (
+				92CE913B18755BEB00C7D3A1 /* Resources */,
 				926733D71872A84100249E37 /* GRDataService.h */,
 				926733D81872A84100249E37 /* GRDataService.m */,
 				926733DD1872BA1200249E37 /* GRResourceManager.h */,
@@ -274,6 +296,36 @@
 				927CA08E186D7A2200DC0EDC /* libKal.a */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		92CE913B18755BEB00C7D3A1 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				92CE913C18755BEB00C7D3A1 /* gr.sqlite */,
+				92CE913D18755BEB00C7D3A1 /* Images */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		92CE913D18755BEB00C7D3A1 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				92CE913E18755BEB00C7D3A1 /* Main */,
+			);
+			path = Images;
+			sourceTree = "<group>";
+		};
+		92CE913E18755BEB00C7D3A1 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				92CE91481875699A00C7D3A1 /* GRIconPDF.png */,
+				92CE91491875699A00C7D3A1 /* GRIconPDF@2x.png */,
+				92CE913F18755BEB00C7D3A1 /* GRLocationTab@2x.png */,
+				92CE914018755BEB00C7D3A1 /* GRPreferenceTab@2x.png */,
+				92CE914118755BEB00C7D3A1 /* GRResourceTab@2x.png */,
+				92CE914218755BEB00C7D3A1 /* GRSermonTab@2x.png */,
+			);
+			path = Main;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -381,9 +433,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				92CE914318755BEB00C7D3A1 /* gr.sqlite in Resources */,
+				92CE914618755BEB00C7D3A1 /* GRResourceTab@2x.png in Resources */,
+				92CE914B1875699A00C7D3A1 /* GRIconPDF@2x.png in Resources */,
+				92CE914718755BEB00C7D3A1 /* GRSermonTab@2x.png in Resources */,
 				927CA096186D7E2000DC0EDC /* Kal.bundle in Resources */,
 				927C9FAD186D66DC00DC0EDC /* InfoPlist.strings in Resources */,
+				92CE914518755BEB00C7D3A1 /* GRPreferenceTab@2x.png in Resources */,
+				92CE914A1875699A00C7D3A1 /* GRIconPDF.png in Resources */,
 				927C9FD5186D675100DC0EDC /* GRMainViewController.xib in Resources */,
+				92CE914418755BEB00C7D3A1 /* GRLocationTab@2x.png in Resources */,
 				927C9FB5186D66DC00DC0EDC /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -408,6 +467,7 @@
 				60F8024B186E725400503117 /* GRNavigationBarView.m in Sources */,
 				600A73D7187059BE0089679A /* GRIntroductView.m in Sources */,
 				926733DC1872B9DD00249E37 /* GRResourceInfoView.m in Sources */,
+				92CE91391874F9DB00C7D3A1 /* GRSermonView.m in Sources */,
 				927C9FD4186D675100DC0EDC /* GRMainViewController.m in Sources */,
 				927CA09C186D7FD600DC0EDC /* GRResourceView.m in Sources */,
 				927C9FD8186D69A700DC0EDC /* GRServeView.m in Sources */,

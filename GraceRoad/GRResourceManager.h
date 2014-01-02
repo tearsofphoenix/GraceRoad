@@ -10,4 +10,6 @@
 
 @interface GRResourceManager : NSObject
 
++ (NSString *)resourcePath;
+
 @end

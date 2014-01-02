@@ -129,15 +129,7 @@ static char *ERStringConvertIntoText(int value, char* result, int base)
 
 + (NSString *)descriptionForPointer: (void *)pointer
 {
-
-    long long value = (long long)pointer;
-
-    char bytes[32];
-
-    ERStringConvertIntoText(value, bytes, 10);
-    
-    return [NSString stringWithUTF8String: bytes];
-
+    return [NSString stringWithFormat: @"%p", pointer];
 }
 
 @end
