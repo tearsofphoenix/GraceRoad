@@ -24,6 +24,8 @@
     self = [super initWithFrame: frame];
     if (self)
     {
+        [self setTitle: @"每周讲道"];
+        
         _sermons = [[NSMutableArray alloc] init];
         
         CGRect rect = CGRectMake(0, 0, frame.size.width, frame.size.height);
@@ -50,11 +52,6 @@
     [super dealloc];
 }
 
-- (NSString *)title
-{
-    return @"每周讲道";
-}
-
 - (NSInteger)numberOfSectionsInTableView: (UITableView *)tableView
 {
     return 1;
@@ -74,6 +71,7 @@
     NSDictionary *sermonInfo = _sermons[[indexPath row]];
     
     [[cell textLabel] setText: sermonInfo[GRSermonTitle]];
+    [[cell imageView] setImage: [UIImage imageNamed: @"GRAudio"]];
     
     return [cell autorelease];
 }

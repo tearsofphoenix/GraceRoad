@@ -8,13 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-@protocol GRContentView;
+@class GRContentView;
 
 @interface GRMainViewController : UIViewController
 
 @property (nonatomic) NSInteger currentIndex;
 
-- (void)pushContentView: (UIView<GRContentView> *)contentView;
+- (void)pushContentView: (GRContentView *)contentView;
 
 - (void)popLastContentView;
 

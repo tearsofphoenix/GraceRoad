@@ -7,8 +7,9 @@
 //
 
 #import <NoahsService/NoahsService.h>
+#import "GRShared.h"
 
-#define GRDataServiceID                 @"com.veritas.ios.gr.service.data"
+#define GRDataServiceID                 GRPrefix ".service.data"
 
 
 #define GRDataServiceAllResourcesAction          @"allResources"

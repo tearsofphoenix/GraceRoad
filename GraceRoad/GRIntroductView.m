@@ -15,6 +15,8 @@
     self = [super initWithFrame: frame];
     if (self)
     {
+        [self setTitle: @"简介"];
+        
         [self setBackgroundColor: [UIColor colorWithRed: 0.93f
                                                   green: 0.95f
                                                    blue: 0.96f
@@ -55,11 +57,6 @@
 
     }
     return self;
-}
-
-- (NSString *)title
-{
-    return @"简介";
 }
 
 @end

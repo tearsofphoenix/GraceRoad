@@ -22,6 +22,8 @@
     self = [super initWithFrame: frame];
     if (self)
     {
+        [self setTitle: @"设置"];
+        
         _titles = [@[ @"我的信息"] retain];
 
         _tableView = [[UITableView alloc] initWithFrame: [self bounds]];
@@ -39,11 +41,6 @@
     [_tableView release];
     
     [super dealloc];
-}
-
-- (NSString *)title
-{
-    return @"设置";
 }
 
 - (NSInteger)tableView: (UITableView *)tableView

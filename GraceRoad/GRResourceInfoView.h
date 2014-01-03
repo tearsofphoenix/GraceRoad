@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "GRContentView.h"
 
-@interface GRResourceInfoView : UIView
+@interface GRResourceInfoView : GRContentView
+
+@property (nonatomic, retain) NSDictionary *resourceInfo;
 
 @end

@@ -8,8 +8,17 @@
 
 #import <Foundation/Foundation.h>
 
+typedef void (^ GRResourceCallback)(NSData *data, NSError *error);
+
 @interface GRResourceManager : NSObject
 
 + (NSString *)resourcePath;
+
++ (BOOL)fileExistsWithSubPath: (NSString *)subPath;
+
++ (NSData *)dataWithSubPath: (NSString *)subPath;
+
++ (void)downloadFileWithSubPath: (NSString *)subPath
+                       callback: (GRResourceCallback)callback;
 
 @end

@@ -21,15 +21,22 @@
     self = [super initWithFrame:frame];
     if (self)
     {
-        
+        [self setTitle: @"交通"];
         [self setBackgroundColor: [UIColor blueColor]];
     }
     return self;
 }
 
-- (NSString *)title
+- (NSInteger)tableView: (UITableView *)tableView
+ numberOfRowsInSection: (NSInteger)section
 {
-    return @"交通";
+    return 0;
+}
+
+- (UITableViewCell *)tableView: (UITableView *)tableView
+         cellForRowAtIndexPath: (NSIndexPath *)indexPath
+{
+    return nil;
 }
 
 @end

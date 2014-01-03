@@ -7,9 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "GRContentView.h"
 
-@interface GRNavigationBarView : UIView
+@interface GRNavigationBarView : UIView<GRContentViewDelegate>
 
 @property (nonatomic, copy) NSString *title;
+
+- (UIButton *)leftNavigationButton;
 
 @end

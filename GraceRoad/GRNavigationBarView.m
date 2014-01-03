@@ -7,10 +7,13 @@
 //
 
 #import "GRNavigationBarView.h"
+#import "GRViewService.h"
+
 #import <QuartzCore/QuartzCore.h>
 
 @interface GRNavigationBarView ()
 {
+    UIButton *_leftNavigationButton;
     UILabel *_titleLabel;
 }
 @end
@@ -50,10 +53,34 @@
     //[lineView setAlpha: 0.7];
     [self addSubview: lineView];
     [lineView release];
-//    CALayer *layer = [self layer];
-//    [layer setShadowColor: [[UIColor blackColor] CGColor]];
-//    [layer setShadowOffset: CGSizeMake(0, 4)];
-//    [layer setShadowOpacity: 0.98];
+
+    CGRect bounds = [self bounds];
+
+    rect.size.height = 44 * 0.6;
+    rect.origin = CGPointMake(10, (bounds.size.height - rect.size.height) / 2);
+    rect.size.width = 123 * 0.6;
+    
+    _leftNavigationButton = [[UIButton alloc] initWithFrame: rect];
+    [_leftNavigationButton setImage: [UIImage imageNamed: @"GRBackButton"]
+                           forState: UIControlStateNormal];
+    [_leftNavigationButton addTarget: self
+                             action: @selector(_handleLeftButtonTappedEvent:)
+                   forControlEvents: UIControlEventTouchUpInside];
+    
+    [_leftNavigationButton setAlpha: 0];
+    
+    [self addSubview: _leftNavigationButton];
+}
+
+- (UIButton *)leftNavigationButton
+{
+    return _leftNavigationButton;
+}
+
+- (void)_handleLeftButtonTappedEvent: (id)sender
+{
+    ERSC(GRViewServiceID,
+         GRViewServicePopContentViewAction, nil, nil);
 }
 
 - (id)initWithFrame: (CGRect)frame
@@ -79,7 +106,9 @@
 
 - (void)dealloc
 {
+    [_leftNavigationButton release];
     [_titleLabel release];
+    
     [super dealloc];
 }
 
@@ -91,6 +120,11 @@
 - (NSString *)title
 {
     return [_titleLabel text];
+}
+
+- (void)needUpdateContentView: (id<GRContentView>)contentView
+{
+    [self setTitle: [contentView title]];
 }
 
 @end

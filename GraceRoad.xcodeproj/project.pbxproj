@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		600A73D7187059BE0089679A /* GRIntroductView.m in Sources */ = {isa = PBXBuildFile; fileRef = 600A73D6187059BE0089679A /* GRIntroductView.m */; };
 		60F8024B186E725400503117 /* GRNavigationBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 60F8024A186E725400503117 /* GRNavigationBarView.m */; };
+		923ADEB51876B31900E20C2B /* GRContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 923ADEB41876B31900E20C2B /* GRContentView.m */; };
+		9242AEFF1876A87C00F9FEFB /* GRBackButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 9242AEFD1876A87B00F9FEFB /* GRBackButton.png */; };
+		9242AF001876A87C00F9FEFB /* GRBackButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9242AEFE1876A87C00F9FEFB /* GRBackButton@2x.png */; };
 		9267334E187258C500249E37 /* libNoahsRecordStatic.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9267334B1872588400249E37 /* libNoahsRecordStatic.a */; };
 		9267339F187266C600249E37 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9267339E187266C600249E37 /* libsqlite3.dylib */; };
 		926733D91872A84100249E37 /* GRDataService.m in Sources */ = {isa = PBXBuildFile; fileRef = 926733D81872A84100249E37 /* GRDataService.m */; };
@@ -34,6 +37,20 @@
 		927CA099186D7E7700DC0EDC /* GRPreferenceView.m in Sources */ = {isa = PBXBuildFile; fileRef = 927CA098186D7E7700DC0EDC /* GRPreferenceView.m */; };
 		927CA09C186D7FD600DC0EDC /* GRResourceView.m in Sources */ = {isa = PBXBuildFile; fileRef = 927CA09B186D7FD600DC0EDC /* GRResourceView.m */; };
 		927CA09F186D7FE300DC0EDC /* GRCommunicationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 927CA09E186D7FE300DC0EDC /* GRCommunicationView.m */; };
+		9294D45118766369009352DB /* GRAudio.png in Resources */ = {isa = PBXBuildFile; fileRef = 9294D44F18766369009352DB /* GRAudio.png */; };
+		9294D45218766369009352DB /* GRAudio@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9294D45018766369009352DB /* GRAudio@2x.png */; };
+		9294D456187665A5009352DB /* UIAlertView+BlockSupport.m in Sources */ = {isa = PBXBuildFile; fileRef = 9294D455187665A5009352DB /* UIAlertView+BlockSupport.m */; };
+		929989B618768C2E0001EFDC /* MFCacheManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 929989A918768C2E0001EFDC /* MFCacheManager.m */; };
+		929989B718768C2E0001EFDC /* MFCacheManagerInternal.m in Sources */ = {isa = PBXBuildFile; fileRef = 929989AB18768C2E0001EFDC /* MFCacheManagerInternal.m */; };
+		929989B818768C2E0001EFDC /* MFNetworkClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 929989AD18768C2E0001EFDC /* MFNetworkClient.m */; };
+		929989B918768C2E0001EFDC /* MFNetworkClientInternal.m in Sources */ = {isa = PBXBuildFile; fileRef = 929989AF18768C2E0001EFDC /* MFNetworkClientInternal.m */; };
+		929989BA18768C2E0001EFDC /* MFNetworkFileCacheManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 929989B118768C2E0001EFDC /* MFNetworkFileCacheManager.m */; };
+		929989BB18768C2E0001EFDC /* MFNetworkFileCacheManagerInternal.m in Sources */ = {isa = PBXBuildFile; fileRef = 929989B318768C2E0001EFDC /* MFNetworkFileCacheManagerInternal.m */; };
+		929989BC18768C2E0001EFDC /* MFNetworkOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 929989B518768C2E0001EFDC /* MFNetworkOperation.m */; };
+		929989BF18768C750001EFDC /* MFRunLoopOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 929989BE18768C750001EFDC /* MFRunLoopOperation.m */; };
+		929989C218768C9C0001EFDC /* NSString+CMBExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 929989C118768C9C0001EFDC /* NSString+CMBExtensions.m */; };
+		929989C518768D550001EFDC /* NSData+CMBExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 929989C418768D550001EFDC /* NSData+CMBExtensions.m */; };
+		929989C9187692580001EFDC /* GRViewService.m in Sources */ = {isa = PBXBuildFile; fileRef = 929989C8187692580001EFDC /* GRViewService.m */; };
 		92CE91391874F9DB00C7D3A1 /* GRSermonView.m in Sources */ = {isa = PBXBuildFile; fileRef = 92CE91381874F9DB00C7D3A1 /* GRSermonView.m */; };
 		92CE914318755BEB00C7D3A1 /* gr.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 92CE913C18755BEB00C7D3A1 /* gr.sqlite */; };
 		92CE914418755BEB00C7D3A1 /* GRLocationTab@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 92CE913F18755BEB00C7D3A1 /* GRLocationTab@2x.png */; };
@@ -87,7 +104,10 @@
 		600A73D6187059BE0089679A /* GRIntroductView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GRIntroductView.m; sourceTree = "<group>"; };
 		60F80249186E725400503117 /* GRNavigationBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRNavigationBarView.h; sourceTree = "<group>"; };
 		60F8024A186E725400503117 /* GRNavigationBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GRNavigationBarView.m; sourceTree = "<group>"; };
-		60F8024C186E730300503117 /* GRContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRContentView.h; sourceTree = "<group>"; };
+		60F8024C186E730300503117 /* GRContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GRContentView.h; path = ../GRContentView.h; sourceTree = "<group>"; };
+		923ADEB41876B31900E20C2B /* GRContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GRContentView.m; sourceTree = "<group>"; };
+		9242AEFD1876A87B00F9FEFB /* GRBackButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = GRBackButton.png; path = Main/GRBackButton.png; sourceTree = "<group>"; };
+		9242AEFE1876A87C00F9FEFB /* GRBackButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "GRBackButton@2x.png"; path = "Main/GRBackButton@2x.png"; sourceTree = "<group>"; };
 		9267333C187254F500249E37 /* GRResourceKey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRResourceKey.h; sourceTree = "<group>"; };
 		9267333D1872588400249E37 /* NoahsRecord.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = NoahsRecord.xcodeproj; path = NoahsRecord/NoahsRecord.xcodeproj; sourceTree = "<group>"; };
 		9267339E187266C600249E37 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
@@ -126,6 +146,33 @@
 		927CA09B186D7FD600DC0EDC /* GRResourceView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GRResourceView.m; sourceTree = "<group>"; };
 		927CA09D186D7FE300DC0EDC /* GRCommunicationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRCommunicationView.h; sourceTree = "<group>"; };
 		927CA09E186D7FE300DC0EDC /* GRCommunicationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GRCommunicationView.m; sourceTree = "<group>"; };
+		9294D44F18766369009352DB /* GRAudio.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GRAudio.png; sourceTree = "<group>"; };
+		9294D45018766369009352DB /* GRAudio@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "GRAudio@2x.png"; sourceTree = "<group>"; };
+		9294D454187665A5009352DB /* UIAlertView+BlockSupport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertView+BlockSupport.h"; sourceTree = "<group>"; };
+		9294D455187665A5009352DB /* UIAlertView+BlockSupport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertView+BlockSupport.m"; sourceTree = "<group>"; };
+		929989A818768C2E0001EFDC /* MFCacheManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFCacheManager.h; sourceTree = "<group>"; };
+		929989A918768C2E0001EFDC /* MFCacheManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFCacheManager.m; sourceTree = "<group>"; };
+		929989AA18768C2E0001EFDC /* MFCacheManagerInternal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFCacheManagerInternal.h; sourceTree = "<group>"; };
+		929989AB18768C2E0001EFDC /* MFCacheManagerInternal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFCacheManagerInternal.m; sourceTree = "<group>"; };
+		929989AC18768C2E0001EFDC /* MFNetworkClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFNetworkClient.h; sourceTree = "<group>"; };
+		929989AD18768C2E0001EFDC /* MFNetworkClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFNetworkClient.m; sourceTree = "<group>"; };
+		929989AE18768C2E0001EFDC /* MFNetworkClientInternal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFNetworkClientInternal.h; sourceTree = "<group>"; };
+		929989AF18768C2E0001EFDC /* MFNetworkClientInternal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFNetworkClientInternal.m; sourceTree = "<group>"; };
+		929989B018768C2E0001EFDC /* MFNetworkFileCacheManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFNetworkFileCacheManager.h; sourceTree = "<group>"; };
+		929989B118768C2E0001EFDC /* MFNetworkFileCacheManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFNetworkFileCacheManager.m; sourceTree = "<group>"; };
+		929989B218768C2E0001EFDC /* MFNetworkFileCacheManagerInternal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFNetworkFileCacheManagerInternal.h; sourceTree = "<group>"; };
+		929989B318768C2E0001EFDC /* MFNetworkFileCacheManagerInternal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFNetworkFileCacheManagerInternal.m; sourceTree = "<group>"; };
+		929989B418768C2E0001EFDC /* MFNetworkOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFNetworkOperation.h; sourceTree = "<group>"; };
+		929989B518768C2E0001EFDC /* MFNetworkOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFNetworkOperation.m; sourceTree = "<group>"; };
+		929989BD18768C750001EFDC /* MFRunLoopOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFRunLoopOperation.h; sourceTree = "<group>"; };
+		929989BE18768C750001EFDC /* MFRunLoopOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFRunLoopOperation.m; sourceTree = "<group>"; };
+		929989C018768C9C0001EFDC /* NSString+CMBExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+CMBExtensions.h"; sourceTree = "<group>"; };
+		929989C118768C9C0001EFDC /* NSString+CMBExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+CMBExtensions.m"; sourceTree = "<group>"; };
+		929989C318768D550001EFDC /* NSData+CMBExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+CMBExtensions.h"; sourceTree = "<group>"; };
+		929989C418768D550001EFDC /* NSData+CMBExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+CMBExtensions.m"; sourceTree = "<group>"; };
+		929989C7187692580001EFDC /* GRViewService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRViewService.h; sourceTree = "<group>"; };
+		929989C8187692580001EFDC /* GRViewService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GRViewService.m; sourceTree = "<group>"; };
+		929989CA187692870001EFDC /* GRShared.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRShared.h; sourceTree = "<group>"; };
 		92CE91371874F9DB00C7D3A1 /* GRSermonView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRSermonView.h; sourceTree = "<group>"; };
 		92CE91381874F9DB00C7D3A1 /* GRSermonView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GRSermonView.m; sourceTree = "<group>"; };
 		92CE913A1875067400C7D3A1 /* GRSermonKeys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRSermonKeys.h; sourceTree = "<group>"; };
@@ -178,7 +225,6 @@
 			children = (
 				60F80249186E725400503117 /* GRNavigationBarView.h */,
 				60F8024A186E725400503117 /* GRNavigationBarView.m */,
-				60F8024C186E730300503117 /* GRContentView.h */,
 				927CA09D186D7FE300DC0EDC /* GRCommunicationView.h */,
 				927CA09E186D7FE300DC0EDC /* GRCommunicationView.m */,
 				9267333C187254F500249E37 /* GRResourceKey.h */,
@@ -234,11 +280,8 @@
 		927C9FA8186D66DC00DC0EDC /* GraceRoad */ = {
 			isa = PBXGroup;
 			children = (
-				92CE913B18755BEB00C7D3A1 /* Resources */,
-				926733D71872A84100249E37 /* GRDataService.h */,
-				926733D81872A84100249E37 /* GRDataService.m */,
-				926733DD1872BA1200249E37 /* GRResourceManager.h */,
-				926733DE1872BA1200249E37 /* GRResourceManager.m */,
+				9294D45318766575009352DB /* Shared */,
+				929989C6187692450001EFDC /* Controller */,
 				926733D61872A82900249E37 /* View */,
 				927C9FB1186D66DC00DC0EDC /* GRAppDelegate.h */,
 				927C9FB2186D66DC00DC0EDC /* GRAppDelegate.m */,
@@ -246,6 +289,7 @@
 				927C9FD2186D675100DC0EDC /* GRMainViewController.m */,
 				927C9FD3186D675100DC0EDC /* GRMainViewController.xib */,
 				927C9FB4186D66DC00DC0EDC /* Images.xcassets */,
+				92CE913B18755BEB00C7D3A1 /* Resources */,
 				927C9FA9186D66DC00DC0EDC /* Supporting Files */,
 			);
 			path = GraceRoad;
@@ -283,6 +327,7 @@
 		927CA014186D6FD500DC0EDC /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				929989A718768C2E0001EFDC /* Network */,
 				9267333D1872588400249E37 /* NoahsRecord.xcodeproj */,
 				927CA095186D7E2000DC0EDC /* Kal.bundle */,
 				927CA089186D7A2200DC0EDC /* Kal.xcodeproj */,
@@ -298,6 +343,58 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		9294D45318766575009352DB /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				9294D454187665A5009352DB /* UIAlertView+BlockSupport.h */,
+				9294D455187665A5009352DB /* UIAlertView+BlockSupport.m */,
+				929989CA187692870001EFDC /* GRShared.h */,
+				60F8024C186E730300503117 /* GRContentView.h */,
+				923ADEB41876B31900E20C2B /* GRContentView.m */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		929989A718768C2E0001EFDC /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				929989C318768D550001EFDC /* NSData+CMBExtensions.h */,
+				929989C418768D550001EFDC /* NSData+CMBExtensions.m */,
+				929989C018768C9C0001EFDC /* NSString+CMBExtensions.h */,
+				929989C118768C9C0001EFDC /* NSString+CMBExtensions.m */,
+				929989BD18768C750001EFDC /* MFRunLoopOperation.h */,
+				929989BE18768C750001EFDC /* MFRunLoopOperation.m */,
+				929989A818768C2E0001EFDC /* MFCacheManager.h */,
+				929989A918768C2E0001EFDC /* MFCacheManager.m */,
+				929989AA18768C2E0001EFDC /* MFCacheManagerInternal.h */,
+				929989AB18768C2E0001EFDC /* MFCacheManagerInternal.m */,
+				929989AC18768C2E0001EFDC /* MFNetworkClient.h */,
+				929989AD18768C2E0001EFDC /* MFNetworkClient.m */,
+				929989AE18768C2E0001EFDC /* MFNetworkClientInternal.h */,
+				929989AF18768C2E0001EFDC /* MFNetworkClientInternal.m */,
+				929989B018768C2E0001EFDC /* MFNetworkFileCacheManager.h */,
+				929989B118768C2E0001EFDC /* MFNetworkFileCacheManager.m */,
+				929989B218768C2E0001EFDC /* MFNetworkFileCacheManagerInternal.h */,
+				929989B318768C2E0001EFDC /* MFNetworkFileCacheManagerInternal.m */,
+				929989B418768C2E0001EFDC /* MFNetworkOperation.h */,
+				929989B518768C2E0001EFDC /* MFNetworkOperation.m */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		929989C6187692450001EFDC /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				926733D71872A84100249E37 /* GRDataService.h */,
+				926733D81872A84100249E37 /* GRDataService.m */,
+				926733DD1872BA1200249E37 /* GRResourceManager.h */,
+				926733DE1872BA1200249E37 /* GRResourceManager.m */,
+				929989C7187692580001EFDC /* GRViewService.h */,
+				929989C8187692580001EFDC /* GRViewService.m */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
 		92CE913B18755BEB00C7D3A1 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -310,6 +407,8 @@
 		92CE913D18755BEB00C7D3A1 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				9242AEFD1876A87B00F9FEFB /* GRBackButton.png */,
+				9242AEFE1876A87C00F9FEFB /* GRBackButton@2x.png */,
 				92CE913E18755BEB00C7D3A1 /* Main */,
 			);
 			path = Images;
@@ -318,6 +417,8 @@
 		92CE913E18755BEB00C7D3A1 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				9294D44F18766369009352DB /* GRAudio.png */,
+				9294D45018766369009352DB /* GRAudio@2x.png */,
 				92CE91481875699A00C7D3A1 /* GRIconPDF.png */,
 				92CE91491875699A00C7D3A1 /* GRIconPDF@2x.png */,
 				92CE913F18755BEB00C7D3A1 /* GRLocationTab@2x.png */,
@@ -434,6 +535,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				92CE914318755BEB00C7D3A1 /* gr.sqlite in Resources */,
+				9242AF001876A87C00F9FEFB /* GRBackButton@2x.png in Resources */,
+				9294D45118766369009352DB /* GRAudio.png in Resources */,
 				92CE914618755BEB00C7D3A1 /* GRResourceTab@2x.png in Resources */,
 				92CE914B1875699A00C7D3A1 /* GRIconPDF@2x.png in Resources */,
 				92CE914718755BEB00C7D3A1 /* GRSermonTab@2x.png in Resources */,
@@ -441,6 +544,8 @@
 				927C9FAD186D66DC00DC0EDC /* InfoPlist.strings in Resources */,
 				92CE914518755BEB00C7D3A1 /* GRPreferenceTab@2x.png in Resources */,
 				92CE914A1875699A00C7D3A1 /* GRIconPDF.png in Resources */,
+				9242AEFF1876A87C00F9FEFB /* GRBackButton.png in Resources */,
+				9294D45218766369009352DB /* GRAudio@2x.png in Resources */,
 				927C9FD5186D675100DC0EDC /* GRMainViewController.xib in Resources */,
 				92CE914418755BEB00C7D3A1 /* GRLocationTab@2x.png in Resources */,
 				927C9FB5186D66DC00DC0EDC /* Images.xcassets in Resources */,
@@ -462,17 +567,30 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				929989BF18768C750001EFDC /* MFRunLoopOperation.m in Sources */,
+				923ADEB51876B31900E20C2B /* GRContentView.m in Sources */,
+				929989BA18768C2E0001EFDC /* MFNetworkFileCacheManager.m in Sources */,
 				926733D91872A84100249E37 /* GRDataService.m in Sources */,
 				927CA09F186D7FE300DC0EDC /* GRCommunicationView.m in Sources */,
+				929989B718768C2E0001EFDC /* MFCacheManagerInternal.m in Sources */,
 				60F8024B186E725400503117 /* GRNavigationBarView.m in Sources */,
 				600A73D7187059BE0089679A /* GRIntroductView.m in Sources */,
 				926733DC1872B9DD00249E37 /* GRResourceInfoView.m in Sources */,
+				929989BB18768C2E0001EFDC /* MFNetworkFileCacheManagerInternal.m in Sources */,
+				929989C518768D550001EFDC /* NSData+CMBExtensions.m in Sources */,
+				9294D456187665A5009352DB /* UIAlertView+BlockSupport.m in Sources */,
+				929989B818768C2E0001EFDC /* MFNetworkClient.m in Sources */,
 				92CE91391874F9DB00C7D3A1 /* GRSermonView.m in Sources */,
 				927C9FD4186D675100DC0EDC /* GRMainViewController.m in Sources */,
+				929989B618768C2E0001EFDC /* MFCacheManager.m in Sources */,
 				927CA09C186D7FD600DC0EDC /* GRResourceView.m in Sources */,
 				927C9FD8186D69A700DC0EDC /* GRServeView.m in Sources */,
+				929989B918768C2E0001EFDC /* MFNetworkClientInternal.m in Sources */,
+				929989C218768C9C0001EFDC /* NSString+CMBExtensions.m in Sources */,
 				927CA099186D7E7700DC0EDC /* GRPreferenceView.m in Sources */,
 				927C9FAF186D66DC00DC0EDC /* main.m in Sources */,
+				929989C9187692580001EFDC /* GRViewService.m in Sources */,
+				929989BC18768C2E0001EFDC /* MFNetworkOperation.m in Sources */,
 				926733DF1872BA1200249E37 /* GRResourceManager.m in Sources */,
 				927C9FB3186D66DC00DC0EDC /* GRAppDelegate.m in Sources */,
 			);

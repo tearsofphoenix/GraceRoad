@@ -9,6 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "GRContentView.h"
 
-@interface GRCommunicationView : UIView<GRContentView>
+@interface GRCommunicationView : GRContentView
 
 @end

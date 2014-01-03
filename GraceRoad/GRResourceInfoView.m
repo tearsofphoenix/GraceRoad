@@ -7,25 +7,36 @@
 //
 
 #import "GRResourceInfoView.h"
+#import "GRResourceKey.h"
 
 @implementation GRResourceInfoView
 
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
-    if (self) {
-        // Initialization code
+    if (self)
+    {
+        [self setBackgroundColor: [UIColor whiteColor]];
     }
     return self;
 }
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect
+- (void)dealloc
 {
-    // Drawing code
+    [_resourceInfo release];
+    
+    [super dealloc];
 }
-*/
+
+- (void)setResourceInfo: (NSDictionary *)resourceInfo
+{
+    if (_resourceInfo != resourceInfo)
+    {
+        [_resourceInfo release];
+        _resourceInfo = [resourceInfo retain];
+
+        [self setTitle: _resourceInfo[GRResourceName]];
+    }
+}
 
 @end

@@ -8,6 +8,7 @@
 
 #import "GRAppDelegate.h"
 #import "GRMainViewController.h"
+#import "GRViewService.h"
 
 @implementation GRAppDelegate
 
@@ -23,6 +24,10 @@ didFinishLaunchingWithOptions: (NSDictionary *)launchOptions
     GRMainViewController *rootViewController = [[GRMainViewController alloc] init];
     
     [_window setRootViewController: rootViewController];
+    
+    ERSC(GRViewServiceID,
+         GRViewServiceRegisterRootViewControllerAction,
+         @[ rootViewController ], nil);
     
     [rootViewController release];
     

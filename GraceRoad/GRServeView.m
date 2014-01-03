@@ -26,6 +26,8 @@
     self = [super initWithFrame: frame];
     if (self)
     {
+        [self setTitle: @"服事"];
+        
         CGRect rect = [self bounds];
         rect.size.height = 320;
         
@@ -62,11 +64,6 @@
     [self setSelectedDate: [date NSDate]];
     
     [_logic moveToMonthForDate: _selectedDate];
-}
-
-- (NSString *)title
-{
-    return @"服事";
 }
 
 @end

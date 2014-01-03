@@ -8,8 +8,32 @@
 
 #import <Foundation/Foundation.h>
 
+@protocol GRContentView;
+
+@protocol GRContentViewDelegate <NSObject>
+
+- (void)needUpdateContentView: (id<GRContentView>)contentView;
+
+@end
+
 @protocol GRContentView <NSObject>
 
 - (NSString *)title;
+
+- (id<GRContentViewDelegate>)delegate;
+
+@optional
+
+- (UIButton *)leftNavigationButton;
+
+- (UIButton *)rightNavigationButton;
+
+@end
+
+@interface GRContentView : UIView<GRContentView>
+
+@property (nonatomic, assign) id<GRContentViewDelegate> delegate;
+
+@property (nonatomic, retain) NSString *title;
 
 @end

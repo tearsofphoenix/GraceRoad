@@ -9,6 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "GRContentView.h"
 
-@interface GRResourceView : UIView<GRContentView>
+@interface GRResourceView : GRContentView
 
 @end

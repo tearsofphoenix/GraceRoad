@@ -14,59 +14,6 @@
 
 #import "NSString+Quotation.h"
 
-static char *ERStringConvertIntoText(int value, char* result, int base)
-{
-
-    // Check that the base if valid
-
-    if ((base < 2) || (base > 36))
-    {
-
-        *result = '\0';
-
-        return result;
-    }
-
-    char *pointer = result;
-    char *pointer2 = result;
-    char character;
-    int temporary_value;
-
-    do
-    {
-
-        temporary_value = value;
-
-        value /= base;
-
-        *pointer++ = "zyxwvutsrqponmlkjihgfedcba9876543210123456789abcdefghijklmnopqrstuvwxyz"[35 + (temporary_value - value * base)];
-
-    }
-    while (value);
-
-    // Apply negative sign
-
-    if (temporary_value < 0)
-    {
-        *pointer++ = '-';
-    }
-
-    *pointer-- = '\0';
-
-    while(pointer2 < pointer)
-    {
-
-        character = *pointer;
-
-        *pointer-- = *pointer2;
-        
-        *pointer2++ = character;
-        
-    }
-    
-    return result;
-}
-
 @implementation NSString (DictionaryDescription)
 
 + (NSString *)descriptionForKeysAndObjectsOrNils: (id)firstKey, ... NS_REQUIRES_NIL_TERMINATION

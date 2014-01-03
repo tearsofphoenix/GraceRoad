@@ -46,7 +46,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    
     //[_tabbar setBackgroundColor: [UIColor colorWithRed:0.17f green:0.17f blue:0.17f alpha:1.00f]];
     [_tabbar setBackgroundColor: [UIColor colorWithRed:0.31f green:0.32f blue:0.33f alpha:1.00f]];
     
@@ -81,7 +81,7 @@
 {
     [_viewStacks release];
     [_contentView release];
-
+    
     [_navigationBarView release];
     [_tabbar release];
     [super dealloc];
@@ -108,10 +108,23 @@
         
         _currentIndex = currentIndex;
         
-        UIView<GRContentView> *view = [_viewStacks[_currentIndex] lastObject];
+        NSArray *viewStack = _viewStacks[_currentIndex];
+        UIView<GRContentView> *view = [viewStack lastObject];
         
         [_contentView bringSubviewToFront: view];
         [_navigationBarView setTitle: [view title]];
+        
+        [UIView animateWithDuration: 0.3
+                         animations: (^
+                                      {
+                                          if ([viewStack count] > 1)
+                                          {
+                                              [[_navigationBarView leftNavigationButton] setAlpha: 1];
+                                          }else
+                                          {
+                                              [[_navigationBarView leftNavigationButton] setAlpha: 0];
+                                          }
+                                      })];
         
         [self didChangeValueForKey: @"currentIndex"];
     }
@@ -122,14 +135,72 @@
     return YES;
 }
 
-- (void)pushContentView: (UIView<GRContentView> *)contentView
+- (void)pushContentView: (GRContentView *)contentView
 {
-    
+    if ([contentView conformsToProtocol: @protocol(GRContentView)])
+    {
+        NSMutableArray *viewStack = _viewStacks[_currentIndex];
+        
+        UIView *currentView = [viewStack lastObject];
+        CGRect frame = [currentView frame];
+        
+        [contentView setFrame: frame];
+        [contentView setTransform: CGAffineTransformMakeTranslation(frame.size.width, 0)];
+        [contentView setDelegate: _navigationBarView];
+        
+        [viewStack addObject: contentView];
+        [_contentView addSubview: contentView];
+        
+        //update navigation button
+        
+        [UIView animateWithDuration: 0.3
+                         animations: (^
+                                      {
+                                          [[_navigationBarView leftNavigationButton] setAlpha: 1];
+                                          
+                                          [contentView setTransform: CGAffineTransformIdentity];
+                                          [currentView setTransform: CGAffineTransformMakeTranslation(-frame.size.width, 0)];
+                                      })];
+    }else
+    {
+        NSLog(@"will fail when try to push invalid content view!");
+    }
 }
 
 - (void)popLastContentView
 {
+    NSMutableArray *viewStack = _viewStacks[_currentIndex];
+    NSUInteger count = [viewStack count];
     
+    if (count > 1)
+    {
+        GRContentView *currentView = [viewStack lastObject];
+        [currentView setDelegate: nil];
+        
+        CGRect frame = [currentView frame];
+        
+        [viewStack removeLastObject];
+        
+        UIView<GRContentView> *newView = [viewStack lastObject];
+        [_navigationBarView setTitle: [newView title]];
+        [_contentView bringSubviewToFront: newView];
+        
+        [UIView animateWithDuration: 0.3
+                         animations: (^
+                                      {
+                                          if (count == 2)
+                                          {
+                                              [[_navigationBarView leftNavigationButton] setAlpha: 0];
+                                          }
+                                          
+                                          [newView setTransform: CGAffineTransformIdentity];
+                                          [currentView setTransform: CGAffineTransformMakeTranslation(frame.size.width, 0)];
+                                      })
+                         completion: (^(BOOL finished)
+                                      {
+                                          [currentView removeFromSuperview];
+                                      })];
+    }
 }
 
 @end

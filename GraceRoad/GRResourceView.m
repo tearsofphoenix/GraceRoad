@@ -9,6 +9,10 @@
 #import "GRResourceView.h"
 #import "GRResourceKey.h"
 #import "GRDataService.h"
+#import "GRResourceManager.h"
+#import "UIAlertView+BlockSupport.h"
+#import "GRResourceInfoView.h"
+#import "GRViewService.h"
 
 @interface GRResourceView ()<UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate>
 {
@@ -45,6 +49,8 @@
                                                GRDataServiceAllResourcesAction,
                                                nil)];
         
+        [self setTitle: @"资料"];
+        
         CGRect rect = CGRectMake(0, 0, frame.size.width, 44);
         
         [self setBackgroundColor: [UIColor greenColor]];
@@ -73,11 +79,6 @@
     [_contentView release];
     
     [super dealloc];
-}
-
-- (NSString *)title
-{
-    return @"资料";
 }
 
 #pragma mark - search bar delegate
@@ -113,18 +114,29 @@
     [_resourceCategories removeAllObjects];
     [_resources removeAllObjects];
     
-//    if ([_filterString length] == 0)
-//    {
-        [_resourceCategories setArray: _originCategories];
-        [_resources setDictionary: _originResources];
-//    }else
-//    {
-//        
-//    }
+    //    if ([_filterString length] == 0)
+    //    {
+    [_resourceCategories setArray: _originCategories];
+    [_resources setDictionary: _originResources];
+    //    }else
+    //    {
+    //
+    //    }
     [_contentView reloadData];
 }
 
 #pragma mark - tableview datasource & delegate
+
+- (NSDictionary *)_resourceAtIndexPath: (NSIndexPath *)indexPath
+{
+    NSInteger section = [indexPath section];
+    NSInteger row = [indexPath row];
+    
+    NSDictionary *resourceType = _resourceCategories[section];
+    NSArray *resources = _resources[resourceType[GRResourceCategoryID]];
+    
+    return resources[row];
+}
 
 - (NSInteger)numberOfSectionsInTableView: (UITableView *)tableView
 {
@@ -156,13 +168,7 @@ viewForHeaderInSection: (NSInteger)section
 - (UITableViewCell *)tableView: (UITableView *)tableView
          cellForRowAtIndexPath: (NSIndexPath *)indexPath
 {
-    NSInteger section = [indexPath section];
-    NSInteger row = [indexPath row];
-    
-    NSDictionary *resourceType = _resourceCategories[section];
-    NSArray *resources = _resources[resourceType[GRResourceCategoryID]];
-    
-    NSDictionary *resourceInfo = resources[row];
+    NSDictionary *resourceInfo = [self _resourceAtIndexPath: indexPath];
     
     UITableViewCell *cell = [[UITableViewCell alloc] init];
     
@@ -185,10 +191,45 @@ heightForRowAtIndexPath: (NSIndexPath *)indexPath
     return 44;
 }
 
+- (void)_navigateToResourceContentWithInfo: (NSDictionary *)info
+{
+    GRResourceInfoView *infoView = [[GRResourceInfoView alloc] initWithFrame: [self bounds]];
+    [infoView setResourceInfo: info];
+    
+    ERSC(GRViewServiceID,
+         GRViewServicePushContentViewAction,
+         @[ infoView ], nil);
+    
+    [infoView release];
+}
+
 - (void)tableView: (UITableView *)tableView
 didSelectRowAtIndexPath: (NSIndexPath *)indexPath
 {
+    NSDictionary *resourceInfo = [self _resourceAtIndexPath: indexPath];
+    NSString *subPath = resourceInfo[GRResourcePath];
     
+    if ([GRResourceManager fileExistsWithSubPath: subPath])
+    {
+        [self _navigateToResourceContentWithInfo: resourceInfo];
+    }else
+    {
+        [UIAlertView showAlertWithTitle: @"提示"
+                                message: @"您确定要下载该文档吗？"
+                      cancelButtonTitle: @"取消"
+                      otherButtonTitles: @[ @"确定" ]
+                               callback: (^(NSInteger buttonIndex)
+                                          {
+                                              if (1 == buttonIndex)
+                                              {
+                                                  [GRResourceManager downloadFileWithSubPath: subPath
+                                                                                    callback: (^(NSData *data, NSError *error)
+                                                                                               {
+                                                                                                   [self _navigateToResourceContentWithInfo: resourceInfo];
+                                                                                               })];
+                                              }
+                                          })];
+    }
 }
 
 @end
