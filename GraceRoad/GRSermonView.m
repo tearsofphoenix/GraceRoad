@@ -9,6 +9,10 @@
 #import "GRSermonView.h"
 #import "GRSermonKeys.h"
 #import "GRDataService.h"
+#import "GRViewService.h"
+#import "GRResourceManager.h"
+#import "GRSermonContentView.h"
+#import "UIAlertView+BlockSupport.h"
 
 @interface GRSermonView ()<UITableViewDataSource, UITableViewDelegate>
 {
@@ -76,10 +80,56 @@
     return [cell autorelease];
 }
 
+- (void)_showSermonContentWithInfo: (NSDictionary *)info
+{
+    GRSermonContentView *contentView = [[GRSermonContentView alloc] initWithFrame: [self frame]];
+    
+    [contentView setSermonInfo: info];
+    
+    ERSC(GRViewServiceID,
+         GRViewServicePushContentViewAction,
+         @[ contentView ], nil);
+    
+    [contentView release];
+}
+
 - (void)      tableView: (UITableView *)tableView
 didSelectRowAtIndexPath: (NSIndexPath *)indexPath
 {
-    
+    NSDictionary *sermonInfo = _sermons[[indexPath row]];
+    NSString *subPath = sermonInfo[GRSermonPath];
+    if ([GRResourceManager fileExistsWithSubPath: subPath])
+    {
+        [self _showSermonContentWithInfo: sermonInfo];
+    }else
+    {
+        [UIAlertView showAlertWithTitle: @"提示"
+                                message: @"您确定要下载该文档吗？"
+                      cancelButtonTitle: @"取消"
+                      otherButtonTitles: @[ @"确定" ]
+                               callback:
+         (^(NSInteger buttonIndex)
+          {
+              if (1 == buttonIndex)
+              {
+                  ERSC(GRViewServiceID,
+                       GRViewServiceShowLoadingIndicatorAction,
+                       nil, nil);
+                  
+                  [GRResourceManager downloadFileWithSubPath: subPath
+                                                    callback:
+                   (^(NSData *data, NSError *error)
+                    {
+                        ERSC(GRViewServiceID,
+                             GRViewServiceHideLoadingIndicatorAction,
+                             nil, nil);
+                        
+                        [self _showSermonContentWithInfo: sermonInfo];
+                    })];
+              }
+          })];
+
+    }
 }
 
 @end

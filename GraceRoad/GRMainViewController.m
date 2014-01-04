@@ -14,12 +14,16 @@
 #import "GRNavigationBarView.h"
 #import "GRIntroductView.h"
 #import "GRSermonView.h"
+#import "UIView+FirstResponder.h"
 
 #define GRTabCount 4
 
 @interface GRMainViewController ()<UITabBarDelegate>
 {
     NSMutableArray *_viewStacks;
+    
+    UIView *_modalPresentView;
+    UIActivityIndicatorView *_loadingIndicatorView;
 }
 
 @property (retain, nonatomic) IBOutlet UITabBar *tabbar;
@@ -47,7 +51,6 @@
 {
     [super viewDidLoad];
     
-    //[_tabbar setBackgroundColor: [UIColor colorWithRed:0.17f green:0.17f blue:0.17f alpha:1.00f]];
     [_tabbar setBackgroundColor: [UIColor colorWithRed:0.31f green:0.32f blue:0.33f alpha:1.00f]];
     
     CGRect contentBounds = [_contentView bounds];
@@ -74,6 +77,16 @@
     
     [self setCurrentIndex: 0];
     [_tabbar setSelectedItem: [_tabbar items][0]];
+    
+    _modalPresentView = [[UIView alloc] initWithFrame: [[self view] bounds]];
+    [_modalPresentView setBackgroundColor: [UIColor colorWithRed: 0
+                                                           green: 0
+                                                            blue: 0
+                                                           alpha: 0.7]];
+    [_modalPresentView setAlpha: 0];
+    
+    [[self view] addSubview: _modalPresentView];
+    [[self view] bringSubviewToFront: _modalPresentView];
 }
 
 
@@ -106,10 +119,18 @@
     {
         [self willChangeValueForKey: @"currentIndex"];
         
+        if (_currentIndex >=0 && _currentIndex < [_viewStacks count])
+        {
+            NSArray *oldStack = _viewStacks[_currentIndex];
+            [[oldStack lastObject] didSwitchOut];
+        }
+        
         _currentIndex = currentIndex;
         
         NSArray *viewStack = _viewStacks[_currentIndex];
-        UIView<GRContentView> *view = [viewStack lastObject];
+        GRContentView *view = [viewStack lastObject];
+        
+        [view willSwitchIn];
         
         [_contentView bringSubviewToFront: view];
         [_navigationBarView setTitle: [view title]];
@@ -137,22 +158,25 @@
 
 - (void)pushContentView: (GRContentView *)contentView
 {
+    [[[self view] firstResponder] resignFirstResponder];
+    
     if ([contentView conformsToProtocol: @protocol(GRContentView)])
     {
         NSMutableArray *viewStack = _viewStacks[_currentIndex];
         
-        UIView *currentView = [viewStack lastObject];
+        GRContentView *currentView = [viewStack lastObject];
         CGRect frame = [currentView frame];
         
         [contentView setFrame: frame];
         [contentView setTransform: CGAffineTransformMakeTranslation(frame.size.width, 0)];
         [contentView setDelegate: _navigationBarView];
+        [contentView willSwitchIn];
         
         [viewStack addObject: contentView];
         [_contentView addSubview: contentView];
         
         //update navigation button
-        
+        //
         [UIView animateWithDuration: 0.3
                          animations: (^
                                       {
@@ -160,6 +184,10 @@
                                           
                                           [contentView setTransform: CGAffineTransformIdentity];
                                           [currentView setTransform: CGAffineTransformMakeTranslation(-frame.size.width, 0)];
+                                      })
+                         completion: (^(BOOL finished)
+                                      {
+                                          [currentView didSwitchOut];
                                       })];
     }else
     {
@@ -169,6 +197,8 @@
 
 - (void)popLastContentView
 {
+    [[[self view] firstResponder] resignFirstResponder];
+
     NSMutableArray *viewStack = _viewStacks[_currentIndex];
     NSUInteger count = [viewStack count];
     
@@ -181,7 +211,9 @@
         
         [viewStack removeLastObject];
         
-        UIView<GRContentView> *newView = [viewStack lastObject];
+        GRContentView *newView = [viewStack lastObject];
+        
+        [newView willSwitchIn];
         [_navigationBarView setTitle: [newView title]];
         [_contentView bringSubviewToFront: newView];
         
@@ -198,9 +230,48 @@
                                       })
                          completion: (^(BOOL finished)
                                       {
+                                          [currentView didSwitchOut];
                                           [currentView removeFromSuperview];
                                       })];
     }
+}
+
+- (void)showLoadingIndicator
+{
+    if (!_loadingIndicatorView)
+    {
+        _loadingIndicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle: UIActivityIndicatorViewStyleWhiteLarge];
+        [_modalPresentView addSubview: _loadingIndicatorView];
+    }
+    
+    CGRect bounds = [_modalPresentView bounds];
+    CGRect frame = [_loadingIndicatorView frame];
+    
+    frame.origin.x = (bounds.size.width - frame.size.width) / 2;
+    frame.origin.y = (bounds.size.height - frame.size.height) / 2;
+    
+    [_loadingIndicatorView setFrame: frame];
+    
+    [_modalPresentView bringSubviewToFront: _loadingIndicatorView];
+    [_loadingIndicatorView startAnimating];
+    
+    [UIView animateWithDuration: 0.3
+                     animations: (^
+                                  {
+                                      [_modalPresentView setAlpha: 1];
+                                  })];
+}
+
+- (void)hideLoadingIndicator
+{
+    [_loadingIndicatorView stopAnimating];
+    
+    [UIView animateWithDuration: 0.3
+                     animations: (^
+                                  {
+                                      [_modalPresentView setAlpha: 0];
+                                  })];
+    
 }
 
 @end

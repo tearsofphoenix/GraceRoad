@@ -8,6 +8,41 @@
 
 /* Begin PBXBuildFile section */
 		600A73D7187059BE0089679A /* GRIntroductView.m in Sources */ = {isa = PBXBuildFile; fileRef = 600A73D6187059BE0089679A /* GRIntroductView.m */; };
+		60B265FC1877BEFA008E881E /* UIView+FirstResponder.m in Sources */ = {isa = PBXBuildFile; fileRef = 60B265FB1877BEFA008E881E /* UIView+FirstResponder.m */; };
+		60B265FF1877C1D1008E881E /* GRSermonContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 60B265FE1877C1D1008E881E /* GRSermonContentView.m */; };
+		60B266061877CBFF008E881E /* 1.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 60B266041877CBFF008E881E /* 1.pdf */; };
+		60B266071877CBFF008E881E /* t0101.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 60B266051877CBFF008E881E /* t0101.mp3 */; };
+		60E649681877ECA800D5466B /* GRHeart.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 60E649671877ECA800D5466B /* GRHeart.jpg */; };
+		60E649861877FB1D00D5466B /* notifications.plist in Resources */ = {isa = PBXBuildFile; fileRef = 60E649851877FB1D00D5466B /* notifications.plist */; };
+		60E649DD1878062400D5466B /* notifications0.plist in Resources */ = {isa = PBXBuildFile; fileRef = 60E649C01878062400D5466B /* notifications0.plist */; };
+		60E649DE1878062400D5466B /* notifications1.plist in Resources */ = {isa = PBXBuildFile; fileRef = 60E649C11878062400D5466B /* notifications1.plist */; };
+		60E649DF1878062400D5466B /* notifications10.plist in Resources */ = {isa = PBXBuildFile; fileRef = 60E649C21878062400D5466B /* notifications10.plist */; };
+		60E649E01878062400D5466B /* notifications11.plist in Resources */ = {isa = PBXBuildFile; fileRef = 60E649C31878062400D5466B /* notifications11.plist */; };
+		60E649E11878062400D5466B /* notifications12.plist in Resources */ = {isa = PBXBuildFile; fileRef = 60E649C41878062400D5466B /* notifications12.plist */; };
+		60E649E21878062400D5466B /* notifications13.plist in Resources */ = {isa = PBXBuildFile; fileRef = 60E649C51878062400D5466B /* notifications13.plist */; };
+		60E649E31878062400D5466B /* notifications14.plist in Resources */ = {isa = PBXBuildFile; fileRef = 60E649C61878062400D5466B /* notifications14.plist */; };
+		60E649E41878062400D5466B /* notifications15.plist in Resources */ = {isa = PBXBuildFile; fileRef = 60E649C71878062400D5466B /* notifications15.plist */; };
+		60E649E51878062400D5466B /* notifications16.plist in Resources */ = {isa = PBXBuildFile; fileRef = 60E649C81878062400D5466B /* notifications16.plist */; };
+		60E649E61878062400D5466B /* notifications17.plist in Resources */ = {isa = PBXBuildFile; fileRef = 60E649C91878062400D5466B /* notifications17.plist */; };
+		60E649E71878062400D5466B /* notifications18.plist in Resources */ = {isa = PBXBuildFile; fileRef = 60E649CA1878062400D5466B /* notifications18.plist */; };
+		60E649E81878062400D5466B /* notifications19.plist in Resources */ = {isa = PBXBuildFile; fileRef = 60E649CB1878062400D5466B /* notifications19.plist */; };
+		60E649E91878062400D5466B /* notifications2.plist in Resources */ = {isa = PBXBuildFile; fileRef = 60E649CC1878062400D5466B /* notifications2.plist */; };
+		60E649EA1878062400D5466B /* notifications20.plist in Resources */ = {isa = PBXBuildFile; fileRef = 60E649CD1878062400D5466B /* notifications20.plist */; };
+		60E649EB1878062400D5466B /* notifications21.plist in Resources */ = {isa = PBXBuildFile; fileRef = 60E649CE1878062400D5466B /* notifications21.plist */; };
+		60E649EC1878062400D5466B /* notifications22.plist in Resources */ = {isa = PBXBuildFile; fileRef = 60E649CF1878062400D5466B /* notifications22.plist */; };
+		60E649ED1878062400D5466B /* notifications23.plist in Resources */ = {isa = PBXBuildFile; fileRef = 60E649D01878062400D5466B /* notifications23.plist */; };
+		60E649EE1878062400D5466B /* notifications24.plist in Resources */ = {isa = PBXBuildFile; fileRef = 60E649D11878062400D5466B /* notifications24.plist */; };
+		60E649EF1878062400D5466B /* notifications25.plist in Resources */ = {isa = PBXBuildFile; fileRef = 60E649D21878062400D5466B /* notifications25.plist */; };
+		60E649F01878062400D5466B /* notifications26.plist in Resources */ = {isa = PBXBuildFile; fileRef = 60E649D31878062400D5466B /* notifications26.plist */; };
+		60E649F11878062400D5466B /* notifications27.plist in Resources */ = {isa = PBXBuildFile; fileRef = 60E649D41878062400D5466B /* notifications27.plist */; };
+		60E649F21878062400D5466B /* notifications28.plist in Resources */ = {isa = PBXBuildFile; fileRef = 60E649D51878062400D5466B /* notifications28.plist */; };
+		60E649F31878062400D5466B /* notifications3.plist in Resources */ = {isa = PBXBuildFile; fileRef = 60E649D61878062400D5466B /* notifications3.plist */; };
+		60E649F41878062400D5466B /* notifications4.plist in Resources */ = {isa = PBXBuildFile; fileRef = 60E649D71878062400D5466B /* notifications4.plist */; };
+		60E649F51878062400D5466B /* notifications5.plist in Resources */ = {isa = PBXBuildFile; fileRef = 60E649D81878062400D5466B /* notifications5.plist */; };
+		60E649F61878062400D5466B /* notifications6.plist in Resources */ = {isa = PBXBuildFile; fileRef = 60E649D91878062400D5466B /* notifications6.plist */; };
+		60E649F71878062400D5466B /* notifications7.plist in Resources */ = {isa = PBXBuildFile; fileRef = 60E649DA1878062400D5466B /* notifications7.plist */; };
+		60E649F81878062400D5466B /* notifications8.plist in Resources */ = {isa = PBXBuildFile; fileRef = 60E649DB1878062400D5466B /* notifications8.plist */; };
+		60E649F91878062400D5466B /* notifications9.plist in Resources */ = {isa = PBXBuildFile; fileRef = 60E649DC1878062400D5466B /* notifications9.plist */; };
 		60F8024B186E725400503117 /* GRNavigationBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 60F8024A186E725400503117 /* GRNavigationBarView.m */; };
 		923ADEB51876B31900E20C2B /* GRContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 923ADEB41876B31900E20C2B /* GRContentView.m */; };
 		9242AEFF1876A87C00F9FEFB /* GRBackButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 9242AEFD1876A87B00F9FEFB /* GRBackButton.png */; };
@@ -102,6 +137,43 @@
 /* Begin PBXFileReference section */
 		600A73D5187059BE0089679A /* GRIntroductView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRIntroductView.h; sourceTree = "<group>"; };
 		600A73D6187059BE0089679A /* GRIntroductView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GRIntroductView.m; sourceTree = "<group>"; };
+		60B265FA1877BEFA008E881E /* UIView+FirstResponder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+FirstResponder.h"; sourceTree = "<group>"; };
+		60B265FB1877BEFA008E881E /* UIView+FirstResponder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+FirstResponder.m"; sourceTree = "<group>"; };
+		60B265FD1877C1D1008E881E /* GRSermonContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRSermonContentView.h; sourceTree = "<group>"; };
+		60B265FE1877C1D1008E881E /* GRSermonContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GRSermonContentView.m; sourceTree = "<group>"; };
+		60B266041877CBFF008E881E /* 1.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = 1.pdf; path = Images/Main/1.pdf; sourceTree = "<group>"; };
+		60B266051877CBFF008E881E /* t0101.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = t0101.mp3; path = Images/Main/t0101.mp3; sourceTree = "<group>"; };
+		60E649671877ECA800D5466B /* GRHeart.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = GRHeart.jpg; path = Main/GRHeart.jpg; sourceTree = "<group>"; };
+		60E649851877FB1D00D5466B /* notifications.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = notifications.plist; path = Images/Main/notifications.plist; sourceTree = "<group>"; };
+		60E649C01878062400D5466B /* notifications0.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = notifications0.plist; sourceTree = "<group>"; };
+		60E649C11878062400D5466B /* notifications1.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = notifications1.plist; sourceTree = "<group>"; };
+		60E649C21878062400D5466B /* notifications10.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = notifications10.plist; sourceTree = "<group>"; };
+		60E649C31878062400D5466B /* notifications11.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = notifications11.plist; sourceTree = "<group>"; };
+		60E649C41878062400D5466B /* notifications12.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = notifications12.plist; sourceTree = "<group>"; };
+		60E649C51878062400D5466B /* notifications13.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = notifications13.plist; sourceTree = "<group>"; };
+		60E649C61878062400D5466B /* notifications14.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = notifications14.plist; sourceTree = "<group>"; };
+		60E649C71878062400D5466B /* notifications15.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = notifications15.plist; sourceTree = "<group>"; };
+		60E649C81878062400D5466B /* notifications16.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = notifications16.plist; sourceTree = "<group>"; };
+		60E649C91878062400D5466B /* notifications17.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = notifications17.plist; sourceTree = "<group>"; };
+		60E649CA1878062400D5466B /* notifications18.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = notifications18.plist; sourceTree = "<group>"; };
+		60E649CB1878062400D5466B /* notifications19.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = notifications19.plist; sourceTree = "<group>"; };
+		60E649CC1878062400D5466B /* notifications2.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = notifications2.plist; sourceTree = "<group>"; };
+		60E649CD1878062400D5466B /* notifications20.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = notifications20.plist; sourceTree = "<group>"; };
+		60E649CE1878062400D5466B /* notifications21.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = notifications21.plist; sourceTree = "<group>"; };
+		60E649CF1878062400D5466B /* notifications22.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = notifications22.plist; sourceTree = "<group>"; };
+		60E649D01878062400D5466B /* notifications23.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = notifications23.plist; sourceTree = "<group>"; };
+		60E649D11878062400D5466B /* notifications24.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = notifications24.plist; sourceTree = "<group>"; };
+		60E649D21878062400D5466B /* notifications25.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = notifications25.plist; sourceTree = "<group>"; };
+		60E649D31878062400D5466B /* notifications26.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = notifications26.plist; sourceTree = "<group>"; };
+		60E649D41878062400D5466B /* notifications27.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = notifications27.plist; sourceTree = "<group>"; };
+		60E649D51878062400D5466B /* notifications28.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = notifications28.plist; sourceTree = "<group>"; };
+		60E649D61878062400D5466B /* notifications3.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = notifications3.plist; sourceTree = "<group>"; };
+		60E649D71878062400D5466B /* notifications4.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = notifications4.plist; sourceTree = "<group>"; };
+		60E649D81878062400D5466B /* notifications5.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = notifications5.plist; sourceTree = "<group>"; };
+		60E649D91878062400D5466B /* notifications6.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = notifications6.plist; sourceTree = "<group>"; };
+		60E649DA1878062400D5466B /* notifications7.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = notifications7.plist; sourceTree = "<group>"; };
+		60E649DB1878062400D5466B /* notifications8.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = notifications8.plist; sourceTree = "<group>"; };
+		60E649DC1878062400D5466B /* notifications9.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = notifications9.plist; sourceTree = "<group>"; };
 		60F80249186E725400503117 /* GRNavigationBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRNavigationBarView.h; sourceTree = "<group>"; };
 		60F8024A186E725400503117 /* GRNavigationBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GRNavigationBarView.m; sourceTree = "<group>"; };
 		60F8024C186E730300503117 /* GRContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GRContentView.h; path = ../GRContentView.h; sourceTree = "<group>"; };
@@ -212,6 +284,66 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		60B266001877C1D7008E881E /* Sermon */ = {
+			isa = PBXGroup;
+			children = (
+				92CE913A1875067400C7D3A1 /* GRSermonKeys.h */,
+				92CE91371874F9DB00C7D3A1 /* GRSermonView.h */,
+				92CE91381874F9DB00C7D3A1 /* GRSermonView.m */,
+				60B265FD1877C1D1008E881E /* GRSermonContentView.h */,
+				60B265FE1877C1D1008E881E /* GRSermonContentView.m */,
+			);
+			name = Sermon;
+			sourceTree = "<group>";
+		};
+		60B266011877C1DE008E881E /* ResourceView */ = {
+			isa = PBXGroup;
+			children = (
+				9267333C187254F500249E37 /* GRResourceKey.h */,
+				927CA09A186D7FD600DC0EDC /* GRResourceView.h */,
+				927CA09B186D7FD600DC0EDC /* GRResourceView.m */,
+				926733DA1872B9DD00249E37 /* GRResourceInfoView.h */,
+				926733DB1872B9DD00249E37 /* GRResourceInfoView.m */,
+			);
+			name = ResourceView;
+			sourceTree = "<group>";
+		};
+		60E649BF1878062400D5466B /* notifications */ = {
+			isa = PBXGroup;
+			children = (
+				60E649C01878062400D5466B /* notifications0.plist */,
+				60E649C11878062400D5466B /* notifications1.plist */,
+				60E649C21878062400D5466B /* notifications10.plist */,
+				60E649C31878062400D5466B /* notifications11.plist */,
+				60E649C41878062400D5466B /* notifications12.plist */,
+				60E649C51878062400D5466B /* notifications13.plist */,
+				60E649C61878062400D5466B /* notifications14.plist */,
+				60E649C71878062400D5466B /* notifications15.plist */,
+				60E649C81878062400D5466B /* notifications16.plist */,
+				60E649C91878062400D5466B /* notifications17.plist */,
+				60E649CA1878062400D5466B /* notifications18.plist */,
+				60E649CB1878062400D5466B /* notifications19.plist */,
+				60E649CC1878062400D5466B /* notifications2.plist */,
+				60E649CD1878062400D5466B /* notifications20.plist */,
+				60E649CE1878062400D5466B /* notifications21.plist */,
+				60E649CF1878062400D5466B /* notifications22.plist */,
+				60E649D01878062400D5466B /* notifications23.plist */,
+				60E649D11878062400D5466B /* notifications24.plist */,
+				60E649D21878062400D5466B /* notifications25.plist */,
+				60E649D31878062400D5466B /* notifications26.plist */,
+				60E649D41878062400D5466B /* notifications27.plist */,
+				60E649D51878062400D5466B /* notifications28.plist */,
+				60E649D61878062400D5466B /* notifications3.plist */,
+				60E649D71878062400D5466B /* notifications4.plist */,
+				60E649D81878062400D5466B /* notifications5.plist */,
+				60E649D91878062400D5466B /* notifications6.plist */,
+				60E649DA1878062400D5466B /* notifications7.plist */,
+				60E649DB1878062400D5466B /* notifications8.plist */,
+				60E649DC1878062400D5466B /* notifications9.plist */,
+			);
+			path = notifications;
+			sourceTree = "<group>";
+		};
 		9267333E1872588400249E37 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -227,20 +359,14 @@
 				60F8024A186E725400503117 /* GRNavigationBarView.m */,
 				927CA09D186D7FE300DC0EDC /* GRCommunicationView.h */,
 				927CA09E186D7FE300DC0EDC /* GRCommunicationView.m */,
-				9267333C187254F500249E37 /* GRResourceKey.h */,
-				927CA09A186D7FD600DC0EDC /* GRResourceView.h */,
-				927CA09B186D7FD600DC0EDC /* GRResourceView.m */,
-				926733DA1872B9DD00249E37 /* GRResourceInfoView.h */,
-				926733DB1872B9DD00249E37 /* GRResourceInfoView.m */,
+				600A73D5187059BE0089679A /* GRIntroductView.h */,
+				600A73D6187059BE0089679A /* GRIntroductView.m */,
+				60B266011877C1DE008E881E /* ResourceView */,
+				60B266001877C1D7008E881E /* Sermon */,
 				927C9FD6186D69A700DC0EDC /* GRServeView.h */,
 				927C9FD7186D69A700DC0EDC /* GRServeView.m */,
 				927CA097186D7E7700DC0EDC /* GRPreferenceView.h */,
 				927CA098186D7E7700DC0EDC /* GRPreferenceView.m */,
-				600A73D5187059BE0089679A /* GRIntroductView.h */,
-				600A73D6187059BE0089679A /* GRIntroductView.m */,
-				92CE913A1875067400C7D3A1 /* GRSermonKeys.h */,
-				92CE91371874F9DB00C7D3A1 /* GRSermonView.h */,
-				92CE91381874F9DB00C7D3A1 /* GRSermonView.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -351,6 +477,8 @@
 				929989CA187692870001EFDC /* GRShared.h */,
 				60F8024C186E730300503117 /* GRContentView.h */,
 				923ADEB41876B31900E20C2B /* GRContentView.m */,
+				60B265FA1877BEFA008E881E /* UIView+FirstResponder.h */,
+				60B265FB1877BEFA008E881E /* UIView+FirstResponder.m */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -398,6 +526,10 @@
 		92CE913B18755BEB00C7D3A1 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				60E649BF1878062400D5466B /* notifications */,
+				60E649851877FB1D00D5466B /* notifications.plist */,
+				60B266041877CBFF008E881E /* 1.pdf */,
+				60B266051877CBFF008E881E /* t0101.mp3 */,
 				92CE913C18755BEB00C7D3A1 /* gr.sqlite */,
 				92CE913D18755BEB00C7D3A1 /* Images */,
 			);
@@ -407,6 +539,7 @@
 		92CE913D18755BEB00C7D3A1 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				60E649671877ECA800D5466B /* GRHeart.jpg */,
 				9242AEFD1876A87B00F9FEFB /* GRBackButton.png */,
 				9242AEFE1876A87C00F9FEFB /* GRBackButton@2x.png */,
 				92CE913E18755BEB00C7D3A1 /* Main */,
@@ -534,21 +667,54 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				60E649F81878062400D5466B /* notifications8.plist in Resources */,
+				60E649EB1878062400D5466B /* notifications21.plist in Resources */,
 				92CE914318755BEB00C7D3A1 /* gr.sqlite in Resources */,
+				60E649F01878062400D5466B /* notifications26.plist in Resources */,
 				9242AF001876A87C00F9FEFB /* GRBackButton@2x.png in Resources */,
+				60E649F21878062400D5466B /* notifications28.plist in Resources */,
+				60E649E21878062400D5466B /* notifications13.plist in Resources */,
+				60E649E81878062400D5466B /* notifications19.plist in Resources */,
+				60E649861877FB1D00D5466B /* notifications.plist in Resources */,
 				9294D45118766369009352DB /* GRAudio.png in Resources */,
 				92CE914618755BEB00C7D3A1 /* GRResourceTab@2x.png in Resources */,
+				60E649E31878062400D5466B /* notifications14.plist in Resources */,
+				60E649F11878062400D5466B /* notifications27.plist in Resources */,
+				60E649E01878062400D5466B /* notifications11.plist in Resources */,
+				60E649ED1878062400D5466B /* notifications23.plist in Resources */,
 				92CE914B1875699A00C7D3A1 /* GRIconPDF@2x.png in Resources */,
 				92CE914718755BEB00C7D3A1 /* GRSermonTab@2x.png in Resources */,
 				927CA096186D7E2000DC0EDC /* Kal.bundle in Resources */,
+				60E649DD1878062400D5466B /* notifications0.plist in Resources */,
 				927C9FAD186D66DC00DC0EDC /* InfoPlist.strings in Resources */,
+				60E649DF1878062400D5466B /* notifications10.plist in Resources */,
+				60E649E71878062400D5466B /* notifications18.plist in Resources */,
+				60E649EE1878062400D5466B /* notifications24.plist in Resources */,
+				60E649EC1878062400D5466B /* notifications22.plist in Resources */,
 				92CE914518755BEB00C7D3A1 /* GRPreferenceTab@2x.png in Resources */,
+				60E649DE1878062400D5466B /* notifications1.plist in Resources */,
+				60E649E51878062400D5466B /* notifications16.plist in Resources */,
 				92CE914A1875699A00C7D3A1 /* GRIconPDF.png in Resources */,
+				60E649681877ECA800D5466B /* GRHeart.jpg in Resources */,
 				9242AEFF1876A87C00F9FEFB /* GRBackButton.png in Resources */,
+				60E649F31878062400D5466B /* notifications3.plist in Resources */,
+				60B266071877CBFF008E881E /* t0101.mp3 in Resources */,
+				60E649F61878062400D5466B /* notifications6.plist in Resources */,
+				60E649F91878062400D5466B /* notifications9.plist in Resources */,
 				9294D45218766369009352DB /* GRAudio@2x.png in Resources */,
+				60E649F41878062400D5466B /* notifications4.plist in Resources */,
+				60E649E61878062400D5466B /* notifications17.plist in Resources */,
 				927C9FD5186D675100DC0EDC /* GRMainViewController.xib in Resources */,
+				60E649EA1878062400D5466B /* notifications20.plist in Resources */,
+				60E649E91878062400D5466B /* notifications2.plist in Resources */,
+				60E649F51878062400D5466B /* notifications5.plist in Resources */,
+				60E649E41878062400D5466B /* notifications15.plist in Resources */,
+				60E649E11878062400D5466B /* notifications12.plist in Resources */,
+				60E649EF1878062400D5466B /* notifications25.plist in Resources */,
 				92CE914418755BEB00C7D3A1 /* GRLocationTab@2x.png in Resources */,
+				60B266061877CBFF008E881E /* 1.pdf in Resources */,
 				927C9FB5186D66DC00DC0EDC /* Images.xcassets in Resources */,
+				60E649F71878062400D5466B /* notifications7.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -578,10 +744,12 @@
 				926733DC1872B9DD00249E37 /* GRResourceInfoView.m in Sources */,
 				929989BB18768C2E0001EFDC /* MFNetworkFileCacheManagerInternal.m in Sources */,
 				929989C518768D550001EFDC /* NSData+CMBExtensions.m in Sources */,
+				60B265FF1877C1D1008E881E /* GRSermonContentView.m in Sources */,
 				9294D456187665A5009352DB /* UIAlertView+BlockSupport.m in Sources */,
 				929989B818768C2E0001EFDC /* MFNetworkClient.m in Sources */,
 				92CE91391874F9DB00C7D3A1 /* GRSermonView.m in Sources */,
 				927C9FD4186D675100DC0EDC /* GRMainViewController.m in Sources */,
+				60B265FC1877BEFA008E881E /* UIView+FirstResponder.m in Sources */,
 				929989B618768C2E0001EFDC /* MFCacheManager.m in Sources */,
 				927CA09C186D7FD600DC0EDC /* GRResourceView.m in Sources */,
 				927C9FD8186D69A700DC0EDC /* GRServeView.m in Sources */,
@@ -648,7 +816,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -687,7 +854,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -765,7 +931,6 @@
 		927C9FCF186D66DC00DC0EDC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/GraceRoad.app/GraceRoad";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
@@ -788,7 +953,6 @@
 		927C9FD0186D66DC00DC0EDC /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/GraceRoad.app/GraceRoad";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",

@@ -17,6 +17,8 @@
 #define GRViewServicePushContentViewAction              @"pushContentView:"
 #define GRViewServicePopContentViewAction               @"popContentView"
 
+#define GRViewServiceShowLoadingIndicatorAction         @"showLoadingIndicator"
+#define GRViewServiceHideLoadingIndicatorAction         @"hideLoadingIndicator"
 
 @interface GRViewService : ERService
 

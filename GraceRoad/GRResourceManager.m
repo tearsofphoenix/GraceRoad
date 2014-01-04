@@ -11,13 +11,13 @@
 
 @implementation GRResourceManager
 
-static NSString *serverFileRootPath = @"http://";
+static NSString *serverFileRootPath = @"http://localhost/~veritas/grace/";
 
 static NSString *gsResourcePath = nil;
 
 + (void)initialize
 {
-
+    
 }
 
 + (NSString *)resourcePath
@@ -49,14 +49,17 @@ static NSString *gsResourcePath = nil;
 
 + (BOOL)fileExistsWithSubPath: (NSString *)subPath
 {
-    NSString *path = [[self resourcePath] stringByAppendingPathComponent: subPath];
-    
-    return [[NSFileManager defaultManager] fileExistsAtPath: path];    
+    return [[NSFileManager defaultManager] fileExistsAtPath: [self pathWithSubPath: subPath]];
+}
+
++ (NSString *)pathWithSubPath: (NSString *)subPath
+{
+    return [[self resourcePath] stringByAppendingPathComponent: subPath];
 }
 
 + (NSData *)dataWithSubPath: (NSString *)subPath
 {
-    NSString *path = [[self resourcePath] stringByAppendingPathComponent: subPath];
+    NSString *path = [self pathWithSubPath: subPath];
     
     if ([[NSFileManager defaultManager] fileExistsAtPath: path])
     {
@@ -68,7 +71,6 @@ static NSString *gsResourcePath = nil;
 
 + (NSString *)_packResourcePathWithSubPath: (NSString *)subPath
 {
-    return @"https://www.lds.org/bc/content/shared/content/english/pdf/36035_000_25_livingchrist.pdf";
     return [serverFileRootPath stringByAppendingPathComponent: subPath];
 }
 
@@ -79,16 +81,22 @@ static NSString *gsResourcePath = nil;
                             enableCache: NO
                                callback: (^(NSData *data, id error)
                                           {
-                                              if (data)
-                                              {
-                                                  [data writeToFile: [[self resourcePath] stringByAppendingPathComponent: subPath]
-                                                         atomically: YES];
-                                              }
-                                              
-                                              if (callback)
-                                              {
-                                                  callback(data, error);
-                                              }
+                                              double delayInSeconds = 1.0;
+                                              dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+                                              dispatch_after(popTime, dispatch_get_main_queue(),
+                                                             (^(void)
+                                                              {
+                                                                  if (data)
+                                                                  {
+                                                                      [data writeToFile: [[self resourcePath] stringByAppendingPathComponent: subPath]
+                                                                             atomically: YES];
+                                                                  }
+                                                                  
+                                                                  if (callback)
+                                                                  {
+                                                                      callback(data, error);
+                                                                  }
+                                                              }));
                                           })];
 }
 

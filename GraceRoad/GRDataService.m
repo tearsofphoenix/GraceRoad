@@ -9,8 +9,11 @@
 #import "GRDataService.h"
 #import "GRResourceKey.h"
 #import "GRSermonKeys.h"
+#import "GRShared.h"
 
 #import <NoahsUtility/NoahsUtility.h>
+
+#define GRLocalNotificationScheduleKey  GRPrefix ".hasScheduled"
 
 @interface GRDataService ()
 {
@@ -156,8 +159,12 @@
         
         [_sermons addObject: (@{
                                 GRSermonID : [[ERUUID UUID] stringDescription],
-                                GRSermonPath : @"sermon1.mp3",
+                                GRSermonPath : @"t0101.mp3",
                                 GRSermonTitle : @"教导孩子",
+                                GRSermonAbstract : @"1. 起初　神创造天地。\n"
+                                "2. 地是空虚混沌．渊面黑暗．　神的灵运行在水面上。\n"
+                                "3. 　神说、要有光、就有了光。\n"
+                                "4. 　神看光是好的、就把光暗分开了。\n",
                                 GRSermonUploadDate : [NSDate date],
                                 })];
         
@@ -169,7 +176,41 @@
                                                                     month: month
                                                                       day: day - 1],
                                 })];
-
+        
+        NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+        
+        if (![userDefaults boolForKey: GRLocalNotificationScheduleKey])
+        {
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0),
+                           (^
+                            {
+                                NSArray *notificationList = [[NSArray alloc] initWithContentsOfFile: [[NSBundle mainBundle] pathForResource: @"notifications0"
+                                                                                                                                     ofType: @"plist"]];
+                                
+                                [notificationList enumerateObjectsUsingBlock:
+                                 (^(NSDictionary *obj, NSUInteger idx, BOOL *stop)
+                                  {
+                                      UILocalNotification *notificationLooper = [[UILocalNotification alloc] init];
+                                      
+                                      [notificationLooper setFireDate: [date dateByAddingTimeInterval: idx * (24 * 60 * 60)]];
+                                      [notificationLooper setTimeZone: [NSTimeZone defaultTimeZone]];
+                                      
+                                      [notificationLooper setSoundName: UILocalNotificationDefaultSoundName];
+                                      [notificationLooper setUserInfo: obj];
+                                      
+                                      [[UIApplication sharedApplication] scheduleLocalNotification: notificationLooper];
+                                      
+                                      [notificationLooper release];
+                                      
+                                      //*stop = YES;
+                                  })];
+                                
+                                [notificationList release];
+                            }));
+            
+            [userDefaults setBool: YES
+                           forKey: GRLocalNotificationScheduleKey];
+        }
     }
     
     return self;

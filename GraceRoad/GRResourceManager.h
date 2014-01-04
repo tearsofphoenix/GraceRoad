@@ -16,6 +16,8 @@ typedef void (^ GRResourceCallback)(NSData *data, NSError *error);
 
 + (BOOL)fileExistsWithSubPath: (NSString *)subPath;
 
++ (NSString *)pathWithSubPath: (NSString *)subPath;
+
 + (NSData *)dataWithSubPath: (NSString *)subPath;
 
 + (void)downloadFileWithSubPath: (NSString *)subPath

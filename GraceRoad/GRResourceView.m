@@ -109,19 +109,58 @@
     }
 }
 
+- (NSDictionary *)_resourceCategoryByID: (NSString *)categoryID
+{
+    for (NSDictionary *cLooper in _originCategories)
+    {
+        if ([cLooper[GRResourceCategoryID] isEqualToString: categoryID])
+        {
+            return cLooper;
+        }
+    }
+    
+    return nil;
+}
+
 - (void)_updateContent
 {
     [_resourceCategories removeAllObjects];
     [_resources removeAllObjects];
     
-    //    if ([_filterString length] == 0)
-    //    {
-    [_resourceCategories setArray: _originCategories];
-    [_resources setDictionary: _originResources];
-    //    }else
-    //    {
-    //
-    //    }
+    if ([_filterString length] == 0)
+    {
+        [_resourceCategories setArray: _originCategories];
+        [_resources setDictionary: _originResources];
+    }else
+    {
+        [_originResources enumerateKeysAndObjectsUsingBlock:
+         (^(NSString *resourceID, NSArray *obj, BOOL *stop)
+          {
+              for (NSDictionary *rLooper in obj)
+              {
+                  if ([rLooper[GRResourceName] rangeOfString: _filterString
+                                                     options: NSCaseInsensitiveSearch].location != NSNotFound)
+                  {
+                      NSMutableArray *resources = _resources[resourceID];
+                      if (!resources)
+                      {
+                          //add category
+                          //
+                          [_resourceCategories addObject: [self _resourceCategoryByID: resourceID]];
+                          
+                          //prepare array
+                          //
+                          resources = [NSMutableArray array];
+                          [_resources setObject: resources
+                                         forKey: resourceID];
+                      }
+                      
+                      [resources addObject: rLooper];
+                  }
+              }
+          })];
+    }
+    
     [_contentView reloadData];
 }
 
@@ -218,17 +257,27 @@ didSelectRowAtIndexPath: (NSIndexPath *)indexPath
                                 message: @"您确定要下载该文档吗？"
                       cancelButtonTitle: @"取消"
                       otherButtonTitles: @[ @"确定" ]
-                               callback: (^(NSInteger buttonIndex)
-                                          {
-                                              if (1 == buttonIndex)
-                                              {
-                                                  [GRResourceManager downloadFileWithSubPath: subPath
-                                                                                    callback: (^(NSData *data, NSError *error)
-                                                                                               {
-                                                                                                   [self _navigateToResourceContentWithInfo: resourceInfo];
-                                                                                               })];
-                                              }
-                                          })];
+                               callback:
+         (^(NSInteger buttonIndex)
+          {
+              if (1 == buttonIndex)
+              {
+                  ERSC(GRViewServiceID,
+                       GRViewServiceShowLoadingIndicatorAction,
+                       nil, nil);
+                  
+                  [GRResourceManager downloadFileWithSubPath: subPath
+                                                    callback:
+                   (^(NSData *data, NSError *error)
+                    {
+                        ERSC(GRViewServiceID,
+                             GRViewServiceHideLoadingIndicatorAction,
+                             nil, nil);
+                        
+                        [self _navigateToResourceContentWithInfo: resourceInfo];
+                    })];
+              }
+          })];
     }
 }
 

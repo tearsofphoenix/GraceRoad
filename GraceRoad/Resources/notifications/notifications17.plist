@@ -1,0 +1,918 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>address</key>
+		<string>詩篇 19:7 </string>
+		<key>en</key>
+		<string>The law of the LORD is perfect, converting the soul: the testimony of the LORD is sure, making wise the simple.</string>
+		<key>zh_TW</key>
+		<string>耶和華的律法全備, 能甦醒人心. 耶和華的法度確定, 能使愚人有智慧.</string>
+	</dict>
+	<dict>
+		<key>address</key>
+		<string>詩篇 37:30 </string>
+		<key>en</key>
+		<string>The mouth of the righteous speaketh wisdom, and his tongue talketh of judgment.</string>
+		<key>zh_TW</key>
+		<string>義人的口談論智慧, 他的舌頭講說公平.</string>
+	</dict>
+	<dict>
+		<key>address</key>
+		<string>詩篇 51:6 </string>
+		<key>en</key>
+		<string>Behold, thou desirest truth in the inward parts: and in the hidden part thou shalt make me to know wisdom.</string>
+		<key>zh_TW</key>
+		<string>你所喜愛的, 是內裡誠實. 你在我隱密處, 必使我得智慧.</string>
+	</dict>
+	<dict>
+		<key>address</key>
+		<string>詩篇 90:12 </string>
+		<key>en</key>
+		<string>So teach us to number our days, that we may apply our hearts unto wisdom.</string>
+		<key>zh_TW</key>
+		<string>求你指教我們怎樣數算自己的日子, 好叫我們得著智慧的心.</string>
+	</dict>
+	<dict>
+		<key>address</key>
+		<string>詩篇 104:24 </string>
+		<key>en</key>
+		<string>O LORD, how manifold are thy works! in wisdom hast thou made them all: the earth is full of thy riches.</string>
+		<key>zh_TW</key>
+		<string>耶和華阿, 你所造的何其多, 都是你用智慧造成的. 遍地滿了你的豐富.</string>
+	</dict>
+	<dict>
+		<key>address</key>
+		<string>詩篇 107:43 </string>
+		<key>en</key>
+		<string>Whoso is wise, and will observe these things, even they shall understand the lovingkindness of the LORD.</string>
+		<key>zh_TW</key>
+		<string>凡有智慧的, 必在這些事上留心, 也必思想耶和華的慈愛.</string>
+	</dict>
+	<dict>
+		<key>address</key>
+		<string>詩篇 111:10 </string>
+		<key>en</key>
+		<string>The fear of the LORD is the beginning of wisdom: a good understanding have all they that do his commandments: his praise endureth for ever.</string>
+		<key>zh_TW</key>
+		<string>敬畏耶和華是智慧得開端. 凡遵行他命令的, 便是聰明人.耶和華是永遠當讚美的.</string>
+	</dict>
+	<dict>
+		<key>address</key>
+		<string>詩篇 119:98 </string>
+		<key>en</key>
+		<string>Thou through thy commandments hast made me wiser than mine enemies: for they are ever with me.</string>
+		<key>zh_TW</key>
+		<string>你的命令常存在我心裡, 使我比仇敵有智慧.</string>
+	</dict>
+	<dict>
+		<key>address</key>
+		<string>詩篇 136:5 </string>
+		<key>en</key>
+		<string>To him that by wisdom made the heavens: for his mercy endureth for ever.</string>
+		<key>zh_TW</key>
+		<string>稱謝那用智慧造天的, 因他的慈愛永遠長存.</string>
+	</dict>
+	<dict>
+		<key>address</key>
+		<string>詩篇 147:5 </string>
+		<key>en</key>
+		<string>Great is our Lord, and of great power: his understanding is infinite.</string>
+		<key>zh_TW</key>
+		<string>我們的主為大, 最有能力. 他的智慧, 無法測度.</string>
+	</dict>
+	<dict>
+		<key>address</key>
+		<string>箴言 1:7 </string>
+		<key>en</key>
+		<string>The fear of the LORD is the beginning of knowledge: but fools despise wisdom and instruction.</string>
+		<key>zh_TW</key>
+		<string>敬畏耶和華是知識的開端. 愚妄人藐視智慧和訓誨.</string>
+	</dict>
+	<dict>
+		<key>address</key>
+		<string>箴言 2:7 </string>
+		<key>en</key>
+		<string>He layeth up sound wisdom for the righteous: he is a buckler to them that walk uprightly.</string>
+		<key>zh_TW</key>
+		<string>他給正直人存留真智慧, 給行為純正的人作盾牌.</string>
+	</dict>
+	<dict>
+		<key>address</key>
+		<string>箴言 2:16 </string>
+		<key>en</key>
+		<string>To deliver thee from the strange woman, even from the stranger which flattereth with her words;</string>
+		<key>zh_TW</key>
+		<string>智慧要救你脫離淫婦, 就是那油嘴滑舌的外女.</string>
+	</dict>
+	<dict>
+		<key>address</key>
+		<string>箴言 2:20 </string>
+		<key>en</key>
+		<string>That thou mayest walk in the way of good men, and keep the paths of the righteous.</string>
+		<key>zh_TW</key>
+		<string>智慧必使你行善人的道, 守義人的路.</string>
+	</dict>
+	<dict>
+		<key>address</key>
+		<string>箴言 3:7 </string>
+		<key>en</key>
+		<string>Be not wise in thine own eyes: fear the LORD, and depart from evil.</string>
+		<key>zh_TW</key>
+		<string>不要自以為有智慧. 要敬畏耶和華, 遠離惡事.</string>
+	</dict>
+	<dict>
+		<key>address</key>
+		<string>箴言 3:13-14 </string>
+		<key>en</key>
+		<string>Happy is the man that findeth wisdom, and the man that getteth understanding. For the merchandise of it is better than the merchandise of silver, and the gain thereof than fine gold.</string>
+		<key>zh_TW</key>
+		<string>得智慧, 得聰明的, 這人便為有福. 因為得智慧勝過得銀子, 其利益強如精金.</string>
+	</dict>
+	<dict>
+		<key>address</key>
+		<string>箴言 3:19 </string>
+		<key>en</key>
+		<string>The LORD by wisdom hath founded the earth; by understanding hath he established the heavens.</string>
+		<key>zh_TW</key>
+		<string>耶和華以智慧立地. 以聰明定天.</string>
+	</dict>
+	<dict>
+		<key>address</key>
+		<string>箴言 3:35 </string>
+		<key>en</key>
+		<string>The wise shall inherit glory: but shame shall be the promotion of fools.</string>
+		<key>zh_TW</key>
+		<string>智慧人必承受尊榮. 愚昧人高陞也成為羞辱.</string>
+	</dict>
+	<dict>
+		<key>address</key>
+		<string>箴言 4:5 </string>
+		<key>en</key>
+		<string>Get wisdom, get understanding: forget it not; neither decline from the words of my mouth.</string>
+		<key>zh_TW</key>
+		<string>要得智慧, 要得聰明. 不可忘記, 也不可偏離我口中的言語.</string>
+	</dict>
+	<dict>
+		<key>address</key>
+		<string>箴言 4:6 </string>
+		<key>en</key>
+		<string>Forsake her not, and she shall preserve thee: love her, and she shall keep thee.</string>
+		<key>zh_TW</key>
+		<string>不可離棄智慧, 智慧就護衛你. 要愛他, 他就保守你.</string>
+	</dict>
+	<dict>
+		<key>address</key>
+		<string>箴言 4:8 </string>
+		<key>en</key>
+		<string>Exalt her, and she shall promote thee: she shall bring thee to honour, when thou dost embrace her.</string>
+		<key>zh_TW</key>
+		<string>高舉智慧, 他就使你高陞. 懷抱智慧, 他就使你尊榮.</string>
+	</dict>
+	<dict>
+		<key>address</key>
+		<string>箴言 5:1 </string>
+		<key>en</key>
+		<string>My son, attend unto my wisdom, and bow thine ear to my understanding:</string>
+		<key>zh_TW</key>
+		<string>我兒, 要留心我智慧的話語, 側耳聽我聰明的言詞.</string>
+	</dict>
+	<dict>
+		<key>address</key>
+		<string>箴言 6:6 </string>
+		<key>en</key>
+		<string>Go to the ant, thou sluggard; consider her ways, and be wise:</string>
+		<key>zh_TW</key>
+		<string>懶惰人哪, 你去察看螞蟻的動作, 就可得智慧.</string>
+	</dict>
+	<dict>
+		<key>address</key>
+		<string>箴言 8:11 </string>
+		<key>en</key>
+		<string>For wisdom is better than rubies; and all the things that may be desired are not to be compared to it.</string>
+		<key>zh_TW</key>
+		<string>因為智慧比珍珠 ((或作紅寶石)) 更美. 一切可喜愛的, 都不足與比較.</string>
+	</dict>
+	<dict>
+		<key>address</key>
+		<string>箴言 8:33 </string>
+		<key>en</key>
+		<string>Hear instruction, and be wise, and refuse it not.</string>
+		<key>zh_TW</key>
+		<string>要聽教訓, 就得智慧, 不可棄絕.</string>
+	</dict>
+	<dict>
+		<key>address</key>
+		<string>箴言 9:8-9 </string>
+		<key>en</key>
+		<string>Reprove not a scorner, lest he hate thee: rebuke a wise man, and he will love thee. Give instruction to a wise man, and he will be yet wiser: teach a just man, and he will increase in learning.</string>
+		<key>zh_TW</key>
+		<string>不要責備褻慢人, 恐怕他恨你. 要責備智慧人, 他必愛你. 教導智慧人, 他就越發有智慧. 指示義人, 他就增長學問.</string>
+	</dict>
+	<dict>
+		<key>address</key>
+		<string>箴言 9:12 </string>
+		<key>en</key>
+		<string>If thou be wise, thou shalt be wise for thyself: but if thou scornest, thou alone shalt bear it.</string>
+		<key>zh_TW</key>
+		<string>你若有智慧, 是與自己有益. 你若褻慢, 就必獨自擔當.</string>
+	</dict>
+	<dict>
+		<key>address</key>
+		<string>箴言 10:1 </string>
+		<key>en</key>
+		<string>The proverbs of Solomon. A wise son maketh a glad father: but a foolish son is the heaviness of his mother.</string>
+		<key>zh_TW</key>
+		<string>所羅門的箴言. 智慧之子, 使父親歡樂. 愚昧之子, 叫母親擔憂.</string>
+	</dict>
+	<dict>
+		<key>address</key>
+		<string>箴言 10:8 </string>
+		<key>en</key>
+		<string>The wise in heart will receive commandments: but a prating fool shall fall.</string>
+		<key>zh_TW</key>
+		<string>心中智慧的, 必受命令. 口裡愚妄的, 必致傾倒.</string>
+	</dict>
+	<dict>
+		<key>address</key>
+		<string>箴言 10:13 </string>
+		<key>en</key>
+		<string>In the lips of him that hath understanding wisdom is found: but a rod is for the back of him that is void of understanding.</string>
+		<key>zh_TW</key>
+		<string>明哲人嘴裡有智慧. 無知人背上受刑杖.</string>
+	</dict>
+	<dict>
+		<key>address</key>
+		<string>箴言 10:14 </string>
+		<key>en</key>
+		<string>Wise men lay up knowledge: but the mouth of the foolish is near destruction.</string>
+		<key>zh_TW</key>
+		<string>智慧人積存知識. 愚妄人的口速致敗壞.</string>
+	</dict>
+	<dict>
+		<key>address</key>
+		<string>箴言 10:19 </string>
+		<key>en</key>
+		<string>In the multitude of words there wanteth not sin: but he that refraineth his lips is wise.</string>
+		<key>zh_TW</key>
+		<string>多言多語難免有過. 禁止嘴唇是有智慧.</string>
+	</dict>
+	<dict>
+		<key>address</key>
+		<string>箴言 10:23 </string>
+		<key>en</key>
+		<string>It is as sport to a fool to do mischief: but a man of understanding hath wisdom.</string>
+		<key>zh_TW</key>
+		<string>愚妄人以行惡為戲耍. 明哲人卻以智慧為樂.</string>
+	</dict>
+	<dict>
+		<key>address</key>
+		<string>箴言 10:31 </string>
+		<key>en</key>
+		<string>The mouth of the just bringeth forth wisdom: but the froward tongue shall be cut out.</string>
+		<key>zh_TW</key>
+		<string>義人的口, 滋生智慧. 乖謬的舌, 必被割斷.</string>
+	</dict>
+	<dict>
+		<key>address</key>
+		<string>箴言 11:2 </string>
+		<key>en</key>
+		<string>When pride cometh, then cometh shame: but with the lowly is wisdom.</string>
+		<key>zh_TW</key>
+		<string>驕傲來, 羞恥也來. 謙遜人卻有智慧.</string>
+	</dict>
+	<dict>
+		<key>address</key>
+		<string>箴言 11:12 </string>
+		<key>en</key>
+		<string>He that is void of wisdom despiseth his neighbour: but a man of understanding holdeth his peace.</string>
+		<key>zh_TW</key>
+		<string>藐視鄰舍的, 毫無智慧. 明哲人卻靜默不言.</string>
+	</dict>
+	<dict>
+		<key>address</key>
+		<string>箴言 11:30 </string>
+		<key>en</key>
+		<string>The fruit of the righteous is a tree of life; and he that winneth souls is wise.</string>
+		<key>zh_TW</key>
+		<string>義人所結的果子, 就是生命樹. 有智慧的必能得人.</string>
+	</dict>
+	<dict>
+		<key>address</key>
+		<string>箴言 12:8 </string>
+		<key>en</key>
+		<string>A man shall be commended according to his wisdom: but he that is of a perverse heart shall be despised.</string>
+		<key>zh_TW</key>
+		<string>人必按自己的智慧被稱讚. 心中乖謬的, 必被藐視.</string>
+	</dict>
+	<dict>
+		<key>address</key>
+		<string>箴言 12:15 </string>
+		<key>en</key>
+		<string>The way of a fool is right in his own eyes: but he that hearkeneth unto counsel is wise.</string>
+		<key>zh_TW</key>
+		<string>愚妄人所行的, 在自己的眼中看為正直. 惟智慧人, 肯聽人的勸教.</string>
+	</dict>
+	<dict>
+		<key>address</key>
+		<string>箴言 12:18 </string>
+		<key>en</key>
+		<string>There is that speaketh like the piercings of a sword: but the tongue of the wise is health.</string>
+		<key>zh_TW</key>
+		<string>說話浮躁的, 如刀刺人. 智慧人的舌頭, 卻為醫人的良藥.</string>
+	</dict>
+	<dict>
+		<key>address</key>
+		<string>箴言 13:1 </string>
+		<key>en</key>
+		<string>A wise son heareth his father's instruction: but a scorner heareth not rebuke.</string>
+		<key>zh_TW</key>
+		<string>智慧子聽父親的教訓. 褻慢人不聽責備.</string>
+	</dict>
+	<dict>
+		<key>address</key>
+		<string>箴言 13:10 </string>
+		<key>en</key>
+		<string>Only by pride cometh contention: but with the well advised is wisdom.</string>
+		<key>zh_TW</key>
+		<string>驕傲只啟爭競. 聽勸言的, 卻有智慧.</string>
+	</dict>
+	<dict>
+		<key>address</key>
+		<string>箴言 13:14 </string>
+		<key>en</key>
+		<string>The law of the wise is a fountain of life, to depart from the snares of death.</string>
+		<key>zh_TW</key>
+		<string>智慧人的法則, ((或作指教)) 是生命的泉源,可以使人離開死亡的網羅.</string>
+	</dict>
+	<dict>
+		<key>address</key>
+		<string>箴言 13:20 </string>
+		<key>en</key>
+		<string>He that walketh with wise men shall be wise: but a companion of fools shall be destroyed.</string>
+		<key>zh_TW</key>
+		<string>與智慧人同行的, 必得智慧. 和愚昧人作伴的, 必受虧損.</string>
+	</dict>
+	<dict>
+		<key>address</key>
+		<string>箴言 14:1 </string>
+		<key>en</key>
+		<string>Every wise woman buildeth her house: but the foolish plucketh it down with her hands.</string>
+		<key>zh_TW</key>
+		<string>智慧婦人, 建立家室. 愚妄婦人, 親手拆毀.</string>
+	</dict>
+	<dict>
+		<key>address</key>
+		<string>箴言 14:3 </string>
+		<key>en</key>
+		<string>In the mouth of the foolish is a rod of pride: but the lips of the wise shall preserve them.</string>
+		<key>zh_TW</key>
+		<string>愚妄人口中驕傲, 如杖責打己身. 智慧人的嘴, 必保守自己.</string>
+	</dict>
+	<dict>
+		<key>address</key>
+		<string>箴言 14:6 </string>
+		<key>en</key>
+		<string>A scorner seeketh wisdom, and findeth it not: but knowledge is easy unto him that understandeth.</string>
+		<key>zh_TW</key>
+		<string>褻慢人尋智慧, 卻尋不著. 聰明人易得知識.</string>
+	</dict>
+	<dict>
+		<key>address</key>
+		<string>箴言 14:8 </string>
+		<key>en</key>
+		<string>The wisdom of the prudent is to understand his way: but the folly of fools is deceit.</string>
+		<key>zh_TW</key>
+		<string>通達人的智慧, 在乎明白己道. 愚昧人的愚妄, 乃是詭詐. ((或作自欺))</string>
+	</dict>
+	<dict>
+		<key>address</key>
+		<string>箴言 14:16 </string>
+		<key>en</key>
+		<string>A wise man feareth, and departeth from evil: but the fool rageth, and is confident.</string>
+		<key>zh_TW</key>
+		<string>智慧人懼怕, 就遠離惡事. 愚妄人卻狂傲自恃.</string>
+	</dict>
+	<dict>
+		<key>address</key>
+		<string>箴言 14:24 </string>
+		<key>en</key>
+		<string>The crown of the wise is their riches: but the foolishness of fools is folly.</string>
+		<key>zh_TW</key>
+		<string>智慧人的財, 為自己的冠冕. 愚妄人的愚昧, 終是愚昧.</string>
+	</dict>
+	<dict>
+		<key>address</key>
+		<string>箴言 14:33 </string>
+		<key>en</key>
+		<string>Wisdom resteth in the heart of him that hath understanding: but that which is in the midst of fools is made known.</string>
+		<key>zh_TW</key>
+		<string>智慧存在聰明人心中. 愚昧人心裡所存的, 顯而易見.</string>
+	</dict>
+	<dict>
+		<key>address</key>
+		<string>箴言 14:35 </string>
+		<key>en</key>
+		<string>The king's favour is toward a wise servant: but his wrath is against him that causeth shame.</string>
+		<key>zh_TW</key>
+		<string>智慧的臣子, 蒙王恩惠. 貽羞的僕人, 遭其震怒.</string>
+	</dict>
+	<dict>
+		<key>address</key>
+		<string>箴言 15:2 </string>
+		<key>en</key>
+		<string>The tongue of the wise useth knowledge aright: but the mouth of fools poureth out foolishness.</string>
+		<key>zh_TW</key>
+		<string>智慧人的舌, 善發知識. 愚昧人的口, 吐出愚昧.</string>
+	</dict>
+	<dict>
+		<key>address</key>
+		<string>箴言 15:12 </string>
+		<key>en</key>
+		<string>A scorner loveth not one that reproveth him: neither will he go unto the wise.</string>
+		<key>zh_TW</key>
+		<string>褻慢人不愛受責備. 他也不就近智慧人.</string>
+	</dict>
+	<dict>
+		<key>address</key>
+		<string>箴言 15:24 </string>
+		<key>en</key>
+		<string>The way of life is above to the wise, that he may depart from hell beneath.</string>
+		<key>zh_TW</key>
+		<string>智慧人從生命的道上升, 使他遠離在下的陰間.</string>
+	</dict>
+	<dict>
+		<key>address</key>
+		<string>箴言 15:31-32 </string>
+		<key>en</key>
+		<string>The ear that heareth the reproof of life abideth among the wise. He that refuseth instruction despiseth his own soul: but he that heareth reproof getteth understanding.</string>
+		<key>zh_TW</key>
+		<string>聽從生命責備的, 必常在智慧人中. 棄絕管教的, 輕看自己的生命. 聽從責備的, 卻得智慧.</string>
+	</dict>
+	<dict>
+		<key>address</key>
+		<string>箴言 15:33 </string>
+		<key>en</key>
+		<string>The fear of the LORD is the instruction of wisdom; and before honour is humility.</string>
+		<key>zh_TW</key>
+		<string>敬畏耶和華, 是智慧的訓誨. 尊榮以前, 必有謙卑.</string>
+	</dict>
+	<dict>
+		<key>address</key>
+		<string>箴言 16:22 </string>
+		<key>en</key>
+		<string>Understanding is a wellspring of life unto him that hath it: but the instruction of fools is folly.</string>
+		<key>zh_TW</key>
+		<string>人有智慧就有生命的泉源. 愚昧人必被愚昧懲治.</string>
+	</dict>
+	<dict>
+		<key>address</key>
+		<string>箴言 16:23 </string>
+		<key>en</key>
+		<string>The heart of the wise teacheth his mouth, and addeth learning to his lips.</string>
+		<key>zh_TW</key>
+		<string>智慧人的心, 教訓他的口, 又使他的嘴, 增長學問.</string>
+	</dict>
+	<dict>
+		<key>address</key>
+		<string>箴言 17:24 </string>
+		<key>en</key>
+		<string>Wisdom is before him that hath understanding; but the eyes of a fool are in the ends of the earth.</string>
+		<key>zh_TW</key>
+		<string>明哲人眼前有智慧. 愚昧人眼望地極.</string>
+	</dict>
+	<dict>
+		<key>address</key>
+		<string>箴言 17:28 </string>
+		<key>en</key>
+		<string>Even a fool, when he holdeth his peace, is counted wise: and he that shutteth his lips is esteemed a man of understanding.</string>
+		<key>zh_TW</key>
+		<string>愚昧人若靜默不言, 也可算為智慧. 閉口不說, 也可算為聰明.</string>
+	</dict>
+	<dict>
+		<key>address</key>
+		<string>箴言 18:15 </string>
+		<key>en</key>
+		<string>The heart of the prudent getteth knowledge; and the ear of the wise seeketh knowledge.</string>
+		<key>zh_TW</key>
+		<string>聰明人的心得知識. 智慧人的耳求知識.</string>
+	</dict>
+	<dict>
+		<key>address</key>
+		<string>箴言 19:8 </string>
+		<key>en</key>
+		<string>He that getteth wisdom loveth his own soul: he that keepeth understanding shall find good.</string>
+		<key>zh_TW</key>
+		<string>得著智慧的, 愛惜生命, 保守聰明的, 必得好處.</string>
+	</dict>
+	<dict>
+		<key>address</key>
+		<string>箴言 19:20 </string>
+		<key>en</key>
+		<string>Hear counsel, and receive instruction, that thou mayest be wise in thy latter end.</string>
+		<key>zh_TW</key>
+		<string>你要聽勸教, 受訓誨, 使你終久有智慧.</string>
+	</dict>
+	<dict>
+		<key>address</key>
+		<string>箴言 20:1 </string>
+		<key>en</key>
+		<string>Wine is a mocker, strong drink is raging: and whosoever is deceived thereby is not wise.</string>
+		<key>zh_TW</key>
+		<string>酒能使人褻慢, 濃酒使人喧嚷. 凡因酒錯誤的, 就無智慧.</string>
+	</dict>
+	<dict>
+		<key>address</key>
+		<string>箴言 21:11 </string>
+		<key>en</key>
+		<string>When the scorner is punished, the simple is made wise: and when the wise is instructed, he receiveth knowledge.</string>
+		<key>zh_TW</key>
+		<string>褻慢的人受刑罰, 愚蒙的人就得智慧. 智慧人受訓誨, 便得知識.</string>
+	</dict>
+	<dict>
+		<key>address</key>
+		<string>箴言 21:20 </string>
+		<key>en</key>
+		<string>There is treasure to be desired and oil in the dwelling of the wise; but a foolish man spendeth it up.</string>
+		<key>zh_TW</key>
+		<string>智慧人家中 (.積蓄.) 寶物膏油. 愚昧人隨得來隨吞下.</string>
+	</dict>
+	<dict>
+		<key>address</key>
+		<string>箴言 21:30 </string>
+		<key>en</key>
+		<string>There is no wisdom nor understanding nor counsel against the LORD.</string>
+		<key>zh_TW</key>
+		<string>沒有人能以智慧, 聰明, 謀略, 敵擋耶和華.</string>
+	</dict>
+	<dict>
+		<key>address</key>
+		<string>箴言 23:9 </string>
+		<key>en</key>
+		<string>Speak not in the ears of a fool: for he will despise the wisdom of thy words.</string>
+		<key>zh_TW</key>
+		<string>你不要說話給愚昧人聽. 因他必藐視你智慧的言語.</string>
+	</dict>
+	<dict>
+		<key>address</key>
+		<string>箴言 23:15 </string>
+		<key>en</key>
+		<string>My son, if thine heart be wise, my heart shall rejoice, even mine.</string>
+		<key>zh_TW</key>
+		<string>我兒你心若存智慧, 我的心也甚歡喜.</string>
+	</dict>
+	<dict>
+		<key>address</key>
+		<string>箴言 23:19 </string>
+		<key>en</key>
+		<string>Hear thou, my son, and be wise, and guide thine heart in the way.</string>
+		<key>zh_TW</key>
+		<string>我兒, 你當聽, 當存智慧, 好在正道上引導你的心.</string>
+	</dict>
+	<dict>
+		<key>address</key>
+		<string>箴言 23:23 </string>
+		<key>en</key>
+		<string>Buy the truth, and sell it not; also wisdom, and instruction, and understanding.</string>
+		<key>zh_TW</key>
+		<string>你當買真理. 就是智慧, 訓誨, 和聰明, 也都不可賣.</string>
+	</dict>
+	<dict>
+		<key>address</key>
+		<string>箴言 24:5 </string>
+		<key>en</key>
+		<string>A wise man is strong; yea, a man of knowledge increaseth strength.</string>
+		<key>zh_TW</key>
+		<string>智慧人大有能力. 有知識的人, 力上加力.</string>
+	</dict>
+	<dict>
+		<key>address</key>
+		<string>箴言 24:14 </string>
+		<key>en</key>
+		<string>So shall the knowledge of wisdom be unto thy soul: when thou hast found it, then there shall be a reward, and thy expectation shall not be cut off.</string>
+		<key>zh_TW</key>
+		<string>你心得了智慧, 也必覺的如此. 你若找著, 至終必有善報. 你的指望, 也不至斷絕.</string>
+	</dict>
+	<dict>
+		<key>address</key>
+		<string>箴言 24:23 </string>
+		<key>en</key>
+		<string>These things also belong to the wise. It is not good to have respect of persons in judgment.</string>
+		<key>zh_TW</key>
+		<string>以下也是智慧人的箴言. 審判時看人的情面, 是不好的.</string>
+	</dict>
+	<dict>
+		<key>address</key>
+		<string>箴言 25:12 </string>
+		<key>en</key>
+		<string>As an earring of gold, and an ornament of fine gold, so is a wise reprover upon an obedient ear.</string>
+		<key>zh_TW</key>
+		<string>智慧人的勸戒, 在順從的人耳中, 好像金耳環, 和精金的妝飾.</string>
+	</dict>
+	<dict>
+		<key>address</key>
+		<string>箴言 26:5 </string>
+		<key>en</key>
+		<string>Answer a fool according to his folly, lest he be wise in his own conceit.</string>
+		<key>zh_TW</key>
+		<string>要照愚昧人的愚妄話回答他, 免得他自以為有智慧.</string>
+	</dict>
+	<dict>
+		<key>address</key>
+		<string>箴言 26:16 </string>
+		<key>en</key>
+		<string>The sluggard is wiser in his own conceit than seven men that can render a reason.</string>
+		<key>zh_TW</key>
+		<string>懶惰人看自己, 比七個善於應對的人更有智慧.</string>
+	</dict>
+	<dict>
+		<key>address</key>
+		<string>箴言 27:11 </string>
+		<key>en</key>
+		<string>My son, be wise, and make my heart glad, that I may answer him that reproacheth me.</string>
+		<key>zh_TW</key>
+		<string>我兒, 你要作智慧人, 好叫我的心喜歡, 使我可以回答那譏笑我的人.</string>
+	</dict>
+	<dict>
+		<key>address</key>
+		<string>箴言 28:7 </string>
+		<key>en</key>
+		<string>Whoso keepeth the law is a wise son: but he that is a companion of riotous men shameth his father.</string>
+		<key>zh_TW</key>
+		<string>謹守律法的是智慧之子. 與貪食人作伴的, 卻羞辱其父.</string>
+	</dict>
+	<dict>
+		<key>address</key>
+		<string>箴言 28:11 </string>
+		<key>en</key>
+		<string>The rich man is wise in his own conceit; but the poor that hath understanding searcheth him out.</string>
+		<key>zh_TW</key>
+		<string>富足人自以為有智慧. 但聰明的貧窮人, 能將他查透.</string>
+	</dict>
+	<dict>
+		<key>address</key>
+		<string>箴言 28:26 </string>
+		<key>en</key>
+		<string>He that trusteth in his own heart is a fool: but whoso walketh wisely, he shall be delivered.</string>
+		<key>zh_TW</key>
+		<string>心中自是的, 便是愚昧人. 憑智慧行事的, 必蒙拯救.</string>
+	</dict>
+	<dict>
+		<key>address</key>
+		<string>箴言 29:3 </string>
+		<key>en</key>
+		<string>Whoso loveth wisdom rejoiceth his father: but he that keepeth company with harlots spendeth his substance.</string>
+		<key>zh_TW</key>
+		<string>愛慕智慧的, 使父親喜樂. 與妓女結交的, 卻浪費錢財.</string>
+	</dict>
+	<dict>
+		<key>address</key>
+		<string>箴言 29:8 </string>
+		<key>en</key>
+		<string>Scornful men bring a city into a snare: but wise men turn away wrath.</string>
+		<key>zh_TW</key>
+		<string>褻慢人煽惑通城. 智慧人止息眾怒.</string>
+	</dict>
+	<dict>
+		<key>address</key>
+		<string>箴言 29:11 </string>
+		<key>en</key>
+		<string>A fool uttereth all his mind: but a wise man keepeth it in till afterwards.</string>
+		<key>zh_TW</key>
+		<string>愚妄人怒氣全發. 智慧人忍氣含怒.</string>
+	</dict>
+	<dict>
+		<key>address</key>
+		<string>箴言 29:15 </string>
+		<key>en</key>
+		<string>The rod and reproof give wisdom: but a child left to himself bringeth his mother to shame.</string>
+		<key>zh_TW</key>
+		<string>杖打和責備, 能加增智慧. 放縱的兒子, 使母親羞愧.</string>
+	</dict>
+	<dict>
+		<key>address</key>
+		<string>路加福音 21:15 </string>
+		<key>en</key>
+		<string>For I will give you a mouth and wisdom, which all your adversaries shall not be able to gainsay nor resist.</string>
+		<key>zh_TW</key>
+		<string>因為我必賜你們口才智慧, 是你們一切敵人所敵不住, 駁不倒的.</string>
+	</dict>
+	<dict>
+		<key>address</key>
+		<string>哥林多前書 1:17 </string>
+		<key>en</key>
+		<string>For Christ sent me not to baptize, but to preach the gospel: not with wisdom of words, lest the cross of Christ should be made of none effect.</string>
+		<key>zh_TW</key>
+		<string>基督差遣我, 原不是為施洗, 乃是為傳福音. 並不用智慧的言語, 免得基督的十字架落了空.</string>
+	</dict>
+	<dict>
+		<key>address</key>
+		<string>哥林多前書 1:19 </string>
+		<key>en</key>
+		<string>For it is written, I will destroy the wisdom of the wise, and will bring to nothing the understanding of the prudent.</string>
+		<key>zh_TW</key>
+		<string>就如經上所記, [我要滅絕智慧人的智慧, 廢棄聰明人的聰明.]</string>
+	</dict>
+	<dict>
+		<key>address</key>
+		<string>哥林多前書 1:20 </string>
+		<key>en</key>
+		<string>Where is the wise? where is the scribe? where is the disputer of this world? hath not God made foolish the wisdom of this world?</string>
+		<key>zh_TW</key>
+		<string>智慧人在那裡文士在那裡. 這世上的辯士在那裡. 神豈不是叫這世上的智慧變成愚拙麼.</string>
+	</dict>
+	<dict>
+		<key>address</key>
+		<string>哥林多前書 1:21 </string>
+		<key>en</key>
+		<string>For after that in the wisdom of God the world by wisdom knew not God, it pleased God by the foolishness of preaching to save them that believe.</string>
+		<key>zh_TW</key>
+		<string>世人憑自己的智慧, 既不認識神, 神就樂意用人所當作愚拙的道理, 拯救那些信的人. 這就是神的智慧了.</string>
+	</dict>
+	<dict>
+		<key>address</key>
+		<string>哥林多前書 1:24 </string>
+		<key>en</key>
+		<string>But unto them which are called, both Jews and Greeks, Christ the power of God, and the wisdom of God.</string>
+		<key>zh_TW</key>
+		<string>但在那蒙召的無論是猶太人, 希利尼人, 基督總為神的能力, 神的智慧.</string>
+	</dict>
+	<dict>
+		<key>address</key>
+		<string>哥林多前書 1:25 </string>
+		<key>en</key>
+		<string>Because the foolishness of God is wiser than men; and the weakness of God is stronger than men.</string>
+		<key>zh_TW</key>
+		<string>因神的愚拙總比人智慧. 神的軟弱總比人強壯.</string>
+	</dict>
+	<dict>
+		<key>address</key>
+		<string>哥林多前書 1:27 </string>
+		<key>en</key>
+		<string>But God hath chosen the foolish things of the world to confound the wise; and God hath chosen the weak things of the world to confound the things which are mighty;</string>
+		<key>zh_TW</key>
+		<string>神卻揀選了世上愚拙的, 叫有智慧的羞愧. 又揀選了世上軟弱的, 叫那強壯的羞愧.</string>
+	</dict>
+	<dict>
+		<key>address</key>
+		<string>哥林多前書 1:30 </string>
+		<key>en</key>
+		<string>But of him are ye in Christ Jesus, who of God is made unto us wisdom, and righteousness, and sanctification, and redemption:</string>
+		<key>zh_TW</key>
+		<string>但你們得在基督耶穌裡, 是本乎神, 神又使他成為我們的智慧, 公義, 聖潔, 救贖.</string>
+	</dict>
+	<dict>
+		<key>address</key>
+		<string>哥林多前書 2:4 </string>
+		<key>en</key>
+		<string>And my speech and my preaching was not with enticing words of man's wisdom, but in demonstration of the Spirit and of power:</string>
+		<key>zh_TW</key>
+		<string>我說的話, 講的道, 不是用智慧委婉的言語, 乃是用聖靈和大能的明證.</string>
+	</dict>
+	<dict>
+		<key>address</key>
+		<string>哥林多前書 2:5 </string>
+		<key>en</key>
+		<string>That your faith should not stand in the wisdom of men, but in the power of God.</string>
+		<key>zh_TW</key>
+		<string>叫你們的信不在乎人的智慧, 只在乎神的大能.</string>
+	</dict>
+	<dict>
+		<key>address</key>
+		<string>哥林多前書 2:6 </string>
+		<key>en</key>
+		<string>Howbeit we speak wisdom among them that are perfect: yet not the wisdom of this world, nor of the princes of this world, that come to nought:</string>
+		<key>zh_TW</key>
+		<string>然而在完全的人中, 我們也講智慧. 但不是這世上的智慧, 也不是這世上有權有位將要敗亡之人的智慧.</string>
+	</dict>
+	<dict>
+		<key>address</key>
+		<string>哥林多前書 2:7 </string>
+		<key>en</key>
+		<string>But we speak the wisdom of God in a mystery, even the hidden wisdom, which God ordained before the world unto our glory:</string>
+		<key>zh_TW</key>
+		<string>我們講的, 乃是從前所隱藏, 神奧秘的智慧, 就是神在萬世以前預定使我們得榮耀的.</string>
+	</dict>
+	<dict>
+		<key>address</key>
+		<string>哥林多前書 2:8 </string>
+		<key>en</key>
+		<string>Which none of the princes of this world knew: for had they known it, they would not have crucified the Lord of glory.</string>
+		<key>zh_TW</key>
+		<string>這智慧世上有權有位的人沒有一個知道的. 他們若知道, 就不把榮耀的主釘在十字架上了.</string>
+	</dict>
+	<dict>
+		<key>address</key>
+		<string>哥林多前書 2:13 </string>
+		<key>en</key>
+		<string>Which things also we speak, not in the words which man's wisdom teacheth, but which the Holy Ghost teacheth; comparing spiritual things with spiritual.</string>
+		<key>zh_TW</key>
+		<string>並且我們講說這些事, 不是用人智慧所指教的言語, 乃是用聖靈所指教的言語, 將屬靈的話, 解釋屬靈的事. ((或作將屬靈的事講與屬靈的人))</string>
+	</dict>
+	<dict>
+		<key>address</key>
+		<string>哥林多前書 3:18 </string>
+		<key>en</key>
+		<string>Let no man deceive himself. If any man among you seemeth to be wise in this world, let him become a fool, that he may be wise.</string>
+		<key>zh_TW</key>
+		<string>人不可自欺. 你們中間若有人, 在這世界自以為有智慧, 倒不如變作愚拙, 好成為有智慧的.</string>
+	</dict>
+	<dict>
+		<key>address</key>
+		<string>哥林多前書 3:19 </string>
+		<key>en</key>
+		<string>For the wisdom of this world is foolishness with God. For it is written, He taketh the wise in their own craftiness.</string>
+		<key>zh_TW</key>
+		<string>因這世界的智慧, 在神看是愚拙. 如經上記著說, [主叫有智慧的中了自己的詭計.]</string>
+	</dict>
+	<dict>
+		<key>address</key>
+		<string>哥林多前書 3:20 </string>
+		<key>en</key>
+		<string>And again, The Lord knoweth the thoughts of the wise, that they are vain.</string>
+		<key>zh_TW</key>
+		<string>又說, [主知道智慧人的意念是虛妄的.]</string>
+	</dict>
+	<dict>
+		<key>address</key>
+		<string>以弗所書 1:8 </string>
+		<key>en</key>
+		<string>Wherein he hath abounded toward us in all wisdom and prudence;</string>
+		<key>zh_TW</key>
+		<string>這恩典是神用諸般智慧聰明, 充充足足賞給我們的,</string>
+	</dict>
+	<dict>
+		<key>address</key>
+		<string>以弗所書 5:15 </string>
+		<key>en</key>
+		<string>See then that ye walk circumspectly, not as fools, but as wise,</string>
+		<key>zh_TW</key>
+		<string>你們要謹慎行事, 不要像愚昧人, 當像智慧人.</string>
+	</dict>
+	<dict>
+		<key>address</key>
+		<string>歌羅西書 3:16 </string>
+		<key>en</key>
+		<string>Let the word of Christ dwell in you richly in all wisdom; teaching and admonishing one another in psalms and hymns and spiritual songs, singing with grace in your hearts to the Lord.</string>
+		<key>zh_TW</key>
+		<string>當用各樣的智慧, 把基督的道裡, 豐豐富富的存在心裡, ((或作當把基督的道裡豐豐富富的存在心裡以各樣的智慧))用詩章, 頌詞, 靈歌, 彼此教導, 互相勸戒, 心被恩感歌頌神.</string>
+	</dict>
+	<dict>
+		<key>address</key>
+		<string>歌羅西書 4:5 </string>
+		<key>en</key>
+		<string>Walk in wisdom toward them that are without, redeeming the time.</string>
+		<key>zh_TW</key>
+		<string>你們要愛惜光陰, 用智慧與外人交往.</string>
+	</dict>
+	<dict>
+		<key>address</key>
+		<string>提摩太後書 3:15 </string>
+		<key>en</key>
+		<string>And that from a child thou hast known the holy scriptures, which are able to make thee wise unto salvation through faith which is in Christ Jesus.</string>
+		<key>zh_TW</key>
+		<string>並且知道你是從小明白聖經. 這聖經能使你因信基督耶穌有得救的智慧.</string>
+	</dict>
+	<dict>
+		<key>address</key>
+		<string>雅各書 1:5 </string>
+		<key>en</key>
+		<string>If any of you lack wisdom, let him ask of God, that giveth to all men liberally, and upbraideth not; and it shall be given him.</string>
+		<key>zh_TW</key>
+		<string>你們中間若有缺少智慧的, 應當求那厚賜與眾人, 也不斥責人的神, 主就必賜給他.</string>
+	</dict>
+	<dict>
+		<key>address</key>
+		<string>雅各書 3:13 </string>
+		<key>en</key>
+		<string>Who is a wise man and endued with knowledge among you? let him shew out of a good conversation his works with meekness of wisdom.</string>
+		<key>zh_TW</key>
+		<string>你們中間有智慧有見識的呢. 他就當在智慧的溫柔上, 顯出他的善行來.</string>
+	</dict>
+	<dict>
+		<key>address</key>
+		<string>雅各書 3:17 </string>
+		<key>en</key>
+		<string>But the wisdom that is from above is first pure, then peaceable, gentle, and easy to be intreated, full of mercy and good fruits, without partiality, and without hypocrisy.</string>
+		<key>zh_TW</key>
+		<string>惟獨從上頭來的智慧, 先是清潔, 後是和平, 溫良柔順, 滿有憐憫, 多結善果, 沒有偏見, 沒有假冒.</string>
+	</dict>
+	<dict>
+		<key>address</key>
+		<string>啟示錄 5:12 </string>
+		<key>en</key>
+		<string>Saying with a loud voice, Worthy is the Lamb that was slain to receive power, and riches, and wisdom, and strength, and honour, and glory, and blessing.</string>
+		<key>zh_TW</key>
+		<string>大聲說, 曾被殺的羔羊, 是配得權柄, 豐富, 智慧, 能力, 尊貴, 榮耀, 頌讚的.</string>
+	</dict>
+	<dict>
+		<key>address</key>
+		<string>啟示錄 7:12 </string>
+		<key>en</key>
+		<string>Saying, Amen: Blessing, and glory, and wisdom, and thanksgiving, and honour, and power, and might, be unto our God for ever and ever. Amen.</string>
+		<key>zh_TW</key>
+		<string>說, 阿們. 頌讚, 榮耀, 智慧, 感謝, 尊貴, 權柄, 大力, 都歸與我們的神, 直到永永遠遠. 阿們.</string>
+	</dict>
+</array>
+</plist>

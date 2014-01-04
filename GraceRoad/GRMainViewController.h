@@ -18,4 +18,8 @@
 
 - (void)popLastContentView;
 
+- (void)showLoadingIndicator;
+
+- (void)hideLoadingIndicator;
+
 @end

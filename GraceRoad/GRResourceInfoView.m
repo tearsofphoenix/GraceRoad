@@ -8,6 +8,13 @@
 
 #import "GRResourceInfoView.h"
 #import "GRResourceKey.h"
+#import "GRResourceManager.h"
+
+@interface GRResourceInfoView ()
+{
+    UIWebView *_webView;
+}
+@end
 
 @implementation GRResourceInfoView
 
@@ -17,13 +24,19 @@
     if (self)
     {
         [self setBackgroundColor: [UIColor whiteColor]];
+        
+        _webView = [[UIWebView alloc] initWithFrame: [self bounds]];
+        [self addSubview: _webView];
     }
     return self;
 }
 
 - (void)dealloc
 {
+    NSLog(@"in func: %s", __func__);
+    
     [_resourceInfo release];
+    [_webView release];
     
     [super dealloc];
 }
@@ -36,6 +49,10 @@
         _resourceInfo = [resourceInfo retain];
 
         [self setTitle: _resourceInfo[GRResourceName]];
+        
+        NSString *path = [GRResourceManager pathWithSubPath: _resourceInfo[GRResourcePath]];
+        
+        [_webView loadRequest: [NSURLRequest requestWithURL: [NSURL fileURLWithPath: path]]];
     }
 }
 

@@ -22,6 +22,10 @@
 
 - (id<GRContentViewDelegate>)delegate;
 
+- (void)willSwitchIn;
+
+- (void)didSwitchOut;
+
 @optional
 
 - (UIButton *)leftNavigationButton;

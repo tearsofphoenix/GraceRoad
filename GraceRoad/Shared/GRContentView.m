@@ -48,4 +48,14 @@
     }
 }
 
+- (void)willSwitchIn
+{
+    
+}
+
+- (void)didSwitchOut
+{
+    
+}
+
 @end

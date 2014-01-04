@@ -10,4 +10,5 @@
 #define GRSermonUploadDate  @"upload-date"
 #define GRSermonID          @"uuid"
 #define GRSermonPath        @"path"
+#define GRSermonAbstract    @"abstract"
 

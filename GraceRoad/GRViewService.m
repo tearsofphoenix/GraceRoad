@@ -42,4 +42,14 @@
     [_rootViewController popLastContentView];
 }
 
+- (void)showLoadingIndicator
+{
+    [_rootViewController showLoadingIndicator];
+}
+
+- (void)hideLoadingIndicator
+{
+    [_rootViewController hideLoadingIndicator];
+}
+
 @end
