@@ -7,6 +7,8 @@
 //
 
 #import "GRPreferenceView.h"
+#import "GRLoginView.h"
+#import "GRViewService.h"
 
 @interface GRPreferenceView ()<UITableViewDataSource, UITableViewDelegate>
 {
@@ -69,7 +71,13 @@ heightForRowAtIndexPath: (NSIndexPath *)indexPath
 - (void)      tableView: (UITableView *)tableView
 didSelectRowAtIndexPath: (NSIndexPath *)indexPath
 {
+    GRLoginView *loginView = [[GRLoginView alloc] initWithFrame: [self frame]];
     
+    ERSC(GRViewServiceID,
+         GRViewServicePushContentViewAction,
+         @[ loginView ], nil);
+    
+    [loginView release];
 }
 
 @end

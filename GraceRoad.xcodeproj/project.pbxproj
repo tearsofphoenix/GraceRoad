@@ -43,6 +43,7 @@
 		60E649F71878062400D5466B /* notifications7.plist in Resources */ = {isa = PBXBuildFile; fileRef = 60E649DA1878062400D5466B /* notifications7.plist */; };
 		60E649F81878062400D5466B /* notifications8.plist in Resources */ = {isa = PBXBuildFile; fileRef = 60E649DB1878062400D5466B /* notifications8.plist */; };
 		60E649F91878062400D5466B /* notifications9.plist in Resources */ = {isa = PBXBuildFile; fileRef = 60E649DC1878062400D5466B /* notifications9.plist */; };
+		60E649FC18780AE600D5466B /* GRLoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = 60E649FB18780AE600D5466B /* GRLoginView.m */; };
 		60F8024B186E725400503117 /* GRNavigationBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 60F8024A186E725400503117 /* GRNavigationBarView.m */; };
 		923ADEB51876B31900E20C2B /* GRContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 923ADEB41876B31900E20C2B /* GRContentView.m */; };
 		9242AEFF1876A87C00F9FEFB /* GRBackButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 9242AEFD1876A87B00F9FEFB /* GRBackButton.png */; };
@@ -174,6 +175,8 @@
 		60E649DA1878062400D5466B /* notifications7.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = notifications7.plist; sourceTree = "<group>"; };
 		60E649DB1878062400D5466B /* notifications8.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = notifications8.plist; sourceTree = "<group>"; };
 		60E649DC1878062400D5466B /* notifications9.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = notifications9.plist; sourceTree = "<group>"; };
+		60E649FA18780AE600D5466B /* GRLoginView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRLoginView.h; sourceTree = "<group>"; };
+		60E649FB18780AE600D5466B /* GRLoginView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GRLoginView.m; sourceTree = "<group>"; };
 		60F80249186E725400503117 /* GRNavigationBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRNavigationBarView.h; sourceTree = "<group>"; };
 		60F8024A186E725400503117 /* GRNavigationBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GRNavigationBarView.m; sourceTree = "<group>"; };
 		60F8024C186E730300503117 /* GRContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GRContentView.h; path = ../GRContentView.h; sourceTree = "<group>"; };
@@ -367,6 +370,8 @@
 				927C9FD7186D69A700DC0EDC /* GRServeView.m */,
 				927CA097186D7E7700DC0EDC /* GRPreferenceView.h */,
 				927CA098186D7E7700DC0EDC /* GRPreferenceView.m */,
+				60E649FA18780AE600D5466B /* GRLoginView.h */,
+				60E649FB18780AE600D5466B /* GRLoginView.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -569,9 +574,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 927C9FCB186D66DC00DC0EDC /* Build configuration list for PBXNativeTarget "GraceRoad" */;
 			buildPhases = (
+				927C9F9D186D66DC00DC0EDC /* Resources */,
 				927C9F9B186D66DC00DC0EDC /* Sources */,
 				927C9F9C186D66DC00DC0EDC /* Frameworks */,
-				927C9F9D186D66DC00DC0EDC /* Resources */,
 			);
 			buildRules = (
 			);
@@ -742,6 +747,7 @@
 				60F8024B186E725400503117 /* GRNavigationBarView.m in Sources */,
 				600A73D7187059BE0089679A /* GRIntroductView.m in Sources */,
 				926733DC1872B9DD00249E37 /* GRResourceInfoView.m in Sources */,
+				60E649FC18780AE600D5466B /* GRLoginView.m in Sources */,
 				929989BB18768C2E0001EFDC /* MFNetworkFileCacheManagerInternal.m in Sources */,
 				929989C518768D550001EFDC /* NSData+CMBExtensions.m in Sources */,
 				60B265FF1877C1D1008E881E /* GRSermonContentView.m in Sources */,
