@@ -40,4 +40,6 @@
 
 @property (nonatomic, retain) NSString *title;
 
+@property (nonatomic) BOOL hideTabbar;
+
 @end

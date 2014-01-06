@@ -17,6 +17,7 @@
 
 #define GRDataServiceAllSermonsAction            @"allSermons"
 
+#define GRDataServiceAllPrayListAction           @"allPrayList"
 
 @interface GRDataService : ERService
 

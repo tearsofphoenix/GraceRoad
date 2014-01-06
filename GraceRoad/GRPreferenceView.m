@@ -7,6 +7,9 @@
 //
 
 #import "GRPreferenceView.h"
+#import "GRLoginView.h"
+#import "GRViewService.h"
+#import "GRPrayView.h"
 
 @interface GRPreferenceView ()<UITableViewDataSource, UITableViewDelegate>
 {
@@ -24,7 +27,7 @@
     {
         [self setTitle: @"设置"];
         
-        _titles = [@[ @"我的信息"] retain];
+        _titles = [@[ @"我的信息", @"代祷"] retain];
 
         _tableView = [[UITableView alloc] initWithFrame: [self bounds]];
         [_tableView setDataSource: self];
@@ -54,7 +57,7 @@
 {
     UITableViewCell *cell = [[UITableViewCell alloc] init];
     
-    [[cell textLabel] setTextAlignment: NSTextAlignmentCenter];
+    //[[cell textLabel] setTextAlignment: NSTextAlignmentCenter];
     [[cell textLabel] setText: _titles[[indexPath row]]];
     
     return [cell autorelease];
@@ -69,7 +72,33 @@ heightForRowAtIndexPath: (NSIndexPath *)indexPath
 - (void)      tableView: (UITableView *)tableView
 didSelectRowAtIndexPath: (NSIndexPath *)indexPath
 {
-    
+    NSInteger row = [indexPath row];
+    switch (row)
+    {
+        case 0:
+        {
+            GRLoginView *loginView = [[GRLoginView alloc] initWithFrame: [self frame]];
+            
+            ERSC(GRViewServiceID, GRViewServicePushContentViewAction,
+                 @[ loginView ], nil);
+            
+            [loginView release];
+            break;
+        }
+        case 1:
+        {
+            GRPrayView *prayView = [[GRPrayView alloc] initWithFrame: [self frame]];
+            
+            ERSC(GRViewServiceID, GRViewServicePushContentViewAction,
+                 @[ prayView ], nil);
+            
+            [prayView release];
+            
+            break;
+        }
+        default:
+            break;
+    }
 }
 
 @end
