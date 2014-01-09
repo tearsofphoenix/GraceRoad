@@ -95,6 +95,10 @@
 		92CE914718755BEB00C7D3A1 /* GRSermonTab@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 92CE914218755BEB00C7D3A1 /* GRSermonTab@2x.png */; };
 		92CE914A1875699A00C7D3A1 /* GRIconPDF.png in Resources */ = {isa = PBXBuildFile; fileRef = 92CE91481875699A00C7D3A1 /* GRIconPDF.png */; };
 		92CE914B1875699A00C7D3A1 /* GRIconPDF@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 92CE91491875699A00C7D3A1 /* GRIconPDF@2x.png */; };
+		92FFDF74187A505600FF3C15 /* GRLoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = 92FFDF73187A505600FF3C15 /* GRLoginView.m */; };
+		92FFDF77187A5D3B00FF3C15 /* GRUserProfileView.m in Sources */ = {isa = PBXBuildFile; fileRef = 92FFDF76187A5D3B00FF3C15 /* GRUserProfileView.m */; };
+		92FFDF7A187A616400FF3C15 /* GRPrayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 92FFDF79187A616400FF3C15 /* GRPrayView.m */; };
+		92FFDF7D187A8CAE00FF3C15 /* GRAddButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 92FFDF7C187A8CAE00FF3C15 /* GRAddButton.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -258,6 +262,14 @@
 		92CE914218755BEB00C7D3A1 /* GRSermonTab@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "GRSermonTab@2x.png"; sourceTree = "<group>"; };
 		92CE91481875699A00C7D3A1 /* GRIconPDF.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GRIconPDF.png; sourceTree = "<group>"; };
 		92CE91491875699A00C7D3A1 /* GRIconPDF@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "GRIconPDF@2x.png"; sourceTree = "<group>"; };
+		92FFDF72187A505600FF3C15 /* GRLoginView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRLoginView.h; sourceTree = "<group>"; };
+		92FFDF73187A505600FF3C15 /* GRLoginView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GRLoginView.m; sourceTree = "<group>"; };
+		92FFDF75187A5D3B00FF3C15 /* GRUserProfileView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRUserProfileView.h; sourceTree = "<group>"; };
+		92FFDF76187A5D3B00FF3C15 /* GRUserProfileView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GRUserProfileView.m; sourceTree = "<group>"; };
+		92FFDF78187A616400FF3C15 /* GRPrayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRPrayView.h; sourceTree = "<group>"; };
+		92FFDF79187A616400FF3C15 /* GRPrayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GRPrayView.m; sourceTree = "<group>"; };
+		92FFDF7B187A7B8E00FF3C15 /* GRPrayKeys.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GRPrayKeys.h; sourceTree = "<group>"; };
+		92FFDF7C187A8CAE00FF3C15 /* GRAddButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GRAddButton.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -364,6 +376,13 @@
 				927CA09E186D7FE300DC0EDC /* GRCommunicationView.m */,
 				600A73D5187059BE0089679A /* GRIntroductView.h */,
 				600A73D6187059BE0089679A /* GRIntroductView.m */,
+				92FFDF72187A505600FF3C15 /* GRLoginView.h */,
+				92FFDF73187A505600FF3C15 /* GRLoginView.m */,
+				92FFDF75187A5D3B00FF3C15 /* GRUserProfileView.h */,
+				92FFDF76187A5D3B00FF3C15 /* GRUserProfileView.m */,
+				92FFDF7B187A7B8E00FF3C15 /* GRPrayKeys.h */,
+				92FFDF78187A616400FF3C15 /* GRPrayView.h */,
+				92FFDF79187A616400FF3C15 /* GRPrayView.m */,
 				60B266011877C1DE008E881E /* ResourceView */,
 				60B266001877C1D7008E881E /* Sermon */,
 				927C9FD6186D69A700DC0EDC /* GRServeView.h */,
@@ -544,6 +563,7 @@
 		92CE913D18755BEB00C7D3A1 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				92FFDF7C187A8CAE00FF3C15 /* GRAddButton.png */,
 				60E649671877ECA800D5466B /* GRHeart.jpg */,
 				9242AEFD1876A87B00F9FEFB /* GRBackButton.png */,
 				9242AEFE1876A87C00F9FEFB /* GRBackButton@2x.png */,
@@ -686,6 +706,7 @@
 				60E649E31878062400D5466B /* notifications14.plist in Resources */,
 				60E649F11878062400D5466B /* notifications27.plist in Resources */,
 				60E649E01878062400D5466B /* notifications11.plist in Resources */,
+				92FFDF7D187A8CAE00FF3C15 /* GRAddButton.png in Resources */,
 				60E649ED1878062400D5466B /* notifications23.plist in Resources */,
 				92CE914B1875699A00C7D3A1 /* GRIconPDF@2x.png in Resources */,
 				92CE914718755BEB00C7D3A1 /* GRSermonTab@2x.png in Resources */,
@@ -742,12 +763,13 @@
 				923ADEB51876B31900E20C2B /* GRContentView.m in Sources */,
 				929989BA18768C2E0001EFDC /* MFNetworkFileCacheManager.m in Sources */,
 				926733D91872A84100249E37 /* GRDataService.m in Sources */,
+				92FFDF7A187A616400FF3C15 /* GRPrayView.m in Sources */,
 				927CA09F186D7FE300DC0EDC /* GRCommunicationView.m in Sources */,
 				929989B718768C2E0001EFDC /* MFCacheManagerInternal.m in Sources */,
 				60F8024B186E725400503117 /* GRNavigationBarView.m in Sources */,
 				600A73D7187059BE0089679A /* GRIntroductView.m in Sources */,
 				926733DC1872B9DD00249E37 /* GRResourceInfoView.m in Sources */,
-				60E649FC18780AE600D5466B /* GRLoginView.m in Sources */,
+				92FFDF74187A505600FF3C15 /* GRLoginView.m in Sources */,
 				929989BB18768C2E0001EFDC /* MFNetworkFileCacheManagerInternal.m in Sources */,
 				929989C518768D550001EFDC /* NSData+CMBExtensions.m in Sources */,
 				60B265FF1877C1D1008E881E /* GRSermonContentView.m in Sources */,
@@ -756,6 +778,7 @@
 				92CE91391874F9DB00C7D3A1 /* GRSermonView.m in Sources */,
 				927C9FD4186D675100DC0EDC /* GRMainViewController.m in Sources */,
 				60B265FC1877BEFA008E881E /* UIView+FirstResponder.m in Sources */,
+				92FFDF77187A5D3B00FF3C15 /* GRUserProfileView.m in Sources */,
 				929989B618768C2E0001EFDC /* MFCacheManager.m in Sources */,
 				927CA09C186D7FD600DC0EDC /* GRResourceView.m in Sources */,
 				927C9FD8186D69A700DC0EDC /* GRServeView.m in Sources */,

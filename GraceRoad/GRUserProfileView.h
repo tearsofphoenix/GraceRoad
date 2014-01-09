@@ -1,5 +1,5 @@
 //
-//  GRLoginView.h
+//  GRUserProfileView.h
 //  GraceRoad
 //
 //  Created by Mac003 on 14-1-6.
@@ -7,8 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "GRContentView.h"
 
-@interface GRLoginView : GRContentView
+@interface GRUserProfileView : UIView
 
 @end

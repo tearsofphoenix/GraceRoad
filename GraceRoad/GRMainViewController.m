@@ -138,6 +138,14 @@
         [UIView animateWithDuration: 0.3
                          animations: (^
                                       {
+                                          if ([view hideTabbar])
+                                          {
+                                              [_tabbar setTransform: CGAffineTransformMakeTranslation(0, 768)];
+                                          }else
+                                          {
+                                              [_tabbar setTransform: CGAffineTransformIdentity];
+                                          }
+                                          
                                           if ([viewStack count] > 1)
                                           {
                                               [[_navigationBarView leftNavigationButton] setAlpha: 1];
@@ -165,7 +173,15 @@
         NSMutableArray *viewStack = _viewStacks[_currentIndex];
         
         GRContentView *currentView = [viewStack lastObject];
-        CGRect frame = [currentView frame];
+        CGRect frame = [_contentView bounds];
+        
+        if ([contentView hideTabbar])
+        {
+            frame.size.height += [_tabbar frame].size.height;
+        }else
+        {
+            
+        }
         
         [contentView setFrame: frame];
         [contentView setTransform: CGAffineTransformMakeTranslation(frame.size.width, 0)];
@@ -174,6 +190,9 @@
         
         [viewStack addObject: contentView];
         [_contentView addSubview: contentView];
+        
+        UIButton *rightNavigationButton = [contentView rightNavigationButton];
+        
         
         //update navigation button
         //
@@ -184,6 +203,14 @@
                                           
                                           [contentView setTransform: CGAffineTransformIdentity];
                                           [currentView setTransform: CGAffineTransformMakeTranslation(-frame.size.width, 0)];
+                                          
+                                          if ([contentView hideTabbar])
+                                          {
+                                              [_tabbar setTransform: CGAffineTransformMakeTranslation(0, 700)];
+                                          }else
+                                          {
+                                              [_tabbar setTransform: CGAffineTransformIdentity];
+                                          }
                                       })
                          completion: (^(BOOL finished)
                                       {
@@ -227,6 +254,14 @@
                                           
                                           [newView setTransform: CGAffineTransformIdentity];
                                           [currentView setTransform: CGAffineTransformMakeTranslation(frame.size.width, 0)];
+                                          
+                                          if ([newView hideTabbar])
+                                          {
+                                              [_tabbar setTransform: CGAffineTransformMakeTranslation(0, 768)];
+                                          }else
+                                          {
+                                              [_tabbar setTransform: CGAffineTransformIdentity];
+                                          }
                                       })
                          completion: (^(BOOL finished)
                                       {

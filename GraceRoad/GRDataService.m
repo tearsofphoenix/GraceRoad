@@ -10,6 +10,7 @@
 #import "GRResourceKey.h"
 #import "GRSermonKeys.h"
 #import "GRShared.h"
+#import "GRPrayKeys.h"
 
 #import <NoahsUtility/NoahsUtility.h>
 
@@ -20,6 +21,7 @@
     NSMutableArray *_resourceCategories;
     NSMutableDictionary *_resources;
     NSMutableArray *_sermons;
+    NSMutableArray *_prayList;
 }
 @end
 
@@ -211,6 +213,23 @@
             [userDefaults setBool: YES
                            forKey: GRLocalNotificationScheduleKey];
         }
+        
+        _prayList = [[NSMutableArray alloc] init];
+        [_prayList addObject: (@{
+                                 GRPrayTitleKey : @"为福音广传祷告",
+                                 GRPrayContentKey : @"传福音是每个基督徒的使命，请为这使命献上祷告。",
+                                 GRPrayUploadDateKey : [NSDate date],
+                                 })];
+        [_prayList addObject: (@{
+                                 GRPrayTitleKey : @"为恩典教会的复兴祷告",
+                                 GRPrayContentKey : @"教会需要复兴，需要在地上见证主、传扬主，请为教会献上祷告",
+                                 GRPrayUploadDateKey : [NSDate date],
+                                 })];
+        [_prayList addObject: (@{
+                                 GRPrayTitleKey : @"为自己的难处和软弱祷告",
+                                 GRPrayContentKey : @"所以我们只管坦然无惧的、来到施恩的宝座前、为要得怜恤、蒙恩惠作随时的帮助。(来4:16)",
+                                 GRPrayUploadDateKey : [NSDate date],
+                                 })];
     }
     
     return self;
@@ -229,6 +248,11 @@
 - (NSArray *)allSermons
 {
     return _sermons;
+}
+
+- (NSArray *)allPrayList
+{
+    return _prayList;
 }
 
 @end
