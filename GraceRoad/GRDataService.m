@@ -287,6 +287,14 @@
                         {
                             callback(nil, nil);
                         }
+                        
+                        dispatch_async(dispatch_get_main_queue(),
+                                       (^
+                                        {
+                                            [[NSNotificationCenter defaultCenter] postNotificationName: GRAccountLoginNotification
+                                                                                                object: nil
+                                                                                              userInfo: nil];                                            
+                                        }));
                     }));
 }
 
@@ -298,6 +306,15 @@
 - (NSDictionary *)currentAccount
 {
     return [[NSUserDefaults standardUserDefaults] objectForKey: GRCurrentAccountKey];
+}
+
+- (void)logout
+{
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey: GRCurrentAccountKey];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName: GRAccountLogoutNotification
+                                                        object: nil
+                                                      userInfo: nil];
 }
 
 - (NSDictionary *)allResources

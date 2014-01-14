@@ -7,9 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "GRContentView.h"
 
-@interface GRLoginView : GRContentView
+@interface GRLoginView : UIView
 
 @property (nonatomic, copy) dispatch_block_t disposableCallback;
 

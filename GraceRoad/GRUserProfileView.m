@@ -7,19 +7,14 @@
 //
 
 #import "GRUserProfileView.h"
-#import "GRAccountKeys.h"
+#import "GRLoginView.h"
+#import "GRUserDetailView.h"
 #import "GRDataService.h"
-
-#import <QuartzCore/QuartzCore.h>
 
 @interface GRUserProfileView ()
 {
-    UIScrollView *_scrollView;
-    
-    UIImageView *_avatarView;
-    UILabel *_nameLabel;
-    
-    UILabel *_noteLabel;    
+    GRLoginView *_loginView;
+    GRUserDetailView *_detailView;
 }
 @end
 
@@ -31,38 +26,34 @@
     self = [super initWithFrame: frame];
     if (self)
     {
-        [self setTitle: @"我的信息"];
         [self setHideTabbar: YES];
+        CGRect bounds = [self bounds];
         
-        _scrollView = [[UIScrollView alloc] initWithFrame: [self bounds]];
-        [self addSubview: _scrollView];
+        _detailView = [[GRUserDetailView alloc] initWithFrame: bounds];
+        [self addSubview: _detailView];
         
-        UIImageView *avatarBackgroundView = [[UIImageView alloc] initWithFrame: CGRectMake(0, 0, 320, 211)];
-        [avatarBackgroundView setImage: [UIImage imageNamed: @"GRAvatarBackground"]];
-        [_scrollView addSubview: avatarBackgroundView];
-        [avatarBackgroundView release];
-        
-        _avatarView = [[UIImageView alloc] initWithFrame: CGRectMake(110, 43, 100, 100)];
-        [[_avatarView layer] setCornerRadius: 50];
-        [_avatarView setImage: [UIImage imageNamed: @"GRExampleAvatar"]];
-        [_avatarView setClipsToBounds: YES];
-        
-        [_scrollView addSubview: _avatarView];
-        
-        _nameLabel = [[UILabel alloc] initWithFrame: CGRectMake(30, 158, 260, 40)];
-        [_nameLabel setTextColor: [UIColor whiteColor]];
-        [_nameLabel setTextAlignment: NSTextAlignmentCenter];
-        [_nameLabel setBackgroundColor: [UIColor clearColor]];
-        [_scrollView addSubview: _nameLabel];
-        
-        _noteLabel = [[UILabel alloc] initWithFrame: CGRectMake(0, 220, 320, 60)];
-        [_noteLabel setBackgroundColor: [UIColor clearColor]];
-        [_scrollView addSubview: _noteLabel];
-
-        NSDictionary *accountInfo = ERSSC(GRDataServiceID, GRDataServiceCurrentAccountAction, nil);
-        if (accountInfo)
+        if (!ERSSC(GRDataServiceID, GRDataServiceCurrentAccountAction, nil))
         {
-            [_nameLabel setText: accountInfo[GRAccountEmailKey]];
+            [_detailView setAlpha: 0];
+            
+            _loginView = [[GRLoginView alloc] initWithFrame: bounds];
+            [_loginView setDisposableCallback: (^
+                                                {
+                                                    [self setTitle: @"我的信息"];
+
+                                                    [UIView animateWithDuration: 0.3
+                                                                     animations: (^
+                                                                                  {
+                                                                                      [_loginView setAlpha: 0];
+                                                                                      [_detailView setAlpha: 1];
+                                                                                  })];
+                                                })];
+            
+            [self addSubview: _loginView];
+            [self setTitle: @"组长登陆"];
+        }else
+        {
+            [self setTitle: @"我的信息"];
         }
     }
     return self;
@@ -70,12 +61,20 @@
 
 - (void)dealloc
 {
-    [_scrollView release];
-    [_avatarView release];
-    [_nameLabel release];
-    [_noteLabel release];
+    [_detailView release];
+    [_loginView release];
     
     [super dealloc];
+}
+
+- (void)setFrame: (CGRect)frame
+{
+    [super setFrame: frame];
+    
+    CGRect rect = [self bounds];
+    
+    [_loginView setFrame: rect];
+    [_detailView setFrame: rect];
 }
 
 @end

@@ -85,32 +85,7 @@
     [[self view] addSubview: _contentView];
     
     [_tabbar setBackgroundColor: [UIColor colorWithRed:0.31f green:0.32f blue:0.33f alpha:1.00f]];
-    
-    NSDictionary *account = ERSSC(GRDataServiceID, GRDataServiceCurrentAccountAction, nil);
-    
-    if (!account)
-    {
-        GRLoginView *loginView = [[GRLoginView alloc] initWithFrame: [[self view] bounds]];
-        [loginView setDisposableCallback: (^
-                                           {
-                                               [UIView animateWithDuration: 0.3
-                                                                animations: (^
-                                                                             {
-                                                                                 [loginView setAlpha: 0];
-                                                                                 [_contentView setAlpha: 1];
-                                                                             })
-                                                                completion: (^(BOOL finished)
-                                                                             {
-                                                                                 [loginView removeFromSuperview];
-                                                                             })];
-                                           })];
-        
-        [[self view] addSubview: loginView];
-        [loginView release];
-        
-        [_contentView setAlpha: 0];
-    }
-    
+  
     CGRect contentBounds = [_contentView bounds];
     
     GRIntroductView *introductView = [[GRIntroductView alloc] initWithFrame: contentBounds];
@@ -253,14 +228,19 @@
         NSMutableArray *viewStack = _viewStacks[_currentIndex];
         
         GRContentView *currentView = [viewStack lastObject];
-        CGRect frame = [_contentView bounds];
+        CGRect frame = [_contentView frame];
         
         if ([contentView hideTabbar])
         {
-            frame.size.height += [_tabbar frame].size.height;
+            frame.size.height = [[self view] bounds].size.height - [_navigationBarView bounds].size.height;
+        }else
+        {
+            frame.size.height = [[self view] bounds].size.height - [_navigationBarView bounds].size.height - [_tabbar frame].size.height;
         }
         
-        [contentView setFrame: frame];
+        [_contentView setFrame: frame];
+        [contentView setFrame: [_contentView bounds]];
+        
         [contentView setTransform: CGAffineTransformMakeTranslation(frame.size.width, 0)];
         [contentView setDelegate: _navigationBarView];
         [contentView willSwitchIn];
@@ -268,9 +248,7 @@
         [viewStack addObject: contentView];
         [_contentView addSubview: contentView];
         
-        UIButton *rightNavigationButton = [contentView rightNavigationButton];
-        
-        [_navigationBarView setRightNavigationButton: rightNavigationButton];
+        [self _updateContextForContentView: contentView];
         
         [self _resetTabbarFrame];
 
@@ -296,6 +274,15 @@
     }
 }
 
+- (void)_updateContextForContentView: (GRContentView *)contentView
+{
+    [_navigationBarView setTitle: [contentView title]];
+    [_contentView bringSubviewToFront: contentView];
+    
+    UIButton *rightNavigationButton = [contentView rightNavigationButton];
+    [_navigationBarView setRightNavigationButton: rightNavigationButton];
+}
+
 - (void)popLastContentView
 {
     [[[self view] firstResponder] resignFirstResponder];
@@ -315,12 +302,9 @@
         GRContentView *newView = [viewStack lastObject];
         
         [newView willSwitchIn];
-        [_navigationBarView setTitle: [newView title]];
-        [_contentView bringSubviewToFront: newView];
 
-        UIButton *rightNavigationButton = [newView rightNavigationButton];        
-        [_navigationBarView setRightNavigationButton: rightNavigationButton];
-
+        [self _updateContextForContentView: newView];
+        
         [UIView animateWithDuration: 0.3
                          animations: (^
                                       {

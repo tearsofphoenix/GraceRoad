@@ -15,6 +15,7 @@
 
 #define GRDataServiceCurrentAccountAction        @"currentAccount"
 #define GRDataServiceLoginAction                 @"loginUser:password:callback:"
+#define GRDataServiceLogoutAction                @"logout"
 #define GRDataServiceAddScriptureAlertAction     @"addScripture:"
 
 #define GRDataServiceAllResourcesAction          @"allResources"
@@ -23,6 +24,9 @@
 #define GRDataServiceAllSermonsAction            @"allSermons"
 
 #define GRDataServiceAllPrayListAction           @"allPrayList"
+
+#define GRAccountLoginNotification          GRPrefix ".notification.login"
+#define GRAccountLogoutNotification          GRPrefix ".notification.logout"
 
 @interface GRDataService : ERService
 

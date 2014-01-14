@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		600A73D7187059BE0089679A /* GRIntroductView.m in Sources */ = {isa = PBXBuildFile; fileRef = 600A73D6187059BE0089679A /* GRIntroductView.m */; };
+		600C338F1885797C00656A5D /* GRUserDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 600C338E1885797C00656A5D /* GRUserDetailView.m */; };
+		600C339818857E2000656A5D /* libiOSHierarchyViewer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 600C339518857E1000656A5D /* libiOSHierarchyViewer.a */; };
 		60B265FC1877BEFA008E881E /* UIView+FirstResponder.m in Sources */ = {isa = PBXBuildFile; fileRef = 60B265FB1877BEFA008E881E /* UIView+FirstResponder.m */; };
 		60B265FF1877C1D1008E881E /* GRSermonContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 60B265FE1877C1D1008E881E /* GRSermonContentView.m */; };
 		60B266061877CBFF008E881E /* 1.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 60B266041877CBFF008E881E /* 1.pdf */; };
@@ -66,15 +68,8 @@
 		927C9FAF186D66DC00DC0EDC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 927C9FAE186D66DC00DC0EDC /* main.m */; };
 		927C9FB3186D66DC00DC0EDC /* GRAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 927C9FB2186D66DC00DC0EDC /* GRAppDelegate.m */; };
 		927C9FB5186D66DC00DC0EDC /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 927C9FB4186D66DC00DC0EDC /* Images.xcassets */; };
-		927C9FBC186D66DC00DC0EDC /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 927C9FBB186D66DC00DC0EDC /* XCTest.framework */; };
-		927C9FBD186D66DC00DC0EDC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 927C9FA2186D66DC00DC0EDC /* Foundation.framework */; };
-		927C9FBE186D66DC00DC0EDC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 927C9FA6186D66DC00DC0EDC /* UIKit.framework */; };
-		927C9FC6186D66DC00DC0EDC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 927C9FC4186D66DC00DC0EDC /* InfoPlist.strings */; };
-		927C9FC8186D66DC00DC0EDC /* GraceRoadTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 927C9FC7186D66DC00DC0EDC /* GraceRoadTests.m */; };
 		927C9FD4186D675100DC0EDC /* GRMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 927C9FD2186D675100DC0EDC /* GRMainViewController.m */; };
 		927C9FD8186D69A700DC0EDC /* GRServeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 927C9FD7186D69A700DC0EDC /* GRServeView.m */; };
-		927CA091186D7A3200DC0EDC /* libKal.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 927CA08E186D7A2200DC0EDC /* libKal.a */; };
-		927CA096186D7E2000DC0EDC /* Kal.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 927CA095186D7E2000DC0EDC /* Kal.bundle */; };
 		927CA099186D7E7700DC0EDC /* GRPreferenceView.m in Sources */ = {isa = PBXBuildFile; fileRef = 927CA098186D7E7700DC0EDC /* GRPreferenceView.m */; };
 		927CA09C186D7FD600DC0EDC /* GRResourceView.m in Sources */ = {isa = PBXBuildFile; fileRef = 927CA09B186D7FD600DC0EDC /* GRResourceView.m */; };
 		927CA09F186D7FE300DC0EDC /* GRCommunicationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 927CA09E186D7FE300DC0EDC /* GRCommunicationView.m */; };
@@ -107,6 +102,20 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		600C339418857E1000656A5D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 600C339018857E0F00656A5D /* iOSHierarchyViewer.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 7C861E34153DF2E000935C95;
+			remoteInfo = iOSHierarchyViewer;
+		};
+		600C339618857E1B00656A5D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 600C339018857E0F00656A5D /* iOSHierarchyViewer.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 7C861E33153DF2E000935C95;
+			remoteInfo = iOSHierarchyViewer;
+		};
 		9267334A1872588400249E37 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 9267333D1872588400249E37 /* NoahsRecord.xcodeproj */;
@@ -121,32 +130,14 @@
 			remoteGlobalIDString = 60CBA11517715BA200E539A0;
 			remoteInfo = NoahsRecordStatic;
 		};
-		927C9FBF186D66DC00DC0EDC /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 927C9F97186D66DC00DC0EDC /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 927C9F9E186D66DC00DC0EDC;
-			remoteInfo = GraceRoad;
-		};
-		927CA08D186D7A2200DC0EDC /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 927CA089186D7A2200DC0EDC /* Kal.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = D2AAC07E0554694100DB518D;
-			remoteInfo = Kal;
-		};
-		927CA08F186D7A2D00DC0EDC /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 927CA089186D7A2200DC0EDC /* Kal.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = D2AAC07D0554694100DB518D;
-			remoteInfo = Kal;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		600A73D5187059BE0089679A /* GRIntroductView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRIntroductView.h; sourceTree = "<group>"; };
 		600A73D6187059BE0089679A /* GRIntroductView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GRIntroductView.m; sourceTree = "<group>"; };
+		600C338D1885797C00656A5D /* GRUserDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRUserDetailView.h; sourceTree = "<group>"; };
+		600C338E1885797C00656A5D /* GRUserDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GRUserDetailView.m; sourceTree = "<group>"; };
+		600C339018857E0F00656A5D /* iOSHierarchyViewer.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = iOSHierarchyViewer.xcodeproj; path = "iOS-Hierarchy-Viewer/iOSHierarchyViewer.xcodeproj"; sourceTree = "<group>"; };
 		60B265FA1877BEFA008E881E /* UIView+FirstResponder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+FirstResponder.h"; sourceTree = "<group>"; };
 		60B265FB1877BEFA008E881E /* UIView+FirstResponder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+FirstResponder.m"; sourceTree = "<group>"; };
 		60B265FD1877C1D1008E881E /* GRSermonContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRSermonContentView.h; sourceTree = "<group>"; };
@@ -222,7 +213,6 @@
 		927C9FB1186D66DC00DC0EDC /* GRAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GRAppDelegate.h; sourceTree = "<group>"; };
 		927C9FB2186D66DC00DC0EDC /* GRAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GRAppDelegate.m; sourceTree = "<group>"; };
 		927C9FB4186D66DC00DC0EDC /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		927C9FBA186D66DC00DC0EDC /* GraceRoadTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GraceRoadTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		927C9FBB186D66DC00DC0EDC /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		927C9FC3186D66DC00DC0EDC /* GraceRoadTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GraceRoadTests-Info.plist"; sourceTree = "<group>"; };
 		927C9FC5186D66DC00DC0EDC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -231,8 +221,6 @@
 		927C9FD2186D675100DC0EDC /* GRMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GRMainViewController.m; sourceTree = "<group>"; };
 		927C9FD6186D69A700DC0EDC /* GRServeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRServeView.h; sourceTree = "<group>"; };
 		927C9FD7186D69A700DC0EDC /* GRServeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GRServeView.m; sourceTree = "<group>"; };
-		927CA089186D7A2200DC0EDC /* Kal.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Kal.xcodeproj; path = Kal/Kal.xcodeproj; sourceTree = "<group>"; };
-		927CA095186D7E2000DC0EDC /* Kal.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Kal.bundle; path = Kal/Kal.bundle; sourceTree = "<group>"; };
 		927CA097186D7E7700DC0EDC /* GRPreferenceView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRPreferenceView.h; sourceTree = "<group>"; };
 		927CA098186D7E7700DC0EDC /* GRPreferenceView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GRPreferenceView.m; sourceTree = "<group>"; };
 		927CA09A186D7FD600DC0EDC /* GRResourceView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRResourceView.h; sourceTree = "<group>"; };
@@ -291,28 +279,39 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				600C339818857E2000656A5D /* libiOSHierarchyViewer.a in Frameworks */,
 				9267339F187266C600249E37 /* libsqlite3.dylib in Frameworks */,
 				9267334E187258C500249E37 /* libNoahsRecordStatic.a in Frameworks */,
-				927CA091186D7A3200DC0EDC /* libKal.a in Frameworks */,
 				927C9FA5186D66DC00DC0EDC /* CoreGraphics.framework in Frameworks */,
 				927C9FA7186D66DC00DC0EDC /* UIKit.framework in Frameworks */,
 				927C9FA3186D66DC00DC0EDC /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		927C9FB7186D66DC00DC0EDC /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				927C9FBC186D66DC00DC0EDC /* XCTest.framework in Frameworks */,
-				927C9FBE186D66DC00DC0EDC /* UIKit.framework in Frameworks */,
-				927C9FBD186D66DC00DC0EDC /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		600C338C1885793F00656A5D /* UserProfile */ = {
+			isa = PBXGroup;
+			children = (
+				92FFDF72187A505600FF3C15 /* GRLoginView.h */,
+				92FFDF73187A505600FF3C15 /* GRLoginView.m */,
+				92FFDF75187A5D3B00FF3C15 /* GRUserProfileView.h */,
+				92FFDF76187A5D3B00FF3C15 /* GRUserProfileView.m */,
+				600C338D1885797C00656A5D /* GRUserDetailView.h */,
+				600C338E1885797C00656A5D /* GRUserDetailView.m */,
+			);
+			name = UserProfile;
+			sourceTree = "<group>";
+		};
+		600C339118857E0F00656A5D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				600C339518857E1000656A5D /* libiOSHierarchyViewer.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		60B266001877C1D7008E881E /* Sermon */ = {
 			isa = PBXGroup;
 			children = (
@@ -390,10 +389,7 @@
 				927CA09E186D7FE300DC0EDC /* GRCommunicationView.m */,
 				600A73D5187059BE0089679A /* GRIntroductView.h */,
 				600A73D6187059BE0089679A /* GRIntroductView.m */,
-				92FFDF72187A505600FF3C15 /* GRLoginView.h */,
-				92FFDF73187A505600FF3C15 /* GRLoginView.m */,
-				92FFDF75187A5D3B00FF3C15 /* GRUserProfileView.h */,
-				92FFDF76187A5D3B00FF3C15 /* GRUserProfileView.m */,
+				600C338C1885793F00656A5D /* UserProfile */,
 				92568CCD1885117100994FC1 /* GRSettingsView.h */,
 				92568CCE1885117100994FC1 /* GRSettingsView.m */,
 				92FFDF7B187A7B8E00FF3C15 /* GRPrayKeys.h */,
@@ -426,7 +422,6 @@
 			isa = PBXGroup;
 			children = (
 				927C9F9F186D66DC00DC0EDC /* GraceRoad.app */,
-				927C9FBA186D66DC00DC0EDC /* GraceRoadTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -492,20 +487,11 @@
 		927CA014186D6FD500DC0EDC /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				600C339018857E0F00656A5D /* iOSHierarchyViewer.xcodeproj */,
 				929989A718768C2E0001EFDC /* Network */,
 				9267333D1872588400249E37 /* NoahsRecord.xcodeproj */,
-				927CA095186D7E2000DC0EDC /* Kal.bundle */,
-				927CA089186D7A2200DC0EDC /* Kal.xcodeproj */,
 			);
 			path = Library;
-			sourceTree = "<group>";
-		};
-		927CA08A186D7A2200DC0EDC /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				927CA08E186D7A2200DC0EDC /* libKal.a */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		9294D45318766575009352DB /* Shared */ = {
@@ -624,31 +610,13 @@
 			buildRules = (
 			);
 			dependencies = (
+				600C339718857E1B00656A5D /* PBXTargetDependency */,
 				9267334D187258B600249E37 /* PBXTargetDependency */,
-				927CA090186D7A2D00DC0EDC /* PBXTargetDependency */,
 			);
 			name = GraceRoad;
 			productName = GraceRoad;
 			productReference = 927C9F9F186D66DC00DC0EDC /* GraceRoad.app */;
 			productType = "com.apple.product-type.application";
-		};
-		927C9FB9186D66DC00DC0EDC /* GraceRoadTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 927C9FCE186D66DC00DC0EDC /* Build configuration list for PBXNativeTarget "GraceRoadTests" */;
-			buildPhases = (
-				927C9FB6186D66DC00DC0EDC /* Sources */,
-				927C9FB7186D66DC00DC0EDC /* Frameworks */,
-				927C9FB8186D66DC00DC0EDC /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				927C9FC0186D66DC00DC0EDC /* PBXTargetDependency */,
-			);
-			name = GraceRoadTests;
-			productName = GraceRoadTests;
-			productReference = 927C9FBA186D66DC00DC0EDC /* GraceRoadTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
@@ -659,11 +627,6 @@
 				CLASSPREFIX = GR;
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = Mac003;
-				TargetAttributes = {
-					927C9FB9186D66DC00DC0EDC = {
-						TestTargetID = 927C9F9E186D66DC00DC0EDC;
-					};
-				};
 			};
 			buildConfigurationList = 927C9F9A186D66DC00DC0EDC /* Build configuration list for PBXProject "GraceRoad" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -677,8 +640,8 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = 927CA08A186D7A2200DC0EDC /* Products */;
-					ProjectRef = 927CA089186D7A2200DC0EDC /* Kal.xcodeproj */;
+					ProductGroup = 600C339118857E0F00656A5D /* Products */;
+					ProjectRef = 600C339018857E0F00656A5D /* iOSHierarchyViewer.xcodeproj */;
 				},
 				{
 					ProductGroup = 9267333E1872588400249E37 /* Products */;
@@ -688,24 +651,23 @@
 			projectRoot = "";
 			targets = (
 				927C9F9E186D66DC00DC0EDC /* GraceRoad */,
-				927C9FB9186D66DC00DC0EDC /* GraceRoadTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
+		600C339518857E1000656A5D /* libiOSHierarchyViewer.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libiOSHierarchyViewer.a;
+			remoteRef = 600C339418857E1000656A5D /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		9267334B1872588400249E37 /* libNoahsRecordStatic.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
 			path = libNoahsRecordStatic.a;
 			remoteRef = 9267334A1872588400249E37 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		927CA08E186D7A2200DC0EDC /* libKal.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libKal.a;
-			remoteRef = 927CA08D186D7A2200DC0EDC /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -734,7 +696,6 @@
 				92CE914B1875699A00C7D3A1 /* GRIconPDF@2x.png in Resources */,
 				920B99951885259B006BD620 /* GRExampleAvatar@2x.png in Resources */,
 				92CE914718755BEB00C7D3A1 /* GRSermonTab@2x.png in Resources */,
-				927CA096186D7E2000DC0EDC /* Kal.bundle in Resources */,
 				60E649DD1878062400D5466B /* notifications0.plist in Resources */,
 				927C9FAD186D66DC00DC0EDC /* InfoPlist.strings in Resources */,
 				60E649DF1878062400D5466B /* notifications10.plist in Resources */,
@@ -771,14 +732,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		927C9FB8186D66DC00DC0EDC /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				927C9FC6186D66DC00DC0EDC /* InfoPlist.strings in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -793,6 +746,7 @@
 				92FFDF7A187A616400FF3C15 /* GRPrayView.m in Sources */,
 				927CA09F186D7FE300DC0EDC /* GRCommunicationView.m in Sources */,
 				929989B718768C2E0001EFDC /* MFCacheManagerInternal.m in Sources */,
+				600C338F1885797C00656A5D /* GRUserDetailView.m in Sources */,
 				60F8024B186E725400503117 /* GRNavigationBarView.m in Sources */,
 				600A73D7187059BE0089679A /* GRIntroductView.m in Sources */,
 				926733DC1872B9DD00249E37 /* GRResourceInfoView.m in Sources */,
@@ -822,31 +776,18 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		927C9FB6186D66DC00DC0EDC /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				927C9FC8186D66DC00DC0EDC /* GraceRoadTests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		600C339718857E1B00656A5D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = iOSHierarchyViewer;
+			targetProxy = 600C339618857E1B00656A5D /* PBXContainerItemProxy */;
+		};
 		9267334D187258B600249E37 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = NoahsRecordStatic;
 			targetProxy = 9267334C187258B600249E37 /* PBXContainerItemProxy */;
-		};
-		927C9FC0186D66DC00DC0EDC /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 927C9F9E186D66DC00DC0EDC /* GraceRoad */;
-			targetProxy = 927C9FBF186D66DC00DC0EDC /* PBXContainerItemProxy */;
-		};
-		927CA090186D7A2D00DC0EDC /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = Kal;
-			targetProxy = 927CA08F186D7A2D00DC0EDC /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -986,46 +927,6 @@
 			};
 			name = Release;
 		};
-		927C9FCF186D66DC00DC0EDC /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/GraceRoad.app/GraceRoad";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "GraceRoad/GraceRoad-Prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = "GraceRoadTests/GraceRoadTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
-			};
-			name = Debug;
-		};
-		927C9FD0186D66DC00DC0EDC /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/GraceRoad.app/GraceRoad";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "GraceRoad/GraceRoad-Prefix.pch";
-				INFOPLIST_FILE = "GraceRoadTests/GraceRoadTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1043,15 +944,6 @@
 			buildConfigurations = (
 				927C9FCC186D66DC00DC0EDC /* Debug */,
 				927C9FCD186D66DC00DC0EDC /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		927C9FCE186D66DC00DC0EDC /* Build configuration list for PBXNativeTarget "GraceRoadTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				927C9FCF186D66DC00DC0EDC /* Debug */,
-				927C9FD0186D66DC00DC0EDC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

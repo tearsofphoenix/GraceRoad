@@ -15,7 +15,7 @@
 
 @interface GRLoginView ()
 {
-    UIView *_loginContentView;
+    UIScrollView *_loginContentView;
     UILabel *_titleLabel;
     UILabel *_subtitleLabel;
     
@@ -30,16 +30,15 @@
 {
     self = [super initWithFrame:frame];
     if (self)
-    {
-        [self setHideTabbar: YES];
-        [self setTitle: @"登陆"];
-        
+    {        
         [self setBackgroundColor: [UIColor colorWithRed:47.0/255
                                                   green:168.0/255
                                                    blue:228.0/255
                                                   alpha:1.0f]];
         
-        _loginContentView = [[UIView alloc] initWithFrame: [self bounds]];
+        CGRect bounds = [self bounds];
+        
+        _loginContentView = [[UIScrollView alloc] initWithFrame: bounds];
         UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget: self
                                                                                                action: @selector(_handleBackgroundTappedEvent:)];
         [_loginContentView addGestureRecognizer: tapGestureRecognizer];
@@ -47,12 +46,15 @@
         
         [self addSubview: _loginContentView];
         
+        CGSize contentSize = CGSizeMake(bounds.size.width, 0);
+        
         CGFloat offsetY = 30;
         
         NSString* fontName = @"Optima-Italic";
         NSString* boldFontName = @"Optima-ExtraBlack";
         
-        _titleLabel = [[UILabel alloc] initWithFrame: CGRectMake(35, 46 + offsetY, 257, 90)];
+        CGRect rect = CGRectMake(35, 46 + offsetY, 257, 90);
+        _titleLabel = [[UILabel alloc] initWithFrame: rect];
         [_titleLabel setBackgroundColor: [UIColor clearColor]];
         [_titleLabel setTextColor: [UIColor whiteColor]];
         [_titleLabel setFont: [UIFont fontWithName: boldFontName
@@ -61,7 +63,9 @@
         [_titleLabel setNumberOfLines: 0];
         [_loginContentView addSubview: _titleLabel];
         
-        _subtitleLabel = [[UILabel alloc] initWithFrame: CGRectMake(35, 120 + offsetY, 257, 25)];
+        rect = CGRectMake(35, 120 + offsetY, 257, 25);
+        
+        _subtitleLabel = [[UILabel alloc] initWithFrame: rect];
         [_subtitleLabel setBackgroundColor: [UIColor clearColor]];
         [_subtitleLabel setTextColor: [UIColor whiteColor]];
         [_subtitleLabel setFont: [UIFont fontWithName: boldFontName
@@ -71,7 +75,8 @@
         
         [_loginContentView addSubview: _subtitleLabel];
         
-        _userNameField = [[UITextField alloc] initWithFrame: CGRectMake(29, 205 + offsetY, 263, 41)];
+        rect = CGRectMake(29, 205 + offsetY, 263, 41);
+        _userNameField = [[UITextField alloc] initWithFrame: rect];
         [_userNameField setBackgroundColor: [UIColor whiteColor]];
         [[_userNameField layer] setCornerRadius: 3];
         [_userNameField setPlaceholder: @"username"];
@@ -84,7 +89,8 @@
         
         [_loginContentView addSubview: _userNameField];
         
-        _passwordField = [[UITextField alloc] initWithFrame: CGRectMake(29, 254 + offsetY, 263, 41)];
+        rect = CGRectMake(29, 254 + offsetY, 263, 41);
+        _passwordField = [[UITextField alloc] initWithFrame: rect];
         [_passwordField setBackgroundColor: [UIColor whiteColor]];
         [[_passwordField layer] setCornerRadius: 3];
         [_passwordField setPlaceholder: @"password"];
@@ -96,11 +102,13 @@
         
         [_loginContentView addSubview: _passwordField];
         
+        
         UIColor* darkColor = [UIColor colorWithRed:10.0/255 green:78.0/255 blue:108.0/255 alpha:1.0f];
         
-        UIButton *loginButton = [[UIButton alloc] initWithFrame: CGRectMake(29, 343 + offsetY, 263, 50)];
+        rect = CGRectMake(29, 343 + offsetY, 263, 50);
+        UIButton *loginButton = [[UIButton alloc] initWithFrame: rect];
         
-        [loginButton setBackgroundColor: darkColor];
+        [loginButton setBackgroundColor: [UIColor redColor]];
         [[loginButton layer] setCornerRadius: 3.0f];
         [[loginButton titleLabel] setFont: [UIFont fontWithName: boldFontName
                                                            size: 20.0f]];
@@ -118,7 +126,8 @@
         [_loginContentView addSubview: loginButton];
         [loginButton release];
         
-        CGRect rect = CGRectMake(29, 415 + offsetY, 263, 19);
+
+        rect = CGRectMake(29, 415 + offsetY, 263, 19);
         UIButton *forgotPassworButton = [[UIButton alloc] initWithFrame: rect];
         
         [[forgotPassworButton layer] setCornerRadius: 3.0f];
@@ -138,24 +147,9 @@
         [_loginContentView addSubview: forgotPassworButton];
         [forgotPassworButton release];
         
-        rect.origin.y += rect.size.height + 10;
-
-        UIButton *jumpOverButton = [[UIButton alloc] initWithFrame: rect];
-        [[jumpOverButton layer] setCornerRadius: 3.0f];
-        [[jumpOverButton titleLabel] setFont: [UIFont fontWithName: boldFontName
-                                                              size: 12.0f]];
-        [jumpOverButton setTitle: @"跳过"
-                        forState: UIControlStateNormal];
-        [jumpOverButton setTitleColor: darkColor
-                             forState: UIControlStateNormal];
-        [jumpOverButton setTitleColor: [UIColor colorWithWhite: 1.0f
-                                                         alpha: 0.5f]
-                             forState: UIControlStateHighlighted];
-        [jumpOverButton addTarget: self
-                           action: @selector(_handleJumpOverButtonTappedEvent:)
-                 forControlEvents: UIControlEventTouchUpInside];
-        [_loginContentView addSubview: jumpOverButton];
-        [jumpOverButton release];
+        contentSize.height = rect.origin.y + rect.size.height + 20;
+        
+        [_loginContentView setContentSize: contentSize];
     }
     return self;
 }
@@ -172,6 +166,19 @@
     [_passwordField release];
     
     [super dealloc];
+}
+
+- (void)setFrame: (CGRect)frame
+{
+    [super setFrame: frame];
+    
+    CGRect rect = [_loginContentView frame];
+    CGRect bounds = [self bounds];
+    CGSize size = [_loginContentView contentSize];
+    size.height += bounds.size.height - rect.size.height;
+    
+    [_loginContentView setFrame: bounds];
+    [_loginContentView setContentSize: size];
 }
 
 
@@ -222,17 +229,9 @@
 
 - (void)_handleBackgroundTappedEvent: (id)sender
 {
+    NSLog(@"in func: %s", __func__);
+    
     [[self firstResponder] resignFirstResponder];
-}
-
-- (void)_handleJumpOverButtonTappedEvent: (id)sender
-{
-    if (_disposableCallback)
-    {
-        _disposableCallback();
-        
-        [self setDisposableCallback: nil];
-    }
 }
 
 @end

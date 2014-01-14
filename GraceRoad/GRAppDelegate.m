@@ -12,11 +12,22 @@
 #import "UIAlertView+BlockSupport.h"
 #import "GRDataService.h"
 
+@interface iOSHierarchyViewer : NSObject
+
++ (BOOL)start;
+
++ (void)stop;
+
+@end
+
+
 @implementation GRAppDelegate
 
 - (BOOL)          application: (UIApplication *)application
 didFinishLaunchingWithOptions: (NSDictionary *)launchOptions
 {
+    [iOSHierarchyViewer start];
+    
     [[UIApplication sharedApplication] setStatusBarHidden: YES];
     
     _window = [[UIWindow alloc] initWithFrame: [[UIScreen mainScreen] bounds]];
@@ -45,13 +56,8 @@ didReceiveLocalNotification: (UILocalNotification *)notification
     
     //has logged in?
     //
-    if (ERSSC(GRDataServiceID, GRDataServiceCurrentAccountAction, nil))
-    {
-        ERSC(GRViewServiceID, GRViewServiceShowDailyScriptureAction, @[ userInfo ], nil);
-    }else
-    {
-        ERSC(GRDataServiceID, GRDataServiceAddScriptureAlertAction, @[ userInfo ], nil);
-    }
+    ERSC(GRViewServiceID, GRViewServiceShowDailyScriptureAction, @[ userInfo ], nil);
+    
 }
 
 @end
