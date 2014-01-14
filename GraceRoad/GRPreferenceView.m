@@ -78,12 +78,12 @@ didSelectRowAtIndexPath: (NSIndexPath *)indexPath
     {
         case 0:
         {
-            GRSettingsView *settingsView = [[GRSettingsView alloc] initWithFrame: [self frame]];
+            GRUserProfileView *view = [[GRUserProfileView alloc] initWithFrame: [self frame]];
             
             ERSC(GRViewServiceID, GRViewServicePushContentViewAction,
-                 @[ settingsView ], nil);
+                 @[ view ], nil);
             
-            [settingsView release];
+            [view release];
             
             break;
         }

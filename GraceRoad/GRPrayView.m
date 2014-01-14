@@ -36,6 +36,7 @@
         _prayListView = [[UITableView alloc] initWithFrame: [self bounds]];
         [_prayListView setDataSource: self];
         [_prayListView setDelegate: self];
+        [_prayListView setBackgroundColor: [UIColor clearColor]];
         
         [self addSubview: _prayListView];
         

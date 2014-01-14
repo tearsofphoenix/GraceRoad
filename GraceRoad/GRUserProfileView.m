@@ -32,7 +32,7 @@
     if (self)
     {
         [self setTitle: @"我的信息"];
-        [self setBackgroundColor: [UIColor whiteColor]];
+        [self setHideTabbar: YES];
         
         _scrollView = [[UIScrollView alloc] initWithFrame: [self bounds]];
         [self addSubview: _scrollView];
@@ -44,7 +44,9 @@
         
         _avatarView = [[UIImageView alloc] initWithFrame: CGRectMake(110, 43, 100, 100)];
         [[_avatarView layer] setCornerRadius: 50];
-        [_avatarView setBackgroundColor: [UIColor redColor]];
+        [_avatarView setImage: [UIImage imageNamed: @"GRExampleAvatar"]];
+        [_avatarView setClipsToBounds: YES];
+        
         [_scrollView addSubview: _avatarView];
         
         _nameLabel = [[UILabel alloc] initWithFrame: CGRectMake(30, 158, 260, 40)];

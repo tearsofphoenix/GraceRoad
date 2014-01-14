@@ -43,8 +43,10 @@
 		60E649F71878062400D5466B /* notifications7.plist in Resources */ = {isa = PBXBuildFile; fileRef = 60E649DA1878062400D5466B /* notifications7.plist */; };
 		60E649F81878062400D5466B /* notifications8.plist in Resources */ = {isa = PBXBuildFile; fileRef = 60E649DB1878062400D5466B /* notifications8.plist */; };
 		60E649F91878062400D5466B /* notifications9.plist in Resources */ = {isa = PBXBuildFile; fileRef = 60E649DC1878062400D5466B /* notifications9.plist */; };
-		60E649FC18780AE600D5466B /* GRLoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = 60E649FB18780AE600D5466B /* GRLoginView.m */; };
 		60F8024B186E725400503117 /* GRNavigationBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 60F8024A186E725400503117 /* GRNavigationBarView.m */; };
+		920B99941885259B006BD620 /* GRExampleAvatar.png in Resources */ = {isa = PBXBuildFile; fileRef = 920B99921885259B006BD620 /* GRExampleAvatar.png */; };
+		920B99951885259B006BD620 /* GRExampleAvatar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 920B99931885259B006BD620 /* GRExampleAvatar@2x.png */; };
+		920B999718852B21006BD620 /* GRAddButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 920B999618852B21006BD620 /* GRAddButton@2x.png */; };
 		923ADEB51876B31900E20C2B /* GRContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 923ADEB41876B31900E20C2B /* GRContentView.m */; };
 		9242AEFF1876A87C00F9FEFB /* GRBackButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 9242AEFD1876A87B00F9FEFB /* GRBackButton.png */; };
 		9242AF001876A87C00F9FEFB /* GRBackButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9242AEFE1876A87C00F9FEFB /* GRBackButton@2x.png */; };
@@ -70,7 +72,6 @@
 		927C9FC6186D66DC00DC0EDC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 927C9FC4186D66DC00DC0EDC /* InfoPlist.strings */; };
 		927C9FC8186D66DC00DC0EDC /* GraceRoadTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 927C9FC7186D66DC00DC0EDC /* GraceRoadTests.m */; };
 		927C9FD4186D675100DC0EDC /* GRMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 927C9FD2186D675100DC0EDC /* GRMainViewController.m */; };
-		927C9FD5186D675100DC0EDC /* GRMainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 927C9FD3186D675100DC0EDC /* GRMainViewController.xib */; };
 		927C9FD8186D69A700DC0EDC /* GRServeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 927C9FD7186D69A700DC0EDC /* GRServeView.m */; };
 		927CA091186D7A3200DC0EDC /* libKal.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 927CA08E186D7A2200DC0EDC /* libKal.a */; };
 		927CA096186D7E2000DC0EDC /* Kal.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 927CA095186D7E2000DC0EDC /* Kal.bundle */; };
@@ -188,6 +189,9 @@
 		60F80249186E725400503117 /* GRNavigationBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRNavigationBarView.h; sourceTree = "<group>"; };
 		60F8024A186E725400503117 /* GRNavigationBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GRNavigationBarView.m; sourceTree = "<group>"; };
 		60F8024C186E730300503117 /* GRContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GRContentView.h; path = ../GRContentView.h; sourceTree = "<group>"; };
+		920B99921885259B006BD620 /* GRExampleAvatar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GRExampleAvatar.png; sourceTree = "<group>"; };
+		920B99931885259B006BD620 /* GRExampleAvatar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "GRExampleAvatar@2x.png"; sourceTree = "<group>"; };
+		920B999618852B21006BD620 /* GRAddButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "GRAddButton@2x.png"; sourceTree = "<group>"; };
 		923ADEB41876B31900E20C2B /* GRContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GRContentView.m; sourceTree = "<group>"; };
 		9242AEFD1876A87B00F9FEFB /* GRBackButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = GRBackButton.png; path = Main/GRBackButton.png; sourceTree = "<group>"; };
 		9242AEFE1876A87C00F9FEFB /* GRBackButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "GRBackButton@2x.png"; path = "Main/GRBackButton@2x.png"; sourceTree = "<group>"; };
@@ -225,7 +229,6 @@
 		927C9FC7186D66DC00DC0EDC /* GraceRoadTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GraceRoadTests.m; sourceTree = "<group>"; };
 		927C9FD1186D675100DC0EDC /* GRMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRMainViewController.h; sourceTree = "<group>"; };
 		927C9FD2186D675100DC0EDC /* GRMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GRMainViewController.m; sourceTree = "<group>"; };
-		927C9FD3186D675100DC0EDC /* GRMainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GRMainViewController.xib; sourceTree = "<group>"; };
 		927C9FD6186D69A700DC0EDC /* GRServeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRServeView.h; sourceTree = "<group>"; };
 		927C9FD7186D69A700DC0EDC /* GRServeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GRServeView.m; sourceTree = "<group>"; };
 		927CA089186D7A2200DC0EDC /* Kal.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Kal.xcodeproj; path = Kal/Kal.xcodeproj; sourceTree = "<group>"; };
@@ -450,7 +453,6 @@
 				927C9FB2186D66DC00DC0EDC /* GRAppDelegate.m */,
 				927C9FD1186D675100DC0EDC /* GRMainViewController.h */,
 				927C9FD2186D675100DC0EDC /* GRMainViewController.m */,
-				927C9FD3186D675100DC0EDC /* GRMainViewController.xib */,
 				927C9FB4186D66DC00DC0EDC /* Images.xcassets */,
 				92CE913B18755BEB00C7D3A1 /* Resources */,
 				927C9FA9186D66DC00DC0EDC /* Supporting Files */,
@@ -579,6 +581,9 @@
 		92CE913D18755BEB00C7D3A1 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				920B999618852B21006BD620 /* GRAddButton@2x.png */,
+				920B99921885259B006BD620 /* GRExampleAvatar.png */,
+				920B99931885259B006BD620 /* GRExampleAvatar@2x.png */,
 				92568CCB18850E5500994FC1 /* GRAvatarBackground.png */,
 				92568CC918850E3300994FC1 /* GRAvatarBackground@2x.png */,
 				92FFDF7C187A8CAE00FF3C15 /* GRAddButton.png */,
@@ -727,6 +732,7 @@
 				92FFDF7D187A8CAE00FF3C15 /* GRAddButton.png in Resources */,
 				60E649ED1878062400D5466B /* notifications23.plist in Resources */,
 				92CE914B1875699A00C7D3A1 /* GRIconPDF@2x.png in Resources */,
+				920B99951885259B006BD620 /* GRExampleAvatar@2x.png in Resources */,
 				92CE914718755BEB00C7D3A1 /* GRSermonTab@2x.png in Resources */,
 				927CA096186D7E2000DC0EDC /* Kal.bundle in Resources */,
 				60E649DD1878062400D5466B /* notifications0.plist in Resources */,
@@ -740,7 +746,9 @@
 				60E649E51878062400D5466B /* notifications16.plist in Resources */,
 				92568CCA18850E3400994FC1 /* GRAvatarBackground@2x.png in Resources */,
 				92CE914A1875699A00C7D3A1 /* GRIconPDF.png in Resources */,
+				920B99941885259B006BD620 /* GRExampleAvatar.png in Resources */,
 				60E649681877ECA800D5466B /* GRHeart.jpg in Resources */,
+				920B999718852B21006BD620 /* GRAddButton@2x.png in Resources */,
 				9242AEFF1876A87C00F9FEFB /* GRBackButton.png in Resources */,
 				60E649F31878062400D5466B /* notifications3.plist in Resources */,
 				60B266071877CBFF008E881E /* t0101.mp3 in Resources */,
@@ -750,7 +758,6 @@
 				60E649F41878062400D5466B /* notifications4.plist in Resources */,
 				92568CCC18850E5500994FC1 /* GRAvatarBackground.png in Resources */,
 				60E649E61878062400D5466B /* notifications17.plist in Resources */,
-				927C9FD5186D675100DC0EDC /* GRMainViewController.xib in Resources */,
 				60E649EA1878062400D5466B /* notifications20.plist in Resources */,
 				60E649E91878062400D5466B /* notifications2.plist in Resources */,
 				60E649F51878062400D5466B /* notifications5.plist in Resources */,

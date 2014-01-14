@@ -53,6 +53,37 @@
 {
     [super viewDidLoad];
     
+    CGRect bounds = [[self view] bounds];
+    
+    _navigationBarView = [[GRNavigationBarView alloc] initWithFrame: CGRectMake(0, 0, bounds.size.width, 44)];
+    [[self view] addSubview: _navigationBarView];
+    
+    _tabbar = [[UITabBar alloc] initWithFrame: CGRectMake(0, bounds.size.height - 49, bounds.size.width, 49)];
+    
+    UITabBarItem *item0 = [[UITabBarItem alloc] initWithTitle: @"教会简介"
+                                                        image: [UIImage imageNamed: @"GRLocationTab"]
+                                                          tag: 0];
+    UITabBarItem *item1 = [[UITabBarItem alloc] initWithTitle: @"资料"
+                                                        image: [UIImage imageNamed: @"GRResourceTab"]
+                                                          tag: 1];
+    UITabBarItem *item2 = [[UITabBarItem alloc] initWithTitle: @"讲道"
+                                                           image: [UIImage imageNamed: @"GRSermonTab"]
+                                                             tag: 2];
+    UITabBarItem *item3 = [[UITabBarItem alloc] initWithTitle: @"设置"
+                                                        image: [UIImage imageNamed: @"GRPreferenceTab"]
+                                                          tag: 3];
+    [_tabbar setItems: @[ item0, item1, item2, item3]];
+    [_tabbar setDelegate: self];
+    [[self view] addSubview: _tabbar];
+    
+    [item0 release];
+    [item1 release];
+    [item2 release];
+    [item3 release];
+    
+    _contentView = [[UIView alloc] initWithFrame: CGRectMake(0, 44, bounds.size.width, bounds.size.height - 44 - 49)];
+    [[self view] addSubview: _contentView];
+    
     [_tabbar setBackgroundColor: [UIColor colorWithRed:0.31f green:0.32f blue:0.33f alpha:1.00f]];
     
     NSDictionary *account = ERSSC(GRDataServiceID, GRDataServiceCurrentAccountAction, nil);
@@ -237,7 +268,9 @@
         [viewStack addObject: contentView];
         [_contentView addSubview: contentView];
         
-        //UIButton *rightNavigationButton = [contentView rightNavigationButton];
+        UIButton *rightNavigationButton = [contentView rightNavigationButton];
+        
+        [_navigationBarView setRightNavigationButton: rightNavigationButton];
         
         [self _resetTabbarFrame];
 
@@ -284,7 +317,10 @@
         [newView willSwitchIn];
         [_navigationBarView setTitle: [newView title]];
         [_contentView bringSubviewToFront: newView];
-        
+
+        UIButton *rightNavigationButton = [newView rightNavigationButton];        
+        [_navigationBarView setRightNavigationButton: rightNavigationButton];
+
         [UIView animateWithDuration: 0.3
                          animations: (^
                                       {

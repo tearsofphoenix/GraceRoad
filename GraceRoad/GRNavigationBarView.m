@@ -77,6 +77,22 @@
     return _leftNavigationButton;
 }
 
+- (void)setRightNavigationButton: (UIButton *)rightNavigationButton
+{
+    if (_rightNavigationButton != rightNavigationButton)
+    {
+        [_rightNavigationButton removeFromSuperview];
+        
+        _rightNavigationButton = rightNavigationButton;
+        
+        CGRect bounds = [self bounds];
+        
+        [_rightNavigationButton setFrame: CGRectMake(bounds.size.width - 40, 8, 28, 28)];
+        
+        [self addSubview: rightNavigationButton];
+    }
+}
+
 - (void)_handleLeftButtonTappedEvent: (id)sender
 {
     ERSC(GRViewServiceID,

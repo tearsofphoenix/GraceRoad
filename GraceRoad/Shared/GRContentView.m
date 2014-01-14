@@ -16,6 +16,19 @@
 
 @implementation GRContentView
 
+- (id)initWithFrame: (CGRect)frame
+{
+    if ((self = [super initWithFrame: frame]))
+    {
+        [self setBackgroundColor: [UIColor colorWithRed: 0.93f
+                                                  green: 0.95f
+                                                   blue: 0.96f
+                                                  alpha: 1.00f]];
+    }
+    
+    return self;
+}
+
 - (void)setTitle: (NSString *)title
 {
     if (_title != title)
@@ -56,11 +69,6 @@
 - (void)didSwitchOut
 {
     
-}
-
-- (UIButton *)leftNavigationButton
-{
-    return nil;
 }
 
 - (UIButton *)rightNavigationButton

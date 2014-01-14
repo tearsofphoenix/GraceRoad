@@ -28,8 +28,6 @@
 
 @optional
 
-- (UIButton *)leftNavigationButton;
-
 - (UIButton *)rightNavigationButton;
 
 @end
