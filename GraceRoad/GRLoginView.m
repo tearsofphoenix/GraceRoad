@@ -150,6 +150,15 @@
         contentSize.height = rect.origin.y + rect.size.height + 20;
         
         [_loginContentView setContentSize: contentSize];
+        
+        [[NSNotificationCenter defaultCenter] addObserver: self
+                                                 selector: @selector(_notificationForKeyboardShow:)
+                                                     name: UIKeyboardWillShowNotification
+                                                   object: nil];
+        [[NSNotificationCenter defaultCenter] addObserver: self
+                                                 selector: @selector(_notificationForKeyboardHide:)
+                                                     name: UIKeyboardWillHideNotification
+                                                   object: nil];
     }
     return self;
 }
@@ -157,6 +166,8 @@
 - (void)dealloc
 {
     NSLog(@"in func: %s", __func__);
+    
+    [[NSNotificationCenter defaultCenter] removeObserver: self];
     
     [_loginContentView release];
     [_titleLabel release];
@@ -232,6 +243,20 @@
     NSLog(@"in func: %s", __func__);
     
     [[self firstResponder] resignFirstResponder];
+}
+
+- (void)_notificationForKeyboardShow: (NSNotification *)notification
+{
+    NSDictionary *userInfo = [notification userInfo];
+    CGRect frame = [userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
+    frame = [self convertRect: frame
+                     fromView: nil];
+    
+}
+
+- (void)_notificationForKeyboardHide: (NSNotification *)notification
+{
+    [_loginContentView setContentOffset: CGPointZero];
 }
 
 @end

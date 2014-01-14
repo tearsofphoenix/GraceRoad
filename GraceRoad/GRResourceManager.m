@@ -77,6 +77,7 @@ static NSString *gsResourcePath = nil;
 + (void)downloadFileWithSubPath: (NSString *)subPath
                        callback: (GRResourceCallback)callback
 {
+#if 0
     [MFNetworkClient downloadFileAtPath: [self _packResourcePathWithSubPath: subPath]
                             enableCache: NO
                                callback: (^(NSData *data, id error)
@@ -98,6 +99,27 @@ static NSString *gsResourcePath = nil;
                                                                   }
                                                               }));
                                           })];
+#else
+    NSString *path = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent: subPath];
+    NSData *data = [NSData dataWithContentsOfFile: path];
+
+    double delayInSeconds = 1.0;
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+    dispatch_after(popTime, dispatch_get_main_queue(),
+                   (^(void)
+                    {
+                        if (data)
+                        {
+                            [data writeToFile: [[self resourcePath] stringByAppendingPathComponent: subPath]
+                                   atomically: YES];
+                        }
+                        
+                        if (callback)
+                        {
+                            callback(data, nil);
+                        }
+                    }));
+#endif
 }
 
 @end

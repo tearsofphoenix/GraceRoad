@@ -10,6 +10,7 @@
 		600A73D7187059BE0089679A /* GRIntroductView.m in Sources */ = {isa = PBXBuildFile; fileRef = 600A73D6187059BE0089679A /* GRIntroductView.m */; };
 		600C338F1885797C00656A5D /* GRUserDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 600C338E1885797C00656A5D /* GRUserDetailView.m */; };
 		600C339818857E2000656A5D /* libiOSHierarchyViewer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 600C339518857E1000656A5D /* libiOSHierarchyViewer.a */; };
+		600C339A188588E600656A5D /* 1.html in Resources */ = {isa = PBXBuildFile; fileRef = 600C3399188588E600656A5D /* 1.html */; };
 		60B265FC1877BEFA008E881E /* UIView+FirstResponder.m in Sources */ = {isa = PBXBuildFile; fileRef = 60B265FB1877BEFA008E881E /* UIView+FirstResponder.m */; };
 		60B265FF1877C1D1008E881E /* GRSermonContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 60B265FE1877C1D1008E881E /* GRSermonContentView.m */; };
 		60B266061877CBFF008E881E /* 1.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 60B266041877CBFF008E881E /* 1.pdf */; };
@@ -138,6 +139,7 @@
 		600C338D1885797C00656A5D /* GRUserDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRUserDetailView.h; sourceTree = "<group>"; };
 		600C338E1885797C00656A5D /* GRUserDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GRUserDetailView.m; sourceTree = "<group>"; };
 		600C339018857E0F00656A5D /* iOSHierarchyViewer.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = iOSHierarchyViewer.xcodeproj; path = "iOS-Hierarchy-Viewer/iOSHierarchyViewer.xcodeproj"; sourceTree = "<group>"; };
+		600C3399188588E600656A5D /* 1.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = 1.html; path = Images/Main/1.html; sourceTree = "<group>"; };
 		60B265FA1877BEFA008E881E /* UIView+FirstResponder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+FirstResponder.h"; sourceTree = "<group>"; };
 		60B265FB1877BEFA008E881E /* UIView+FirstResponder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+FirstResponder.m"; sourceTree = "<group>"; };
 		60B265FD1877C1D1008E881E /* GRSermonContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRSermonContentView.h; sourceTree = "<group>"; };
@@ -557,6 +559,7 @@
 				60E649BF1878062400D5466B /* notifications */,
 				60E649851877FB1D00D5466B /* notifications.plist */,
 				60B266041877CBFF008E881E /* 1.pdf */,
+				600C3399188588E600656A5D /* 1.html */,
 				60B266051877CBFF008E881E /* t0101.mp3 */,
 				92CE913C18755BEB00C7D3A1 /* gr.sqlite */,
 				92CE913D18755BEB00C7D3A1 /* Images */,
@@ -688,6 +691,7 @@
 				60E649861877FB1D00D5466B /* notifications.plist in Resources */,
 				9294D45118766369009352DB /* GRAudio.png in Resources */,
 				92CE914618755BEB00C7D3A1 /* GRResourceTab@2x.png in Resources */,
+				600C339A188588E600656A5D /* 1.html in Resources */,
 				60E649E31878062400D5466B /* notifications14.plist in Resources */,
 				60E649F11878062400D5466B /* notifications27.plist in Resources */,
 				60E649E01878062400D5466B /* notifications11.plist in Resources */,

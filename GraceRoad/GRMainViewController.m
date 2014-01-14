@@ -166,9 +166,17 @@
         rect.origin.y = frame.size.height + rect.size.height;
 
         [_tabbar setFrame: rect];
-        //[_tabbar setTransform: CGAffineTransformMakeTranslation(0, 768)];
+
+        frame = [_contentView frame];
+        frame.size.height = [[self view] bounds].size.height - [_navigationBarView bounds].size.height;
+        [_contentView setFrame: frame];
+        
     }else
     {
+        CGRect frame = [_contentView frame];
+        frame.size.height = [[self view] bounds].size.height - [_navigationBarView bounds].size.height - [_tabbar frame].size.height;
+        [_contentView setFrame: frame];
+        
         [self _resetTabbarFrame];
         //[_tabbar setTransform: CGAffineTransformIdentity];
     }

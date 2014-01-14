@@ -66,7 +66,7 @@
                                      GRResourceID : [[ERUUID UUID] stringDescription],
                                      GRResourceName : @"第一周作业",
                                      GRResourceAbstract : @"作业的内容是...",
-                                     GRResourcePath : @"1.pdf",
+                                     GRResourcePath : @"1.html",
                                      GRResourceUploadDate : date,
                                      GRResourceTypeName : GRResourceTypePDF,
                                      }),
