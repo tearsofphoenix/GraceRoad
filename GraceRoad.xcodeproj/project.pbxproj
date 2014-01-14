@@ -48,6 +48,10 @@
 		923ADEB51876B31900E20C2B /* GRContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 923ADEB41876B31900E20C2B /* GRContentView.m */; };
 		9242AEFF1876A87C00F9FEFB /* GRBackButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 9242AEFD1876A87B00F9FEFB /* GRBackButton.png */; };
 		9242AF001876A87C00F9FEFB /* GRBackButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9242AEFE1876A87C00F9FEFB /* GRBackButton@2x.png */; };
+		92568CCA18850E3400994FC1 /* GRAvatarBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 92568CC918850E3300994FC1 /* GRAvatarBackground@2x.png */; };
+		92568CCC18850E5500994FC1 /* GRAvatarBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 92568CCB18850E5500994FC1 /* GRAvatarBackground.png */; };
+		92568CCF1885117100994FC1 /* GRSettingsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 92568CCE1885117100994FC1 /* GRSettingsView.m */; };
+		92568CD21885148300994FC1 /* UISwitch+BlockSupport.m in Sources */ = {isa = PBXBuildFile; fileRef = 92568CD11885148300994FC1 /* UISwitch+BlockSupport.m */; };
 		9267334E187258C500249E37 /* libNoahsRecordStatic.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9267334B1872588400249E37 /* libNoahsRecordStatic.a */; };
 		9267339F187266C600249E37 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9267339E187266C600249E37 /* libsqlite3.dylib */; };
 		926733D91872A84100249E37 /* GRDataService.m in Sources */ = {isa = PBXBuildFile; fileRef = 926733D81872A84100249E37 /* GRDataService.m */; };
@@ -187,6 +191,13 @@
 		923ADEB41876B31900E20C2B /* GRContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GRContentView.m; sourceTree = "<group>"; };
 		9242AEFD1876A87B00F9FEFB /* GRBackButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = GRBackButton.png; path = Main/GRBackButton.png; sourceTree = "<group>"; };
 		9242AEFE1876A87C00F9FEFB /* GRBackButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "GRBackButton@2x.png"; path = "Main/GRBackButton@2x.png"; sourceTree = "<group>"; };
+		92568CC81885030800994FC1 /* GRAccountKeys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRAccountKeys.h; sourceTree = "<group>"; };
+		92568CC918850E3300994FC1 /* GRAvatarBackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "GRAvatarBackground@2x.png"; sourceTree = "<group>"; };
+		92568CCB18850E5500994FC1 /* GRAvatarBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GRAvatarBackground.png; sourceTree = "<group>"; };
+		92568CCD1885117100994FC1 /* GRSettingsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRSettingsView.h; sourceTree = "<group>"; };
+		92568CCE1885117100994FC1 /* GRSettingsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GRSettingsView.m; sourceTree = "<group>"; };
+		92568CD01885148300994FC1 /* UISwitch+BlockSupport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UISwitch+BlockSupport.h"; sourceTree = "<group>"; };
+		92568CD11885148300994FC1 /* UISwitch+BlockSupport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UISwitch+BlockSupport.m"; sourceTree = "<group>"; };
 		9267333C187254F500249E37 /* GRResourceKey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRResourceKey.h; sourceTree = "<group>"; };
 		9267333D1872588400249E37 /* NoahsRecord.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = NoahsRecord.xcodeproj; path = NoahsRecord/NoahsRecord.xcodeproj; sourceTree = "<group>"; };
 		9267339E187266C600249E37 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
@@ -380,6 +391,8 @@
 				92FFDF73187A505600FF3C15 /* GRLoginView.m */,
 				92FFDF75187A5D3B00FF3C15 /* GRUserProfileView.h */,
 				92FFDF76187A5D3B00FF3C15 /* GRUserProfileView.m */,
+				92568CCD1885117100994FC1 /* GRSettingsView.h */,
+				92568CCE1885117100994FC1 /* GRSettingsView.m */,
 				92FFDF7B187A7B8E00FF3C15 /* GRPrayKeys.h */,
 				92FFDF78187A616400FF3C15 /* GRPrayView.h */,
 				92FFDF79187A616400FF3C15 /* GRPrayView.m */,
@@ -503,6 +516,8 @@
 				923ADEB41876B31900E20C2B /* GRContentView.m */,
 				60B265FA1877BEFA008E881E /* UIView+FirstResponder.h */,
 				60B265FB1877BEFA008E881E /* UIView+FirstResponder.m */,
+				92568CD01885148300994FC1 /* UISwitch+BlockSupport.h */,
+				92568CD11885148300994FC1 /* UISwitch+BlockSupport.m */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -537,6 +552,7 @@
 		929989C6187692450001EFDC /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				92568CC81885030800994FC1 /* GRAccountKeys.h */,
 				926733D71872A84100249E37 /* GRDataService.h */,
 				926733D81872A84100249E37 /* GRDataService.m */,
 				926733DD1872BA1200249E37 /* GRResourceManager.h */,
@@ -563,6 +579,8 @@
 		92CE913D18755BEB00C7D3A1 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				92568CCB18850E5500994FC1 /* GRAvatarBackground.png */,
+				92568CC918850E3300994FC1 /* GRAvatarBackground@2x.png */,
 				92FFDF7C187A8CAE00FF3C15 /* GRAddButton.png */,
 				60E649671877ECA800D5466B /* GRHeart.jpg */,
 				9242AEFD1876A87B00F9FEFB /* GRBackButton.png */,
@@ -720,6 +738,7 @@
 				92CE914518755BEB00C7D3A1 /* GRPreferenceTab@2x.png in Resources */,
 				60E649DE1878062400D5466B /* notifications1.plist in Resources */,
 				60E649E51878062400D5466B /* notifications16.plist in Resources */,
+				92568CCA18850E3400994FC1 /* GRAvatarBackground@2x.png in Resources */,
 				92CE914A1875699A00C7D3A1 /* GRIconPDF.png in Resources */,
 				60E649681877ECA800D5466B /* GRHeart.jpg in Resources */,
 				9242AEFF1876A87C00F9FEFB /* GRBackButton.png in Resources */,
@@ -729,6 +748,7 @@
 				60E649F91878062400D5466B /* notifications9.plist in Resources */,
 				9294D45218766369009352DB /* GRAudio@2x.png in Resources */,
 				60E649F41878062400D5466B /* notifications4.plist in Resources */,
+				92568CCC18850E5500994FC1 /* GRAvatarBackground.png in Resources */,
 				60E649E61878062400D5466B /* notifications17.plist in Resources */,
 				927C9FD5186D675100DC0EDC /* GRMainViewController.xib in Resources */,
 				60E649EA1878062400D5466B /* notifications20.plist in Resources */,
@@ -775,10 +795,12 @@
 				60B265FF1877C1D1008E881E /* GRSermonContentView.m in Sources */,
 				9294D456187665A5009352DB /* UIAlertView+BlockSupport.m in Sources */,
 				929989B818768C2E0001EFDC /* MFNetworkClient.m in Sources */,
+				92568CCF1885117100994FC1 /* GRSettingsView.m in Sources */,
 				92CE91391874F9DB00C7D3A1 /* GRSermonView.m in Sources */,
 				927C9FD4186D675100DC0EDC /* GRMainViewController.m in Sources */,
 				60B265FC1877BEFA008E881E /* UIView+FirstResponder.m in Sources */,
 				92FFDF77187A5D3B00FF3C15 /* GRUserProfileView.m in Sources */,
+				92568CD21885148300994FC1 /* UISwitch+BlockSupport.m in Sources */,
 				929989B618768C2E0001EFDC /* MFCacheManager.m in Sources */,
 				927CA09C186D7FD600DC0EDC /* GRResourceView.m in Sources */,
 				927C9FD8186D69A700DC0EDC /* GRServeView.m in Sources */,

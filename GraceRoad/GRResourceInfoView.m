@@ -23,6 +23,7 @@
     self = [super initWithFrame:frame];
     if (self)
     {
+        [self setHideTabbar: YES];
         [self setBackgroundColor: [UIColor whiteColor]];
         
         _webView = [[UIWebView alloc] initWithFrame: [self bounds]];
@@ -39,6 +40,13 @@
     [_webView release];
     
     [super dealloc];
+}
+
+- (void)setFrame: (CGRect)frame
+{
+    [super setFrame: frame];
+    
+    [_webView setFrame: [self bounds]];
 }
 
 - (void)setResourceInfo: (NSDictionary *)resourceInfo

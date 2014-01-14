@@ -11,6 +11,11 @@
 
 #define GRDataServiceID                 GRPrefix ".service.data"
 
+#pragma mark - account
+
+#define GRDataServiceCurrentAccountAction        @"currentAccount"
+#define GRDataServiceLoginAction                 @"loginUser:password:callback:"
+#define GRDataServiceAddScriptureAlertAction     @"addScripture:"
 
 #define GRDataServiceAllResourcesAction          @"allResources"
 #define GRDataServiceAllResourceCategoriesAction @"allResourceCategories"

@@ -11,10 +11,14 @@
 #import "GRSermonKeys.h"
 #import "GRShared.h"
 #import "GRPrayKeys.h"
+#import "GRViewService.h"
+#import "GRAccountKeys.h"
+#import "NSString+CMBExtensions.h"
 
 #import <NoahsUtility/NoahsUtility.h>
 
 #define GRLocalNotificationScheduleKey  GRPrefix ".hasScheduled"
+#define GRCurrentAccountKey             GRPrefix ".current-account"
 
 @interface GRDataService ()
 {
@@ -22,6 +26,7 @@
     NSMutableDictionary *_resources;
     NSMutableArray *_sermons;
     NSMutableArray *_prayList;
+    NSMutableArray *_scriptures;
 }
 @end
 
@@ -41,6 +46,7 @@
 {
     if ((self = [super init]))
     {
+        _scriptures = [[NSMutableArray alloc] init];
         _resourceCategories = [[NSMutableArray alloc] init];
         _resources = [[NSMutableDictionary alloc] init];
         
@@ -233,6 +239,65 @@
     }
     
     return self;
+}
+
+- (void)loginUser: (NSString *)userName
+         password: (NSString *)password
+         callback: (ERServiceCallback)callback
+{
+    ERSC(GRViewServiceID,
+         GRViewServiceShowLoadingIndicatorAction, nil, nil);
+    
+    //login
+    //
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
+    [defaults setObject: (@{
+                            GRAccountEmailKey : userName,
+                            GRAccountPasswordKey : [password MD5String],
+                            GRAccountIDKey : [[NSUUID UUID] UUIDString],
+                            })
+                 forKey: GRCurrentAccountKey];
+    [defaults synchronize];
+    
+    double delayInSeconds = 1.0;
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+    dispatch_after(popTime, dispatch_get_main_queue(),
+                   (^(void)
+                    {
+                        ERSC(GRViewServiceID,
+                             GRViewServiceHideLoadingIndicatorAction,
+                             nil, nil);
+                        
+                        NSDictionary *scripture = [_scriptures lastObject];
+                        if (scripture)
+                        {
+                            double delayInSeconds = 2.0;
+                            dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+                            dispatch_after(popTime, dispatch_get_main_queue(),
+                                           (^(void)
+                                            {
+                                                ERSC(GRViewServiceID, GRViewServiceShowDailyScriptureAction, @[ scripture ], nil);
+                                            }));
+                            
+                            [_scriptures removeLastObject];
+                        }
+                        
+                        if (callback)
+                        {
+                            callback(nil, nil);
+                        }
+                    }));
+}
+
+- (void)addScripture: (NSDictionary *)scriptureInfo
+{
+    [_scriptures addObject: scriptureInfo];
+}
+
+- (NSDictionary *)currentAccount
+{
+    return [[NSUserDefaults standardUserDefaults] objectForKey: GRCurrentAccountKey];
 }
 
 - (NSDictionary *)allResources

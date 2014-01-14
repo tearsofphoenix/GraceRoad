@@ -10,6 +10,7 @@
 #import "GRMainViewController.h"
 #import "GRViewService.h"
 #import "UIAlertView+BlockSupport.h"
+#import "GRDataService.h"
 
 @implementation GRAppDelegate
 
@@ -42,14 +43,15 @@ didReceiveLocalNotification: (UILocalNotification *)notification
 {    
     NSDictionary *userInfo = [notification userInfo];
     
-    [UIAlertView showAlertWithTitle: @"每日读经"
-                            message: [NSString stringWithFormat: @"%@\n%@\n%@",
-                                      userInfo[@"address"],
-                                      userInfo[@"zh_TW"],
-                                      userInfo[@"en"]]
-                  cancelButtonTitle: @"确定"
-                  otherButtonTitles: nil
-                           callback: nil];
+    //has logged in?
+    //
+    if (ERSSC(GRDataServiceID, GRDataServiceCurrentAccountAction, nil))
+    {
+        ERSC(GRViewServiceID, GRViewServiceShowDailyScriptureAction, @[ userInfo ], nil);
+    }else
+    {
+        ERSC(GRDataServiceID, GRDataServiceAddScriptureAlertAction, @[ userInfo ], nil);
+    }
 }
 
 @end

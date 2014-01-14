@@ -58,4 +58,14 @@
     
 }
 
+- (UIButton *)leftNavigationButton
+{
+    return nil;
+}
+
+- (UIButton *)rightNavigationButton
+{
+    return nil;
+}
+
 @end

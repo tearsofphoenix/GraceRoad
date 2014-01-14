@@ -20,6 +20,8 @@
 #define GRViewServiceShowLoadingIndicatorAction         @"showLoadingIndicator"
 #define GRViewServiceHideLoadingIndicatorAction         @"hideLoadingIndicator"
 
+#define GRViewServiceShowDailyScriptureAction           @"showDailyScripture:"
+
 @interface GRViewService : ERService
 
 @end

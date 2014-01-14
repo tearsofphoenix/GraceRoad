@@ -11,6 +11,7 @@
 #import "UIAlertView+BlockSupport.h"
 #import "GRUserProfileView.h"
 #import "GRViewService.h"
+#import "GRDataService.h"
 
 @interface GRLoginView ()
 {
@@ -46,10 +47,12 @@
         
         [self addSubview: _loginContentView];
         
+        CGFloat offsetY = 30;
+        
         NSString* fontName = @"Optima-Italic";
         NSString* boldFontName = @"Optima-ExtraBlack";
         
-        _titleLabel = [[UILabel alloc] initWithFrame: CGRectMake(35, 46, 257, 90)];
+        _titleLabel = [[UILabel alloc] initWithFrame: CGRectMake(35, 46 + offsetY, 257, 90)];
         [_titleLabel setBackgroundColor: [UIColor clearColor]];
         [_titleLabel setTextColor: [UIColor whiteColor]];
         [_titleLabel setFont: [UIFont fontWithName: boldFontName
@@ -58,7 +61,7 @@
         [_titleLabel setNumberOfLines: 0];
         [_loginContentView addSubview: _titleLabel];
         
-        _subtitleLabel = [[UILabel alloc] initWithFrame: CGRectMake(35, 120, 257, 25)];
+        _subtitleLabel = [[UILabel alloc] initWithFrame: CGRectMake(35, 120 + offsetY, 257, 25)];
         [_subtitleLabel setBackgroundColor: [UIColor clearColor]];
         [_subtitleLabel setTextColor: [UIColor whiteColor]];
         [_subtitleLabel setFont: [UIFont fontWithName: boldFontName
@@ -68,7 +71,7 @@
         
         [_loginContentView addSubview: _subtitleLabel];
         
-        _userNameField = [[UITextField alloc] initWithFrame: CGRectMake(29, 205, 263, 41)];
+        _userNameField = [[UITextField alloc] initWithFrame: CGRectMake(29, 205 + offsetY, 263, 41)];
         [_userNameField setBackgroundColor: [UIColor whiteColor]];
         [[_userNameField layer] setCornerRadius: 3];
         [_userNameField setPlaceholder: @"username"];
@@ -81,7 +84,7 @@
         
         [_loginContentView addSubview: _userNameField];
         
-        _passwordField = [[UITextField alloc] initWithFrame: CGRectMake(29, 254, 263, 41)];
+        _passwordField = [[UITextField alloc] initWithFrame: CGRectMake(29, 254 + offsetY, 263, 41)];
         [_passwordField setBackgroundColor: [UIColor whiteColor]];
         [[_passwordField layer] setCornerRadius: 3];
         [_passwordField setPlaceholder: @"password"];
@@ -95,7 +98,7 @@
         
         UIColor* darkColor = [UIColor colorWithRed:10.0/255 green:78.0/255 blue:108.0/255 alpha:1.0f];
         
-        UIButton *loginButton = [[UIButton alloc] initWithFrame: CGRectMake(29, 343, 263, 50)];
+        UIButton *loginButton = [[UIButton alloc] initWithFrame: CGRectMake(29, 343 + offsetY, 263, 50)];
         
         [loginButton setBackgroundColor: darkColor];
         [[loginButton layer] setCornerRadius: 3.0f];
@@ -115,7 +118,8 @@
         [_loginContentView addSubview: loginButton];
         [loginButton release];
         
-        UIButton *forgotPassworButton = [[UIButton alloc] initWithFrame: CGRectMake(29, 415, 263, 19)];
+        CGRect rect = CGRectMake(29, 415 + offsetY, 263, 19);
+        UIButton *forgotPassworButton = [[UIButton alloc] initWithFrame: rect];
         
         [[forgotPassworButton layer] setCornerRadius: 3.0f];
         [[forgotPassworButton titleLabel] setFont: [UIFont fontWithName: boldFontName
@@ -134,12 +138,32 @@
         [_loginContentView addSubview: forgotPassworButton];
         [forgotPassworButton release];
         
+        rect.origin.y += rect.size.height + 10;
+
+        UIButton *jumpOverButton = [[UIButton alloc] initWithFrame: rect];
+        [[jumpOverButton layer] setCornerRadius: 3.0f];
+        [[jumpOverButton titleLabel] setFont: [UIFont fontWithName: boldFontName
+                                                              size: 12.0f]];
+        [jumpOverButton setTitle: @"跳过"
+                        forState: UIControlStateNormal];
+        [jumpOverButton setTitleColor: darkColor
+                             forState: UIControlStateNormal];
+        [jumpOverButton setTitleColor: [UIColor colorWithWhite: 1.0f
+                                                         alpha: 0.5f]
+                             forState: UIControlStateHighlighted];
+        [jumpOverButton addTarget: self
+                           action: @selector(_handleJumpOverButtonTappedEvent:)
+                 forControlEvents: UIControlEventTouchUpInside];
+        [_loginContentView addSubview: jumpOverButton];
+        [jumpOverButton release];
     }
     return self;
 }
 
 - (void)dealloc
 {
+    NSLog(@"in func: %s", __func__);
+    
     [_loginContentView release];
     [_titleLabel release];
     [_subtitleLabel release];
@@ -153,20 +177,41 @@
 
 - (void)_handleLoginButtonTappedEvent: (id)sender
 {
-    ERSC(GRViewServiceID,
-         GRViewServiceShowLoadingIndicatorAction, nil, nil);
+    NSString *userName = [_userNameField text];
+    NSString *password = [_passwordField text];
+    NSString *errorMessage = nil;
     
-    double delayInSeconds = 1.0;
-    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
-    dispatch_after(popTime, dispatch_get_main_queue(),
-                   (^(void)
-                    {
-                        ERSC(GRViewServiceID,
-                             GRViewServiceHideLoadingIndicatorAction,
-                             nil, nil);
-                        
-                        
-                    }));
+    if ([userName length] == 0)
+    {
+        errorMessage = @"请检查您的用户名！";
+        
+    }else if (0 == [password length])
+    {
+        errorMessage = @"请输入您的密码！";
+    }
+    
+    if (errorMessage)
+    {
+        [UIAlertView alertWithMessage: errorMessage
+                    cancelButtonTitle: @"确定"];
+    }else
+    {
+        ERServiceCallback callback = (^(id result, id exception)
+                                      {
+                                          if (_disposableCallback)
+                                          {
+                                              _disposableCallback();
+                                              [self setDisposableCallback: nil];
+                                          }
+                                      });
+        callback = Block_copy(callback);
+        
+        ERSC(GRDataServiceID,
+             GRDataServiceLoginAction,
+             @[userName, password, callback ], nil);
+        
+        Block_release(callback);
+    }
 }
 
 - (void)_handleForgotPasswordButtonTappedEvent: (id)sender
@@ -178,6 +223,16 @@
 - (void)_handleBackgroundTappedEvent: (id)sender
 {
     [[self firstResponder] resignFirstResponder];
+}
+
+- (void)_handleJumpOverButtonTappedEvent: (id)sender
+{
+    if (_disposableCallback)
+    {
+        _disposableCallback();
+        
+        [self setDisposableCallback: nil];
+    }
 }
 
 @end

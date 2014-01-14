@@ -15,6 +15,8 @@
 #import "GRIntroductView.h"
 #import "GRSermonView.h"
 #import "UIView+FirstResponder.h"
+#import "GRLoginView.h"
+#import "GRDataService.h"
 
 #define GRTabCount 4
 
@@ -52,6 +54,31 @@
     [super viewDidLoad];
     
     [_tabbar setBackgroundColor: [UIColor colorWithRed:0.31f green:0.32f blue:0.33f alpha:1.00f]];
+    
+    NSDictionary *account = ERSSC(GRDataServiceID, GRDataServiceCurrentAccountAction, nil);
+    
+    if (!account)
+    {
+        GRLoginView *loginView = [[GRLoginView alloc] initWithFrame: [[self view] bounds]];
+        [loginView setDisposableCallback: (^
+                                           {
+                                               [UIView animateWithDuration: 0.3
+                                                                animations: (^
+                                                                             {
+                                                                                 [loginView setAlpha: 0];
+                                                                                 [_contentView setAlpha: 1];
+                                                                             })
+                                                                completion: (^(BOOL finished)
+                                                                             {
+                                                                                 [loginView removeFromSuperview];
+                                                                             })];
+                                           })];
+        
+        [[self view] addSubview: loginView];
+        [loginView release];
+        
+        [_contentView setAlpha: 0];
+    }
     
     CGRect contentBounds = [_contentView bounds];
     
@@ -113,6 +140,34 @@
     }
 }
 
+- (void)_resetTabbarFrame
+{
+    CGRect frame = [[self view] bounds];
+    CGRect rect = frame;
+    rect.size.height = 49;
+    rect.origin.y = frame.size.height - rect.size.height;
+    
+    [_tabbar setFrame: rect];
+}
+
+- (void)_toggleHideTabView: (BOOL)flag
+{
+    if (flag)
+    {
+        CGRect frame = [[self view] bounds];
+        CGRect rect = frame;
+        rect.size.height = 49;
+        rect.origin.y = frame.size.height + rect.size.height;
+
+        [_tabbar setFrame: rect];
+        //[_tabbar setTransform: CGAffineTransformMakeTranslation(0, 768)];
+    }else
+    {
+        [self _resetTabbarFrame];
+        //[_tabbar setTransform: CGAffineTransformIdentity];
+    }
+}
+
 - (void)setCurrentIndex: (NSInteger)currentIndex
 {
     if (_currentIndex != currentIndex)
@@ -138,13 +193,7 @@
         [UIView animateWithDuration: 0.3
                          animations: (^
                                       {
-                                          if ([view hideTabbar])
-                                          {
-                                              [_tabbar setTransform: CGAffineTransformMakeTranslation(0, 768)];
-                                          }else
-                                          {
-                                              [_tabbar setTransform: CGAffineTransformIdentity];
-                                          }
+                                          [self _toggleHideTabView: [view hideTabbar]];
                                           
                                           if ([viewStack count] > 1)
                                           {
@@ -178,9 +227,6 @@
         if ([contentView hideTabbar])
         {
             frame.size.height += [_tabbar frame].size.height;
-        }else
-        {
-            
         }
         
         [contentView setFrame: frame];
@@ -191,9 +237,10 @@
         [viewStack addObject: contentView];
         [_contentView addSubview: contentView];
         
-        UIButton *rightNavigationButton = [contentView rightNavigationButton];
+        //UIButton *rightNavigationButton = [contentView rightNavigationButton];
         
-        
+        [self _resetTabbarFrame];
+
         //update navigation button
         //
         [UIView animateWithDuration: 0.3
@@ -204,13 +251,7 @@
                                           [contentView setTransform: CGAffineTransformIdentity];
                                           [currentView setTransform: CGAffineTransformMakeTranslation(-frame.size.width, 0)];
                                           
-                                          if ([contentView hideTabbar])
-                                          {
-                                              [_tabbar setTransform: CGAffineTransformMakeTranslation(0, 700)];
-                                          }else
-                                          {
-                                              [_tabbar setTransform: CGAffineTransformIdentity];
-                                          }
+                                          [self _toggleHideTabView: [contentView hideTabbar]];
                                       })
                          completion: (^(BOOL finished)
                                       {
@@ -225,7 +266,7 @@
 - (void)popLastContentView
 {
     [[[self view] firstResponder] resignFirstResponder];
-
+    
     NSMutableArray *viewStack = _viewStacks[_currentIndex];
     NSUInteger count = [viewStack count];
     
@@ -255,13 +296,7 @@
                                           [newView setTransform: CGAffineTransformIdentity];
                                           [currentView setTransform: CGAffineTransformMakeTranslation(frame.size.width, 0)];
                                           
-                                          if ([newView hideTabbar])
-                                          {
-                                              [_tabbar setTransform: CGAffineTransformMakeTranslation(0, 768)];
-                                          }else
-                                          {
-                                              [_tabbar setTransform: CGAffineTransformIdentity];
-                                          }
+                                          [self _toggleHideTabView: [newView hideTabbar]];
                                       })
                          completion: (^(BOOL finished)
                                       {

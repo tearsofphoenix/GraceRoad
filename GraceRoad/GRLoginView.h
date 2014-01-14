@@ -11,4 +11,6 @@
 
 @interface GRLoginView : GRContentView
 
+@property (nonatomic, copy) dispatch_block_t disposableCallback;
+
 @end

@@ -7,9 +7,10 @@
 //
 
 #import "GRPreferenceView.h"
-#import "GRLoginView.h"
+#import "GRUserProfileView.h"
 #import "GRViewService.h"
 #import "GRPrayView.h"
+#import "GRSettingsView.h"
 
 @interface GRPreferenceView ()<UITableViewDataSource, UITableViewDelegate>
 {
@@ -27,7 +28,7 @@
     {
         [self setTitle: @"设置"];
         
-        _titles = [@[ @"我的信息", @"代祷"] retain];
+        _titles = [@[ @"我的账户", @"代祷"] retain];
 
         _tableView = [[UITableView alloc] initWithFrame: [self bounds]];
         [_tableView setDataSource: self];
@@ -77,12 +78,13 @@ didSelectRowAtIndexPath: (NSIndexPath *)indexPath
     {
         case 0:
         {
-            GRLoginView *loginView = [[GRLoginView alloc] initWithFrame: [self frame]];
+            GRSettingsView *settingsView = [[GRSettingsView alloc] initWithFrame: [self frame]];
             
             ERSC(GRViewServiceID, GRViewServicePushContentViewAction,
-                 @[ loginView ], nil);
+                 @[ settingsView ], nil);
             
-            [loginView release];
+            [settingsView release];
+            
             break;
         }
         case 1:

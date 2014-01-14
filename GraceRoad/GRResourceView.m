@@ -13,6 +13,7 @@
 #import "UIAlertView+BlockSupport.h"
 #import "GRResourceInfoView.h"
 #import "GRViewService.h"
+#import "UIView+FirstResponder.h"
 
 @interface GRResourceView ()<UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate>
 {
@@ -91,6 +92,7 @@
 
 - (void)searchBarSearchButtonClicked: (UISearchBar *)searchBar
 {
+    [[self firstResponder] resignFirstResponder];
     [self setFilterString: [searchBar text]];
 }
 
@@ -245,6 +247,8 @@ heightForRowAtIndexPath: (NSIndexPath *)indexPath
 - (void)tableView: (UITableView *)tableView
 didSelectRowAtIndexPath: (NSIndexPath *)indexPath
 {
+    [[self firstResponder] resignFirstResponder];
+    
     NSDictionary *resourceInfo = [self _resourceAtIndexPath: indexPath];
     NSString *subPath = resourceInfo[GRResourcePath];
     

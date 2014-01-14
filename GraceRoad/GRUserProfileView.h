@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "GRContentView.h"
 
-@interface GRUserProfileView : UIView
+@interface GRUserProfileView : GRContentView
 
 @end
