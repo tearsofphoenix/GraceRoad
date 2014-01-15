@@ -9,6 +9,7 @@
 #import "GRPrayView.h"
 #import "GRDataService.h"
 #import "GRPrayKeys.h"
+#import "UIAlertView+BlockSupport.h"
 
 @interface GRPrayView ()<UITableViewDataSource, UITableViewDelegate>
 {
@@ -92,7 +93,29 @@ heightForRowAtIndexPath: (NSIndexPath *)indexPath
 
 - (void)_handleAddPrayButtonTappedEvent: (id)sender
 {
+    UIAlertView *alertView = [UIAlertView alertWithTitle: @"请输入代祷内容："
+                                                 message: nil
+                                       cancelButtonTitle: @"取消"
+                                       otherButtonTitles: @[@"确定"]
+                                                callback: nil];
     
+    [alertView setAlertViewStyle: UIAlertViewStylePlainTextInput];
+    
+    [alertView setCallback: (^(NSInteger buttonIndex)
+                             {
+                                 NSString *text = [[alertView textFieldAtIndex: 0] text];
+                                 if ([text length] > 0)
+                                 {
+                                     [_praySources insertObject: (@{
+                                                                    GRPrayTitleKey : text,
+                                                                    GRPrayUploadDateKey : [NSDate date],
+                                                                    })
+                                                        atIndex: 0];
+                                     
+                                     [_prayListView reloadData];
+                                 }
+                             })];
+    [alertView show];
 }
 
 @end

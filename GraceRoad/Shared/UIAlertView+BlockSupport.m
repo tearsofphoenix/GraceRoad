@@ -17,11 +17,11 @@ static char UIAlertViewCallbackKey;
 
 @implementation UIAlertView (BlockSupport)
 
-+ (void)showAlertWithTitle: (NSString *)title
-                   message: (NSString *)message
-         cancelButtonTitle: (NSString *)cancelButtonTitle
-         otherButtonTitles: (NSArray *)otherButtonTitles
-                  callback: (GRAlertViewCallback)callback
++ (id)alertWithTitle: (NSString *)title
+             message: (NSString *)message
+   cancelButtonTitle: (NSString *)cancelButtonTitle
+   otherButtonTitles: (NSArray *)otherButtonTitles
+            callback: (GRAlertViewCallback)callback
 {
     UIAlertView *alertView = [[self alloc] initWithTitle: title
                                                  message: message
@@ -33,7 +33,7 @@ static char UIAlertViewCallbackKey;
     
     if (callback)
     {
-        objc_setAssociatedObject(alertView, &UIAlertViewCallbackKey, callback, OBJC_ASSOCIATION_COPY_NONATOMIC);
+        [alertView setCallback: callback];
     }
     
     for (NSString *tLooper in otherButtonTitles)
@@ -41,30 +41,38 @@ static char UIAlertViewCallbackKey;
         [alertView addButtonWithTitle: tLooper];
     }
     
-    [alertView show];
-    
-    [alertView autorelease];
+    return [alertView autorelease];
 }
 
 + (void)alertWithMessage: (NSString *)message
        cancelButtonTitle: (NSString *)cancelButtonTitle
 {
-    [self showAlertWithTitle: nil
-                     message: message
-           cancelButtonTitle: cancelButtonTitle
-           otherButtonTitles: nil
-                    callback: nil];
+    [[self alertWithTitle: nil
+                  message: message
+        cancelButtonTitle: cancelButtonTitle
+        otherButtonTitles: nil
+                 callback: nil] show];
+}
+
+- (void)setCallback: (GRAlertViewCallback)callback
+{
+    objc_setAssociatedObject(self, &UIAlertViewCallbackKey, callback, OBJC_ASSOCIATION_COPY_NONATOMIC);
+}
+
+- (GRAlertViewCallback)callback
+{
+    return objc_getAssociatedObject(self, &UIAlertViewCallbackKey);
 }
 
 - (void)   alertView: (UIAlertView *)alertView
 clickedButtonAtIndex: (NSInteger)buttonIndex
 {
-    GRAlertViewCallback callback = objc_getAssociatedObject(self, &UIAlertViewCallbackKey);
+    GRAlertViewCallback callback = [self callback];
     
     if (callback)
     {
         callback(buttonIndex);
-        objc_setAssociatedObject(self, &UIAlertViewCallbackKey, nil, OBJC_ASSOCIATION_COPY_NONATOMIC);
+        [self setCallback: nil];
     }
 }
 

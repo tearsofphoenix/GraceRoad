@@ -9,6 +9,7 @@
 #import "GRResourceInfoView.h"
 #import "GRResourceKey.h"
 #import "GRResourceManager.h"
+#import "GRPackage.h"
 
 @interface GRResourceInfoView ()
 {
@@ -57,6 +58,12 @@
         _resourceInfo = [resourceInfo retain];
 
         [self setTitle: _resourceInfo[GRResourceName]];
+        
+//        NSString *path = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent: _resourceInfo[GRResourcePath]];
+//        
+//        GRPackage *package = [[GRPackage alloc] initWithPath: path];
+//        
+//        [self addSubview: [package view]];
         
         NSString *path = [GRResourceManager pathWithSubPath: _resourceInfo[GRResourcePath]];
         

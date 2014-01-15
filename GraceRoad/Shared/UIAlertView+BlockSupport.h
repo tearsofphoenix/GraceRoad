@@ -12,13 +12,15 @@ typedef void (^ GRAlertViewCallback)(NSInteger buttonIndex);
 
 @interface UIAlertView (BlockSupport)
 
-+ (void)showAlertWithTitle: (NSString *)title
-                   message: (NSString *)message
-         cancelButtonTitle: (NSString *)cancelButtonTitle
-         otherButtonTitles: (NSArray *)otherButtonTitles
-                  callback: (GRAlertViewCallback)callback;
++ (id)alertWithTitle: (NSString *)title
+             message: (NSString *)message
+   cancelButtonTitle: (NSString *)cancelButtonTitle
+   otherButtonTitles: (NSArray *)otherButtonTitles
+            callback: (GRAlertViewCallback)callback;
 
 + (void)alertWithMessage: (NSString *)message
        cancelButtonTitle: (NSString *)cancelButtonTitle;
+
+@property (nonatomic, copy) GRAlertViewCallback callback;
 
 @end

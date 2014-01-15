@@ -55,14 +55,14 @@
 
 - (void)showDailyScripture: (NSDictionary *)scripture
 {
-    [UIAlertView showAlertWithTitle: @"每日读经"
-                            message: [NSString stringWithFormat: @"%@\n%@\n%@",
-                                      scripture[@"address"],
-                                      scripture[@"zh_TW"],
-                                      scripture[@"en"]]
-                  cancelButtonTitle: @"确定"
-                  otherButtonTitles: nil
-                           callback: nil];
+    [[UIAlertView alertWithTitle: @"每日读经"
+                         message: [NSString stringWithFormat: @"%@\n%@\n%@",
+                                   scripture[@"address"],
+                                   scripture[@"zh_TW"],
+                                   scripture[@"en"]]
+               cancelButtonTitle: @"确定"
+               otherButtonTitles: nil
+                        callback: nil] show];
 }
 
 @end

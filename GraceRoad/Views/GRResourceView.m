@@ -257,31 +257,31 @@ didSelectRowAtIndexPath: (NSIndexPath *)indexPath
         [self _navigateToResourceContentWithInfo: resourceInfo];
     }else
     {
-        [UIAlertView showAlertWithTitle: @"提示"
-                                message: @"您确定要下载该文档吗？"
-                      cancelButtonTitle: @"取消"
-                      otherButtonTitles: @[ @"确定" ]
-                               callback:
-         (^(NSInteger buttonIndex)
-          {
-              if (1 == buttonIndex)
-              {
-                  ERSC(GRViewServiceID,
-                       GRViewServiceShowLoadingIndicatorAction,
-                       nil, nil);
-                  
-                  [GRResourceManager downloadFileWithSubPath: subPath
-                                                    callback:
-                   (^(NSData *data, NSError *error)
-                    {
-                        ERSC(GRViewServiceID,
-                             GRViewServiceHideLoadingIndicatorAction,
-                             nil, nil);
-                        
-                        [self _navigateToResourceContentWithInfo: resourceInfo];
-                    })];
-              }
-          })];
+        [[UIAlertView alertWithTitle: @"提示"
+                             message: @"您确定要下载该文档吗？"
+                   cancelButtonTitle: @"取消"
+                   otherButtonTitles: @[ @"确定" ]
+                            callback:
+          (^(NSInteger buttonIndex)
+           {
+               if (1 == buttonIndex)
+               {
+                   ERSC(GRViewServiceID,
+                        GRViewServiceShowLoadingIndicatorAction,
+                        nil, nil);
+                   
+                   [GRResourceManager downloadFileWithSubPath: subPath
+                                                     callback:
+                    (^(NSData *data, NSError *error)
+                     {
+                         ERSC(GRViewServiceID,
+                              GRViewServiceHideLoadingIndicatorAction,
+                              nil, nil);
+                         
+                         [self _navigateToResourceContentWithInfo: resourceInfo];
+                     })];
+               }
+           })] show];
     }
 }
 

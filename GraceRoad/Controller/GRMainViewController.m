@@ -7,7 +7,6 @@
 //
 
 #import "GRMainViewController.h"
-#import "GRServeView.h"
 #import "GRResourceView.h"
 #import "GRCommunicationView.h"
 #import "GRPreferenceView.h"

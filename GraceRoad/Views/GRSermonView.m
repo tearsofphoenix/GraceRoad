@@ -33,7 +33,7 @@
         _sermons = [[NSMutableArray alloc] init];
         
         CGRect rect = CGRectMake(0, 0, frame.size.width, frame.size.height);
-
+        
         _contentView = [[UITableView alloc] initWithFrame: rect];
         [_contentView setDataSource: self];
         [_contentView setDelegate: self];
@@ -41,7 +41,7 @@
         [self addSubview: _contentView];
         
         [_sermons setArray: ERSSC(GRDataServiceID,
-                                 GRDataServiceAllSermonsAction,
+                                  GRDataServiceAllSermonsAction,
                                   nil)];
         [_contentView reloadData];
     }
@@ -103,32 +103,32 @@ didSelectRowAtIndexPath: (NSIndexPath *)indexPath
         [self _showSermonContentWithInfo: sermonInfo];
     }else
     {
-        [UIAlertView showAlertWithTitle: @"提示"
-                                message: @"您确定要下载该文档吗？"
-                      cancelButtonTitle: @"取消"
-                      otherButtonTitles: @[ @"确定" ]
-                               callback:
-         (^(NSInteger buttonIndex)
-          {
-              if (1 == buttonIndex)
-              {
-                  ERSC(GRViewServiceID,
-                       GRViewServiceShowLoadingIndicatorAction,
-                       nil, nil);
-                  
-                  [GRResourceManager downloadFileWithSubPath: subPath
-                                                    callback:
-                   (^(NSData *data, NSError *error)
-                    {
-                        ERSC(GRViewServiceID,
-                             GRViewServiceHideLoadingIndicatorAction,
-                             nil, nil);
-                        
-                        [self _showSermonContentWithInfo: sermonInfo];
-                    })];
-              }
-          })];
-
+        [[UIAlertView alertWithTitle: @"提示"
+                             message: @"您确定要下载该文档吗？"
+                   cancelButtonTitle: @"取消"
+                   otherButtonTitles: @[ @"确定" ]
+                            callback:
+          (^(NSInteger buttonIndex)
+           {
+               if (1 == buttonIndex)
+               {
+                   ERSC(GRViewServiceID,
+                        GRViewServiceShowLoadingIndicatorAction,
+                        nil, nil);
+                   
+                   [GRResourceManager downloadFileWithSubPath: subPath
+                                                     callback:
+                    (^(NSData *data, NSError *error)
+                     {
+                         ERSC(GRViewServiceID,
+                              GRViewServiceHideLoadingIndicatorAction,
+                              nil, nil);
+                         
+                         [self _showSermonContentWithInfo: sermonInfo];
+                     })];
+               }
+           })] show];
+        
     }
 }
 

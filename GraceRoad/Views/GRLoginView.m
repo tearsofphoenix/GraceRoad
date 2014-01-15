@@ -22,6 +22,9 @@
     UITextField *_userNameField;
     UITextField *_passwordField;
 }
+
+@property (nonatomic) BOOL keyboardIsShown;
+
 @end
 
 @implementation GRLoginView
@@ -39,6 +42,8 @@
         CGRect bounds = [self bounds];
         
         _loginContentView = [[UIScrollView alloc] initWithFrame: bounds];
+        [_loginContentView setShowsVerticalScrollIndicator: NO];
+        
         UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget: self
                                                                                                action: @selector(_handleBackgroundTappedEvent:)];
         [_loginContentView addGestureRecognizer: tapGestureRecognizer];
@@ -108,7 +113,7 @@
         rect = CGRectMake(29, 343 + offsetY, 263, 50);
         UIButton *loginButton = [[UIButton alloc] initWithFrame: rect];
         
-        [loginButton setBackgroundColor: [UIColor redColor]];
+        [loginButton setBackgroundColor: darkColor];
         [[loginButton layer] setCornerRadius: 3.0f];
         [[loginButton titleLabel] setFont: [UIFont fontWithName: boldFontName
                                                            size: 20.0f]];
@@ -249,14 +254,26 @@
 {
     NSDictionary *userInfo = [notification userInfo];
     CGRect frame = [userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
-    frame = [self convertRect: frame
-                     fromView: nil];
+    frame = [[self window] convertRect: frame
+                                toView: self];
     
+    UIView *firstResponder = [self firstResponder];
+    CGRect rect = [firstResponder frame];
+    
+    CGFloat offset = rect.origin.y + rect.size.height - frame.origin.y;
+    if (offset > 0)
+    {
+        [_loginContentView setContentOffset: CGPointMake(0, offset + 10)
+                               animated: YES];
+    }
+    
+    _keyboardIsShown = YES;
 }
 
 - (void)_notificationForKeyboardHide: (NSNotification *)notification
 {
-    [_loginContentView setContentOffset: CGPointZero];
+    [_loginContentView setContentOffset: CGPointZero
+                               animated: YES];
 }
 
 @end

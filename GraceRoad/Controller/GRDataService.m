@@ -67,6 +67,7 @@
                                      GRResourceName : @"第一周作业",
                                      GRResourceAbstract : @"作业的内容是...",
                                      GRResourcePath : @"1.html",
+                                     //GRResourcePath : @"lession1.bundle",
                                      GRResourceUploadDate : date,
                                      GRResourceTypeName : GRResourceTypePDF,
                                      }),
@@ -335,6 +336,12 @@
 - (NSArray *)allPrayList
 {
     return _prayList;
+}
+
+- (void)addPray: (NSDictionary *)prayInfo
+{
+    [_prayList insertObject: prayInfo
+                    atIndex: 0];
 }
 
 @end

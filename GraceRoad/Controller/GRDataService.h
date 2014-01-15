@@ -24,6 +24,7 @@
 #define GRDataServiceAllSermonsAction            @"allSermons"
 
 #define GRDataServiceAllPrayListAction           @"allPrayList"
+#define GRDataServiceAddPrayAction               @"addPray:"
 
 #define GRAccountLoginNotification          GRPrefix ".notification.login"
 #define GRAccountLogoutNotification          GRPrefix ".notification.logout"
