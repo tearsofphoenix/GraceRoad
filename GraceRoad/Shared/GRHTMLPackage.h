@@ -1,5 +1,5 @@
 //
-//  GRPackage.h
+//  GRHTMLPackage.h
 //  GraceRoad
 //
 //  Created by Mac003 on 14-1-15.
@@ -7,13 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "GRNibPackage.h"
 
-@interface GRPackage : NSObject
-
-- (id)initWithPath: (NSString *)bundlePath;
-
-- (UIView *)view;
-
-- (NSDictionary *)savedContext;
+@interface GRHTMLPackage : NSObject<GRPackage>
 
 @end

@@ -6,11 +6,11 @@
 //  Copyright (c) 2014年 Mac003. All rights reserved.
 //
 
-#import "GRPackage.h"
+#import "GRNibPackage.h"
 
 #define GRPackageScrollViewTag  1001
 
-@interface GRPackage ()
+@interface GRNibPackage ()
 {
     NSMutableDictionary *_inputContext;
 }
@@ -20,7 +20,7 @@
 
 @end
 
-@implementation GRPackage
+@implementation GRNibPackage
 
 - (id)initWithPath: (NSString *)bundlePath
 {
@@ -107,6 +107,11 @@ static void _GRPackageGatherInput(UIView *view, NSDictionary  *viewConfiguration
     _GRPackageGatherInput(scrollView, _viewConfiguration, _inputContext);
 
     return _inputContext;
+}
+
+- (void)updateWithRecord: (NSDictionary *)savedRecord
+{
+    
 }
 
 @end

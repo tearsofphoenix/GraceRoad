@@ -26,6 +26,10 @@
 #define GRDataServiceAllPrayListAction           @"allPrayList"
 #define GRDataServiceAddPrayAction               @"addPray:"
 
+#define GRDataServiceSaveLessonForIDAction       @"saveLesson:forID:"
+#define GRDataServiceLessonRecordForIDAction     @"lessonRecordForID:"
+#pragma mark - notification
+
 #define GRAccountLoginNotification          GRPrefix ".notification.login"
 #define GRAccountLogoutNotification          GRPrefix ".notification.logout"
 

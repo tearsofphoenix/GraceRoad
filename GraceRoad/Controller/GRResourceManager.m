@@ -101,8 +101,32 @@ static NSString *gsResourcePath = nil;
                                           })];
 #else
     NSString *path = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent: subPath];
-    NSData *data = [NSData dataWithContentsOfFile: path];
-
+    NSString *targetPath = [[self resourcePath] stringByAppendingPathComponent: subPath];
+    
+    NSData *data = nil;
+    BOOL isDirectory = NO;
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    
+    if([fileManager fileExistsAtPath: path
+                         isDirectory: &isDirectory])
+    {
+        if (isDirectory)
+        {
+            NSError *error = nil;
+            
+            [fileManager copyItemAtPath: path
+                                 toPath: targetPath
+                                  error: &error];
+            if (error)
+            {
+                NSLog(@"in func: %s error: %@", __func__, error);
+            }
+        }else
+        {
+            data = [NSData dataWithContentsOfFile: path];
+        }
+    }
+    
     double delayInSeconds = 1.0;
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
     dispatch_after(popTime, dispatch_get_main_queue(),
@@ -110,7 +134,7 @@ static NSString *gsResourcePath = nil;
                     {
                         if (data)
                         {
-                            [data writeToFile: [[self resourcePath] stringByAppendingPathComponent: subPath]
+                            [data writeToFile: targetPath
                                    atomically: YES];
                         }
                         

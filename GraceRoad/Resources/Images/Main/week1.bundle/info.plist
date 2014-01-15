@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>id</key>
+		<string>pray</string>
+		<key>class</key>
+		<string>text</string>
+	</dict>
+	<dict>
+		<key>id</key>
+		<string>textinput1</string>
+		<key>class</key>
+		<string>text</string>
+	</dict>
+    <dict>
+		<key>id</key>
+		<string>choose1</string>
+		<key>class</key>
+		<string>choose</string>
+	</dict>
+    <dict>
+		<key>id</key>
+		<string>choose2</string>
+		<key>class</key>
+		<string>choose</string>
+	</dict>
+    <dict>
+		<key>id</key>
+		<string>choose3</string>
+		<key>class</key>
+		<string>choose</string>
+	</dict>
+    <dict>
+		<key>id</key>
+		<string>textinput2</string>
+		<key>class</key>
+		<string>text</string>
+	</dict>
+    <dict>
+		<key>id</key>
+		<string>textinput3</string>
+		<key>class</key>
+		<string>text</string>
+	</dict>
+    <dict>
+		<key>id</key>
+		<string>textinput4</string>
+		<key>class</key>
+		<string>text</string>
+	</dict>
+</array>
+</plist>

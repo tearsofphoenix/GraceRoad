@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		600C339818857E2000656A5D /* libiOSHierarchyViewer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 600C339518857E1000656A5D /* libiOSHierarchyViewer.a */; };
-		600C339A188588E600656A5D /* 1.html in Resources */ = {isa = PBXBuildFile; fileRef = 600C3399188588E600656A5D /* 1.html */; };
 		60B266061877CBFF008E881E /* 1.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 60B266041877CBFF008E881E /* 1.pdf */; };
 		60B266071877CBFF008E881E /* t0101.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 60B266051877CBFF008E881E /* t0101.mp3 */; };
 		60E649681877ECA800D5466B /* GRHeart.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 60E649671877ECA800D5466B /* GRHeart.jpg */; };
@@ -60,7 +59,7 @@
 		9261925118865752001E0A72 /* GRUserDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9261923A18865752001E0A72 /* GRUserDetailView.m */; };
 		9261925218865752001E0A72 /* GRUserProfileView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9261923C18865752001E0A72 /* GRUserProfileView.m */; };
 		9261925318865752001E0A72 /* GRContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9261923F18865752001E0A72 /* GRContentView.m */; };
-		9261925418865752001E0A72 /* GRPackage.m in Sources */ = {isa = PBXBuildFile; fileRef = 9261924118865752001E0A72 /* GRPackage.m */; };
+		9261925418865752001E0A72 /* GRNibPackage.m in Sources */ = {isa = PBXBuildFile; fileRef = 9261924118865752001E0A72 /* GRNibPackage.m */; };
 		9261925518865752001E0A72 /* UIAlertView+BlockSupport.m in Sources */ = {isa = PBXBuildFile; fileRef = 9261924418865752001E0A72 /* UIAlertView+BlockSupport.m */; };
 		9261925618865752001E0A72 /* UISwitch+BlockSupport.m in Sources */ = {isa = PBXBuildFile; fileRef = 9261924618865752001E0A72 /* UISwitch+BlockSupport.m */; };
 		9261925718865752001E0A72 /* UIView+FirstResponder.m in Sources */ = {isa = PBXBuildFile; fileRef = 9261924818865752001E0A72 /* UIView+FirstResponder.m */; };
@@ -76,6 +75,8 @@
 		92619287188667D4001E0A72 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 92619285188667D4001E0A72 /* InfoPlist.strings */; };
 		9261929218866860001E0A72 /* view.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9261929118866860001E0A72 /* view.xib */; };
 		92619293188668B4001E0A72 /* lession1.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9261927F188667D4001E0A72 /* lession1.bundle */; };
+		9261929718867B0F001E0A72 /* GRHTMLPackage.m in Sources */ = {isa = PBXBuildFile; fileRef = 9261929618867B0F001E0A72 /* GRHTMLPackage.m */; };
+		9261929918867CA5001E0A72 /* week1.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9261929818867CA5001E0A72 /* week1.bundle */; };
 		9267334E187258C500249E37 /* libNoahsRecordStatic.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9267334B1872588400249E37 /* libNoahsRecordStatic.a */; };
 		9267339F187266C600249E37 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9267339E187266C600249E37 /* libsqlite3.dylib */; };
 		927C9FA3186D66DC00DC0EDC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 927C9FA2186D66DC00DC0EDC /* Foundation.framework */; };
@@ -145,7 +146,6 @@
 
 /* Begin PBXFileReference section */
 		600C339018857E0F00656A5D /* iOSHierarchyViewer.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = iOSHierarchyViewer.xcodeproj; path = "iOS-Hierarchy-Viewer/iOSHierarchyViewer.xcodeproj"; sourceTree = "<group>"; };
-		600C3399188588E600656A5D /* 1.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = 1.html; path = Images/Main/1.html; sourceTree = "<group>"; };
 		60B266041877CBFF008E881E /* 1.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = 1.pdf; path = Images/Main/1.pdf; sourceTree = "<group>"; };
 		60B266051877CBFF008E881E /* t0101.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = t0101.mp3; path = Images/Main/t0101.mp3; sourceTree = "<group>"; };
 		60E649671877ECA800D5466B /* GRHeart.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = GRHeart.jpg; path = Main/GRHeart.jpg; sourceTree = "<group>"; };
@@ -207,8 +207,8 @@
 		9261923C18865752001E0A72 /* GRUserProfileView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GRUserProfileView.m; sourceTree = "<group>"; };
 		9261923E18865752001E0A72 /* GRContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRContentView.h; sourceTree = "<group>"; };
 		9261923F18865752001E0A72 /* GRContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GRContentView.m; sourceTree = "<group>"; };
-		9261924018865752001E0A72 /* GRPackage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRPackage.h; sourceTree = "<group>"; };
-		9261924118865752001E0A72 /* GRPackage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GRPackage.m; sourceTree = "<group>"; };
+		9261924018865752001E0A72 /* GRNibPackage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRNibPackage.h; sourceTree = "<group>"; };
+		9261924118865752001E0A72 /* GRNibPackage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GRNibPackage.m; sourceTree = "<group>"; };
 		9261924218865752001E0A72 /* GRShared.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRShared.h; sourceTree = "<group>"; };
 		9261924318865752001E0A72 /* UIAlertView+BlockSupport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertView+BlockSupport.h"; sourceTree = "<group>"; };
 		9261924418865752001E0A72 /* UIAlertView+BlockSupport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertView+BlockSupport.m"; sourceTree = "<group>"; };
@@ -243,6 +243,9 @@
 		92619284188667D4001E0A72 /* lession1-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "lession1-Info.plist"; sourceTree = "<group>"; };
 		92619286188667D4001E0A72 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		9261929118866860001E0A72 /* view.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = view.xib; sourceTree = "<group>"; };
+		9261929518867B0F001E0A72 /* GRHTMLPackage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRHTMLPackage.h; sourceTree = "<group>"; };
+		9261929618867B0F001E0A72 /* GRHTMLPackage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GRHTMLPackage.m; sourceTree = "<group>"; };
+		9261929818867CA5001E0A72 /* week1.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = week1.bundle; path = Images/Main/week1.bundle; sourceTree = "<group>"; };
 		9267333D1872588400249E37 /* NoahsRecord.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = NoahsRecord.xcodeproj; path = NoahsRecord/NoahsRecord.xcodeproj; sourceTree = "<group>"; };
 		9267339E187266C600249E37 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		927C9F9F186D66DC00DC0EDC /* GraceRoad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GraceRoad.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -385,8 +388,8 @@
 			children = (
 				9261923E18865752001E0A72 /* GRContentView.h */,
 				9261923F18865752001E0A72 /* GRContentView.m */,
-				9261924018865752001E0A72 /* GRPackage.h */,
-				9261924118865752001E0A72 /* GRPackage.m */,
+				9261924018865752001E0A72 /* GRNibPackage.h */,
+				9261924118865752001E0A72 /* GRNibPackage.m */,
 				9261924218865752001E0A72 /* GRShared.h */,
 				9261924318865752001E0A72 /* UIAlertView+BlockSupport.h */,
 				9261924418865752001E0A72 /* UIAlertView+BlockSupport.m */,
@@ -394,6 +397,8 @@
 				9261924618865752001E0A72 /* UISwitch+BlockSupport.m */,
 				9261924718865752001E0A72 /* UIView+FirstResponder.h */,
 				9261924818865752001E0A72 /* UIView+FirstResponder.m */,
+				9261929518867B0F001E0A72 /* GRHTMLPackage.h */,
+				9261929618867B0F001E0A72 /* GRHTMLPackage.m */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -561,9 +566,9 @@
 				60E649BF1878062400D5466B /* notifications */,
 				60E649851877FB1D00D5466B /* notifications.plist */,
 				60B266041877CBFF008E881E /* 1.pdf */,
-				600C3399188588E600656A5D /* 1.html */,
 				60B266051877CBFF008E881E /* t0101.mp3 */,
 				92CE913C18755BEB00C7D3A1 /* gr.sqlite */,
+				9261929818867CA5001E0A72 /* week1.bundle */,
 				92CE913D18755BEB00C7D3A1 /* Images */,
 			);
 			path = Resources;
@@ -720,7 +725,6 @@
 				60E649861877FB1D00D5466B /* notifications.plist in Resources */,
 				9294D45118766369009352DB /* GRAudio.png in Resources */,
 				92CE914618755BEB00C7D3A1 /* GRResourceTab@2x.png in Resources */,
-				600C339A188588E600656A5D /* 1.html in Resources */,
 				60E649E31878062400D5466B /* notifications14.plist in Resources */,
 				60E649F11878062400D5466B /* notifications27.plist in Resources */,
 				60E649E01878062400D5466B /* notifications11.plist in Resources */,
@@ -750,6 +754,7 @@
 				60E649F91878062400D5466B /* notifications9.plist in Resources */,
 				9294D45218766369009352DB /* GRAudio@2x.png in Resources */,
 				60E649F41878062400D5466B /* notifications4.plist in Resources */,
+				9261929918867CA5001E0A72 /* week1.bundle in Resources */,
 				92568CCC18850E5500994FC1 /* GRAvatarBackground.png in Resources */,
 				60E649E61878062400D5466B /* notifications17.plist in Resources */,
 				60E649EA1878062400D5466B /* notifications20.plist in Resources */,
@@ -796,7 +801,7 @@
 				929989B918768C2E0001EFDC /* MFNetworkClientInternal.m in Sources */,
 				929989C218768C9C0001EFDC /* NSString+CMBExtensions.m in Sources */,
 				9261924E18865752001E0A72 /* main.m in Sources */,
-				9261925418865752001E0A72 /* GRPackage.m in Sources */,
+				9261925418865752001E0A72 /* GRNibPackage.m in Sources */,
 				9261927518865790001E0A72 /* GRResourceInfoView.m in Sources */,
 				9261925218865752001E0A72 /* GRUserProfileView.m in Sources */,
 				929989BC18768C2E0001EFDC /* MFNetworkOperation.m in Sources */,
@@ -806,6 +811,7 @@
 				9261924F18865752001E0A72 /* GRPreferenceView.m in Sources */,
 				9261924D18865752001E0A72 /* GRViewService.m in Sources */,
 				9261925318865752001E0A72 /* GRContentView.m in Sources */,
+				9261929718867B0F001E0A72 /* GRHTMLPackage.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -66,8 +66,8 @@
                                      GRResourceID : [[ERUUID UUID] stringDescription],
                                      GRResourceName : @"第一周作业",
                                      GRResourceAbstract : @"作业的内容是...",
-                                     GRResourcePath : @"1.html",
-                                     //GRResourcePath : @"lession1.bundle",
+                                     //GRResourcePath : @"1.html",
+                                     GRResourcePath : @"week1.bundle",
                                      GRResourceUploadDate : date,
                                      GRResourceTypeName : GRResourceTypePDF,
                                      }),
@@ -311,7 +311,9 @@
 
 - (void)logout
 {
-    [[NSUserDefaults standardUserDefaults] removeObjectForKey: GRCurrentAccountKey];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults removeObjectForKey: GRCurrentAccountKey];
+    [defaults synchronize];
     
     [[NSNotificationCenter defaultCenter] postNotificationName: GRAccountLogoutNotification
                                                         object: nil
@@ -342,6 +344,21 @@
 {
     [_prayList insertObject: prayInfo
                     atIndex: 0];
+}
+
+- (void)saveLesson: (NSDictionary *)lesson
+             forID: (NSString *)lesssonID
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject: lesson
+                 forKey: lesssonID];
+    
+    [defaults synchronize];
+}
+
+- (NSDictionary *)lessonRecordForID: (NSString *)lessonID
+{
+    return [[NSUserDefaults standardUserDefaults] objectForKey: lessonID];
 }
 
 @end
