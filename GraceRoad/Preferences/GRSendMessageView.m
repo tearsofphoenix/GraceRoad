@@ -148,14 +148,14 @@ MFMessageComposeViewControllerDelegate, MFMailComposeViewControllerDelegate>
         
         [_scrollView setContentSize: bounds.size];
         
-        UIButton *templateButton = [[UIButton alloc] initWithFrame: CGRectMake(240, 220, 50, 26)];
-        [templateButton setTitle: @"模板"
-                        forState: UIControlStateNormal];
-        [templateButton addTarget: self
-                           action: @selector(_handleTemplateButtonTappedEvent:)
-                 forControlEvents:  UIControlEventTouchUpInside];
-        [_scrollView addSubview: templateButton];
-        [templateButton release];
+//        UIButton *templateButton = [[UIButton alloc] initWithFrame: CGRectMake(240, 220, 50, 26)];
+//        [templateButton setTitle: @"模板"
+//                        forState: UIControlStateNormal];
+//        [templateButton addTarget: self
+//                           action: @selector(_handleTemplateButtonTappedEvent:)
+//                 forControlEvents:  UIControlEventTouchUpInside];
+//        [_scrollView addSubview: templateButton];
+//        [templateButton release];
         
         _sendButton = [[UIButton alloc] initWithFrame: CGRectMake(30, bounds.size.height - 60,
                                                                   bounds.size.width - 30 * 2,
@@ -171,7 +171,7 @@ MFMessageComposeViewControllerDelegate, MFMailComposeViewControllerDelegate>
         
         [_scrollView addSubview: _sendButton];
         
-        [self setMessageType: GRMessageTypeAuto];
+        [self setMessageType: GRMessageTypeSMS];
         
         [[NSNotificationCenter defaultCenter] addObserver: self
                                                  selector: @selector(_notificationForKeyboardShow:)
@@ -305,7 +305,7 @@ weightForHeaderOfSection: (NSInteger)section
                           @"提前3天",
                           ]);
     
-    [UIActionSheet showWithTitle: @"选择时间"
+    [UIActionSheet showWithTitle: nil
                          choices: choices
                           inView: self
                         callback: (^(NSInteger buttonIndex)
@@ -323,15 +323,14 @@ weightForHeaderOfSection: (NSInteger)section
 - (void)_handleTypeButtonTappedEvent: (id)sender
 {
     NSArray *choices = (@[
-                          @"自动",
                           @"微信",
                           @"短信",
                           @"邮件",
                           ]);
     
-    NSArray *types = @[ GRMessageTypeAuto, GRMessageTypeWeiXin, GRMessageTypeSMS, GRMessageTypeEmail ];
+    NSArray *types = @[ GRMessageTypeWeiXin, GRMessageTypeSMS, GRMessageTypeEmail ];
     
-    [UIActionSheet showWithTitle: @"选择时间"
+    [UIActionSheet showWithTitle: nil
                          choices: choices
                           inView: self
                         callback: (^(NSInteger buttonIndex)
@@ -460,9 +459,6 @@ weightForHeaderOfSection: (NSInteger)section
             [UIAlertView alertWithMessage: @"您的设备无法发送邮件！"
                         cancelButtonTitle: @"确定"];
         }
-    }else if ([_messageType isEqualToString: GRMessageTypeAuto])
-    {
-        
     }
 }
 

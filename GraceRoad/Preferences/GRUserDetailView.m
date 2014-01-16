@@ -13,6 +13,7 @@
 #import "GRTeamKeys.h"
 #import "GRTheme.h"
 #import "GRSendMessageView.h"
+#import "UIAlertView+BlockSupport.h"
 
 @interface GRUserDetailView ()<UITableViewDataSource, UITableViewDelegate>
 {
@@ -39,7 +40,7 @@
     {
         CGRect bounds = [self bounds];
         
-        CGRect avatarBackgroundFrame = CGRectMake(0, 0, 320, 110);
+        CGRect avatarBackgroundFrame = CGRectMake(0, 0, 320, 120);
         _avatarBackgroundView = [[UIImageView alloc] initWithFrame: avatarBackgroundFrame];
         [_avatarBackgroundView setImage: [UIImage imageNamed: @"GRAvatarBackground"]];
         [self addSubview: _avatarBackgroundView];
@@ -85,31 +86,31 @@
         [_titleLabel setText: team[GRTeamNameKey]];
         
         _logoutButton = [[UIButton alloc] initWithFrame: CGRectMake(30, bounds.size.height - 60,
-                                                                             bounds.size.width - 30 * 2,
-                                                                             40)];
+                                                                    bounds.size.width - 30 * 2,
+                                                                    40)];
         [_logoutButton setBackgroundColor: [UIColor redColor]];
         [_logoutButton setTitle: @"登出"
-                      forState: UIControlStateNormal];
+                       forState: UIControlStateNormal];
         [_logoutButton addTarget: self
-                         action: @selector(_handleLogoutButtonTappedEvent:)
-               forControlEvents: UIControlEventTouchUpInside];
+                          action: @selector(_handleLogoutButtonTappedEvent:)
+                forControlEvents: UIControlEventTouchUpInside];
         [self addSubview: _logoutButton];
         
         //
-        UIButton *selectAllButton = [[UIButton alloc] initWithFrame: CGRectMake(10, 78, 50, 26)];
+        UIButton *selectAllButton = [[UIButton alloc] initWithFrame: CGRectMake(10, 78, 60, 36)];
         [selectAllButton setTitle: @"全选"
-                   forState: UIControlStateNormal];
+                         forState: UIControlStateNormal];
         [selectAllButton setTitleColor: [UIColor whiteColor]
-                        forState: UIControlStateNormal];
+                              forState: UIControlStateNormal];
         [selectAllButton setBackgroundColor: [GRTheme darkColor]];
         [[selectAllButton titleLabel] setFont: [UIFont systemFontOfSize: 14]];
         [selectAllButton addTarget: self
-                      action: @selector(_handleSelectAllTappedEvent:)
-            forControlEvents: UIControlEventTouchUpInside];
+                            action: @selector(_handleSelectAllTappedEvent:)
+                  forControlEvents: UIControlEventTouchUpInside];
         [self addSubview: selectAllButton];
         [selectAllButton release];
         
-        UIButton *sendMessageButton = [[UIButton alloc] initWithFrame: CGRectMake(frame.size.width - 80, 78, 70, 26)];
+        UIButton *sendMessageButton = [[UIButton alloc] initWithFrame: CGRectMake(frame.size.width - 80, 78, 70, 36)];
         [sendMessageButton setTitle: @"发送消息"
                            forState: UIControlStateNormal];
         [sendMessageButton setTitleColor: [UIColor whiteColor]
@@ -146,7 +147,7 @@
     [_titleLabel release];
     
     [_logoutButton release];
-
+    
     [_memberList release];
     [_memberListView release];
     [_selectedIndexPaths release];
@@ -207,7 +208,7 @@
 didSelectRowAtIndexPath: (NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView cellForRowAtIndexPath: indexPath];
-
+    
     if ([_selectedIndexPaths containsObject: indexPath])
     {
         [_selectedIndexPaths removeObject: indexPath];
@@ -260,20 +261,28 @@ didSelectRowAtIndexPath: (NSIndexPath *)indexPath
 
 - (void)_handleSendMessageButtonTappedEvent: (id)sender
 {
-    NSMutableArray *targetAccounts = [NSMutableArray arrayWithCapacity: [_selectedIndexPaths count]];
-    
-    for (NSIndexPath *iLooper in _selectedIndexPaths)
+    NSInteger count = [_selectedIndexPaths count];
+    if (count == 0)
     {
-        [targetAccounts addObject: _memberList[[iLooper row]]];
+        [UIAlertView alertWithMessage: @"请先选择成员！"
+                    cancelButtonTitle: @"确定"];
+    }else
+    {
+        NSMutableArray *targetAccounts = [NSMutableArray arrayWithCapacity: count];
+        
+        for (NSIndexPath *iLooper in _selectedIndexPaths)
+        {
+            [targetAccounts addObject: _memberList[[iLooper row]]];
+        }
+        
+        GRSendMessageView *sendMessageView = [[GRSendMessageView alloc] initWithFrame: [self frame]];
+        
+        [sendMessageView setTargetAccounts: targetAccounts];
+        
+        ERSC(GRViewServiceID, GRViewServicePushContentViewAction, @[ sendMessageView ], nil);
+        
+        [sendMessageView release];
     }
-    
-    GRSendMessageView *sendMessageView = [[GRSendMessageView alloc] initWithFrame: [self frame]];
-    
-    [sendMessageView setTargetAccounts: targetAccounts];
-    
-    ERSC(GRViewServiceID, GRViewServicePushContentViewAction, @[ sendMessageView ], nil);
-    
-    [sendMessageView release];
 }
 
 @end

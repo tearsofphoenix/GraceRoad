@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		600C339818857E2000656A5D /* libiOSHierarchyViewer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 600C339518857E1000656A5D /* libiOSHierarchyViewer.a */; };
+		606802901888233700D5217B /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 6068028F1888233700D5217B /* Reachability.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		60680295188828D200D5217B /* GRMapAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 60680294188828D200D5217B /* GRMapAnnotation.m */; };
+		6068029818883DCA00D5217B /* GRTabbarBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 6068029618883DCA00D5217B /* GRTabbarBackground.png */; };
+		6068029918883DCA00D5217B /* GRTabbarBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6068029718883DCA00D5217B /* GRTabbarBackground@2x.png */; };
 		60B266061877CBFF008E881E /* 1.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 60B266041877CBFF008E881E /* 1.pdf */; };
 		60E649681877ECA800D5466B /* GRHeart.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 60E649671877ECA800D5466B /* GRHeart.jpg */; };
 		60E649861877FB1D00D5466B /* notifications.plist in Resources */ = {isa = PBXBuildFile; fileRef = 60E649851877FB1D00D5466B /* notifications.plist */; };
@@ -153,6 +157,12 @@
 
 /* Begin PBXFileReference section */
 		600C339018857E0F00656A5D /* iOSHierarchyViewer.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = iOSHierarchyViewer.xcodeproj; path = "iOS-Hierarchy-Viewer/iOSHierarchyViewer.xcodeproj"; sourceTree = "<group>"; };
+		6068028E1888233700D5217B /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		6068028F1888233700D5217B /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		60680293188828D100D5217B /* GRMapAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRMapAnnotation.h; sourceTree = "<group>"; };
+		60680294188828D200D5217B /* GRMapAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GRMapAnnotation.m; sourceTree = "<group>"; };
+		6068029618883DCA00D5217B /* GRTabbarBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GRTabbarBackground.png; sourceTree = "<group>"; };
+		6068029718883DCA00D5217B /* GRTabbarBackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "GRTabbarBackground@2x.png"; sourceTree = "<group>"; };
 		60B266041877CBFF008E881E /* 1.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = 1.pdf; path = Images/Main/1.pdf; sourceTree = "<group>"; };
 		60E649671877ECA800D5466B /* GRHeart.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = GRHeart.jpg; path = Main/GRHeart.jpg; sourceTree = "<group>"; };
 		60E649851877FB1D00D5466B /* notifications.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = notifications.plist; path = Images/Main/notifications.plist; sourceTree = "<group>"; };
@@ -350,6 +360,15 @@
 				600C339518857E1000656A5D /* libiOSHierarchyViewer.a */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		60680292188828BE00D5217B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				60680293188828D100D5217B /* GRMapAnnotation.h */,
+				60680294188828D200D5217B /* GRMapAnnotation.m */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		60E649BF1878062400D5466B /* notifications */ = {
@@ -571,6 +590,7 @@
 		927C9FA8186D66DC00DC0EDC /* GraceRoad */ = {
 			isa = PBXGroup;
 			children = (
+				60680292188828BE00D5217B /* Model */,
 				9261925818865790001E0A72 /* Keys */,
 				9261925D18865790001E0A72 /* Views */,
 				9261922818865752001E0A72 /* Controller */,
@@ -609,6 +629,8 @@
 		929989A718768C2E0001EFDC /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				6068028E1888233700D5217B /* Reachability.h */,
+				6068028F1888233700D5217B /* Reachability.m */,
 				929989C318768D550001EFDC /* NSData+CMBExtensions.h */,
 				929989C418768D550001EFDC /* NSData+CMBExtensions.m */,
 				929989C018768C9C0001EFDC /* NSString+CMBExtensions.h */,
@@ -651,6 +673,8 @@
 		92CE913D18755BEB00C7D3A1 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				6068029618883DCA00D5217B /* GRTabbarBackground.png */,
+				6068029718883DCA00D5217B /* GRTabbarBackground@2x.png */,
 				9276F35B1887D22600E13763 /* GRShareButton.png */,
 				9276F35C1887D22600E13763 /* GRShareButton@2x.png */,
 				920B999618852B21006BD620 /* GRAddButton@2x.png */,
@@ -770,6 +794,7 @@
 			files = (
 				60E649F81878062400D5466B /* notifications8.plist in Resources */,
 				60E649EB1878062400D5466B /* notifications21.plist in Resources */,
+				6068029818883DCA00D5217B /* GRTabbarBackground.png in Resources */,
 				92CE914318755BEB00C7D3A1 /* gr.sqlite in Resources */,
 				60E649F01878062400D5466B /* notifications26.plist in Resources */,
 				9242AF001876A87C00F9FEFB /* GRBackButton@2x.png in Resources */,
@@ -778,6 +803,7 @@
 				60E649E81878062400D5466B /* notifications19.plist in Resources */,
 				60E649861877FB1D00D5466B /* notifications.plist in Resources */,
 				9294D45118766369009352DB /* GRAudio.png in Resources */,
+				6068029918883DCA00D5217B /* GRTabbarBackground@2x.png in Resources */,
 				92CE914618755BEB00C7D3A1 /* GRResourceTab@2x.png in Resources */,
 				60E649E31878062400D5466B /* notifications14.plist in Resources */,
 				60E649F11878062400D5466B /* notifications27.plist in Resources */,
@@ -845,6 +871,7 @@
 				9261927418865790001E0A72 /* GRPrayView.m in Sources */,
 				9276F35918878CFA00E13763 /* UIActionSheet+BlockSupport.m in Sources */,
 				9261927718865790001E0A72 /* GRSermonContentView.m in Sources */,
+				606802901888233700D5217B /* Reachability.m in Sources */,
 				9261927818865790001E0A72 /* GRSermonView.m in Sources */,
 				9261925018865752001E0A72 /* GRSettingsView.m in Sources */,
 				9261927018865790001E0A72 /* GRCommunicationView.m in Sources */,
@@ -865,6 +892,7 @@
 				9261925118865752001E0A72 /* GRUserDetailView.m in Sources */,
 				929989B918768C2E0001EFDC /* MFNetworkClientInternal.m in Sources */,
 				9276F35018877DC800E13763 /* UIView+FrameAdjustment.m in Sources */,
+				60680295188828D200D5217B /* GRMapAnnotation.m in Sources */,
 				929989C218768C9C0001EFDC /* NSString+CMBExtensions.m in Sources */,
 				9261924E18865752001E0A72 /* GraceRoadMain.m in Sources */,
 				9261925418865752001E0A72 /* GRNibPackage.m in Sources */,

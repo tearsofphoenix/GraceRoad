@@ -21,12 +21,7 @@
 @implementation GRNavigationBarView
 
 - (void)_initializeContent
-{
-//    [self setBackgroundColor: [UIColor colorWithRed: 0.16f
-//                                              green: 0.53f
-//                                               blue: 0.78f
-//                                              alpha: 1.00f]];
-    
+{    
     [self setBackgroundColor: [UIColor colorWithRed: 0.16f
                                               green: 0.56f
                                                blue: 0.87f
@@ -50,8 +45,7 @@
                                                   green: 0.80f
                                                    blue: 0.81f
                                                   alpha: 1.00f]];
-    //[lineView setAlpha: 0.7];
-    [self addSubview: lineView];
+    //[self addSubview: lineView];
     [lineView release];
 
     CGRect bounds = [self bounds];
@@ -70,6 +64,14 @@
     [_leftNavigationButton setAlpha: 0];
     
     [self addSubview: _leftNavigationButton];
+    
+//    CALayer *layer = [_titleLabel layer];
+//    
+//    layer.masksToBounds = NO;
+//    layer.shadowOffset = CGSizeMake(-15, 20);
+//    layer.shadowRadius = 5;
+//    layer.shadowOpacity = 0.5;
+//    layer.shadowColor = [[UIColor blackColor] CGColor];
 }
 
 - (UIButton *)leftNavigationButton
