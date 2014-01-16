@@ -21,6 +21,26 @@
 
 @implementation GRUserProfileView
 
+- (void)_createDetailViewWithAnimation: (BOOL)animate
+{
+    [self setTitle: @"我的信息"];
+    
+    _detailView = [[GRUserDetailView alloc] initWithFrame: [self bounds]];
+    [self addSubview: _detailView];
+    
+    if (animate)
+    {
+        [_detailView setAlpha: 0];
+        [UIView animateWithDuration: 0.3
+                         animations: (^
+                                      {
+                                          [_loginView setAlpha: 0];
+                                          [_detailView setAlpha: 1];
+                                      })];
+    }
+    
+}
+
 - (id)initWithFrame: (CGRect)frame
 {
     self = [super initWithFrame: frame];
@@ -29,31 +49,19 @@
         [self setHideTabbar: YES];
         CGRect bounds = [self bounds];
         
-        _detailView = [[GRUserDetailView alloc] initWithFrame: bounds];
-        [self addSubview: _detailView];
-        
         if (!ERSSC(GRDataServiceID, GRDataServiceCurrentAccountAction, nil))
         {
-            [_detailView setAlpha: 0];
-            
             _loginView = [[GRLoginView alloc] initWithFrame: bounds];
             [_loginView setDisposableCallback: (^
                                                 {
-                                                    [self setTitle: @"我的信息"];
-
-                                                    [UIView animateWithDuration: 0.3
-                                                                     animations: (^
-                                                                                  {
-                                                                                      [_loginView setAlpha: 0];
-                                                                                      [_detailView setAlpha: 1];
-                                                                                  })];
+                                                    [self _createDetailViewWithAnimation: YES];
                                                 })];
             
             [self addSubview: _loginView];
             [self setTitle: @"组长登陆"];
         }else
         {
-            [self setTitle: @"我的信息"];
+            [self _createDetailViewWithAnimation: NO];
         }
     }
     return self;

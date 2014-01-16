@@ -17,6 +17,7 @@
 @interface GRResourceInfoView ()
 {
     id<GRPackage> _package;
+    UIButton *_doneButton;
 }
 
 @property (nonatomic, retain) UIButton *rightNavigationButton;
@@ -34,13 +35,26 @@
         [self setHideTabbar: YES];
         [self setBackgroundColor: [UIColor whiteColor]];
         
-        _rightNavigationButton = [[UIButton alloc] init];
-        [[_rightNavigationButton titleLabel] setFont: [UIFont systemFontOfSize: 14]];
-        [_rightNavigationButton setTitle: @"完成"
-                                forState: UIControlStateNormal];
+        _doneButton = [[UIButton alloc] init];
+        [_doneButton setBackgroundColor: [UIColor colorWithRed:0.58 green:0.69 blue:0.84 alpha:1]];
+        [[_doneButton titleLabel] setFont: [UIFont systemFontOfSize: 14]];
+        [_doneButton setTitle: @"完成"
+                     forState: UIControlStateNormal];
+        [_doneButton setTitleColor: [UIColor blackColor]
+                          forState: UIControlStateNormal];
+        [_doneButton addTarget: self
+                        action: @selector(_handleDoneButtonTappedEvent:)
+              forControlEvents: UIControlEventTouchUpInside];
+        
+        [self addSubview: _doneButton];
+        
+        _rightNavigationButton = [[UIButton alloc] initWithFrame: CGRectMake(0, 0, 40, 40)];
+        [_rightNavigationButton setBackgroundImage: [UIImage imageNamed: @"GRShareButton"]
+                                          forState: UIControlStateNormal];
         [_rightNavigationButton addTarget: self
-                                   action: @selector(_handleDoneButtonTappedEvent:)
+                                   action: @selector(_handleShareButtonTappedEvent:)
                          forControlEvents: UIControlEventTouchUpInside];
+        
     }
     return self;
 }
@@ -52,6 +66,7 @@
     [_rightNavigationButton release];
     [_resourceInfo release];
     [_packageView release];
+    [_doneButton release];
     
     [super dealloc];
 }
@@ -60,7 +75,11 @@
 {
     [super setFrame: frame];
     
-    [_packageView setFrame: [self bounds]];
+    CGRect bounds = [self bounds];
+    [_packageView setFrame: bounds];
+    
+    [self bringSubviewToFront: _doneButton];
+    [_doneButton setFrame: CGRectMake(20, bounds.size.height - 60, bounds.size.width - 20 * 2, 40)];
 }
 
 - (void)setPackageView: (UIView *)packageView
@@ -84,14 +103,14 @@
     {
         [_resourceInfo release];
         _resourceInfo = [resourceInfo retain];
-
+        
         [self setTitle: _resourceInfo[GRResourceName]];
         
-//        NSString *path = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent: _resourceInfo[GRResourcePath]];
-//        
-//        GRPackage *package = [[GRPackage alloc] initWithPath: path];
-//        
-//        [self addSubview: [package view]];
+        //        NSString *path = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent: _resourceInfo[GRResourcePath]];
+        //
+        //        GRPackage *package = [[GRPackage alloc] initWithPath: path];
+        //
+        //        [self addSubview: [package view]];
         
         NSString *path = [GRResourceManager pathWithSubPath: _resourceInfo[GRResourcePath]];
         
@@ -116,8 +135,21 @@
     ERSC(GRDataServiceID,
          GRDataServiceSaveLessonForIDAction,
          @[lessonContext, _resourceInfo[GRResourceID] ], nil);
-           
+    
     ERSC(GRViewServiceID, GRViewServicePopContentViewAction, nil, nil);
+}
+
+- (void)_handleShareButtonTappedEvent: (id)sender
+{
+    NSArray *sharedData = @[ _resourceInfo[GRResourceName] ];
+    UIActivityViewController *shareViewController = [[UIActivityViewController alloc] initWithActivityItems: sharedData
+                                                                                      applicationActivities: nil];
+    
+    UIViewController *rootViewController = ERSSC(GRViewServiceID, GRViewServiceRootViewControllerAction, nil);
+    [rootViewController presentViewController: shareViewController
+                                     animated: YES
+                                   completion: nil];
+    [shareViewController release];
 }
 
 @end

@@ -155,9 +155,15 @@
                         dispatch_async(dispatch_get_main_queue(),
                                        (^
                                         {
-                                            
-                                            self.backgroundImageView.alpha = 0.0;
-                                            self.backgroundImageView.image = blurredImage;
+                                            if (_blurLevel != 0)
+                                            {
+                                                [self _updateBackgroundImageView];
+                                                [_backgroundImageView setImage: blurredImage];
+                                            }else
+                                            {
+                                                [_backgroundImageView setAlpha: 0.0];
+                                                [_backgroundImageView setImage: blurredImage];
+                                            }
                                         }));
                     }));
     
@@ -174,13 +180,23 @@
     [self setBlurLevel:(self.scrollView.contentOffset.y + self.scrollView.contentInset.top) / (2 * CGRectGetHeight(self.bounds) / 3)];
 }
 
-- (void)setBlurLevel:(float)blurLevel
+- (void)_updateBackgroundImageView
 {
-    self.backgroundImageView.alpha = blurLevel;
+    [_backgroundImageView setAlpha: _blurLevel];
     
-    if (self.isGlassEffectOn)
+    if (_isGlassEffectOn)
     {
-        self.backgroundGlassView.alpha = MAX(0.0, MIN(self.backgroundImageView.alpha - self.initialGlassLevel, self.initialGlassLevel));
+        [_backgroundGlassView setAlpha: MAX(0.0, MIN(_blurLevel - _initialGlassLevel, _initialGlassLevel))];
+    }
+}
+
+- (void)setBlurLevel: (CGFloat)blurLevel
+{
+    if (_blurLevel != blurLevel)
+    {
+        _blurLevel = blurLevel;
+        
+        [self _updateBackgroundImageView];
     }
 }
 

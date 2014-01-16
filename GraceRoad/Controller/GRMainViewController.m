@@ -259,6 +259,8 @@
         [viewStack addObject: contentView];
         [_contentView addSubview: contentView];
         
+        [contentView didSwitchIn];
+
         [self _updateContextForContentView: contentView];
         
         [self _resetTabbarFrame];
@@ -278,7 +280,6 @@
                          completion: (^(BOOL finished)
                                       {
                                           [currentView didSwitchOut];
-                                          [contentView didSwitchIn];
                                       })];
     }else
     {

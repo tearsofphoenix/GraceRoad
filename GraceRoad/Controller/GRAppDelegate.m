@@ -11,6 +11,7 @@
 #import "GRViewService.h"
 #import "UIAlertView+BlockSupport.h"
 #import "GRDataService.h"
+#import "WXApi.h"
 
 @interface iOSHierarchyViewer : NSObject
 
@@ -21,12 +22,16 @@
 @end
 
 
+@interface GRAppDelegate ()<WXApiDelegate>
+
+@end
+
 @implementation GRAppDelegate
 
 - (BOOL)          application: (UIApplication *)application
 didFinishLaunchingWithOptions: (NSDictionary *)launchOptions
 {
-    [iOSHierarchyViewer start];
+    //[iOSHierarchyViewer start];
     
     [[UIApplication sharedApplication] setStatusBarHidden: YES];
     
@@ -46,6 +51,9 @@ didFinishLaunchingWithOptions: (NSDictionary *)launchOptions
     
     [_window makeKeyAndVisible];
     
+    [WXApi registerApp: @"wx862decf228c6b60b"
+       withDescription: @"恩典之路"];
+    
     return YES;
 }
 
@@ -58,6 +66,32 @@ didReceiveLocalNotification: (UILocalNotification *)notification
     //
     ERSC(GRViewServiceID, GRViewServiceShowDailyScriptureAction, @[ userInfo ], nil);
     
+}
+
+- (BOOL)application: (UIApplication *)application
+      handleOpenURL: (NSURL *)url
+{
+    return [WXApi handleOpenURL: url
+                       delegate: self];
+}
+
+- (BOOL)application: (UIApplication *)application
+            openURL: (NSURL *)url
+  sourceApplication: (NSString *)sourceApplication
+         annotation: (id)annotation
+{
+    return [WXApi handleOpenURL: url
+                       delegate: self];
+}
+
+- (void)onReq: (BaseReq *)req
+{
+    NSLog(@"in func: %@", req);
+}
+
+- (void)onResp: (BaseResp *)resp
+{
+    NSLog(@"in func: %@", resp);
 }
 
 @end

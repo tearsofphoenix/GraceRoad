@@ -16,11 +16,11 @@
 
 @property (nonatomic, strong) UIImage *originalImage;
 @property (nonatomic, assign) UIScrollView *scrollView;
-@property (nonatomic, assign) float initialBlurLevel;
-@property (nonatomic, assign) float initialGlassLevel;
-@property (nonatomic, assign) BOOL isGlassEffectOn;
+@property (nonatomic) float initialBlurLevel;
+@property (nonatomic) float initialGlassLevel;
+@property (nonatomic) BOOL isGlassEffectOn;
 @property (nonatomic, strong) UIColor *glassColor;
 
-- (void)setBlurLevel:(float)blurLevel;
+@property (nonatomic) CGFloat blurLevel;
 
 @end

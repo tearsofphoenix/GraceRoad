@@ -172,7 +172,7 @@
         [_sermons addObject: (@{
                                 GRSermonID : [[ERUUID UUID] stringDescription],
                                 GRSermonPath : @"重生的生命，丰盛的人生.mp3",
-                                GRSermonTitle : @"教导孩子",
+                                GRSermonTitle : @"重生的生命，丰盛的人生",
                                 GRSermonAbstract : @"人失去神之后，对祝福的观念已经变质了。人无法对幸福有正确的认识与标准，专在肉身与暂时的亨通顺利找寻幸福。另外，人也对自己真正的问题也失去了知觉。鱼活着没有水，树没有泥土不能生长，人却没有意识到他离开那全善全爱的上帝是最大的问题。事实上，神赐下基督，将祂救恩的启示显明，使人再次得见而认识神。认识了神之后，人当要重新认识与设计自己的人生，好跟从这位神，才得以享受在祂里头的丰盛生命。因为基督来乃是叫人得生命，并且得的更丰盛。",
                                 GRSermonUploadDate : [NSDate date],
                                 })];

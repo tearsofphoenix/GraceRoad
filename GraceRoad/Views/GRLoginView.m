@@ -12,6 +12,7 @@
 #import "GRUserProfileView.h"
 #import "GRViewService.h"
 #import "GRDataService.h"
+#import "GRTheme.h"
 
 @interface GRLoginView ()
 {
@@ -108,7 +109,7 @@
         [_loginContentView addSubview: _passwordField];
         
         
-        UIColor* darkColor = [UIColor colorWithRed:10.0/255 green:78.0/255 blue:108.0/255 alpha:1.0f];
+        UIColor* darkColor = [GRTheme darkColor];
         
         rect = CGRectMake(29, 343 + offsetY, 263, 50);
         UIButton *loginButton = [[UIButton alloc] initWithFrame: rect];

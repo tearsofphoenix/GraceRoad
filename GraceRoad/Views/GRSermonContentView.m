@@ -10,6 +10,7 @@
 #import "GRSermonKeys.h"
 #import "GRResourceManager.h"
 #import "DKLiveBlurView.h"
+#import "GRViewService.h"
 #import <MediaPlayer/MediaPlayer.h>
 
 @interface GRSermonContentView ()
@@ -20,6 +21,9 @@
     UITextView *_contentTextView;
     MPMoviePlayerController *_player;
 }
+
+@property (nonatomic, retain) UIButton *rightNavigationButton;
+
 @end
 
 @implementation GRSermonContentView
@@ -31,16 +35,22 @@
     {
         [self setHideTabbar: YES];
         
+        _rightNavigationButton = [[UIButton alloc] initWithFrame: CGRectMake(0, 0, 40, 40)];
+        [_rightNavigationButton setBackgroundImage: [UIImage imageNamed: @"GRShareButton"]
+                                          forState: UIControlStateNormal];
+        [_rightNavigationButton addTarget: self
+                                   action: @selector(_handleShareButtonTappedEvent:)
+                         forControlEvents: UIControlEventTouchUpInside];
+        
         _backgroundView = [[DKLiveBlurView alloc] initWithFrame: [self bounds]];
         [_backgroundView setOriginalImage: [UIImage imageNamed: @"GRSermonBackground.jpeg"]];
         [_backgroundView setIsGlassEffectOn: YES];
-        [self addSubview: _backgroundView];
+        [_backgroundView setBlurLevel: 1.2];
         
+        [self addSubview: _backgroundView];
+
         _contentView = [[UIView alloc] initWithFrame: [self bounds]];
         [self addSubview: _contentView];
-        //[self setBackgroundColor: [UIColor colorWithRed:0.95f green:0.95f blue:0.96f alpha:1.00f]];
-        
-        //[self setBackgroundColor: [UIColor whiteColor]];
         
         CGRect rect = CGRectMake((frame.size.width - 100) / 2, 20, 100, 100);
         
@@ -77,6 +87,7 @@
     [_player release];
     [_sermonInfo release];
     [_backgroundView release];
+    [_rightNavigationButton release];
     
     [super dealloc];
 }
@@ -90,15 +101,6 @@
     [_backgroundView setFrame: bounds];
     [_contentView setFrame: bounds];
     [[_player view] setFrame: CGRectMake(0, bounds.size.height - 40, bounds.size.width, 40)];
-}
-
-- (void)didSwitchIn
-{
-    [UIView animateWithDuration: 0.1
-                     animations: (^
-                                  {
-                                      [_backgroundView setBlurLevel: 1.2];
-                                  })];
 }
 
 - (void)setSermonInfo: (NSDictionary *)sermonInfo
@@ -122,6 +124,19 @@
 - (void)didSwitchOut
 {
     [_player pause];
+}
+
+- (void)_handleShareButtonTappedEvent: (id)sender
+{
+    NSArray *sharedData = @[ _sermonInfo[GRSermonTitle] ];
+    UIActivityViewController *shareViewController = [[UIActivityViewController alloc] initWithActivityItems: sharedData
+                                                                                      applicationActivities: nil];
+    
+    UIViewController *rootViewController = ERSSC(GRViewServiceID, GRViewServiceRootViewControllerAction, nil);
+    [rootViewController presentViewController: shareViewController
+                                     animated: YES
+                                   completion: nil];
+    [shareViewController release];
 }
 
 @end
