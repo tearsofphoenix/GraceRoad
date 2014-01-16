@@ -66,6 +66,11 @@
     
 }
 
+- (void)didSwitchIn
+{
+    
+}
+
 - (void)didSwitchOut
 {
     

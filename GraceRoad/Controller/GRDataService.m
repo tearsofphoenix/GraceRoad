@@ -14,6 +14,7 @@
 #import "GRViewService.h"
 #import "GRAccountKeys.h"
 #import "NSString+CMBExtensions.h"
+#import "GRTeamKeys.h"
 
 #import <NoahsUtility/NoahsUtility.h>
 
@@ -27,6 +28,8 @@
     NSMutableArray *_sermons;
     NSMutableArray *_prayList;
     NSMutableArray *_scriptures;
+    NSDictionary *_receiveTeam;
+    NSArray *_receiveTeamMembers;
 }
 @end
 
@@ -168,12 +171,9 @@
         
         [_sermons addObject: (@{
                                 GRSermonID : [[ERUUID UUID] stringDescription],
-                                GRSermonPath : @"t0101.mp3",
+                                GRSermonPath : @"重生的生命，丰盛的人生.mp3",
                                 GRSermonTitle : @"教导孩子",
-                                GRSermonAbstract : @"1. 起初　神创造天地。\n"
-                                "2. 地是空虚混沌．渊面黑暗．　神的灵运行在水面上。\n"
-                                "3. 　神说、要有光、就有了光。\n"
-                                "4. 　神看光是好的、就把光暗分开了。\n",
+                                GRSermonAbstract : @"人失去神之后，对祝福的观念已经变质了。人无法对幸福有正确的认识与标准，专在肉身与暂时的亨通顺利找寻幸福。另外，人也对自己真正的问题也失去了知觉。鱼活着没有水，树没有泥土不能生长，人却没有意识到他离开那全善全爱的上帝是最大的问题。事实上，神赐下基督，将祂救恩的启示显明，使人再次得见而认识神。认识了神之后，人当要重新认识与设计自己的人生，好跟从这位神，才得以享受在祂里头的丰盛生命。因为基督来乃是叫人得生命，并且得的更丰盛。",
                                 GRSermonUploadDate : [NSDate date],
                                 })];
         
@@ -237,6 +237,44 @@
                                  GRPrayContentKey : @"所以我们只管坦然无惧的、来到施恩的宝座前、为要得怜恤、蒙恩惠作随时的帮助。(来4:16)",
                                  GRPrayUploadDateKey : [NSDate date],
                                  })];
+        _receiveTeam = [(@{
+                          GRTeamIDKey : @"8FF406E8-33A7-4374-8855-E58AC9397F2B",
+                          GRTeamNameKey : @"接待组",
+                          }) retain];
+        _receiveTeamMembers = [(@[
+                                  (@{
+                                     GRAccountNameKey : @"陈晓娟",
+                                     GRAccountMobilePhoneKey : @"13247777777",
+                                     }),
+                                  (@{
+                                     GRAccountNameKey : @"王顶君",
+                                     GRAccountMobilePhoneKey : @"13347766777",
+                                     }),
+                                  (@{
+                                     GRAccountNameKey : @"唐义勇",
+                                     GRAccountMobilePhoneKey : @"13447755777",
+                                     }),
+                                  (@{
+                                     GRAccountNameKey : @"仲怀玉",
+                                     GRAccountMobilePhoneKey : @"13547744777",
+                                     }),
+                                  (@{
+                                     GRAccountNameKey : @"沈玉石",
+                                     GRAccountMobilePhoneKey : @"13747722777",
+                                     }),
+                                  (@{
+                                     GRAccountNameKey : @"吴雷",
+                                     GRAccountMobilePhoneKey : @"13847711777",
+                                     }),
+                                  (@{
+                                     GRAccountNameKey : @"向以平",
+                                     GRAccountMobilePhoneKey : @"13947700777",
+                                     }),
+                                  (@{
+                                     GRAccountNameKey : @"韦红芬",
+                                     GRAccountMobilePhoneKey : @"13147788777",
+                                     }),
+                                  ]) retain];
     }
     
     return self;
@@ -257,8 +295,12 @@
                             GRAccountEmailKey : userName,
                             GRAccountPasswordKey : [password MD5String],
                             GRAccountIDKey : [[NSUUID UUID] UUIDString],
+                            GRAccountNameKey : @"刘晓明",
+                            GRAccountMobilePhoneKey : @"13671765129",
+                            GRAccountQQKey : @"664943643",
                             })
                  forKey: GRCurrentAccountKey];
+    
     [defaults synchronize];
     
     double delayInSeconds = 1.0;
@@ -359,6 +401,16 @@
 - (NSDictionary *)lessonRecordForID: (NSString *)lessonID
 {
     return [[NSUserDefaults standardUserDefaults] objectForKey: lessonID];
+}
+
+- (NSDictionary *)teamForAccountID: (NSString *)accountID
+{
+    return _receiveTeam;
+}
+
+- (NSArray *)allMemberForTeamID: (NSString *)teamID
+{
+    return _receiveTeamMembers;
 }
 
 @end

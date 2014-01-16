@@ -24,6 +24,8 @@
 
 - (void)willSwitchIn;
 
+- (void)didSwitchIn;
+
 - (void)didSwitchOut;
 
 @optional

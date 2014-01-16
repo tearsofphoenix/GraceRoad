@@ -28,6 +28,10 @@
 
 #define GRDataServiceSaveLessonForIDAction       @"saveLesson:forID:"
 #define GRDataServiceLessonRecordForIDAction     @"lessonRecordForID:"
+
+#define GRDataServiceTeamForAccountIDAction      @"teamForAccountID:"
+#define GRDataServiceAllMemberForTeamIDAction    @"allMemberForTeamID:"
+
 #pragma mark - notification
 
 #define GRAccountLoginNotification          GRPrefix ".notification.login"

@@ -66,8 +66,8 @@
                                                         image: [UIImage imageNamed: @"GRResourceTab"]
                                                           tag: 1];
     UITabBarItem *item2 = [[UITabBarItem alloc] initWithTitle: @"讲道"
-                                                           image: [UIImage imageNamed: @"GRSermonTab"]
-                                                             tag: 2];
+                                                        image: [UIImage imageNamed: @"GRSermonTab"]
+                                                          tag: 2];
     UITabBarItem *item3 = [[UITabBarItem alloc] initWithTitle: @"设置"
                                                         image: [UIImage imageNamed: @"GRPreferenceTab"]
                                                           tag: 3];
@@ -84,7 +84,7 @@
     [[self view] addSubview: _contentView];
     
     [_tabbar setBackgroundColor: [UIColor colorWithRed:0.31f green:0.32f blue:0.33f alpha:1.00f]];
-  
+    
     CGRect contentBounds = [_contentView bounds];
     
     GRIntroductView *introductView = [[GRIntroductView alloc] initWithFrame: contentBounds];
@@ -163,9 +163,9 @@
         CGRect rect = frame;
         rect.size.height = 49;
         rect.origin.y = frame.size.height + rect.size.height;
-
+        
         [_tabbar setFrame: rect];
-
+        
         frame = [_contentView frame];
         frame.size.height = [[self view] bounds].size.height - [_navigationBarView bounds].size.height;
         [_contentView setFrame: frame];
@@ -215,6 +215,10 @@
                                           {
                                               [[_navigationBarView leftNavigationButton] setAlpha: 0];
                                           }
+                                      })
+                         completion: (^(BOOL finished)
+                                      {
+                                          [view didSwitchIn];
                                       })];
         
         [self didChangeValueForKey: @"currentIndex"];
@@ -258,7 +262,7 @@
         [self _updateContextForContentView: contentView];
         
         [self _resetTabbarFrame];
-
+        
         //update navigation button
         //
         [UIView animateWithDuration: 0.3
@@ -274,6 +278,7 @@
                          completion: (^(BOOL finished)
                                       {
                                           [currentView didSwitchOut];
+                                          [contentView didSwitchIn];
                                       })];
     }else
     {
@@ -309,7 +314,7 @@
         GRContentView *newView = [viewStack lastObject];
         
         [newView willSwitchIn];
-
+        
         [self _updateContextForContentView: newView];
         
         [UIView animateWithDuration: 0.3
@@ -329,6 +334,7 @@
                                       {
                                           [currentView didSwitchOut];
                                           [currentView removeFromSuperview];
+                                          [newView didSwitchIn];
                                       })];
     }
 }
