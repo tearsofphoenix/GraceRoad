@@ -244,35 +244,43 @@
         _receiveTeamMembers = [(@[
                                   (@{
                                      GRAccountNameKey : @"陈晓娟",
-                                     GRAccountMobilePhoneKey : @"13247777777",
+                                     GRAccountMobilePhoneKey : @"13671765129",
+                                     GRAccountEmailKey : @"tearsofphoenix@icloud.com",
                                      }),
                                   (@{
                                      GRAccountNameKey : @"王顶君",
-                                     GRAccountMobilePhoneKey : @"13347766777",
+                                     GRAccountMobilePhoneKey : @"13671765129",
+                                     GRAccountEmailKey : @"tearsofphoenix@icloud.com",
                                      }),
                                   (@{
                                      GRAccountNameKey : @"唐义勇",
-                                     GRAccountMobilePhoneKey : @"13447755777",
+                                     GRAccountMobilePhoneKey : @"13671765129",
+                                     GRAccountEmailKey : @"tearsofphoenix@icloud.com",
                                      }),
                                   (@{
                                      GRAccountNameKey : @"仲怀玉",
-                                     GRAccountMobilePhoneKey : @"13547744777",
+                                     GRAccountMobilePhoneKey : @"13671765129",
+                                     GRAccountEmailKey : @"tearsofphoenix@icloud.com",
                                      }),
                                   (@{
                                      GRAccountNameKey : @"沈玉石",
-                                     GRAccountMobilePhoneKey : @"13747722777",
+                                     GRAccountMobilePhoneKey : @"13671765129",
+                                     GRAccountEmailKey : @"tearsofphoenix@icloud.com",
                                      }),
                                   (@{
                                      GRAccountNameKey : @"吴雷",
-                                     GRAccountMobilePhoneKey : @"13847711777",
+                                     GRAccountMobilePhoneKey : @"13671765129",
+                                     GRAccountEmailKey : @"tearsofphoenix@icloud.com",
                                      }),
                                   (@{
                                      GRAccountNameKey : @"向以平",
-                                     GRAccountMobilePhoneKey : @"13947700777",
+                                     GRAccountMobilePhoneKey : @"13671765129",
+                                     GRAccountEmailKey : @"tearsofphoenix@icloud.com",
                                      }),
                                   (@{
                                      GRAccountNameKey : @"韦红芬",
-                                     GRAccountMobilePhoneKey : @"13147788777",
+                                     GRAccountMobilePhoneKey : @"13671765129",                                     
+                                     GRAccountEmailKey : @"tearsofphoenix@icloud.com",
                                      }),
                                   ]) retain];
     }

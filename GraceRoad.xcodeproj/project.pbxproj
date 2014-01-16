@@ -74,9 +74,6 @@
 		9261927618865790001E0A72 /* GRResourceView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9261926B18865790001E0A72 /* GRResourceView.m */; };
 		9261927718865790001E0A72 /* GRSermonContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9261926D18865790001E0A72 /* GRSermonContentView.m */; };
 		9261927818865790001E0A72 /* GRSermonView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9261926F18865790001E0A72 /* GRSermonView.m */; };
-		92619287188667D4001E0A72 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 92619285188667D4001E0A72 /* InfoPlist.strings */; };
-		9261929218866860001E0A72 /* view.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9261929118866860001E0A72 /* view.xib */; };
-		92619293188668B4001E0A72 /* lession1.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9261927F188667D4001E0A72 /* lession1.bundle */; };
 		9261929718867B0F001E0A72 /* GRHTMLPackage.m in Sources */ = {isa = PBXBuildFile; fileRef = 9261929618867B0F001E0A72 /* GRHTMLPackage.m */; };
 		9261929918867CA5001E0A72 /* week1.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9261929818867CA5001E0A72 /* week1.bundle */; };
 		9267334E187258C500249E37 /* libNoahsRecordStatic.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9267334B1872588400249E37 /* libNoahsRecordStatic.a */; };
@@ -137,13 +134,6 @@
 			proxyType = 1;
 			remoteGlobalIDString = 7C861E33153DF2E000935C95;
 			remoteInfo = iOSHierarchyViewer;
-		};
-		9261928C188667E9001E0A72 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 927C9F97186D66DC00DC0EDC /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 9261927E188667D4001E0A72;
-			remoteInfo = lession1;
 		};
 		9267334A1872588400249E37 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -259,11 +249,7 @@
 		9261926D18865790001E0A72 /* GRSermonContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GRSermonContentView.m; sourceTree = "<group>"; };
 		9261926E18865790001E0A72 /* GRSermonView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRSermonView.h; sourceTree = "<group>"; };
 		9261926F18865790001E0A72 /* GRSermonView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GRSermonView.m; sourceTree = "<group>"; };
-		9261927F188667D4001E0A72 /* lession1.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = lession1.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		92619280188667D4001E0A72 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
-		92619284188667D4001E0A72 /* lession1-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "lession1-Info.plist"; sourceTree = "<group>"; };
-		92619286188667D4001E0A72 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		9261929118866860001E0A72 /* view.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = view.xib; sourceTree = "<group>"; };
 		9261929518867B0F001E0A72 /* GRHTMLPackage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRHTMLPackage.h; sourceTree = "<group>"; };
 		9261929618867B0F001E0A72 /* GRHTMLPackage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GRHTMLPackage.m; sourceTree = "<group>"; };
 		9261929818867CA5001E0A72 /* week1.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = week1.bundle; path = Images/Main/week1.bundle; sourceTree = "<group>"; };
@@ -508,24 +494,6 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		92619282188667D4001E0A72 /* lession1 */ = {
-			isa = PBXGroup;
-			children = (
-				92619283188667D4001E0A72 /* Supporting Files */,
-			);
-			path = lession1;
-			sourceTree = "<group>";
-		};
-		92619283188667D4001E0A72 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				9261929118866860001E0A72 /* view.xib */,
-				92619284188667D4001E0A72 /* lession1-Info.plist */,
-				92619285188667D4001E0A72 /* InfoPlist.strings */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
 		9267333E1872588400249E37 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -574,7 +542,6 @@
 			children = (
 				927CA014186D6FD500DC0EDC /* Library */,
 				927C9FA8186D66DC00DC0EDC /* GraceRoad */,
-				92619282188667D4001E0A72 /* lession1 */,
 				927C9FA1186D66DC00DC0EDC /* Frameworks */,
 				927C9FA0186D66DC00DC0EDC /* Products */,
 			);
@@ -584,7 +551,6 @@
 			isa = PBXGroup;
 			children = (
 				927C9F9F186D66DC00DC0EDC /* GraceRoad.app */,
-				9261927F188667D4001E0A72 /* lession1.bundle */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -719,21 +685,6 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		9261927E188667D4001E0A72 /* lession1 */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 92619289188667D4001E0A72 /* Build configuration list for PBXNativeTarget "lession1" */;
-			buildPhases = (
-				9261927D188667D4001E0A72 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = lession1;
-			productName = lession1;
-			productReference = 9261927F188667D4001E0A72 /* lession1.bundle */;
-			productType = "com.apple.product-type.bundle";
-		};
 		927C9F9E186D66DC00DC0EDC /* GraceRoad */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 927C9FCB186D66DC00DC0EDC /* Build configuration list for PBXNativeTarget "GraceRoad" */;
@@ -745,7 +696,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				9261928D188667E9001E0A72 /* PBXTargetDependency */,
 				600C339718857E1B00656A5D /* PBXTargetDependency */,
 				9267334D187258B600249E37 /* PBXTargetDependency */,
 			);
@@ -792,7 +742,6 @@
 			projectRoot = "";
 			targets = (
 				927C9F9E186D66DC00DC0EDC /* GraceRoad */,
-				9261927E188667D4001E0A72 /* lession1 */,
 			);
 		};
 /* End PBXProject section */
@@ -815,20 +764,10 @@
 /* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
-		9261927D188667D4001E0A72 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				9261929218866860001E0A72 /* view.xib in Resources */,
-				92619287188667D4001E0A72 /* InfoPlist.strings in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		927C9F9D186D66DC00DC0EDC /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				92619293188668B4001E0A72 /* lession1.bundle in Resources */,
 				60E649F81878062400D5466B /* notifications8.plist in Resources */,
 				60E649EB1878062400D5466B /* notifications21.plist in Resources */,
 				92CE914318755BEB00C7D3A1 /* gr.sqlite in Resources */,
@@ -954,11 +893,6 @@
 			name = iOSHierarchyViewer;
 			targetProxy = 600C339618857E1B00656A5D /* PBXContainerItemProxy */;
 		};
-		9261928D188667E9001E0A72 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 9261927E188667D4001E0A72 /* lession1 */;
-			targetProxy = 9261928C188667E9001E0A72 /* PBXContainerItemProxy */;
-		};
 		9267334D187258B600249E37 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = NoahsRecordStatic;
@@ -967,14 +901,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		92619285188667D4001E0A72 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				92619286188667D4001E0A72 /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
 		927C9FAB186D66DC00DC0EDC /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -986,43 +912,6 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		9261928A188667D4001E0A72 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COMBINE_HIDPI_IMAGES = YES;
-				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "lession1/lession1-Prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = "lession1/lession1-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
-				MACOSX_DEPLOYMENT_TARGET = 10.9;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				WRAPPER_EXTENSION = bundle;
-			};
-			name = Debug;
-		};
-		9261928B188667D4001E0A72 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COMBINE_HIDPI_IMAGES = YES;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "lession1/lession1-Prefix.pch";
-				INFOPLIST_FILE = "lession1/lession1-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
-				MACOSX_DEPLOYMENT_TARGET = 10.9;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				WRAPPER_EXTENSION = bundle;
-			};
-			name = Release;
-		};
 		927C9FC9186D66DC00DC0EDC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1039,7 +928,7 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Bing Xue (GLX4AG8795)";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -1077,7 +966,7 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Bing Xue (GLX4AG8795)";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -1100,7 +989,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_OBJC_ARC = NO;
 				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Bing Xue (GLX4AG8795)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "GraceRoad/GraceRoad-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
@@ -1109,9 +998,10 @@
 					"$(BUILT_PRODUCTS_DIR)/include/",
 				);
 				INFOPLIST_FILE = "GraceRoad/GraceRoad-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					/Users/Mac003/workspace/MyPatients/GraceRoad/Library/WeiXin,
+					"\"$(SRCROOT)/Library/WeiXin\"",
 				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
@@ -1130,7 +1020,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_OBJC_ARC = NO;
 				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Bing Xue (GLX4AG8795)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "GraceRoad/GraceRoad-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
@@ -1139,9 +1029,10 @@
 					"$(BUILT_PRODUCTS_DIR)/include/",
 				);
 				INFOPLIST_FILE = "GraceRoad/GraceRoad-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					/Users/Mac003/workspace/MyPatients/GraceRoad/Library/WeiXin,
+					"\"$(SRCROOT)/Library/WeiXin\"",
 				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
@@ -1156,15 +1047,6 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		92619289188667D4001E0A72 /* Build configuration list for PBXNativeTarget "lession1" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				9261928A188667D4001E0A72 /* Debug */,
-				9261928B188667D4001E0A72 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		927C9F9A186D66DC00DC0EDC /* Build configuration list for PBXProject "GraceRoad" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

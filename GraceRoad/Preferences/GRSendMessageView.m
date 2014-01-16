@@ -21,7 +21,8 @@
 
 #define  GRAccountPerRow (5)
 
-@interface GRSendMessageView ()<ERGalleryViewDataSource, ERGalleryViewDelegate>
+@interface GRSendMessageView ()<ERGalleryViewDataSource, ERGalleryViewDelegate,
+MFMessageComposeViewControllerDelegate, MFMailComposeViewControllerDelegate>
 {
     UIScrollView *_scrollView;
     ERGalleryView *_galleryView;
@@ -388,6 +389,7 @@ weightForHeaderOfSection: (NSInteger)section
         if ([MFMessageComposeViewController canSendText])
         {
             MFMessageComposeViewController *controller = [[MFMessageComposeViewController alloc] init];
+            [controller setMessageComposeDelegate: self];
             [controller setBody: [_textView text]];
             
             NSMutableArray *recipients = [NSMutableArray arrayWithCapacity: [_targetAccounts count]];
@@ -430,6 +432,7 @@ weightForHeaderOfSection: (NSInteger)section
         {
             MFMailComposeViewController *controller = [[MFMailComposeViewController alloc] init];
             
+            [controller setMailComposeDelegate: self];
             [controller setMessageBody: [_textView text]
                                 isHTML: NO];
             
@@ -437,10 +440,10 @@ weightForHeaderOfSection: (NSInteger)section
             
             for (NSDictionary *tLooper in _targetAccounts)
             {
-                NSString *phoneNumber = tLooper[GRAccountEmailKey];
-                if (phoneNumber)
+                NSString *email = tLooper[GRAccountEmailKey];
+                if (email)
                 {
-                    [recipients addObject: phoneNumber];
+                    [recipients addObject: email];
                 }
             }
             
@@ -451,7 +454,7 @@ weightForHeaderOfSection: (NSInteger)section
                                              animated: YES
                                            completion: nil];
             [controller release];
-
+            
         }else
         {
             [UIAlertView alertWithMessage: @"您的设备无法发送邮件！"
@@ -460,6 +463,89 @@ weightForHeaderOfSection: (NSInteger)section
     }else if ([_messageType isEqualToString: GRMessageTypeAuto])
     {
         
+    }
+}
+
+- (void)messageComposeViewController: (MFMessageComposeViewController *)controller
+                 didFinishWithResult: (MessageComposeResult)result
+{
+    UIViewController *rootViewController = ERSSC(GRViewServiceID, GRViewServiceRootViewControllerAction, nil);
+    
+    switch (result)
+    {
+        case MessageComposeResultCancelled:
+        {
+            [rootViewController dismissViewControllerAnimated: YES
+                                                   completion: nil];
+            break;
+        }
+        case MessageComposeResultFailed:
+        {
+            [rootViewController dismissViewControllerAnimated: YES
+                                                   completion: (^
+                                                                {
+                                                                    [UIAlertView alertWithMessage: @"发送失败！"
+                                                                                cancelButtonTitle: @"确定"];
+                                                                })];
+            break;
+        }
+        case MessageComposeResultSent:
+        {
+            [rootViewController dismissViewControllerAnimated: YES
+                                                   completion: (^
+                                                                {
+                                                                    [UIAlertView alertWithMessage: @"发送成功！"
+                                                                                cancelButtonTitle: @"确定"];
+                                                                })];
+            break;
+        }
+        default:
+            break;
+    }
+}
+
+- (void)mailComposeController: (MFMailComposeViewController *)controller
+          didFinishWithResult: (MFMailComposeResult)result
+                        error: (NSError *)error
+{
+    UIViewController *rootViewController = ERSSC(GRViewServiceID, GRViewServiceRootViewControllerAction, nil);
+    
+    switch (result)
+    {
+        case MFMailComposeResultCancelled:
+        case MFMailComposeResultSaved:
+        {
+            [rootViewController dismissViewControllerAnimated: YES
+                                                   completion: nil];
+            break;
+        }
+        case MFMailComposeResultFailed:
+        {
+            [rootViewController dismissViewControllerAnimated: YES
+                                                   completion: (^
+                                                                {
+                                                                    NSString *errorMessage = error ? [error localizedDescription] : @"发送失败！";
+                                                                    
+                                                                    [UIAlertView alertWithMessage: errorMessage
+                                                                                cancelButtonTitle: @"确定"];
+                                                                    
+                                                                })];
+            break;
+        }
+        case MFMailComposeResultSent:
+        {
+            [rootViewController dismissViewControllerAnimated: YES
+                                                   completion: (^
+                                                                {
+                                                                    [UIAlertView alertWithMessage: @"发送成功！"
+                                                                                cancelButtonTitle: @"确定"];
+                                                                    
+                                                                })];
+            
+            break;
+        }
+        default:
+            break;
     }
 }
 
