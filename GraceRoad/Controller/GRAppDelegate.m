@@ -54,12 +54,15 @@ didFinishLaunchingWithOptions: (NSDictionary *)launchOptions
     [WXApi registerApp: @"wx862decf228c6b60b"
        withDescription: @"恩典之路"];
     
+    [[UIApplication sharedApplication] registerForRemoteNotificationTypes: (UIRemoteNotificationTypeAlert
+                                                                            | UIRemoteNotificationTypeBadge
+                                                                            | UIRemoteNotificationTypeSound)];
     return YES;
 }
 
 - (void)        application: (UIApplication *)application
 didReceiveLocalNotification: (UILocalNotification *)notification
-{    
+{
     NSDictionary *userInfo = [notification userInfo];
     
     //has logged in?
@@ -92,6 +95,18 @@ didReceiveLocalNotification: (UILocalNotification *)notification
 - (void)onResp: (BaseResp *)resp
 {
     NSLog(@"in func: %@", resp);
+}
+
+- (void)                             application: (UIApplication *)app
+didRegisterForRemoteNotificationsWithDeviceToken: (NSData *)deviceToken
+{
+    NSLog(@"devToken=%@",deviceToken);
+}
+
+- (void)                             application: (UIApplication *)app
+didFailToRegisterForRemoteNotificationsWithError: (NSError *)err
+{
+    NSLog(@"Error in registration. Error: %@", err);
 }
 
 @end
