@@ -16,8 +16,8 @@
 #import "UIAlertView+BlockSupport.h"
 #import "GRViewService.h"
 #import "WXApi.h"
+#import "GRDataService.h"
 
-#import <NWPushNotification/NWHub.h>
 #import <MessageUI/MessageUI.h>
 
 #define  GRAccountPerRow (5)
@@ -122,7 +122,7 @@ MFMessageComposeViewControllerDelegate, MFMailComposeViewControllerDelegate>
         
         _typeButton = [[UIButton alloc] initWithFrame: rect];
         [_typeButton setBackgroundColor: [UIColor whiteColor]];
-        [_typeButton setTitle: @"自动"
+        [_typeButton setTitle: @"推送"
                      forState: UIControlStateNormal];
         [_typeButton setTitleColor: [UIColor blackColor]
                           forState: UIControlStateNormal];
@@ -388,6 +388,18 @@ weightForHeaderOfSection: (NSInteger)section
     if ([_messageType isEqualToString: GRMessageTypePushNotification])
     {
         //
+        ERServiceCallback callback = (^(id result, id exception)
+                                      {
+                                          [UIAlertView alertWithMessage: @"发送成功！"
+                                                      cancelButtonTitle: @"确定"];
+                                      });
+        callback = Block_copy(callback);
+        
+        ERSSC(GRDataServiceID,
+              GRDataServiceSendPushNotificationWithCallbackAction,
+              @[ [_textView text], callback ]);
+        
+        Block_release(callback);
         
     }else if ([_messageType isEqualToString: GRMessageTypeSMS])
     {

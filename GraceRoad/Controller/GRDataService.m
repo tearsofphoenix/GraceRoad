@@ -16,12 +16,14 @@
 #import "NSString+CMBExtensions.h"
 #import "GRTeamKeys.h"
 
+#import <NWPushNotification/NWHub.h>
+
 #import <NoahsUtility/NoahsUtility.h>
 
 #define GRLocalNotificationScheduleKey  GRPrefix ".hasScheduled"
 #define GRCurrentAccountKey             GRPrefix ".current-account"
 
-@interface GRDataService ()
+@interface GRDataService ()<NWHubDelegate>
 {
     NSMutableArray *_resourceCategories;
     NSMutableDictionary *_resources;
@@ -34,6 +36,9 @@
     
     NSDictionary *_receiveTeam;
     NSArray *_receiveTeamMembers;
+    
+#pragma mark - local push
+    NWHub *_hub;
 }
 @end
 
@@ -163,7 +168,7 @@
         
         _sermonCategories = [[NSMutableArray alloc] init];
         _sermons = [[NSMutableDictionary alloc] init];
-
+        
         NSDictionary *category = (@{
                                     GRSermonCategoryID : [[ERUUID UUID] stringDescription],
                                     GRSermonCategoryTitle : @"主日讲道",
@@ -255,9 +260,9 @@
                                  GRPrayUploadDateKey : [NSDate date],
                                  })];
         _receiveTeam = [(@{
-                          GRTeamIDKey : @"8FF406E8-33A7-4374-8855-E58AC9397F2B",
-                          GRTeamNameKey : @"接待组",
-                          }) retain];
+                           GRTeamIDKey : @"8FF406E8-33A7-4374-8855-E58AC9397F2B",
+                           GRTeamNameKey : @"接待组",
+                           }) retain];
         _receiveTeamMembers = [(@[
                                   (@{
                                      GRAccountNameKey : @"陈晓娟",
@@ -296,7 +301,7 @@
                                      }),
                                   (@{
                                      GRAccountNameKey : @"韦红芬",
-                                     GRAccountMobilePhoneKey : @"13671765129",                                     
+                                     GRAccountMobilePhoneKey : @"13671765129",
                                      GRAccountEmailKey : @"tearsofphoenix@icloud.com",
                                      }),
                                   ]) retain];
@@ -361,7 +366,7 @@
                                         {
                                             [[NSNotificationCenter defaultCenter] postNotificationName: GRAccountLoginNotification
                                                                                                 object: nil
-                                                                                              userInfo: nil];                                            
+                                                                                              userInfo: nil];
                                         }));
                     }));
 }
@@ -441,6 +446,90 @@
 - (NSArray *)allMemberForTeamID: (NSString *)teamID
 {
     return _receiveTeamMembers;
+}
+
+- (void)sendPushNotification: (NSString *)obj
+                    callback: (ERServiceCallback)callback
+{
+    if (!_hub)
+    {
+        [self _connectToPushAPN];
+    }
+
+    NSString *payload = [NSString stringWithFormat: @"{\"aps\":{\"alert\":\"%@\"}}", obj];
+    NSString *token = @"04e7338bd3e7e3f191ffc6319b78eec9d39dcd8149bd05655c4ca55d598d8749";
+    NSLog(@"Pushing..");
+    
+    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    
+    dispatch_async(queue,
+                   (^
+                    {
+                        NSUInteger failed = [_hub pushPayload: payload
+                                                        token: token];
+                        
+                        dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC));
+                        
+                        dispatch_after(popTime, queue,
+                                       (^
+                                        {
+                                            NSUInteger failed2 = failed + [_hub flushFailed];
+                                            if (!failed2)
+                                            {
+                                                if (callback)
+                                                {
+                                                    callback(nil, nil);
+                                                }
+                                                
+                                                NSLog(@"Payload has been pushed");
+                                            }
+                                        }));
+                    }));
+}
+
+- (void)_connectToPushAPN
+{
+    if (!_hub)
+    {
+        NWPusher *p = [[NWPusher alloc] init];
+        NSURL *url = [NSBundle.mainBundle URLForResource: @"push.p12"
+                                           withExtension: nil];
+        
+        NSData *pkcs12 = [NSData dataWithContentsOfURL:url];
+        
+        dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+        dispatch_async(queue,
+                       (^
+                        {
+                            NWPusherResult connected = [p connectWithPKCS12Data: pkcs12
+                                                                       password: @"3141"
+                                                                        sandbox: YES];
+                            dispatch_async(dispatch_get_main_queue(),
+                                           (^
+                                            {
+                                                if (connected == kNWPusherResultSuccess)
+                                                {
+                                                    NSLog(@"Connected to APN");
+                                                    _hub = [[NWHub alloc] initWithPusher: p
+                                                                                delegate: self];
+                                                } else
+                                                {
+                                                    NSLog(@"Unable to connect: %@", [NWPusher stringFromResult: connected]);
+                                                }
+                                            }));
+                        }));
+    }
+}
+
+- (void)notification: (NWNotification *)notification
+   didFailWithResult: (NWPusherResult)result
+{
+    dispatch_async(dispatch_get_main_queue(),
+                   (^
+                    {
+                        NSLog(@"Notification could not be pushed: %@", [NWPusher stringFromResult: result]);
+                    }));
+    
 }
 
 @end

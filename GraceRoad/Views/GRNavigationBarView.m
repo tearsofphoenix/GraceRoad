@@ -24,33 +24,7 @@
 {    
     [self setBackgroundColor: [GRTheme blueColor]];
     
-    CGRect rect = [self bounds];
-    rect.size.height -= 2;
-    
-    _titleLabel = [[UILabel alloc] initWithFrame: rect];
-    [_titleLabel setBackgroundColor: [UIColor clearColor]];
-    [_titleLabel setTextAlignment: NSTextAlignmentCenter];
-    [_titleLabel setFont: [UIFont boldSystemFontOfSize: 24]];
-    [_titleLabel setTextColor: [UIColor whiteColor]];
-    
-    [self addSubview: _titleLabel];
-
-    rect.origin.y += rect.size.height;
-    rect.size.height = 2;
-    
-    UIView *lineView = [[UIView alloc] initWithFrame: rect];
-    [lineView setBackgroundColor: [UIColor colorWithRed: 0.80f
-                                                  green: 0.80f
-                                                   blue: 0.81f
-                                                  alpha: 1.00f]];
-    //[self addSubview: lineView];
-    [lineView release];
-
     CGRect bounds = [self bounds];
-
-    rect.size.height = 44 * 0.6;
-    rect.origin = CGPointMake(10, (bounds.size.height - rect.size.height) / 2);
-    rect.size.width = 123 * 0.6;
     
     _leftNavigationButton = [[UIButton alloc] initWithFrame: CGRectMake(0, 0, 60, bounds.size.height)];
     [_leftNavigationButton setImageEdgeInsets: UIEdgeInsetsMake(8, 10, 8, 15)];
@@ -63,6 +37,22 @@
     [_leftNavigationButton setAlpha: 0];
     
     [self addSubview: _leftNavigationButton];
+    
+    CGRect rect = bounds;
+    rect.origin.x = 60;
+    rect.size.width = bounds.size.width - rect.origin.x - bounds.size.height;
+    
+    _titleLabel = [[UILabel alloc] initWithFrame: rect];
+    
+    [_titleLabel setBackgroundColor: [UIColor clearColor]];
+    [_titleLabel setTextAlignment: NSTextAlignmentCenter];
+    [_titleLabel setFont: [UIFont boldSystemFontOfSize: 24]];
+    [_titleLabel setTextColor: [UIColor whiteColor]];
+    [_titleLabel setAdjustsFontSizeToFitWidth: YES];
+    [_titleLabel setNumberOfLines: 1];
+    
+    [self addSubview: _titleLabel];
+
 }
 
 - (UIButton *)leftNavigationButton
@@ -80,7 +70,8 @@
         
         CGRect bounds = [self bounds];
         
-        [_rightNavigationButton setFrame: CGRectMake(bounds.size.width - bounds.size.height - 4, 0, bounds.size.height, bounds.size.height)];
+        [_rightNavigationButton setFrame: CGRectMake(bounds.size.width - bounds.size.height - 4,
+                                                     0, bounds.size.height, bounds.size.height)];
         
         [self addSubview: rightNavigationButton];
     }

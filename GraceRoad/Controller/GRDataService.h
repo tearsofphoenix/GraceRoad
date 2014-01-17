@@ -33,6 +33,8 @@
 #define GRDataServiceTeamForAccountIDAction      @"teamForAccountID:"
 #define GRDataServiceAllMemberForTeamIDAction    @"allMemberForTeamID:"
 
+#define GRDataServiceSendPushNotificationWithCallbackAction  @"sendPushNotification:callback:"
+
 #pragma mark - notification
 
 #define GRAccountLoginNotification          GRPrefix ".notification.login"
