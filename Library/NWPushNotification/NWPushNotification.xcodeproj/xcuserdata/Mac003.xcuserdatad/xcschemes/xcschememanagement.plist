@@ -4,25 +4,20 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>GraceRoad.xcscheme</key>
+		<key>NWPushNotification.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>0</integer>
+			<integer>6</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>9261927E188667D4001E0A72</key>
+		<key>923E49C41888F6A8006E9029</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>927C9F9E186D66DC00DC0EDC</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>927C9FB9186D66DC00DC0EDC</key>
+		<key>923E49D41888F6A8006E9029</key>
 		<dict>
 			<key>primary</key>
 			<true/>

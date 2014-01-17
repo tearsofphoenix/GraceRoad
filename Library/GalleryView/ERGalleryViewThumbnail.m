@@ -149,13 +149,12 @@ char ERGalleryViewThumbnailGalleryViewKey;
         if ([self isShowingDeletingConfirmation])
         {
             
-            NSString *message = @"Are your sure to delete this thumbnail?";
-            if ([[galleryView delegate] respondsToSelector: @selector(galleryView:titleForDeleteConfirmationButtonForThumbnailAtIndexPath:)])
-            {
-                message = [[galleryView delegate] galleryView: galleryView
-      titleForDeleteConfirmationButtonForThumbnailAtIndexPath: indexPath];
-            }
-            
+//            NSString *message = @"Are your sure to delete this thumbnail?";
+//            if ([[galleryView delegate] respondsToSelector: @selector(galleryView:titleForDeleteConfirmationButtonForThumbnailAtIndexPath:)])
+//            {
+//                message = [[galleryView delegate] galleryView: galleryView
+//      titleForDeleteConfirmationButtonForThumbnailAtIndexPath: indexPath];
+//            }            
 //            [ERAlertView showWithTitle: @"Deleting Confirmation"
 //                               message: message
 //                              callback: (^(NSInteger buttonIndex, NSArray *inputs) 

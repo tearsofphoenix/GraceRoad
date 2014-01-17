@@ -54,6 +54,7 @@
 		923E49A31888ECF6006E9029 /* GRPreferenceTab.png in Resources */ = {isa = PBXBuildFile; fileRef = 923E499F1888ECF6006E9029 /* GRPreferenceTab.png */; };
 		923E49A41888ECF6006E9029 /* GRResourceTab.png in Resources */ = {isa = PBXBuildFile; fileRef = 923E49A01888ECF6006E9029 /* GRResourceTab.png */; };
 		923E49A51888ECF6006E9029 /* GRSermonTab.png in Resources */ = {isa = PBXBuildFile; fileRef = 923E49A11888ECF6006E9029 /* GRSermonTab.png */; };
+		923E4A0E1888F6F9006E9029 /* libNWPushNotification.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 923E49F41888F6A9006E9029 /* libNWPushNotification.a */; };
 		9242AEFF1876A87C00F9FEFB /* GRBackButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 9242AEFD1876A87B00F9FEFB /* GRBackButton.png */; };
 		9242AF001876A87C00F9FEFB /* GRBackButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9242AEFE1876A87C00F9FEFB /* GRBackButton@2x.png */; };
 		92568CCA18850E3400994FC1 /* GRAvatarBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 92568CC918850E3300994FC1 /* GRAvatarBackground@2x.png */; };
@@ -136,6 +137,20 @@
 			remoteGlobalIDString = 7C861E34153DF2E000935C95;
 			remoteInfo = iOSHierarchyViewer;
 		};
+		923E49F31888F6A9006E9029 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 923E49EE1888F6A8006E9029 /* NWPushNotification.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 923E49C51888F6A8006E9029;
+			remoteInfo = NWPushNotification;
+		};
+		923E4A0C1888F6F0006E9029 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 923E49EE1888F6A8006E9029 /* NWPushNotification.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 923E49C41888F6A8006E9029;
+			remoteInfo = NWPushNotification;
+		};
 		9267334A1872588400249E37 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 9267333D1872588400249E37 /* NoahsRecord.xcodeproj */;
@@ -204,6 +219,7 @@
 		923E499F1888ECF6006E9029 /* GRPreferenceTab.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GRPreferenceTab.png; sourceTree = "<group>"; };
 		923E49A01888ECF6006E9029 /* GRResourceTab.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GRResourceTab.png; sourceTree = "<group>"; };
 		923E49A11888ECF6006E9029 /* GRSermonTab.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GRSermonTab.png; sourceTree = "<group>"; };
+		923E49EE1888F6A8006E9029 /* NWPushNotification.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = NWPushNotification.xcodeproj; path = NWPushNotification/NWPushNotification.xcodeproj; sourceTree = "<group>"; };
 		9242AEFD1876A87B00F9FEFB /* GRBackButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = GRBackButton.png; path = Main/GRBackButton.png; sourceTree = "<group>"; };
 		9242AEFE1876A87C00F9FEFB /* GRBackButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "GRBackButton@2x.png"; path = "Main/GRBackButton@2x.png"; sourceTree = "<group>"; };
 		92568CC918850E3300994FC1 /* GRAvatarBackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "GRAvatarBackground@2x.png"; sourceTree = "<group>"; };
@@ -342,6 +358,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				923E4A0E1888F6F9006E9029 /* libNWPushNotification.a in Frameworks */,
 				9276F32E18876B0D00E13763 /* libWeChatSDK.a in Frameworks */,
 				600C339818857E2000656A5D /* libiOSHierarchyViewer.a in Frameworks */,
 				9267339F187266C600249E37 /* libsqlite3.dylib in Frameworks */,
@@ -415,6 +432,14 @@
 				60F9438D1886D81A001F13E3 /* DKLiveBlurView.m */,
 			);
 			path = LiveBlur;
+			sourceTree = "<group>";
+		};
+		923E49EF1888F6A8006E9029 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				923E49F41888F6A9006E9029 /* libNWPushNotification.a */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		9261922818865752001E0A72 /* Controller */ = {
@@ -623,6 +648,7 @@
 				600C339018857E0F00656A5D /* iOSHierarchyViewer.xcodeproj */,
 				929989A718768C2E0001EFDC /* Network */,
 				9267333D1872588400249E37 /* NoahsRecord.xcodeproj */,
+				923E49EE1888F6A8006E9029 /* NWPushNotification.xcodeproj */,
 			);
 			path = Library;
 			sourceTree = "<group>";
@@ -725,6 +751,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				923E4A0D1888F6F0006E9029 /* PBXTargetDependency */,
 				9267334D187258B600249E37 /* PBXTargetDependency */,
 			);
 			name = GraceRoad;
@@ -766,6 +793,10 @@
 					ProductGroup = 9267333E1872588400249E37 /* Products */;
 					ProjectRef = 9267333D1872588400249E37 /* NoahsRecord.xcodeproj */;
 				},
+				{
+					ProductGroup = 923E49EF1888F6A8006E9029 /* Products */;
+					ProjectRef = 923E49EE1888F6A8006E9029 /* NWPushNotification.xcodeproj */;
+				},
 			);
 			projectRoot = "";
 			targets = (
@@ -780,6 +811,13 @@
 			fileType = archive.ar;
 			path = libiOSHierarchyViewer.a;
 			remoteRef = 600C339418857E1000656A5D /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		923E49F41888F6A9006E9029 /* libNWPushNotification.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libNWPushNotification.a;
+			remoteRef = 923E49F31888F6A9006E9029 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		9267334B1872588400249E37 /* libNoahsRecordStatic.a */ = {
@@ -924,6 +962,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		923E4A0D1888F6F0006E9029 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = NWPushNotification;
+			targetProxy = 923E4A0C1888F6F0006E9029 /* PBXContainerItemProxy */;
+		};
 		9267334D187258B600249E37 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = NoahsRecordStatic;
@@ -1019,6 +1062,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_OBJC_ARC = NO;
+				CLANG_STATIC_ANALYZER_MODE = deep;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Bing Xue (GLX4AG8795)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -1040,6 +1084,7 @@
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				RUN_CLANG_STATIC_ANALYZER = YES;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1050,6 +1095,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_OBJC_ARC = NO;
+				CLANG_STATIC_ANALYZER_MODE = deep;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Bing Xue (GLX4AG8795)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -1071,6 +1117,7 @@
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				RUN_CLANG_STATIC_ANALYZER = YES;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

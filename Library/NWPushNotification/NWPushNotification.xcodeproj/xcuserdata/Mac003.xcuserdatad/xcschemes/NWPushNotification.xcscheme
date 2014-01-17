@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "9261927E188667D4001E0A72"
-               BuildableName = "lession1.bundle"
-               BlueprintName = "lession1"
-               ReferencedContainer = "container:GraceRoad.xcodeproj">
+               BlueprintIdentifier = "923E49C41888F6A8006E9029"
+               BuildableName = "libNWPushNotification.a"
+               BlueprintName = "NWPushNotification"
+               ReferencedContainer = "container:NWPushNotification.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -28,6 +28,16 @@
       shouldUseLaunchSchemeArgsEnv = "YES"
       buildConfiguration = "Debug">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "923E49D41888F6A8006E9029"
+               BuildableName = "NWPushNotificationTests.xctest"
+               BlueprintName = "NWPushNotificationTests"
+               ReferencedContainer = "container:NWPushNotification.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction

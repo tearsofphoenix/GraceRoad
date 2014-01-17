@@ -17,6 +17,7 @@
 #import "GRViewService.h"
 #import "WXApi.h"
 
+#import <NWPushNotification/NWHub.h>
 #import <MessageUI/MessageUI.h>
 
 #define  GRAccountPerRow (5)
@@ -323,12 +324,13 @@ weightForHeaderOfSection: (NSInteger)section
 - (void)_handleTypeButtonTappedEvent: (id)sender
 {
     NSArray *choices = (@[
+                          @"推送",
                           @"微信",
                           @"短信",
                           @"邮件",
                           ]);
     
-    NSArray *types = @[ GRMessageTypeWeiXin, GRMessageTypeSMS, GRMessageTypeEmail ];
+    NSArray *types = @[GRMessageTypePushNotification, GRMessageTypeWeiXin, GRMessageTypeSMS, GRMessageTypeEmail ];
     
     [UIActionSheet showWithTitle: nil
                          choices: choices
@@ -383,7 +385,11 @@ weightForHeaderOfSection: (NSInteger)section
 
 - (void)_handleSendButtonTappedEvent: (id)sender
 {
-    if ([_messageType isEqualToString: GRMessageTypeSMS])
+    if ([_messageType isEqualToString: GRMessageTypePushNotification])
+    {
+        //
+        
+    }else if ([_messageType isEqualToString: GRMessageTypeSMS])
     {
         if ([MFMessageComposeViewController canSendText])
         {

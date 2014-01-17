@@ -7,6 +7,7 @@
 //
 
 //#define GRMessageTypeAuto       @"auto"
-#define GRMessageTypeWeiXin     @"weixin"
-#define GRMessageTypeSMS        @"sms"
-#define GRMessageTypeEmail      @"email"
+#define GRMessageTypeWeiXin                 @"weixin"
+#define GRMessageTypeSMS                    @"sms"
+#define GRMessageTypeEmail                  @"email"
+#define GRMessageTypePushNotification       @"push-notification"

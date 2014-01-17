@@ -80,10 +80,14 @@
         [self addSubview: _titleLabel];
         
         NSDictionary *accountInfo = ERSSC(GRDataServiceID, GRDataServiceCurrentAccountAction, nil);
-        NSDictionary *team = ERSSC(GRDataServiceID, GRDataServiceTeamForAccountIDAction, @[ accountInfo[GRAccountIDKey] ]);
+        NSDictionary *team = nil;
+        if (accountInfo)
+        {
+             team = ERSSC(GRDataServiceID, GRDataServiceTeamForAccountIDAction, @[ accountInfo[GRAccountIDKey] ]);
         
-        [_nameLabel setText: accountInfo[GRAccountNameKey]];
-        [_titleLabel setText: team[GRTeamNameKey]];
+            [_nameLabel setText: accountInfo[GRAccountNameKey]];
+            [_titleLabel setText: team[GRTeamNameKey]];
+        }
         
         _logoutButton = [[UIButton alloc] initWithFrame: CGRectMake(30, bounds.size.height - 60,
                                                                     bounds.size.width - 30 * 2,
@@ -123,10 +127,14 @@
         [self addSubview: sendMessageButton];
         [sendMessageButton release];
         
-        NSArray *members = ERSSC(GRDataServiceID, GRDataServiceAllMemberForTeamIDAction, @[ team[GRTeamIDKey] ]);
+        _memberList = [[NSMutableArray alloc] init];
         
-        _memberList = [[NSMutableArray alloc] initWithArray: members];
-        
+        if (team)
+        {
+            NSArray *members = ERSSC(GRDataServiceID, GRDataServiceAllMemberForTeamIDAction, @[ team[GRTeamIDKey] ]);
+            [_memberList setArray: members];
+        }
+
         CGFloat originY = avatarBackgroundFrame.origin.y + avatarBackgroundFrame.size.height;
         _memberListView = [[UITableView alloc] initWithFrame: CGRectMake(0, originY, frame.size.width, frame.size.height - originY - 60)];
         [_memberListView setDataSource: self];
