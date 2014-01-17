@@ -8,7 +8,7 @@
 
 #import "GRNavigationBarView.h"
 #import "GRViewService.h"
-
+#import "GRTheme.h"
 #import <QuartzCore/QuartzCore.h>
 
 @interface GRNavigationBarView ()
@@ -22,10 +22,8 @@
 
 - (void)_initializeContent
 {    
-    [self setBackgroundColor: [UIColor colorWithRed: 0.16f
-                                              green: 0.56f
-                                               blue: 0.87f
-                                              alpha: 1.00f]];
+    [self setBackgroundColor: [GRTheme blueColor]];
+    
     CGRect rect = [self bounds];
     rect.size.height -= 2;
     

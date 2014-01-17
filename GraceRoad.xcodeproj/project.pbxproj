@@ -50,6 +50,10 @@
 		920B99941885259B006BD620 /* GRExampleAvatar.png in Resources */ = {isa = PBXBuildFile; fileRef = 920B99921885259B006BD620 /* GRExampleAvatar.png */; };
 		920B99951885259B006BD620 /* GRExampleAvatar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 920B99931885259B006BD620 /* GRExampleAvatar@2x.png */; };
 		920B999718852B21006BD620 /* GRAddButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 920B999618852B21006BD620 /* GRAddButton@2x.png */; };
+		923E49A21888ECF6006E9029 /* GRLocationTab.png in Resources */ = {isa = PBXBuildFile; fileRef = 923E499E1888ECF6006E9029 /* GRLocationTab.png */; };
+		923E49A31888ECF6006E9029 /* GRPreferenceTab.png in Resources */ = {isa = PBXBuildFile; fileRef = 923E499F1888ECF6006E9029 /* GRPreferenceTab.png */; };
+		923E49A41888ECF6006E9029 /* GRResourceTab.png in Resources */ = {isa = PBXBuildFile; fileRef = 923E49A01888ECF6006E9029 /* GRResourceTab.png */; };
+		923E49A51888ECF6006E9029 /* GRSermonTab.png in Resources */ = {isa = PBXBuildFile; fileRef = 923E49A11888ECF6006E9029 /* GRSermonTab.png */; };
 		9242AEFF1876A87C00F9FEFB /* GRBackButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 9242AEFD1876A87B00F9FEFB /* GRBackButton.png */; };
 		9242AF001876A87C00F9FEFB /* GRBackButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9242AEFE1876A87C00F9FEFB /* GRBackButton@2x.png */; };
 		92568CCA18850E3400994FC1 /* GRAvatarBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 92568CC918850E3300994FC1 /* GRAvatarBackground@2x.png */; };
@@ -132,13 +136,6 @@
 			remoteGlobalIDString = 7C861E34153DF2E000935C95;
 			remoteInfo = iOSHierarchyViewer;
 		};
-		600C339618857E1B00656A5D /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 600C339018857E0F00656A5D /* iOSHierarchyViewer.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 7C861E33153DF2E000935C95;
-			remoteInfo = iOSHierarchyViewer;
-		};
 		9267334A1872588400249E37 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 9267333D1872588400249E37 /* NoahsRecord.xcodeproj */;
@@ -203,6 +200,10 @@
 		920B99921885259B006BD620 /* GRExampleAvatar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GRExampleAvatar.png; sourceTree = "<group>"; };
 		920B99931885259B006BD620 /* GRExampleAvatar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "GRExampleAvatar@2x.png"; sourceTree = "<group>"; };
 		920B999618852B21006BD620 /* GRAddButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "GRAddButton@2x.png"; sourceTree = "<group>"; };
+		923E499E1888ECF6006E9029 /* GRLocationTab.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GRLocationTab.png; sourceTree = "<group>"; };
+		923E499F1888ECF6006E9029 /* GRPreferenceTab.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GRPreferenceTab.png; sourceTree = "<group>"; };
+		923E49A01888ECF6006E9029 /* GRResourceTab.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GRResourceTab.png; sourceTree = "<group>"; };
+		923E49A11888ECF6006E9029 /* GRSermonTab.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GRSermonTab.png; sourceTree = "<group>"; };
 		9242AEFD1876A87B00F9FEFB /* GRBackButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = GRBackButton.png; path = Main/GRBackButton.png; sourceTree = "<group>"; };
 		9242AEFE1876A87C00F9FEFB /* GRBackButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "GRBackButton@2x.png"; path = "Main/GRBackButton@2x.png"; sourceTree = "<group>"; };
 		92568CC918850E3300994FC1 /* GRAvatarBackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "GRAvatarBackground@2x.png"; sourceTree = "<group>"; };
@@ -694,6 +695,10 @@
 		92CE913E18755BEB00C7D3A1 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				923E499E1888ECF6006E9029 /* GRLocationTab.png */,
+				923E499F1888ECF6006E9029 /* GRPreferenceTab.png */,
+				923E49A01888ECF6006E9029 /* GRResourceTab.png */,
+				923E49A11888ECF6006E9029 /* GRSermonTab.png */,
 				9294D44F18766369009352DB /* GRAudio.png */,
 				9294D45018766369009352DB /* GRAudio@2x.png */,
 				92CE91481875699A00C7D3A1 /* GRIconPDF.png */,
@@ -720,7 +725,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				600C339718857E1B00656A5D /* PBXTargetDependency */,
 				9267334D187258B600249E37 /* PBXTargetDependency */,
 			);
 			name = GraceRoad;
@@ -797,6 +801,7 @@
 				6068029818883DCA00D5217B /* GRTabbarBackground.png in Resources */,
 				92CE914318755BEB00C7D3A1 /* gr.sqlite in Resources */,
 				60E649F01878062400D5466B /* notifications26.plist in Resources */,
+				923E49A31888ECF6006E9029 /* GRPreferenceTab.png in Resources */,
 				9242AF001876A87C00F9FEFB /* GRBackButton@2x.png in Resources */,
 				60E649F21878062400D5466B /* notifications28.plist in Resources */,
 				60E649E21878062400D5466B /* notifications13.plist in Resources */,
@@ -829,8 +834,10 @@
 				92CE914A1875699A00C7D3A1 /* GRIconPDF.png in Resources */,
 				920B99941885259B006BD620 /* GRExampleAvatar.png in Resources */,
 				60E649681877ECA800D5466B /* GRHeart.jpg in Resources */,
+				923E49A51888ECF6006E9029 /* GRSermonTab.png in Resources */,
 				920B999718852B21006BD620 /* GRAddButton@2x.png in Resources */,
 				9276F35E1887D22600E13763 /* GRShareButton@2x.png in Resources */,
+				923E49A41888ECF6006E9029 /* GRResourceTab.png in Resources */,
 				9242AEFF1876A87C00F9FEFB /* GRBackButton.png in Resources */,
 				60E649F31878062400D5466B /* notifications3.plist in Resources */,
 				60E649F61878062400D5466B /* notifications6.plist in Resources */,
@@ -847,6 +854,7 @@
 				60E649E41878062400D5466B /* notifications15.plist in Resources */,
 				60F943901886DA59001F13E3 /* GRSermonBackground.jpeg in Resources */,
 				60E649E11878062400D5466B /* notifications12.plist in Resources */,
+				923E49A21888ECF6006E9029 /* GRLocationTab.png in Resources */,
 				60E649EF1878062400D5466B /* notifications25.plist in Resources */,
 				92CE914418755BEB00C7D3A1 /* GRLocationTab@2x.png in Resources */,
 				60B266061877CBFF008E881E /* 1.pdf in Resources */,
@@ -916,11 +924,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		600C339718857E1B00656A5D /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = iOSHierarchyViewer;
-			targetProxy = 600C339618857E1B00656A5D /* PBXContainerItemProxy */;
-		};
 		9267334D187258B600249E37 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = NoahsRecordStatic;
@@ -1016,7 +1019,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_OBJC_ARC = NO;
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Bing Xue (GLX4AG8795)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "GraceRoad/GraceRoad-Prefix.pch";
@@ -1047,7 +1050,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_OBJC_ARC = NO;
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Bing Xue (GLX4AG8795)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "GraceRoad/GraceRoad-Prefix.pch";

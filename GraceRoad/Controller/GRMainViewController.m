@@ -16,6 +16,7 @@
 #import "UIView+FirstResponder.h"
 #import "GRLoginView.h"
 #import "GRDataService.h"
+#import "GRTheme.h"
 
 #define GRTabCount 4
 
@@ -83,14 +84,14 @@
     _contentView = [[UIView alloc] initWithFrame: CGRectMake(0, 44, bounds.size.width, bounds.size.height - 44 - 49)];
     [[self view] addSubview: _contentView];
     
-//    [_tabbar setBarTintColor: [UIColor colorWithRed: 0.16f
-//                                                green: 0.56f
-//                                                 blue: 0.87f
-//                                                 alpha: 1.00f]];
-//    [_tabbar setSelectedImageTintColor: [UIColor whiteColor]];
+    //[_tabbar setBackgroundColor: [UIColor colorWithRed:0.29 green: 1 blue:0.4 alpha:1]];
+    //[_tabbar setBackgroundColor: [UIColor blackColor]];
+    [_tabbar setTintColor: [GRTheme blueColor]];
+    
     //[_tabbar setBackgroundColor: [UIColor colorWithRed:0.31f green:0.32f blue:0.33f alpha:1.00f]];
     [_tabbar setBackgroundImage: [UIImage imageNamed: @"GRTabbarBackground"]];
-    [_tabbar setSelectedImageTintColor: [UIColor blackColor]];
+    //[_tabbar setBarTintColor: [UIColor blueColor]];
+    //[_tabbar setSelectedImageTintColor: [UIColor blackColor]];
     CGRect contentBounds = [_contentView bounds];
     
     GRIntroductView *introductView = [[GRIntroductView alloc] initWithFrame: contentBounds];

@@ -22,4 +22,18 @@
     return darkColor;
 }
 
++ (UIColor *)blueColor
+{
+    static UIColor *blueColor = nil;
+    if (!blueColor)
+    {
+        blueColor = [[UIColor colorWithRed: 0.16f
+                                     green: 0.56f
+                                      blue: 0.87f
+                                     alpha: 1.00f] retain];
+    }
+    
+    return blueColor;
+}
+
 @end
