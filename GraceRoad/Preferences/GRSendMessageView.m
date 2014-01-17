@@ -172,7 +172,7 @@ MFMessageComposeViewControllerDelegate, MFMailComposeViewControllerDelegate>
         
         [_scrollView addSubview: _sendButton];
         
-        [self setMessageType: GRMessageTypeSMS];
+        [self setMessageType: GRMessageTypePushNotification];
         
         [[NSNotificationCenter defaultCenter] addObserver: self
                                                  selector: @selector(_notificationForKeyboardShow:)
@@ -388,12 +388,23 @@ weightForHeaderOfSection: (NSInteger)section
     if ([_messageType isEqualToString: GRMessageTypePushNotification])
     {
         //
-        ERServiceCallback callback = (^(id result, id exception)
+        ERServiceCallback callback = (^(id result, NSError *error)
                                       {
-                                          [UIAlertView alertWithMessage: @"发送成功！"
-                                                      cancelButtonTitle: @"确定"];
+                                          ERSC(GRViewServiceID, GRViewServiceHideLoadingIndicatorAction, nil, nil);
+                                          
+                                          if (error)
+                                          {
+                                              [UIAlertView alertWithMessage: [error localizedDescription]
+                                                          cancelButtonTitle: @"确定"];
+                                          }else
+                                          {
+                                              [UIAlertView alertWithMessage: @"发送成功！"
+                                                          cancelButtonTitle: @"确定"];
+                                          }
                                       });
         callback = Block_copy(callback);
+        
+        ERSC(GRViewServiceID, GRViewServiceShowLoadingIndicatorAction, nil, nil);
         
         ERSSC(GRDataServiceID,
               GRDataServiceSendPushNotificationWithCallbackAction,

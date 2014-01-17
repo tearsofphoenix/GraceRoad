@@ -468,9 +468,10 @@
                         NSUInteger failed = [_hub pushPayload: payload
                                                         token: token];
                         
-                        dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC));
+                        dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.4 * NSEC_PER_SEC));
                         
-                        dispatch_after(popTime, queue,
+                        dispatch_after(popTime, dispatch_get_main_queue(),
+                        //dispatch_async(dispatch_get_main_queue(),
                                        (^
                                         {
                                             NSUInteger failed2 = failed + [_hub flushFailed];
@@ -482,6 +483,16 @@
                                                 }
                                                 
                                                 NSLog(@"Payload has been pushed");
+                                            }else
+                                            {
+                                                if (callback)
+                                                {
+                                                    callback(nil, [NSError errorWithDomain: GRPrefix ".error"
+                                                                                      code: -1
+                                                                                  userInfo: (@{
+                                                                                               NSLocalizedDescriptionKey : @"发送失败",
+                                                                                               })]);
+                                                }
                                             }
                                         }));
                     }));
