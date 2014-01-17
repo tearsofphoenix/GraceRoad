@@ -14,6 +14,9 @@
 #import "GRHTMLPackage.h"
 #import "GRDataService.h"
 
+#import <PDFReader/ReaderView.h>
+#import <PDFReader/ReaderDocument.h>
+
 @interface GRResourceInfoView ()
 {
     UIButton *_doneButton;
@@ -116,7 +119,16 @@
         {
             [self setPackage: nil];
             
-            ERSC(GRViewServiceID, GRViewServiceViewPDFAtPathAction, @[ path ], nil);
+            ReaderDocument *document = [[ReaderDocument alloc] initWithFilePath: path
+                                                                       password: nil];
+            
+            ReaderView *view = [[ReaderView alloc] initWithDocument: document];
+            
+            [self setPackageView: view];
+            
+            [view release];
+            [document release];
+            //ERSC(GRViewServiceID, GRViewServiceViewPDFAtPathAction, @[ path ], nil);
             
             [_doneButton setAlpha: 0];
         }else

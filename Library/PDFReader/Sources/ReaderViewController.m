@@ -72,10 +72,6 @@
 
 #define TAP_AREA_SIZE 48.0f
 
-#pragma mark Properties
-
-@synthesize delegate;
-
 #pragma mark Support methods
 
 - (void)updateScrollViewContentSize
@@ -717,11 +713,11 @@
 
 	if (printInteraction != nil) [printInteraction dismissAnimated:NO]; // Dismiss
 
-	if ([delegate respondsToSelector:@selector(dismissReaderViewController:)] == YES)
+	if ([_delegate respondsToSelector:@selector(dismissReaderViewController:)] == YES)
 	{
-		[delegate dismissReaderViewController:self]; // Dismiss the ReaderViewController
-	}
-	else // We have a "Delegate must respond to -dismissReaderViewController: error"
+		[_delegate dismissReaderViewController:self]; // Dismiss the ReaderViewController
+        
+	}else // We have a "Delegate must respond to -dismissReaderViewController: error"
 	{
 		NSAssert(NO, @"Delegate must respond to -dismissReaderViewController:");
 	}

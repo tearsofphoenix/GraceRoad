@@ -48,6 +48,9 @@
 		45AB7325141FC0B1003524C3 /* ThumbsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 45AB7312141FC0B1003524C3 /* ThumbsViewController.m */; };
 		45BD5AFE13AE721A00D6FE97 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45BD5AFD13AE721A00D6FE97 /* MessageUI.framework */; };
 		45D5ADA31610EADD00706B9A /* ReaderDocumentOutline.m in Sources */ = {isa = PBXBuildFile; fileRef = 45D5ADA21610EADC00706B9A /* ReaderDocumentOutline.m */; };
+		603A6572188974AF00352C0B /* ReaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 603A6571188974AF00352C0B /* ReaderView.m */; };
+		603A6573188974AF00352C0B /* ReaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 603A6571188974AF00352C0B /* ReaderView.m */; };
+		603A65741889792400352C0B /* ReaderView.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 603A6570188974AF00352C0B /* ReaderView.h */; };
 		606E8F92188945A7000C5CB2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		606E8FB5188945FF000C5CB2 /* ReaderBookDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4555C74B14211A00005F448D /* ReaderBookDelegate.m */; };
 		606E8FB6188945FF000C5CB2 /* ReaderConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 45AB72F0141FC0B1003524C3 /* ReaderConstants.m */; };
@@ -128,6 +131,7 @@
 			dstPath = include/PDFReader;
 			dstSubfolderSpec = 16;
 			files = (
+				603A65741889792400352C0B /* ReaderView.h in Copy Files */,
 				606E8FCA1889465C000C5CB2 /* ReaderBookDelegate.h in Copy Files */,
 				606E8FCB1889465C000C5CB2 /* ReaderConstants.h in Copy Files */,
 				606E8FCC1889465C000C5CB2 /* ReaderDocument.h in Copy Files */,
@@ -237,6 +241,8 @@
 		45BD5AFD13AE721A00D6FE97 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		45D5ADA11610EADC00706B9A /* ReaderDocumentOutline.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ReaderDocumentOutline.h; path = Sources/ReaderDocumentOutline.h; sourceTree = "<group>"; };
 		45D5ADA21610EADC00706B9A /* ReaderDocumentOutline.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ReaderDocumentOutline.m; path = Sources/ReaderDocumentOutline.m; sourceTree = "<group>"; };
+		603A6570188974AF00352C0B /* ReaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ReaderView.h; path = Sources/ReaderView.h; sourceTree = "<group>"; };
+		603A6571188974AF00352C0B /* ReaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ReaderView.m; path = Sources/ReaderView.m; sourceTree = "<group>"; };
 		606E8F91188945A7000C5CB2 /* libPDFReaderStatic.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPDFReaderStatic.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		606E8F95188945A7000C5CB2 /* PDFReaderStatic-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PDFReaderStatic-Prefix.pch"; sourceTree = "<group>"; };
 		606E8F9E188945A7000C5CB2 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -417,6 +423,8 @@
 				45AB72F8141FC0B1003524C3 /* ReaderDocument.m */,
 				45AB730D141FC0B1003524C3 /* ReaderViewController.h */,
 				45AB730E141FC0B1003524C3 /* ReaderViewController.m */,
+				603A6570188974AF00352C0B /* ReaderView.h */,
+				603A6571188974AF00352C0B /* ReaderView.m */,
 				45AB72FB141FC0B1003524C3 /* ReaderMainToolbar.h */,
 				45AB72FC141FC0B1003524C3 /* ReaderMainToolbar.m */,
 				45AB72F9141FC0B1003524C3 /* ReaderMainPagebar.h */,
@@ -647,6 +655,7 @@
 				45AB7320141FC0B1003524C3 /* ReaderThumbRequest.m in Sources */,
 				45AB7321141FC0B1003524C3 /* ReaderThumbsView.m in Sources */,
 				45AB7322141FC0B1003524C3 /* ReaderThumbView.m in Sources */,
+				603A6572188974AF00352C0B /* ReaderView.m in Sources */,
 				45AB7323141FC0B1003524C3 /* ReaderViewController.m in Sources */,
 				45AB7324141FC0B1003524C3 /* ThumbsMainToolbar.m in Sources */,
 				45AB7325141FC0B1003524C3 /* ThumbsViewController.m in Sources */,
@@ -665,6 +674,7 @@
 				606E8FB7188945FF000C5CB2 /* ReaderDocument.m in Sources */,
 				606E8FB8188945FF000C5CB2 /* ReaderViewController.m in Sources */,
 				606E8FB9188945FF000C5CB2 /* ReaderMainToolbar.m in Sources */,
+				603A6573188974AF00352C0B /* ReaderView.m in Sources */,
 				606E8FBA188945FF000C5CB2 /* ReaderMainPagebar.m in Sources */,
 				606E8FBB188945FF000C5CB2 /* ReaderContentView.m in Sources */,
 				606E8FBC188945FF000C5CB2 /* ReaderContentPage.m in Sources */,
