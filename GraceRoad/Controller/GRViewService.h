@@ -21,6 +21,7 @@
 #define GRViewServiceHideLoadingIndicatorAction         @"hideLoadingIndicator"
 
 #define GRViewServiceShowDailyScriptureAction           @"showDailyScripture:"
+#define GRViewServiceViewPDFAtPathAction                @"viewPDFAtPath:"
 
 @interface GRViewService : ERService
 

@@ -8,10 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		600C339818857E2000656A5D /* libiOSHierarchyViewer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 600C339518857E1000656A5D /* libiOSHierarchyViewer.a */; };
+		603A656F1889728E00352C0B /* PDFReaderResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 603A656E1889728E00352C0B /* PDFReaderResources.bundle */; };
 		606802901888233700D5217B /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 6068028F1888233700D5217B /* Reachability.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		60680295188828D200D5217B /* GRMapAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 60680294188828D200D5217B /* GRMapAnnotation.m */; };
 		6068029818883DCA00D5217B /* GRTabbarBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 6068029618883DCA00D5217B /* GRTabbarBackground.png */; };
 		6068029918883DCA00D5217B /* GRTabbarBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6068029718883DCA00D5217B /* GRTabbarBackground@2x.png */; };
+		606E8FEA188946A7000C5CB2 /* libPDFReaderStatic.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 606E8FE718894699000C5CB2 /* libPDFReaderStatic.a */; };
 		60B266061877CBFF008E881E /* 1.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 60B266041877CBFF008E881E /* 1.pdf */; };
 		60E649681877ECA800D5466B /* GRHeart.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 60E649671877ECA800D5466B /* GRHeart.jpg */; };
 		60E649861877FB1D00D5466B /* notifications.plist in Resources */ = {isa = PBXBuildFile; fileRef = 60E649851877FB1D00D5466B /* notifications.plist */; };
@@ -145,6 +147,41 @@
 			remoteGlobalIDString = 7C861E34153DF2E000935C95;
 			remoteInfo = iOSHierarchyViewer;
 		};
+		603A656718894B9200352C0B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 606E8FDF18894698000C5CB2 /* PDFReader.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 606E8FEE188948C0000C5CB2;
+			remoteInfo = PDFReaderResources;
+		};
+		603A656C18894B9200352C0B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 606E8FDF18894698000C5CB2 /* PDFReader.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 606E8FEF188948C0000C5CB2;
+			remoteInfo = PDFReaderResources;
+		};
+		606E8FE418894699000C5CB2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 606E8FDF18894698000C5CB2 /* PDFReader.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 1D6058910D05DD3D006BFB54;
+			remoteInfo = PDFReader;
+		};
+		606E8FE618894699000C5CB2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 606E8FDF18894698000C5CB2 /* PDFReader.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 606E8F91188945A7000C5CB2;
+			remoteInfo = PDFReaderStatic;
+		};
+		606E8FE81889469F000C5CB2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 606E8FDF18894698000C5CB2 /* PDFReader.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 606E8F90188945A7000C5CB2;
+			remoteInfo = PDFReaderStatic;
+		};
 		923E49F31888F6A9006E9029 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 923E49EE1888F6A8006E9029 /* NWPushNotification.xcodeproj */;
@@ -177,12 +214,14 @@
 
 /* Begin PBXFileReference section */
 		600C339018857E0F00656A5D /* iOSHierarchyViewer.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = iOSHierarchyViewer.xcodeproj; path = "iOS-Hierarchy-Viewer/iOSHierarchyViewer.xcodeproj"; sourceTree = "<group>"; };
+		603A656E1889728E00352C0B /* PDFReaderResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = PDFReaderResources.bundle; sourceTree = "<group>"; };
 		6068028E1888233700D5217B /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		6068028F1888233700D5217B /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		60680293188828D100D5217B /* GRMapAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRMapAnnotation.h; sourceTree = "<group>"; };
 		60680294188828D200D5217B /* GRMapAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GRMapAnnotation.m; sourceTree = "<group>"; };
 		6068029618883DCA00D5217B /* GRTabbarBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GRTabbarBackground.png; sourceTree = "<group>"; };
 		6068029718883DCA00D5217B /* GRTabbarBackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "GRTabbarBackground@2x.png"; sourceTree = "<group>"; };
+		606E8FDF18894698000C5CB2 /* PDFReader.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = PDFReader.xcodeproj; path = PDFReader/PDFReader.xcodeproj; sourceTree = "<group>"; };
 		60B266041877CBFF008E881E /* 1.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = 1.pdf; path = Images/Main/1.pdf; sourceTree = "<group>"; };
 		60E649671877ECA800D5466B /* GRHeart.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = GRHeart.jpg; path = Main/GRHeart.jpg; sourceTree = "<group>"; };
 		60E649851877FB1D00D5466B /* notifications.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = notifications.plist; path = Images/Main/notifications.plist; sourceTree = "<group>"; };
@@ -375,6 +414,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				606E8FEA188946A7000C5CB2 /* libPDFReaderStatic.a in Frameworks */,
 				923E4A0E1888F6F9006E9029 /* libNWPushNotification.a in Frameworks */,
 				9276F32E18876B0D00E13763 /* libWeChatSDK.a in Frameworks */,
 				600C339818857E2000656A5D /* libiOSHierarchyViewer.a in Frameworks */,
@@ -404,6 +444,16 @@
 				60680294188828D200D5217B /* GRMapAnnotation.m */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		606E8FE018894698000C5CB2 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				606E8FE518894699000C5CB2 /* PDFReader.app */,
+				606E8FE718894699000C5CB2 /* libPDFReaderStatic.a */,
+				603A656D18894B9200352C0B /* PDFReaderResources.bundle */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		60E649BF1878062400D5466B /* notifications */ = {
@@ -690,6 +740,7 @@
 		927CA014186D6FD500DC0EDC /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				606E8FDF18894698000C5CB2 /* PDFReader.xcodeproj */,
 				60E8D95C1889131900C2EFC2 /* BlurView */,
 				9276F33518877D6100E13763 /* GalleryView */,
 				9276F32A18876B0D00E13763 /* WeiXin */,
@@ -734,6 +785,7 @@
 		92CE913B18755BEB00C7D3A1 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				603A656E1889728E00352C0B /* PDFReaderResources.bundle */,
 				60E8D957188905FC00C2EFC2 /* Media */,
 				60E8D9491888FC5C00C2EFC2 /* Documents */,
 				60E649BF1878062400D5466B /* notifications */,
@@ -801,6 +853,8 @@
 			buildRules = (
 			);
 			dependencies = (
+				603A656818894B9200352C0B /* PBXTargetDependency */,
+				606E8FE91889469F000C5CB2 /* PBXTargetDependency */,
 				923E4A0D1888F6F0006E9029 /* PBXTargetDependency */,
 				9267334D187258B600249E37 /* PBXTargetDependency */,
 			);
@@ -847,6 +901,10 @@
 					ProductGroup = 923E49EF1888F6A8006E9029 /* Products */;
 					ProjectRef = 923E49EE1888F6A8006E9029 /* NWPushNotification.xcodeproj */;
 				},
+				{
+					ProductGroup = 606E8FE018894698000C5CB2 /* Products */;
+					ProjectRef = 606E8FDF18894698000C5CB2 /* PDFReader.xcodeproj */;
+				},
 			);
 			projectRoot = "";
 			targets = (
@@ -861,6 +919,27 @@
 			fileType = archive.ar;
 			path = libiOSHierarchyViewer.a;
 			remoteRef = 600C339418857E1000656A5D /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		603A656D18894B9200352C0B /* PDFReaderResources.bundle */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = PDFReaderResources.bundle;
+			remoteRef = 603A656C18894B9200352C0B /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		606E8FE518894699000C5CB2 /* PDFReader.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = PDFReader.app;
+			remoteRef = 606E8FE418894699000C5CB2 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		606E8FE718894699000C5CB2 /* libPDFReaderStatic.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libPDFReaderStatic.a;
+			remoteRef = 606E8FE618894699000C5CB2 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		923E49F41888F6A9006E9029 /* libNWPushNotification.a */ = {
@@ -949,6 +1028,7 @@
 				60F943901886DA59001F13E3 /* GRSermonBackground.jpeg in Resources */,
 				60E649E11878062400D5466B /* notifications12.plist in Resources */,
 				923E49A21888ECF6006E9029 /* GRLocationTab.png in Resources */,
+				603A656F1889728E00352C0B /* PDFReaderResources.bundle in Resources */,
 				60E649EF1878062400D5466B /* notifications25.plist in Resources */,
 				92CE914418755BEB00C7D3A1 /* GRLocationTab@2x.png in Resources */,
 				60B266061877CBFF008E881E /* 1.pdf in Resources */,
@@ -1020,6 +1100,16 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		603A656818894B9200352C0B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = PDFReaderResources;
+			targetProxy = 603A656718894B9200352C0B /* PBXContainerItemProxy */;
+		};
+		606E8FE91889469F000C5CB2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = PDFReaderStatic;
+			targetProxy = 606E8FE81889469F000C5CB2 /* PBXContainerItemProxy */;
+		};
 		923E4A0D1888F6F0006E9029 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = NWPushNotification;

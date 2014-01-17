@@ -10,7 +10,9 @@
 #import "GRMainViewController.h"
 #import "UIAlertView+BlockSupport.h"
 
-@interface GRViewService ()
+#import <PDFReader/ReaderViewController.h>
+
+@interface GRViewService ()<ReaderViewControllerDelegate>
 
 @property (nonatomic, assign) GRMainViewController *rootViewController;
 
@@ -63,6 +65,35 @@
                cancelButtonTitle: @"确定"
                otherButtonTitles: nil
                         callback: nil] show];
+}
+
+- (void)viewPDFAtPath: (NSString *)path
+{
+    NSString *phrase = nil; // Document password (for unlocking most encrypted PDF files)
+    
+	ReaderDocument *document = [ReaderDocument withDocumentFilePath: path
+                                                           password: phrase];
+    
+	if (document != nil) // Must have a valid ReaderDocument object in order to proceed with things
+	{
+		ReaderViewController *readerViewController = [[ReaderViewController alloc] initWithReaderDocument: document];
+        
+		[readerViewController setDelegate: self]; // Set the ReaderViewController delegate to self
+        
+		[readerViewController setModalTransitionStyle: UIModalTransitionStyleCrossDissolve];
+		[readerViewController setModalPresentationStyle: UIModalPresentationFullScreen];
+        
+		[_rootViewController presentViewController: readerViewController
+                                          animated: YES
+                                        completion: nil];
+        [readerViewController release];
+	}
+}
+
+- (void)dismissReaderViewController: (ReaderViewController *)viewController
+{
+    [_rootViewController dismissViewControllerAnimated: YES
+                                            completion: nil];
 }
 
 @end

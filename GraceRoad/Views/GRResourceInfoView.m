@@ -116,19 +116,16 @@
         {
             [self setPackage: nil];
             
-            UIWebView *webView = [[UIWebView alloc] initWithFrame: [self bounds]];
-            [webView loadRequest: [NSURLRequest requestWithURL: [NSURL fileURLWithPath: path]]];
-            
-            [self setPackageView: webView];
-            
-            [webView release];
+            ERSC(GRViewServiceID, GRViewServiceViewPDFAtPathAction, @[ path ], nil);
             
             [_doneButton setAlpha: 0];
         }else
         {
             GRHTMLPackage *package = [[GRHTMLPackage alloc] initWithPath: path];
             
-            NSDictionary *savedContext = ERSSC(GRDataServiceID, GRDataServiceLessonRecordForIDAction, @[ _resourceInfo[GRResourceID] ]);
+            NSDictionary *savedContext = ERSSC(GRDataServiceID,
+                                               GRDataServiceLessonRecordForIDAction,
+                                               @[ _resourceInfo[GRResourceID] ]);
             if (savedContext)
             {
                 [package updateWithRecord: savedContext];
