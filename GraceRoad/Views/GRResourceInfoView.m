@@ -16,11 +16,12 @@
 
 @interface GRResourceInfoView ()
 {
-    id<GRPackage> _package;
     UIButton *_doneButton;
 }
 
 @property (nonatomic, retain) UIButton *rightNavigationButton;
+
+@property (nonatomic, retain) id<GRPackage> package;
 @property (nonatomic, retain) UIView *packageView;
 
 @end
@@ -65,7 +66,7 @@
     
     [_rightNavigationButton release];
     [_resourceInfo release];
-    [_packageView release];
+
     [_doneButton release];
     
     [super dealloc];
@@ -86,11 +87,8 @@
 {
     if (_packageView != packageView)
     {
-        [_packageView release];
-        [_packageView removeFromSuperview];
-        
-        _packageView = [packageView retain];
-        
+        [_packageView removeFromSuperview];        
+        _packageView = packageView;
         [self addSubview: _packageView];
         
         [_packageView setFrame: [self bounds]];
@@ -114,15 +112,33 @@
         
         NSString *path = [GRResourceManager pathWithSubPath: _resourceInfo[GRResourcePath]];
         
-        _package = [[GRHTMLPackage alloc] initWithPath: path];
-        
-        NSDictionary *savedContext = ERSSC(GRDataServiceID, GRDataServiceLessonRecordForIDAction, @[ _resourceInfo[GRResourceID] ]);
-        if (savedContext)
+        if ([path hasSuffix: @".pdf"])
         {
-            [_package updateWithRecord: savedContext];
+            [self setPackage: nil];
+            
+            UIWebView *webView = [[UIWebView alloc] initWithFrame: [self bounds]];
+            [webView loadRequest: [NSURLRequest requestWithURL: [NSURL fileURLWithPath: path]]];
+            
+            [self setPackageView: webView];
+            
+            [webView release];
+            
+            [_doneButton setAlpha: 0];
+        }else
+        {
+            GRHTMLPackage *package = [[GRHTMLPackage alloc] initWithPath: path];
+            
+            NSDictionary *savedContext = ERSSC(GRDataServiceID, GRDataServiceLessonRecordForIDAction, @[ _resourceInfo[GRResourceID] ]);
+            if (savedContext)
+            {
+                [package updateWithRecord: savedContext];
+            }
+            
+            [self setPackage: package];
+            [package release];
+            
+            [self setPackageView: [_package view]];
         }
-        
-        [self setPackageView: [_package view]];
     }
 }
 

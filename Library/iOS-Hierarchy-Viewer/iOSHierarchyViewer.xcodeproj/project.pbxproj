@@ -348,6 +348,7 @@
 		7C861E42153DF2E000935C95 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				DSTROOT = /tmp/iOSViewHierarchy.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "iOSViewHierarchy/iOSHierarchyViewer-Prefix.pch";
@@ -364,6 +365,7 @@
 		7C861E43153DF2E000935C95 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				DSTROOT = /tmp/iOSViewHierarchy.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "iOSViewHierarchy/iOSHierarchyViewer-Prefix.pch";

@@ -269,6 +269,7 @@
 		923E49E91888F6A8006E9029 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				DSTROOT = /tmp/NWPushNotification.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "NWPushNotification/NWPushNotification-Prefix.pch";
@@ -281,6 +282,7 @@
 		923E49EA1888F6A8006E9029 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				DSTROOT = /tmp/NWPushNotification.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "NWPushNotification/NWPushNotification-Prefix.pch";
@@ -309,6 +311,7 @@
 				923E49EA1888F6A8006E9029 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

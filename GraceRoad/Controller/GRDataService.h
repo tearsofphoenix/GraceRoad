@@ -21,6 +21,7 @@
 #define GRDataServiceAllResourcesAction          @"allResources"
 #define GRDataServiceAllResourceCategoriesAction @"allResourceCategories"
 
+#define GRDataServiceAllSermonCategoriesAction   @"allSermonCategories"
 #define GRDataServiceAllSermonsAction            @"allSermons"
 
 #define GRDataServiceAllPrayListAction           @"allPrayList"

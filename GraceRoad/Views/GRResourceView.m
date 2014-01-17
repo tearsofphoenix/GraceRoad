@@ -191,8 +191,14 @@ viewForHeaderInSection: (NSInteger)section
     
     NSDictionary *resourceTypeInfo = _resourceCategories[section];
     
-    [headerLabel setBackgroundColor: [UIColor colorWithRed:0.96f green:0.96f blue:0.96f alpha: 1.0f]];
-    [headerLabel setTextColor: [UIColor colorWithRed:0.55f green:0.55f blue:0.55f alpha:1.00f]];
+//    [headerLabel setBackgroundColor: [UIColor colorWithRed:0.96f green:0.96f blue:0.96f alpha: 1.0f]];
+//    [headerLabel setTextColor: [UIColor colorWithRed:0.55f green:0.55f blue:0.55f alpha:1.00f]];
+    [headerLabel setBackgroundColor: [UIColor colorWithRed: 83 / 255.0
+                                                     green: 152 / 255.0
+                                                      blue: 253 / 255.0
+                                                     alpha: 0.8]];
+    [headerLabel setTextColor: [UIColor whiteColor]];
+
     [headerLabel setText: [@"    " stringByAppendingString: resourceTypeInfo[GRResourceCategoryName]]];
     
     return [headerLabel autorelease];

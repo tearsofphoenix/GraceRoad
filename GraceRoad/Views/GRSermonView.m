@@ -16,7 +16,8 @@
 
 @interface GRSermonView ()<UITableViewDataSource, UITableViewDelegate>
 {
-    NSMutableArray *_sermons;
+    NSMutableArray *_sermonCategories;
+    NSMutableDictionary *_sermons;
     UITableView *_contentView;
 }
 @end
@@ -30,7 +31,8 @@
     {
         [self setTitle: @"每周讲道"];
         
-        _sermons = [[NSMutableArray alloc] init];
+        _sermonCategories = [[NSMutableArray alloc] init];
+        _sermons = [[NSMutableDictionary alloc] init];
         
         CGRect rect = CGRectMake(0, 0, frame.size.width, frame.size.height);
         
@@ -40,9 +42,11 @@
         
         [self addSubview: _contentView];
         
-        [_sermons setArray: ERSSC(GRDataServiceID,
-                                  GRDataServiceAllSermonsAction,
-                                  nil)];
+        [_sermonCategories setArray: ERSSC(GRDataServiceID,
+                                           GRDataServiceAllSermonCategoriesAction, nil)];
+        [_sermons setDictionary: ERSSC(GRDataServiceID,
+                                       GRDataServiceAllSermonsAction,
+                                       nil)];
         [_contentView reloadData];
     }
     return self;
@@ -51,6 +55,7 @@
 - (void)dealloc
 {
     [_contentView release];
+    [_sermonCategories release];
     [_sermons release];
     
     [super dealloc];
@@ -58,27 +63,57 @@
 
 - (NSInteger)numberOfSectionsInTableView: (UITableView *)tableView
 {
-    return 1;
+    return [_sermonCategories count];
 }
 
 - (NSInteger)tableView: (UITableView *)tableView
  numberOfRowsInSection: (NSInteger)section
 {
-    return [_sermons count];
+    NSDictionary *sermonCategory = _sermonCategories[section];
+    NSArray *sermons = _sermons[sermonCategory[GRSermonCategoryID]];
+    
+    return [sermons count];
 }
 
 - (UITableViewCell *)tableView: (UITableView *)tableView
          cellForRowAtIndexPath: (NSIndexPath *)indexPath
 {
+    NSInteger section = [indexPath section];
+    NSInteger row = [indexPath row];
+    
+    NSDictionary *sermonCategory = _sermonCategories[section];
+    NSArray *sermons = _sermons[sermonCategory[GRSermonCategoryID]];
+
     UITableViewCell *cell = [[UITableViewCell alloc] init];
     
-    NSDictionary *sermonInfo = _sermons[[indexPath row]];
+    NSDictionary *sermonInfo = sermons[row];
     
     [[cell textLabel] setText: sermonInfo[GRSermonTitle]];
     [[cell imageView] setImage: [UIImage imageNamed: @"GRAudio"]];
     
     return [cell autorelease];
 }
+
+- (UIView *) tableView: (UITableView *)tableView
+viewForHeaderInSection: (NSInteger)section
+{
+    UILabel *headerLabel = [[UILabel alloc] init];
+    
+    NSDictionary *sermonCategory = _sermonCategories[section];
+    
+    //[headerLabel setBackgroundColor: [UIColor colorWithRed:0.96f green:0.96f blue:0.96f alpha: 1.0f]];
+    [headerLabel setBackgroundColor: [UIColor colorWithRed: 83 / 255.0
+                                                     green: 152 / 255.0
+                                                      blue: 253 / 255.0
+                                                     alpha: 0.8]];
+    
+    //[headerLabel setTextColor: [UIColor colorWithRed:0.55f green:0.55f blue:0.55f alpha:1.00f]];
+    [headerLabel setTextColor: [UIColor whiteColor]];
+    [headerLabel setText: [@"    " stringByAppendingString: sermonCategory[GRSermonCategoryTitle]]];
+    
+    return [headerLabel autorelease];
+}
+
 
 - (void)_showSermonContentWithInfo: (NSDictionary *)info
 {
@@ -96,7 +131,14 @@
 - (void)      tableView: (UITableView *)tableView
 didSelectRowAtIndexPath: (NSIndexPath *)indexPath
 {
-    NSDictionary *sermonInfo = _sermons[[indexPath row]];
+    NSInteger section = [indexPath section];
+    NSInteger row = [indexPath row];
+    
+    NSDictionary *sermonCategory = _sermonCategories[section];
+    NSArray *sermons = _sermons[sermonCategory[GRSermonCategoryID]];
+
+    NSDictionary *sermonInfo = sermons[row];
+                                    
     NSString *subPath = sermonInfo[GRSermonPath];
     if ([GRResourceManager fileExistsWithSubPath: subPath])
     {
@@ -130,6 +172,18 @@ didSelectRowAtIndexPath: (NSIndexPath *)indexPath
            })] show];
         
     }
+}
+
+- (CGFloat)    tableView: (UITableView *)tableView
+heightForHeaderInSection: (NSInteger)section
+{
+    return 30;
+}
+
+- (CGFloat)   tableView: (UITableView *)tableView
+heightForRowAtIndexPath: (NSIndexPath *)indexPath
+{
+    return 44;
 }
 
 @end

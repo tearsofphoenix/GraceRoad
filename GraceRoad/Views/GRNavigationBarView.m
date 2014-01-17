@@ -52,24 +52,17 @@
     rect.origin = CGPointMake(10, (bounds.size.height - rect.size.height) / 2);
     rect.size.width = 123 * 0.6;
     
-    _leftNavigationButton = [[UIButton alloc] initWithFrame: rect];
+    _leftNavigationButton = [[UIButton alloc] initWithFrame: CGRectMake(0, 0, 60, bounds.size.height)];
+    [_leftNavigationButton setImageEdgeInsets: UIEdgeInsetsMake(8, 10, 8, 15)];
     [_leftNavigationButton setImage: [UIImage imageNamed: @"GRBackButton"]
                            forState: UIControlStateNormal];
     [_leftNavigationButton addTarget: self
                              action: @selector(_handleLeftButtonTappedEvent:)
                    forControlEvents: UIControlEventTouchUpInside];
-    
+
     [_leftNavigationButton setAlpha: 0];
     
     [self addSubview: _leftNavigationButton];
-    
-//    CALayer *layer = [_titleLabel layer];
-//    
-//    layer.masksToBounds = NO;
-//    layer.shadowOffset = CGSizeMake(-15, 20);
-//    layer.shadowRadius = 5;
-//    layer.shadowOpacity = 0.5;
-//    layer.shadowColor = [[UIColor blackColor] CGColor];
 }
 
 - (UIButton *)leftNavigationButton
@@ -87,7 +80,7 @@
         
         CGRect bounds = [self bounds];
         
-        [_rightNavigationButton setFrame: CGRectMake(bounds.size.width - 40, 8, 28, 28)];
+        [_rightNavigationButton setFrame: CGRectMake(bounds.size.width - bounds.size.height - 4, 0, bounds.size.height, bounds.size.height)];
         
         [self addSubview: rightNavigationButton];
     }

@@ -25,9 +25,13 @@
 {
     NSMutableArray *_resourceCategories;
     NSMutableDictionary *_resources;
-    NSMutableArray *_sermons;
+    
+    NSMutableArray *_sermonCategories;
+    NSMutableDictionary *_sermons;
     NSMutableArray *_prayList;
+    
     NSMutableArray *_scriptures;
+    
     NSDictionary *_receiveTeam;
     NSArray *_receiveTeamMembers;
 }
@@ -78,7 +82,7 @@
                                      GRResourceID : [[ERUUID UUID] stringDescription],
                                      GRResourceName : @"第二周作业",
                                      GRResourceAbstract : @"这是一份作业...",
-                                     GRResourcePath : @"2.pdf",
+                                     GRResourcePath : @"亚干犯罪.pdf",
                                      GRResourceUploadDate : [NSDate dateWithYear: year
                                                                            month: month
                                                                              day: day - 1],
@@ -88,7 +92,7 @@
                                      GRResourceID : [[ERUUID UUID] stringDescription],
                                      GRResourceName : @"第三周作业",
                                      GRResourceAbstract : @"需要好好做...",
-                                     GRResourcePath : @"3.pdf",
+                                     GRResourcePath : @"狡猾的基遍人.pdf",
                                      GRResourceUploadDate : [NSDate dateWithYear: year
                                                                            month: month
                                                                              day: day - 1],
@@ -98,7 +102,7 @@
                        forKey: typeLooper[GRResourceCategoryID]];
         
         typeLooper = (@{
-                        GRResourceCategoryName : @"CEF培训",
+                        GRResourceCategoryName : @"CEF课程",
                         GRResourceCategoryID : [[ERUUID UUID] stringDescription],
                         });
         [_resourceCategories addObject: typeLooper];
@@ -106,9 +110,9 @@
         [_resources setObject: (@[
                                   (@{
                                      GRResourceID : [[ERUUID UUID] stringDescription],
-                                     GRResourceName : @"无字书",
-                                     GRResourceAbstract : @"怎样向儿童传福音？",
-                                     GRResourcePath : @"cef1.pdf",
+                                     GRResourceName : @"神与约书亚同在",
+                                     GRResourceAbstract : @"神与约书亚同在",
+                                     GRResourcePath : @"神与约书亚同在.pdf",
                                      GRResourceUploadDate : [NSDate dateWithYear: year
                                                                            month: month
                                                                              day: day - 2],
@@ -116,9 +120,9 @@
                                      }),
                                   (@{
                                      GRResourceID : [[ERUUID UUID] stringDescription],
-                                     GRResourceName : @"金句教导",
-                                     GRResourceAbstract : @"需要让孩子能记住...",
-                                     GRResourcePath : @"cef2.pdf",
+                                     GRResourceName : @"一条朱红线绳",
+                                     GRResourceAbstract : @"一条朱红线绳",
+                                     GRResourcePath : @"一条朱红线绳.pdf",
                                      GRResourceUploadDate : [NSDate dateWithYear: year
                                                                            month: month
                                                                              day: day - 2],
@@ -126,9 +130,9 @@
                                      }),
                                   (@{
                                      GRResourceID : [[ERUUID UUID] stringDescription],
-                                     GRResourceName : @"圣经故事",
-                                     GRResourceAbstract : @"怎样在圣经故事中穿插福音信息...",
-                                     GRResourcePath : @"cef3.pdf",
+                                     GRResourceName : @"围绕耶利哥城",
+                                     GRResourceAbstract : @"围绕耶利哥城",
+                                     GRResourcePath : @"围绕耶利哥城.pdf",
                                      GRResourceUploadDate : [NSDate dateWithYear: year
                                                                            month: month
                                                                              day: day - 3],
@@ -148,43 +152,56 @@
                                      GRResourceID : [[ERUUID UUID] stringDescription],
                                      GRResourceName : @"传福音的使命",
                                      GRResourceAbstract : @"来自圣经的教导，耶稣的吩咐",
-                                     GRResourcePath : @"fuyin1.pdf",
+                                     GRResourcePath : @"数算主恩典.pdf",
                                      GRResourceUploadDate : [NSDate dateWithYear: year
                                                                            month: month
                                                                              day: day - 3],
                                      GRResourceTypeName : GRResourceTypePDF,
                                      }),
-                                  (@{
-                                     GRResourceID : [[ERUUID UUID] stringDescription],
-                                     GRResourceName : @"怎样传福音",
-                                     GRResourceAbstract : @"把福音的要义告诉第一次听到的人",
-                                     GRResourcePath : @"fuyin2.pdf",
-                                     GRResourceUploadDate : [NSDate dateWithYear: year
-                                                                           month: month
-                                                                             day: day - 4],
-                                     GRResourceTypeName : GRResourceTypePDF,
-                                     }),
                                   ])
                        forKey: typeLooper[GRResourceCategoryID]];
         
-        _sermons = [[NSMutableArray alloc] init];
+        _sermonCategories = [[NSMutableArray alloc] init];
+        _sermons = [[NSMutableDictionary alloc] init];
+
+        NSDictionary *category = (@{
+                                    GRSermonCategoryID : [[ERUUID UUID] stringDescription],
+                                    GRSermonCategoryTitle : @"主日讲道",
+                                    });
+        NSMutableArray *categoryContent = [NSMutableArray array];
+        [categoryContent addObject: (@{
+                                       GRSermonID : [[ERUUID UUID] stringDescription],
+                                       GRSermonPath : @"重生的生命，丰盛的人生.mp3",
+                                       GRSermonTitle : @"重生的生命，丰盛的人生",
+                                       GRSermonAbstract : @"人失去神之后，对祝福的观念已经变质了。人无法对幸福有正确的认识与标准，专在肉身与暂时的亨通顺利找寻幸福。另外，人也对自己真正的问题也失去了知觉。鱼活着没有水，树没有泥土不能生长，人却没有意识到他离开那全善全爱的上帝是最大的问题。事实上，神赐下基督，将祂救恩的启示显明，使人再次得见而认识神。认识了神之后，人当要重新认识与设计自己的人生，好跟从这位神，才得以享受在祂里头的丰盛生命。因为基督来乃是叫人得生命，并且得的更丰盛。",
+                                       GRSermonUploadDate : [NSDate date],
+                                       })];
         
-        [_sermons addObject: (@{
-                                GRSermonID : [[ERUUID UUID] stringDescription],
-                                GRSermonPath : @"重生的生命，丰盛的人生.mp3",
-                                GRSermonTitle : @"重生的生命，丰盛的人生",
-                                GRSermonAbstract : @"人失去神之后，对祝福的观念已经变质了。人无法对幸福有正确的认识与标准，专在肉身与暂时的亨通顺利找寻幸福。另外，人也对自己真正的问题也失去了知觉。鱼活着没有水，树没有泥土不能生长，人却没有意识到他离开那全善全爱的上帝是最大的问题。事实上，神赐下基督，将祂救恩的启示显明，使人再次得见而认识神。认识了神之后，人当要重新认识与设计自己的人生，好跟从这位神，才得以享受在祂里头的丰盛生命。因为基督来乃是叫人得生命，并且得的更丰盛。",
-                                GRSermonUploadDate : [NSDate date],
-                                })];
+        [categoryContent addObject: (@{
+                                       GRSermonID : [[ERUUID UUID] stringDescription],
+                                       GRSermonPath : @"寻见基督之人必大大地欢喜.mp3",
+                                       GRSermonTitle : @"寻见基督之人必大大地欢喜",
+                                       GRSermonAbstract : @"上帝已经将祂自己的生命完完整整的赐给我们了。凡在基督里重生之人，我们的好处不在祂以外。但是，如果我们要的不是基督，所寻求依靠的不是祂里头的属灵福气与大能，我们所寻求依靠的必定叫我们跌倒。这不是将来会看见的，乃是至今在不认识神的世界里都已经显明出来了。在主耶稣降临时，特别有两种因基督而被绊倒的人。",
+                                       GRSermonUploadDate : [NSDate dateWithYear: year
+                                                                           month: month
+                                                                             day: day - 1],
+                                       })];
         
-        [_sermons addObject: (@{
-                                GRSermonID : [[ERUUID UUID] stringDescription],
-                                GRSermonPath : @"sermon2.mp3",
-                                GRSermonTitle : @"传福音",
-                                GRSermonUploadDate : [NSDate dateWithYear: year
-                                                                    month: month
-                                                                      day: day - 1],
-                                })];
+        [_sermonCategories addObject: category];
+        
+        [_sermons setObject: categoryContent
+                     forKey: category[GRSermonCategoryID]];
+        
+        category = (@{
+                      GRSermonCategoryID : [[ERUUID UUID] stringDescription],
+                      GRSermonCategoryTitle : @"专题讲道",
+                      });
+        categoryContent = [NSMutableArray array];
+        
+        [_sermonCategories addObject: category];
+        
+        [_sermons setObject: categoryContent
+                     forKey: category[GRSermonCategoryID]];
         
         NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
         
@@ -380,7 +397,12 @@
     return _resourceCategories;
 }
 
-- (NSArray *)allSermons
+- (NSArray *)allSermonCategories
+{
+    return _sermonCategories;
+}
+
+- (NSDictionary *)allSermons
 {
     return _sermons;
 }
