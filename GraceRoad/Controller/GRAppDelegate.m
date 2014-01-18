@@ -71,6 +71,29 @@ didReceiveLocalNotification: (UILocalNotification *)notification
     
 }
 
+- (void)         application: (UIApplication *)application
+didReceiveRemoteNotification: (NSDictionary *)userInfo
+{
+    NSString *alert = userInfo[@"aps"][@"alert"];
+    ERSC(GRDataServiceID,
+         GRDataServiceExportNotificationToReminderAction,
+         @[ alert ], nil);
+    
+    NSLog(@"in func: %s, userInfo: %@", __func__, userInfo);
+}
+
+- (void)         application: (UIApplication *)application
+didReceiveRemoteNotification: (NSDictionary *)userInfo
+      fetchCompletionHandler: (void (^)(UIBackgroundFetchResult))completionHandler
+{
+    NSString *alert = userInfo[@"aps"][@"alert"];
+    ERSC(GRDataServiceID,
+         GRDataServiceExportNotificationToReminderAction,
+         @[ alert ], nil);
+    
+    NSLog(@"in func: %s, userInfo: %@", __func__, userInfo);
+}
+
 - (BOOL)application: (UIApplication *)application
       handleOpenURL: (NSURL *)url
 {

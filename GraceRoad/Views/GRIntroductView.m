@@ -129,7 +129,7 @@
         _annotation = [[GRMapAnnotation alloc] init];
         
         [_annotation setCoordinate: coordinate];
-        [_annotation setTitle: @"新松江恩典教会"];
+        [_annotation setTitle: @"新松江路276号文荟建材广场"];
     }
     
     [_mapView addAnnotation: _annotation];

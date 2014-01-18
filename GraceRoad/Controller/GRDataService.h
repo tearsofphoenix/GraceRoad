@@ -35,6 +35,9 @@
 
 #define GRDataServiceSendPushNotificationWithCallbackAction  @"sendPushNotification:callback:"
 #define GRDataServiceSendMessageToWeixinAction   @"sendMessageToWeixin:"
+
+#define GRDataServiceExportNotificationToReminderAction      @"exportNotificationToReminder:"
+
 #pragma mark - notification
 
 #define GRAccountLoginNotification          GRPrefix ".notification.login"

@@ -20,6 +20,7 @@
 #import <NWPushNotification/NWHub.h>
 
 #import <NoahsUtility/NoahsUtility.h>
+#import <EventKit/EventKit.h>
 
 #define GRLocalNotificationScheduleKey  GRPrefix ".hasScheduled"
 #define GRCurrentAccountKey             GRPrefix ".current-account"
@@ -40,6 +41,10 @@
     
 #pragma mark - local push
     NWHub *_hub;
+    
+#pragma mark - export
+    EKEventStore *_eventStore;
+    EKCalendar *_calendar;
 }
 @end
 
@@ -237,7 +242,7 @@
                                                                            month: 1
                                                                              day: 25],
                                        })];
-
+        
         [categoryContent addObject: (@{
                                        GRSermonID : [[ERUUID UUID] stringDescription],
                                        GRSermonPath : @"2009-02-08_Mandarin1Audio.mp3",
@@ -246,7 +251,7 @@
                                                                            month: 2
                                                                              day: 8],
                                        })];
-
+        
         
         [_sermonCategories addObject: category];
         
@@ -350,6 +355,23 @@
                                      GRAccountEmailKey : @"tearsofphoenix@icloud.com",
                                      }),
                                   ]) retain];
+        
+        _eventStore = [[EKEventStore alloc] init];
+        
+        EKAuthorizationStatus status = [EKEventStore authorizationStatusForEntityType: EKEntityTypeReminder];
+        if (status == EKAuthorizationStatusNotDetermined)
+        {
+            [_eventStore requestAccessToEntityType: EKEntityTypeReminder
+                                        completion:
+             (^(BOOL granted, NSError *error)
+              {
+                  if (granted)
+                  {
+                      _calendar = [[EKCalendar calendarForEntityType: EKEntityTypeReminder
+                                                          eventStore: _eventStore] retain];
+                  }
+              })];
+        }
     }
     
     return self;
@@ -603,6 +625,42 @@
             [WXApi sendReq: req];
             
             [req release];
+        }
+    }
+}
+
+- (void)exportNotificationToReminder: (NSString *)content
+{
+    EKAuthorizationStatus status = [EKEventStore authorizationStatusForEntityType: EKEntityTypeReminder];
+    if (EKAuthorizationStatusAuthorized == status)
+    {
+        EKReminder *reminder = [[EKReminder alloc] init];
+        NSString *month = [content substringWithRange: NSMakeRange(0, 2)];
+        NSString *day = [content substringWithRange: NSMakeRange(2, 2)];
+        NSString *eventContent = [content substringFromIndex: 4];
+        
+        [reminder setTitle: eventContent];
+        
+        NSDateComponents *components = [[NSDateComponents alloc] init];
+
+        [components setYear: [[NSDate date] year]];
+        [components setMonth: [month integerValue]];
+        [components setDay: [day integerValue]];
+        
+        [reminder setStartDateComponents: components];
+        [components release];
+        
+        [reminder setCalendar: _calendar];
+        
+        NSError *error = nil;
+        [_eventStore saveReminder: reminder
+                           commit: YES
+                            error: &error];
+        [reminder release];
+        
+        if (error)
+        {
+            NSLog(@"%@", error);
         }
     }
 }

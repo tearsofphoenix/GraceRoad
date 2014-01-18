@@ -30,7 +30,7 @@
     {
         [self setTitle: @"设置"];
         
-        _titles = [@[ @"个人信息", @"代祷"] retain];
+        _titles = [@[ @"个人信息", @"代祷", @"联系我们"] retain];
         
         _tableView = [[UITableView alloc] initWithFrame: [self bounds]];
         [_tableView setDataSource: self];
@@ -94,6 +94,10 @@ didSelectRowAtIndexPath: (NSIndexPath *)indexPath
             
             [prayView release];
             
+            break;
+        }
+        case 2:
+        {
             break;
         }
         default:
