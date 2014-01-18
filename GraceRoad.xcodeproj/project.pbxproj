@@ -916,7 +916,7 @@
 						DevelopmentTeam = UU37DKREZ7;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
-								enabled = 0;
+								enabled = 1;
 							};
 							com.apple.InterAppAudio = {
 								enabled = 0;
@@ -1268,7 +1268,7 @@
 					"$(BUILT_PRODUCTS_DIR)/include/",
 				);
 				INFOPLIST_FILE = "GraceRoad/GraceRoad-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Library/WeiXin\"",
@@ -1302,7 +1302,7 @@
 					"$(BUILT_PRODUCTS_DIR)/include/",
 				);
 				INFOPLIST_FILE = "GraceRoad/GraceRoad-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Library/WeiXin\"",
