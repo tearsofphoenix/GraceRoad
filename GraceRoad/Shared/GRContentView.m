@@ -20,6 +20,7 @@
 {
     if ((self = [super initWithFrame: frame]))
     {
+        [self setClipsToBounds: YES];
         [self setBackgroundColor: [UIColor colorWithRed: 0.93f
                                                   green: 0.95f
                                                    blue: 0.96f

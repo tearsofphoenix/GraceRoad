@@ -13,6 +13,7 @@
 #import "GRViewService.h"
 #import "GRHTMLPackage.h"
 #import "GRDataService.h"
+#import "GRTheme.h"
 
 #import <PDFReader/ReaderView.h>
 #import <PDFReader/ReaderDocument.h>
@@ -40,7 +41,8 @@
         [self setBackgroundColor: [UIColor whiteColor]];
         
         _doneButton = [[UIButton alloc] init];
-        [_doneButton setBackgroundColor: [UIColor colorWithRed:0.58 green:0.69 blue:0.84 alpha:1]];
+        //[_doneButton setBackgroundColor: [UIColor colorWithRed:0.58 green:0.69 blue:0.84 alpha:1]];
+        [_doneButton setBackgroundColor: [GRTheme blueColor]];
         [[_doneButton titleLabel] setFont: [UIFont systemFontOfSize: 14]];
         [_doneButton setTitle: @"完成"
                      forState: UIControlStateNormal];

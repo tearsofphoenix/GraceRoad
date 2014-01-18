@@ -25,6 +25,11 @@
 		6068029818883DCA00D5217B /* GRTabbarBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 6068029618883DCA00D5217B /* GRTabbarBackground.png */; };
 		6068029918883DCA00D5217B /* GRTabbarBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6068029718883DCA00D5217B /* GRTabbarBackground@2x.png */; };
 		606E8FEA188946A7000C5CB2 /* libPDFReaderStatic.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 606E8FE718894699000C5CB2 /* libPDFReaderStatic.a */; };
+		609723E1188AC7000020AEA0 /* UIActionSheet+BlockSupport.m in Sources */ = {isa = PBXBuildFile; fileRef = 609723D8188AC7000020AEA0 /* UIActionSheet+BlockSupport.m */; };
+		609723E2188AC7000020AEA0 /* UIAlertView+BlockSupport.m in Sources */ = {isa = PBXBuildFile; fileRef = 609723DA188AC7000020AEA0 /* UIAlertView+BlockSupport.m */; };
+		609723E3188AC7000020AEA0 /* UIRefreshControl+GRExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 609723DC188AC7000020AEA0 /* UIRefreshControl+GRExtensions.m */; };
+		609723E4188AC7000020AEA0 /* UISwitch+BlockSupport.m in Sources */ = {isa = PBXBuildFile; fileRef = 609723DE188AC7000020AEA0 /* UISwitch+BlockSupport.m */; };
+		609723E5188AC7000020AEA0 /* UIView+FirstResponder.m in Sources */ = {isa = PBXBuildFile; fileRef = 609723E0188AC7000020AEA0 /* UIView+FirstResponder.m */; };
 		60B266061877CBFF008E881E /* 1.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 60B266041877CBFF008E881E /* 1.pdf */; };
 		60E649681877ECA800D5466B /* GRHeart.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 60E649671877ECA800D5466B /* GRHeart.jpg */; };
 		60E649861877FB1D00D5466B /* notifications.plist in Resources */ = {isa = PBXBuildFile; fileRef = 60E649851877FB1D00D5466B /* notifications.plist */; };
@@ -91,9 +96,6 @@
 		9261925218865752001E0A72 /* GRUserProfileView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9261923C18865752001E0A72 /* GRUserProfileView.m */; };
 		9261925318865752001E0A72 /* GRContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9261923F18865752001E0A72 /* GRContentView.m */; };
 		9261925418865752001E0A72 /* GRNibPackage.m in Sources */ = {isa = PBXBuildFile; fileRef = 9261924118865752001E0A72 /* GRNibPackage.m */; };
-		9261925518865752001E0A72 /* UIAlertView+BlockSupport.m in Sources */ = {isa = PBXBuildFile; fileRef = 9261924418865752001E0A72 /* UIAlertView+BlockSupport.m */; };
-		9261925618865752001E0A72 /* UISwitch+BlockSupport.m in Sources */ = {isa = PBXBuildFile; fileRef = 9261924618865752001E0A72 /* UISwitch+BlockSupport.m */; };
-		9261925718865752001E0A72 /* UIView+FirstResponder.m in Sources */ = {isa = PBXBuildFile; fileRef = 9261924818865752001E0A72 /* UIView+FirstResponder.m */; };
 		9261927018865790001E0A72 /* GRCommunicationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9261925F18865790001E0A72 /* GRCommunicationView.m */; };
 		9261927118865790001E0A72 /* GRIntroductView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9261926118865790001E0A72 /* GRIntroductView.m */; };
 		9261927218865790001E0A72 /* GRLoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9261926318865790001E0A72 /* GRLoginView.m */; };
@@ -119,7 +121,6 @@
 		9276F35018877DC800E13763 /* UIView+FrameAdjustment.m in Sources */ = {isa = PBXBuildFile; fileRef = 9276F34F18877DC800E13763 /* UIView+FrameAdjustment.m */; };
 		9276F35318877DEA00E13763 /* UIView+CenterAdjustment.m in Sources */ = {isa = PBXBuildFile; fileRef = 9276F35218877DEA00E13763 /* UIView+CenterAdjustment.m */; };
 		9276F35618877E6700E13763 /* UIView+FrameBeforeTransform.m in Sources */ = {isa = PBXBuildFile; fileRef = 9276F35518877E6700E13763 /* UIView+FrameBeforeTransform.m */; };
-		9276F35918878CFA00E13763 /* UIActionSheet+BlockSupport.m in Sources */ = {isa = PBXBuildFile; fileRef = 9276F35818878CFA00E13763 /* UIActionSheet+BlockSupport.m */; };
 		9276F35D1887D22600E13763 /* GRShareButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 9276F35B1887D22600E13763 /* GRShareButton.png */; };
 		9276F35E1887D22600E13763 /* GRShareButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9276F35C1887D22600E13763 /* GRShareButton@2x.png */; };
 		927C9FA3186D66DC00DC0EDC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 927C9FA2186D66DC00DC0EDC /* Foundation.framework */; };
@@ -230,6 +231,17 @@
 		6068029618883DCA00D5217B /* GRTabbarBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GRTabbarBackground.png; sourceTree = "<group>"; };
 		6068029718883DCA00D5217B /* GRTabbarBackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "GRTabbarBackground@2x.png"; sourceTree = "<group>"; };
 		606E8FDF18894698000C5CB2 /* PDFReader.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = PDFReader.xcodeproj; path = PDFReader/PDFReader.xcodeproj; sourceTree = "<group>"; };
+		609723D6188AC7000020AEA0 /* GRUIExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRUIExtensions.h; sourceTree = "<group>"; };
+		609723D7188AC7000020AEA0 /* UIActionSheet+BlockSupport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIActionSheet+BlockSupport.h"; sourceTree = "<group>"; };
+		609723D8188AC7000020AEA0 /* UIActionSheet+BlockSupport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIActionSheet+BlockSupport.m"; sourceTree = "<group>"; };
+		609723D9188AC7000020AEA0 /* UIAlertView+BlockSupport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertView+BlockSupport.h"; sourceTree = "<group>"; };
+		609723DA188AC7000020AEA0 /* UIAlertView+BlockSupport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertView+BlockSupport.m"; sourceTree = "<group>"; };
+		609723DB188AC7000020AEA0 /* UIRefreshControl+GRExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIRefreshControl+GRExtensions.h"; sourceTree = "<group>"; };
+		609723DC188AC7000020AEA0 /* UIRefreshControl+GRExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIRefreshControl+GRExtensions.m"; sourceTree = "<group>"; };
+		609723DD188AC7000020AEA0 /* UISwitch+BlockSupport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UISwitch+BlockSupport.h"; sourceTree = "<group>"; };
+		609723DE188AC7000020AEA0 /* UISwitch+BlockSupport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UISwitch+BlockSupport.m"; sourceTree = "<group>"; };
+		609723DF188AC7000020AEA0 /* UIView+FirstResponder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+FirstResponder.h"; sourceTree = "<group>"; };
+		609723E0188AC7000020AEA0 /* UIView+FirstResponder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+FirstResponder.m"; sourceTree = "<group>"; };
 		60B266041877CBFF008E881E /* 1.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = 1.pdf; path = Images/Main/1.pdf; sourceTree = "<group>"; };
 		60E649671877ECA800D5466B /* GRHeart.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = GRHeart.jpg; path = Main/GRHeart.jpg; sourceTree = "<group>"; };
 		60E649851877FB1D00D5466B /* notifications.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = notifications.plist; path = Images/Main/notifications.plist; sourceTree = "<group>"; };
@@ -311,12 +323,6 @@
 		9261924018865752001E0A72 /* GRNibPackage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRNibPackage.h; sourceTree = "<group>"; };
 		9261924118865752001E0A72 /* GRNibPackage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GRNibPackage.m; sourceTree = "<group>"; };
 		9261924218865752001E0A72 /* GRShared.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRShared.h; sourceTree = "<group>"; };
-		9261924318865752001E0A72 /* UIAlertView+BlockSupport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertView+BlockSupport.h"; sourceTree = "<group>"; };
-		9261924418865752001E0A72 /* UIAlertView+BlockSupport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertView+BlockSupport.m"; sourceTree = "<group>"; };
-		9261924518865752001E0A72 /* UISwitch+BlockSupport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UISwitch+BlockSupport.h"; sourceTree = "<group>"; };
-		9261924618865752001E0A72 /* UISwitch+BlockSupport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UISwitch+BlockSupport.m"; sourceTree = "<group>"; };
-		9261924718865752001E0A72 /* UIView+FirstResponder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+FirstResponder.h"; sourceTree = "<group>"; };
-		9261924818865752001E0A72 /* UIView+FirstResponder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+FirstResponder.m"; sourceTree = "<group>"; };
 		9261925918865790001E0A72 /* GRAccountKeys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRAccountKeys.h; sourceTree = "<group>"; };
 		9261925A18865790001E0A72 /* GRPrayKeys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRPrayKeys.h; sourceTree = "<group>"; };
 		9261925B18865790001E0A72 /* GRResourceKey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRResourceKey.h; sourceTree = "<group>"; };
@@ -370,8 +376,6 @@
 		9276F35218877DEA00E13763 /* UIView+CenterAdjustment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+CenterAdjustment.m"; sourceTree = "<group>"; };
 		9276F35418877E6700E13763 /* UIView+FrameBeforeTransform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+FrameBeforeTransform.h"; sourceTree = "<group>"; };
 		9276F35518877E6700E13763 /* UIView+FrameBeforeTransform.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+FrameBeforeTransform.m"; sourceTree = "<group>"; };
-		9276F35718878CFA00E13763 /* UIActionSheet+BlockSupport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIActionSheet+BlockSupport.h"; sourceTree = "<group>"; };
-		9276F35818878CFA00E13763 /* UIActionSheet+BlockSupport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIActionSheet+BlockSupport.m"; sourceTree = "<group>"; };
 		9276F35A18879F7200E13763 /* GRMessageType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRMessageType.h; sourceTree = "<group>"; };
 		9276F35B1887D22600E13763 /* GRShareButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GRShareButton.png; sourceTree = "<group>"; };
 		9276F35C1887D22600E13763 /* GRShareButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "GRShareButton@2x.png"; sourceTree = "<group>"; };
@@ -473,6 +477,24 @@
 				603A656D18894B9200352C0B /* PDFReaderResources.bundle */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		609723D5188AC7000020AEA0 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				609723D6188AC7000020AEA0 /* GRUIExtensions.h */,
+				609723D7188AC7000020AEA0 /* UIActionSheet+BlockSupport.h */,
+				609723D8188AC7000020AEA0 /* UIActionSheet+BlockSupport.m */,
+				609723D9188AC7000020AEA0 /* UIAlertView+BlockSupport.h */,
+				609723DA188AC7000020AEA0 /* UIAlertView+BlockSupport.m */,
+				609723DB188AC7000020AEA0 /* UIRefreshControl+GRExtensions.h */,
+				609723DC188AC7000020AEA0 /* UIRefreshControl+GRExtensions.m */,
+				609723DD188AC7000020AEA0 /* UISwitch+BlockSupport.h */,
+				609723DE188AC7000020AEA0 /* UISwitch+BlockSupport.m */,
+				609723DF188AC7000020AEA0 /* UIView+FirstResponder.h */,
+				609723E0188AC7000020AEA0 /* UIView+FirstResponder.m */,
+			);
+			path = Categories;
 			sourceTree = "<group>";
 		};
 		60E649BF1878062400D5466B /* notifications */ = {
@@ -597,21 +619,14 @@
 		9261923D18865752001E0A72 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
-				9261923E18865752001E0A72 /* GRContentView.h */,
+				609723D5188AC7000020AEA0 /* Categories */,
 				603A657D188A625C00352C0B /* GRResourceCell.h */,
 				603A657E188A625C00352C0B /* GRResourceCell.m */,
+				9261923E18865752001E0A72 /* GRContentView.h */,
 				9261923F18865752001E0A72 /* GRContentView.m */,
 				9261924018865752001E0A72 /* GRNibPackage.h */,
 				9261924118865752001E0A72 /* GRNibPackage.m */,
 				9261924218865752001E0A72 /* GRShared.h */,
-				9261924318865752001E0A72 /* UIAlertView+BlockSupport.h */,
-				9261924418865752001E0A72 /* UIAlertView+BlockSupport.m */,
-				9276F35718878CFA00E13763 /* UIActionSheet+BlockSupport.h */,
-				9276F35818878CFA00E13763 /* UIActionSheet+BlockSupport.m */,
-				9261924518865752001E0A72 /* UISwitch+BlockSupport.h */,
-				9261924618865752001E0A72 /* UISwitch+BlockSupport.m */,
-				9261924718865752001E0A72 /* UIView+FirstResponder.h */,
-				9261924818865752001E0A72 /* UIView+FirstResponder.m */,
 				9261929518867B0F001E0A72 /* GRHTMLPackage.h */,
 				9261929618867B0F001E0A72 /* GRHTMLPackage.m */,
 				9276F32F1887729E00E13763 /* GRTheme.h */,
@@ -1081,23 +1096,21 @@
 			files = (
 				9261927118865790001E0A72 /* GRIntroductView.m in Sources */,
 				929989BF18768C750001EFDC /* MFRunLoopOperation.m in Sources */,
-				9261925518865752001E0A72 /* UIAlertView+BlockSupport.m in Sources */,
 				9276F35618877E6700E13763 /* UIView+FrameBeforeTransform.m in Sources */,
 				9261924C18865752001E0A72 /* GRResourceManager.m in Sources */,
 				9276F34718877D6100E13763 /* ERGalleryView.m in Sources */,
 				9261927418865790001E0A72 /* GRPrayView.m in Sources */,
 				60E8D95F1889131900C2EFC2 /* ILTranslucentView.m in Sources */,
-				9276F35918878CFA00E13763 /* UIActionSheet+BlockSupport.m in Sources */,
 				9261927718865790001E0A72 /* GRSermonContentView.m in Sources */,
 				606802901888233700D5217B /* Reachability.m in Sources */,
 				9261927818865790001E0A72 /* GRSermonView.m in Sources */,
 				9261925018865752001E0A72 /* GRSettingsView.m in Sources */,
 				9261927018865790001E0A72 /* GRCommunicationView.m in Sources */,
-				9261925718865752001E0A72 /* UIView+FirstResponder.m in Sources */,
 				929989BA18768C2E0001EFDC /* MFNetworkFileCacheManager.m in Sources */,
 				9276F35318877DEA00E13763 /* UIView+CenterAdjustment.m in Sources */,
 				929989B718768C2E0001EFDC /* MFCacheManagerInternal.m in Sources */,
 				603A657F188A625C00352C0B /* GRResourceCell.m in Sources */,
+				609723E3188AC7000020AEA0 /* UIRefreshControl+GRExtensions.m in Sources */,
 				9261927218865790001E0A72 /* GRLoginView.m in Sources */,
 				929989BB18768C2E0001EFDC /* MFNetworkFileCacheManagerInternal.m in Sources */,
 				9276F34818877D6100E13763 /* ERGalleryViewPrivateHandler.m in Sources */,
@@ -1107,6 +1120,7 @@
 				929989B818768C2E0001EFDC /* MFNetworkClient.m in Sources */,
 				9276F34D18877D6100E13763 /* NSIndexPath+ERGalleryView.m in Sources */,
 				9261927318865790001E0A72 /* GRNavigationBarView.m in Sources */,
+				609723E2188AC7000020AEA0 /* UIAlertView+BlockSupport.m in Sources */,
 				929989B618768C2E0001EFDC /* MFCacheManager.m in Sources */,
 				9261925118865752001E0A72 /* GRUserDetailView.m in Sources */,
 				929989B918768C2E0001EFDC /* MFNetworkClientInternal.m in Sources */,
@@ -1121,10 +1135,12 @@
 				60F9438E1886D81A001F13E3 /* DKLiveBlurView.m in Sources */,
 				9261925218865752001E0A72 /* GRUserProfileView.m in Sources */,
 				929989BC18768C2E0001EFDC /* MFNetworkOperation.m in Sources */,
-				9261925618865752001E0A72 /* UISwitch+BlockSupport.m in Sources */,
 				9261927618865790001E0A72 /* GRResourceView.m in Sources */,
+				609723E5188AC7000020AEA0 /* UIView+FirstResponder.m in Sources */,
 				9276F34918877D6100E13763 /* ERGalleryViewThumbnail.m in Sources */,
 				9261924918865752001E0A72 /* GRAppDelegate.m in Sources */,
+				609723E1188AC7000020AEA0 /* UIActionSheet+BlockSupport.m in Sources */,
+				609723E4188AC7000020AEA0 /* UISwitch+BlockSupport.m in Sources */,
 				9261924F18865752001E0A72 /* GRPreferenceView.m in Sources */,
 				9261924D18865752001E0A72 /* GRViewService.m in Sources */,
 				9261925318865752001E0A72 /* GRContentView.m in Sources */,

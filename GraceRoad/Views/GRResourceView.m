@@ -10,10 +10,9 @@
 #import "GRResourceKey.h"
 #import "GRDataService.h"
 #import "GRResourceManager.h"
-#import "UIAlertView+BlockSupport.h"
 #import "GRResourceInfoView.h"
 #import "GRViewService.h"
-#import "UIView+FirstResponder.h"
+#import "GRUIExtensions.h"
 #import "GRTheme.h"
 
 @interface GRResourceView ()<UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate>
@@ -23,9 +22,8 @@
     
     NSMutableArray *_originCategories;
     NSMutableDictionary *_originResources;
-    
-    UIRefreshControl *_refreshControl;
-    UITableView *_contentView;
+
+    UITableViewController *_contentViewController;
 }
 
 @property(nonatomic, retain) NSString *filterString;
@@ -65,24 +63,25 @@
         rect.origin.y += rect.size.height;
         rect.size.height = frame.size.height - rect.size.height;
         
-        _contentView = [[UITableView alloc] initWithFrame: rect];
-        [_contentView setDataSource: self];
-        [_contentView setDelegate: self];
+        _contentViewController = [[UITableViewController alloc] init];
         
-        [self addSubview: _contentView];
+        UIRefreshControl *refreshControl = [[UIRefreshControl alloc] initWithFrame: CGRectMake(0, 0, frame.size.width, 20)];
         
-//        _refreshControl = [[UIRefreshControl alloc] initWithFrame: CGRectMake(0, 0, rect.size.width, 40)];
-//        [_refreshControl addTarget: self
-//                            action: @selector(_handleRefreshEvent:)
-//                  forControlEvents: UIControlEventValueChanged];
-//        
-//        NSAttributedString *title = [[NSAttributedString alloc] initWithString: @"下拉刷新"];
-//        [_refreshControl setAttributedTitle: title];
-//        [title release];
-//        
-//        [_contentView setTableHeaderView: _refreshControl];
-//        [_contentView setContentOffset: CGPointMake(0, 80)];
+        [refreshControl setTitle: @"下拉刷新"];
         
+        [refreshControl addTarget: self
+                           action: @selector(_handleRefreshEvent:)
+                 forControlEvents: UIControlEventValueChanged];
+        [_contentViewController setRefreshControl: refreshControl];
+        [refreshControl release];
+
+        UITableView *contentView = [_contentViewController tableView];
+        [contentView setFrame: rect];
+        [contentView setDataSource: self];
+        [contentView setDelegate: self];
+        
+        [self addSubview: contentView];
+                
         [self _updateContent];
     }
     return self;
@@ -92,7 +91,7 @@
 {
     [_resourceCategories release];
     [_resources release];
-    [_contentView release];
+    [_contentViewController release];
     
     [super dealloc];
 }
@@ -178,7 +177,7 @@
           })];
     }
     
-    [_contentView reloadData];
+    [[_contentViewController tableView] reloadData];
 }
 
 #pragma mark - tableview datasource & delegate
@@ -318,23 +317,21 @@ didSelectRowAtIndexPath: (NSIndexPath *)indexPath
 
 - (void)_handleRefreshEvent: (id)sender
 {
-    NSAttributedString *title = [[NSAttributedString alloc] initWithString: @"刷新中..."];
-    [_refreshControl setAttributedTitle: title];
-    [title release];
+    UIRefreshControl *refreshControl = [_contentViewController refreshControl];
+
+    [refreshControl setTitle: @"刷新中..."];
+
+    ERSC(GRViewServiceID, GRViewServiceShowLoadingIndicatorAction, nil, nil);
     
     double delayInSeconds = 1.0;
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
     dispatch_after(popTime, dispatch_get_main_queue(),
                    (^(void)
                     {
-                        [_refreshControl endRefreshing];
+                        [refreshControl endRefreshing];                        
+                        [refreshControl setTitle: @"下拉刷新"];
                         
-                        NSAttributedString *title = [[NSAttributedString alloc] initWithString: @"下拉刷新"];
-                        [_refreshControl setAttributedTitle: title];
-                        [title release];
-                        
-                        [_contentView setContentOffset: CGPointMake(0, 800)];
-
+                        ERSC(GRViewServiceID, GRViewServiceHideLoadingIndicatorAction, nil, nil);
                     }));
 }
 

@@ -250,8 +250,7 @@
                                                                            month: 2
                                                                              day: 8],
                                        })];
-        
-        
+
         [_sermonCategories addObject: category];
         
         [_sermons setObject: categoryContent

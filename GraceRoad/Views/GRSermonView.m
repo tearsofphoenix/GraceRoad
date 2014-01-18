@@ -12,7 +12,7 @@
 #import "GRViewService.h"
 #import "GRResourceManager.h"
 #import "GRSermonContentView.h"
-#import "UIAlertView+BlockSupport.h"
+#import "GRUIExtensions.h"
 #import "GRTheme.h"
 #import "GRResourceKey.h"
 #import "GRResourceCell.h"
@@ -21,7 +21,7 @@
 {
     NSMutableArray *_sermonCategories;
     NSMutableDictionary *_sermons;
-    UITableView *_contentView;
+    UITableViewController *_contentViewController;
 }
 @end
 
@@ -37,27 +37,41 @@
         _sermonCategories = [[NSMutableArray alloc] init];
         _sermons = [[NSMutableDictionary alloc] init];
         
+        _contentViewController = [[UITableViewController alloc] init];
+        
+        UIRefreshControl *refreshControl = [[UIRefreshControl alloc] initWithFrame: CGRectMake(0, 0, frame.size.width, 20)];
+        
+        [refreshControl setTitle: @"下拉刷新"];
+
+        [refreshControl addTarget: self
+                           action: @selector(_handleRefreshEvent:)
+                 forControlEvents: UIControlEventValueChanged];
+        [_contentViewController setRefreshControl: refreshControl];
+        [refreshControl release];
+        
         CGRect rect = CGRectMake(0, 0, frame.size.width, frame.size.height);
         
-        _contentView = [[UITableView alloc] initWithFrame: rect];
-        [_contentView setDataSource: self];
-        [_contentView setDelegate: self];
+        //_contentView = [[UITableView alloc] initWithFrame: rect];
+        UITableView *contentView = [_contentViewController tableView];
+        [contentView setFrame: rect];
+        [contentView setDataSource: self];
+        [contentView setDelegate: self];
         
-        [self addSubview: _contentView];
+        [self addSubview: contentView];
         
         [_sermonCategories setArray: ERSSC(GRDataServiceID,
                                            GRDataServiceAllSermonCategoriesAction, nil)];
         [_sermons setDictionary: ERSSC(GRDataServiceID,
                                        GRDataServiceAllSermonsAction,
                                        nil)];
-        [_contentView reloadData];
+        [contentView reloadData];
     }
     return self;
 }
 
 - (void)dealloc
 {
-    [_contentView release];
+    [_contentViewController release];
     [_sermonCategories release];
     [_sermons release];
     
@@ -86,14 +100,14 @@
     
     NSDictionary *sermonCategory = _sermonCategories[section];
     NSArray *sermons = _sermons[sermonCategory[GRSermonCategoryID]];
-
+    
     UITableViewCell *cell = [[UITableViewCell alloc] init];
     
     NSDictionary *sermonInfo = sermons[row];
     
     [[cell textLabel] setText: sermonInfo[GRSermonTitle]];
     [[cell imageView] setImage: [GRResourceManager imageForFileType: GRResourceTypeWAVE]];
-        
+    
     return [cell autorelease];
 }
 
@@ -104,10 +118,7 @@ viewForHeaderInSection: (NSInteger)section
     
     NSDictionary *sermonCategory = _sermonCategories[section];
     
-    //[headerLabel setBackgroundColor: [UIColor colorWithRed:0.96f green:0.96f blue:0.96f alpha: 1.0f]];
     [headerLabel setBackgroundColor: [GRTheme headerBlueColor]];
-    
-    //[headerLabel setTextColor: [UIColor colorWithRed:0.55f green:0.55f blue:0.55f alpha:1.00f]];
     [headerLabel setTextColor: [UIColor whiteColor]];
     [headerLabel setText: [@"    " stringByAppendingString: sermonCategory[GRSermonCategoryTitle]]];
     
@@ -136,9 +147,9 @@ didSelectRowAtIndexPath: (NSIndexPath *)indexPath
     
     NSDictionary *sermonCategory = _sermonCategories[section];
     NSArray *sermons = _sermons[sermonCategory[GRSermonCategoryID]];
-
+    
     NSDictionary *sermonInfo = sermons[row];
-                                    
+    
     NSString *subPath = sermonInfo[GRSermonPath];
     if ([GRResourceManager fileExistsWithSubPath: subPath])
     {
@@ -184,6 +195,25 @@ heightForHeaderInSection: (NSInteger)section
 heightForRowAtIndexPath: (NSIndexPath *)indexPath
 {
     return 44;
+}
+
+- (void)_handleRefreshEvent: (id)sender
+{
+    UIRefreshControl *refreshControl = [_contentViewController refreshControl];
+    [refreshControl setTitle: @"刷新中..."];
+    
+    ERSC(GRViewServiceID, GRViewServiceShowLoadingIndicatorAction, nil, nil);
+
+    double delayInSeconds = 1.0;
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+    dispatch_after(popTime, dispatch_get_main_queue(),
+                   (^(void)
+                    {
+                        [refreshControl endRefreshing];
+                        [refreshControl setTitle: @"下拉刷新"];
+                        
+                        ERSC(GRViewServiceID, GRViewServiceHideLoadingIndicatorAction, nil, nil);
+                    }));
 }
 
 @end
