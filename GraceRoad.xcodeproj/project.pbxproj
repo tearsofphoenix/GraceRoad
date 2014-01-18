@@ -157,26 +157,12 @@
 			remoteGlobalIDString = 7C861E34153DF2E000935C95;
 			remoteInfo = iOSHierarchyViewer;
 		};
-		603A656718894B9200352C0B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 606E8FDF18894698000C5CB2 /* PDFReader.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 606E8FEE188948C0000C5CB2;
-			remoteInfo = PDFReaderResources;
-		};
 		603A656C18894B9200352C0B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 606E8FDF18894698000C5CB2 /* PDFReader.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 606E8FEF188948C0000C5CB2;
 			remoteInfo = PDFReaderResources;
-		};
-		606E8FE418894699000C5CB2 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 606E8FDF18894698000C5CB2 /* PDFReader.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 1D6058910D05DD3D006BFB54;
-			remoteInfo = PDFReader;
 		};
 		606E8FE618894699000C5CB2 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -483,7 +469,6 @@
 		606E8FE018894698000C5CB2 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				606E8FE518894699000C5CB2 /* PDFReader.app */,
 				606E8FE718894699000C5CB2 /* libPDFReaderStatic.a */,
 				603A656D18894B9200352C0B /* PDFReaderResources.bundle */,
 			);
@@ -893,7 +878,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				603A656818894B9200352C0B /* PBXTargetDependency */,
 				606E8FE91889469F000C5CB2 /* PBXTargetDependency */,
 				923E4A0D1888F6F0006E9029 /* PBXTargetDependency */,
 				9267334D187258B600249E37 /* PBXTargetDependency */,
@@ -917,7 +901,10 @@
 						DevelopmentTeam = UU37DKREZ7;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
-								enabled = 1;
+								enabled = 0;
+							};
+							com.apple.InterAppAudio = {
+								enabled = 0;
 							};
 						};
 					};
@@ -971,13 +958,6 @@
 			fileType = wrapper.cfbundle;
 			path = PDFReaderResources.bundle;
 			remoteRef = 603A656C18894B9200352C0B /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		606E8FE518894699000C5CB2 /* PDFReader.app */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.application;
-			path = PDFReader.app;
-			remoteRef = 606E8FE418894699000C5CB2 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		606E8FE718894699000C5CB2 /* libPDFReaderStatic.a */ = {
@@ -1155,11 +1135,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		603A656818894B9200352C0B /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = PDFReaderResources;
-			targetProxy = 603A656718894B9200352C0B /* PBXContainerItemProxy */;
-		};
 		606E8FE91889469F000C5CB2 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = PDFReaderStatic;
@@ -1267,7 +1242,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_OBJC_ARC = NO;
 				CLANG_STATIC_ANALYZER_MODE = deep;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Bing Xue (GLX4AG8795)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "GraceRoad/GraceRoad-Prefix.pch";
@@ -1301,7 +1276,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_OBJC_ARC = NO;
 				CLANG_STATIC_ANALYZER_MODE = deep;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Bing Xue (GLX4AG8795)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "GraceRoad/GraceRoad-Prefix.pch";

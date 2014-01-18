@@ -303,6 +303,19 @@ didSelectRowAtIndexPath: (NSIndexPath *)indexPath
     }
 }
 
+- (void)searchBarTextDidBeginEditing: (UISearchBar *)searchBar
+{
+    [searchBar setShowsCancelButton: YES
+                           animated: YES];
+}
+
+- (void)searchBarCancelButtonClicked: (UISearchBar *)searchBar
+{
+    [searchBar resignFirstResponder];
+    [searchBar setShowsCancelButton: NO
+                           animated: YES];
+}
+
 - (void)_handleRefreshEvent: (id)sender
 {
     NSAttributedString *title = [[NSAttributedString alloc] initWithString: @"刷新中..."];
