@@ -13,6 +13,7 @@
 #import "GRSettingsView.h"
 #import "GRDataService.h"
 #import "GRLoginView.h"
+#import "UIAlertView+BlockSupport.h"
 
 @interface GRPreferenceView ()<UITableViewDataSource, UITableViewDelegate>
 {
@@ -30,7 +31,7 @@
     {
         [self setTitle: @"设置"];
         
-        _titles = [@[ @"个人信息", @"代祷", @"联系我们"] retain];
+        _titles = [@[ @"服事登陆", @"代祷", @"联系我们"] retain];
         
         _tableView = [[UITableView alloc] initWithFrame: [self bounds]];
         [_tableView setDataSource: self];
@@ -98,6 +99,8 @@ didSelectRowAtIndexPath: (NSIndexPath *)indexPath
         }
         case 2:
         {
+            [UIAlertView alertWithMessage: @"请来教会吧！"
+                        cancelButtonTitle: @"确定"];
             break;
         }
         default:

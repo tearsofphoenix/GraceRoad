@@ -44,7 +44,6 @@
     
 #pragma mark - export
     EKEventStore *_eventStore;
-    EKCalendar *_calendar;
 }
 @end
 
@@ -367,8 +366,7 @@
               {
                   if (granted)
                   {
-                      _calendar = [[EKCalendar calendarForEntityType: EKEntityTypeReminder
-                                                          eventStore: _eventStore] retain];
+
                   }
               })];
         }
@@ -650,7 +648,7 @@
         [reminder setStartDateComponents: components];
         [components release];
         
-        [reminder setCalendar: _calendar];
+        [reminder setCalendar: [_eventStore defaultCalendarForNewReminders]];
         
         NSError *error = nil;
         [_eventStore saveReminder: reminder
