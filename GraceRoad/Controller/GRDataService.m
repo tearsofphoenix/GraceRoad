@@ -148,7 +148,7 @@
                        forKey: typeLooper[GRResourceCategoryID]];
         
         typeLooper = (@{
-                        GRResourceCategoryName : @"福音手册",
+                        GRResourceCategoryName : @"亞伯拉罕的故事",
                         GRResourceCategoryID : [[ERUUID UUID] stringDescription],
                         });
         [_resourceCategories addObject: typeLooper];
@@ -156,12 +156,29 @@
         [_resources setObject: (@[
                                   (@{
                                      GRResourceID : [[ERUUID UUID] stringDescription],
-                                     GRResourceName : @"传福音的使命",
-                                     GRResourceAbstract : @"来自圣经的教导，耶稣的吩咐",
-                                     GRResourcePath : @"数算主恩典.pdf",
-                                     GRResourceUploadDate : [NSDate dateWithYear: year
-                                                                           month: month
-                                                                             day: day - 3],
+                                     GRResourceName : @"應許與順服",
+                                     GRResourcePath : @"2009-01-18_Mandarin1StudyGuide.pdf",
+                                     GRResourceUploadDate : [NSDate dateWithYear: 2009
+                                                                           month: 1
+                                                                             day: 18],
+                                     GRResourceTypeName : GRResourceTypePDF,
+                                     }),
+                                  (@{
+                                     GRResourceID : [[ERUUID UUID] stringDescription],
+                                     GRResourceName : @"信心和眼見",
+                                     GRResourcePath : @"2009-01-25_Mandarin1StudyGuide.pdf",
+                                     GRResourceUploadDate : [NSDate dateWithYear: 2009
+                                                                           month: 1
+                                                                             day: 25],
+                                     GRResourceTypeName : GRResourceTypePDF,
+                                     }),
+                                  (@{
+                                     GRResourceID : [[ERUUID UUID] stringDescription],
+                                     GRResourceName : @"因信為義",
+                                     GRResourcePath : @"2009-02-08_Mandarin1StudyGuide.pdf",
+                                     GRResourceUploadDate : [NSDate dateWithYear: 2009
+                                                                           month: 2
+                                                                             day: 8],
                                      GRResourceTypeName : GRResourceTypePDF,
                                      }),
                                   ])
@@ -203,6 +220,33 @@
                       GRSermonCategoryTitle : @"专题讲道",
                       });
         categoryContent = [NSMutableArray array];
+        
+        [categoryContent addObject: (@{
+                                       GRSermonID : [[ERUUID UUID] stringDescription],
+                                       GRSermonPath : @"2009-01-18_Mandarin1Audio.mp3",
+                                       GRSermonTitle : @"應許與順服",
+                                       GRSermonUploadDate : [NSDate dateWithYear: 2009
+                                                                           month: 1
+                                                                             day: 18],
+                                       })];
+        [categoryContent addObject: (@{
+                                       GRSermonID : [[ERUUID UUID] stringDescription],
+                                       GRSermonPath : @"2009-01-25_Mandarin1Audio.mp3",
+                                       GRSermonTitle : @"信心和眼見",
+                                       GRSermonUploadDate : [NSDate dateWithYear: 2009
+                                                                           month: 1
+                                                                             day: 25],
+                                       })];
+
+        [categoryContent addObject: (@{
+                                       GRSermonID : [[ERUUID UUID] stringDescription],
+                                       GRSermonPath : @"2009-02-08_Mandarin1Audio.mp3",
+                                       GRSermonTitle : @"因信為義",
+                                       GRSermonUploadDate : [NSDate dateWithYear: 2009
+                                                                           month: 2
+                                                                             day: 8],
+                                       })];
+
         
         [_sermonCategories addObject: category];
         

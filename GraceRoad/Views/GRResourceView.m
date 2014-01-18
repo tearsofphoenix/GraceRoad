@@ -24,6 +24,7 @@
     NSMutableArray *_originCategories;
     NSMutableDictionary *_originResources;
     
+    UIRefreshControl *_refreshControl;
     UITableView *_contentView;
 }
 
@@ -69,6 +70,19 @@
         [_contentView setDelegate: self];
         
         [self addSubview: _contentView];
+        
+//        _refreshControl = [[UIRefreshControl alloc] initWithFrame: CGRectMake(0, 0, rect.size.width, 40)];
+//        [_refreshControl addTarget: self
+//                            action: @selector(_handleRefreshEvent:)
+//                  forControlEvents: UIControlEventValueChanged];
+//        
+//        NSAttributedString *title = [[NSAttributedString alloc] initWithString: @"下拉刷新"];
+//        [_refreshControl setAttributedTitle: title];
+//        [title release];
+//        
+//        [_contentView setTableHeaderView: _refreshControl];
+//        [_contentView setContentOffset: CGPointMake(0, 80)];
+        
         [self _updateContent];
     }
     return self;
@@ -192,11 +206,11 @@ viewForHeaderInSection: (NSInteger)section
     
     NSDictionary *resourceTypeInfo = _resourceCategories[section];
     
-//    [headerLabel setBackgroundColor: [UIColor colorWithRed:0.96f green:0.96f blue:0.96f alpha: 1.0f]];
-//    [headerLabel setTextColor: [UIColor colorWithRed:0.55f green:0.55f blue:0.55f alpha:1.00f]];
+    //    [headerLabel setBackgroundColor: [UIColor colorWithRed:0.96f green:0.96f blue:0.96f alpha: 1.0f]];
+    //    [headerLabel setTextColor: [UIColor colorWithRed:0.55f green:0.55f blue:0.55f alpha:1.00f]];
     [headerLabel setBackgroundColor: [GRTheme headerBlueColor]];
     [headerLabel setTextColor: [UIColor whiteColor]];
-
+    
     [headerLabel setText: [@"    " stringByAppendingString: resourceTypeInfo[GRResourceCategoryName]]];
     
     return [headerLabel autorelease];
@@ -287,6 +301,28 @@ didSelectRowAtIndexPath: (NSIndexPath *)indexPath
                }
            })] show];
     }
+}
+
+- (void)_handleRefreshEvent: (id)sender
+{
+    NSAttributedString *title = [[NSAttributedString alloc] initWithString: @"刷新中..."];
+    [_refreshControl setAttributedTitle: title];
+    [title release];
+    
+    double delayInSeconds = 1.0;
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+    dispatch_after(popTime, dispatch_get_main_queue(),
+                   (^(void)
+                    {
+                        [_refreshControl endRefreshing];
+                        
+                        NSAttributedString *title = [[NSAttributedString alloc] initWithString: @"下拉刷新"];
+                        [_refreshControl setAttributedTitle: title];
+                        [title release];
+                        
+                        [_contentView setContentOffset: CGPointMake(0, 800)];
+
+                    }));
 }
 
 @end

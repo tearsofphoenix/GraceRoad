@@ -84,14 +84,10 @@
     _contentView = [[UIView alloc] initWithFrame: CGRectMake(0, 44, bounds.size.width, bounds.size.height - 44 - 49)];
     [[self view] addSubview: _contentView];
     
-    //[_tabbar setBackgroundColor: [UIColor colorWithRed:0.29 green: 1 blue:0.4 alpha:1]];
-    //[_tabbar setBackgroundColor: [UIColor blackColor]];
-    [_tabbar setTintColor: [GRTheme blueColor]];
-    
-    //[_tabbar setBackgroundColor: [UIColor colorWithRed:0.31f green:0.32f blue:0.33f alpha:1.00f]];
+//    [_tabbar setTintColor: [GRTheme blueColor]];
+    [_tabbar setTintColor: [UIColor colorWithRed:0.28 green:0.68 blue:1 alpha:1]];
+
     [_tabbar setBackgroundImage: [UIImage imageNamed: @"GRTabbarBackground"]];
-    //[_tabbar setBarTintColor: [UIColor blueColor]];
-    //[_tabbar setSelectedImageTintColor: [UIColor blackColor]];
     CGRect contentBounds = [_contentView bounds];
     
     GRIntroductView *introductView = [[GRIntroductView alloc] initWithFrame: contentBounds];

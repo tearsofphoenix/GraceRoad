@@ -14,6 +14,12 @@
 		603A657A188A42FD00352C0B /* GRButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 603A6579188A42FD00352C0B /* GRButton@2x.png */; };
 		603A657C188A5E0D00352C0B /* FileType in Resources */ = {isa = PBXBuildFile; fileRef = 603A657B188A5E0D00352C0B /* FileType */; };
 		603A657F188A625C00352C0B /* GRResourceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 603A657E188A625C00352C0B /* GRResourceCell.m */; };
+		603A6589188A723600352C0B /* 2009-01-18_Mandarin1Audio.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 603A6583188A723600352C0B /* 2009-01-18_Mandarin1Audio.mp3 */; };
+		603A658A188A723600352C0B /* 2009-01-18_Mandarin1StudyGuide.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 603A6584188A723600352C0B /* 2009-01-18_Mandarin1StudyGuide.pdf */; };
+		603A658B188A723600352C0B /* 2009-01-25_Mandarin1Audio.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 603A6585188A723600352C0B /* 2009-01-25_Mandarin1Audio.mp3 */; };
+		603A658C188A723600352C0B /* 2009-01-25_Mandarin1StudyGuide.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 603A6586188A723600352C0B /* 2009-01-25_Mandarin1StudyGuide.pdf */; };
+		603A658D188A723600352C0B /* 2009-02-08_Mandarin1Audio.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 603A6587188A723600352C0B /* 2009-02-08_Mandarin1Audio.mp3 */; };
+		603A658E188A723600352C0B /* 2009-02-08_Mandarin1StudyGuide.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 603A6588188A723600352C0B /* 2009-02-08_Mandarin1StudyGuide.pdf */; };
 		606802901888233700D5217B /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 6068028F1888233700D5217B /* Reachability.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		60680295188828D200D5217B /* GRMapAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 60680294188828D200D5217B /* GRMapAnnotation.m */; };
 		6068029818883DCA00D5217B /* GRTabbarBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 6068029618883DCA00D5217B /* GRTabbarBackground.png */; };
@@ -54,7 +60,6 @@
 		60E8D9501888FC5C00C2EFC2 /* 一条朱红线绳.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 60E8D94A1888FC5C00C2EFC2 /* 一条朱红线绳.pdf */; };
 		60E8D9511888FC5C00C2EFC2 /* 亚干犯罪.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 60E8D94B1888FC5C00C2EFC2 /* 亚干犯罪.pdf */; };
 		60E8D9521888FC5C00C2EFC2 /* 围绕耶利哥城.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 60E8D94C1888FC5C00C2EFC2 /* 围绕耶利哥城.pdf */; };
-		60E8D9531888FC5C00C2EFC2 /* 数算主恩典.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 60E8D94D1888FC5C00C2EFC2 /* 数算主恩典.pdf */; };
 		60E8D9541888FC5C00C2EFC2 /* 狡猾的基遍人.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 60E8D94E1888FC5C00C2EFC2 /* 狡猾的基遍人.pdf */; };
 		60E8D9551888FC5C00C2EFC2 /* 神与约书亚同在.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 60E8D94F1888FC5C00C2EFC2 /* 神与约书亚同在.pdf */; };
 		60E8D95A188905FC00C2EFC2 /* 寻见基督之人必大大地欢喜.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 60E8D958188905FC00C2EFC2 /* 寻见基督之人必大大地欢喜.mp3 */; };
@@ -226,6 +231,12 @@
 		603A657B188A5E0D00352C0B /* FileType */ = {isa = PBXFileReference; lastKnownFileType = folder; path = FileType; sourceTree = "<group>"; };
 		603A657D188A625C00352C0B /* GRResourceCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRResourceCell.h; sourceTree = "<group>"; };
 		603A657E188A625C00352C0B /* GRResourceCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GRResourceCell.m; sourceTree = "<group>"; };
+		603A6583188A723600352C0B /* 2009-01-18_Mandarin1Audio.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "2009-01-18_Mandarin1Audio.mp3"; sourceTree = "<group>"; };
+		603A6584188A723600352C0B /* 2009-01-18_Mandarin1StudyGuide.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "2009-01-18_Mandarin1StudyGuide.pdf"; sourceTree = "<group>"; };
+		603A6585188A723600352C0B /* 2009-01-25_Mandarin1Audio.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "2009-01-25_Mandarin1Audio.mp3"; sourceTree = "<group>"; };
+		603A6586188A723600352C0B /* 2009-01-25_Mandarin1StudyGuide.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "2009-01-25_Mandarin1StudyGuide.pdf"; sourceTree = "<group>"; };
+		603A6587188A723600352C0B /* 2009-02-08_Mandarin1Audio.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "2009-02-08_Mandarin1Audio.mp3"; sourceTree = "<group>"; };
+		603A6588188A723600352C0B /* 2009-02-08_Mandarin1StudyGuide.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "2009-02-08_Mandarin1StudyGuide.pdf"; sourceTree = "<group>"; };
 		6068028E1888233700D5217B /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		6068028F1888233700D5217B /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		60680293188828D100D5217B /* GRMapAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRMapAnnotation.h; sourceTree = "<group>"; };
@@ -268,7 +279,6 @@
 		60E8D94A1888FC5C00C2EFC2 /* 一条朱红线绳.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "一条朱红线绳.pdf"; sourceTree = "<group>"; };
 		60E8D94B1888FC5C00C2EFC2 /* 亚干犯罪.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "亚干犯罪.pdf"; sourceTree = "<group>"; };
 		60E8D94C1888FC5C00C2EFC2 /* 围绕耶利哥城.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "围绕耶利哥城.pdf"; sourceTree = "<group>"; };
-		60E8D94D1888FC5C00C2EFC2 /* 数算主恩典.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "数算主恩典.pdf"; sourceTree = "<group>"; };
 		60E8D94E1888FC5C00C2EFC2 /* 狡猾的基遍人.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "狡猾的基遍人.pdf"; sourceTree = "<group>"; };
 		60E8D94F1888FC5C00C2EFC2 /* 神与约书亚同在.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "神与约书亚同在.pdf"; sourceTree = "<group>"; };
 		60E8D958188905FC00C2EFC2 /* 寻见基督之人必大大地欢喜.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "寻见基督之人必大大地欢喜.mp3"; sourceTree = "<group>"; };
@@ -448,6 +458,19 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		603A6582188A723600352C0B /* Abraham */ = {
+			isa = PBXGroup;
+			children = (
+				603A6583188A723600352C0B /* 2009-01-18_Mandarin1Audio.mp3 */,
+				603A6584188A723600352C0B /* 2009-01-18_Mandarin1StudyGuide.pdf */,
+				603A6585188A723600352C0B /* 2009-01-25_Mandarin1Audio.mp3 */,
+				603A6586188A723600352C0B /* 2009-01-25_Mandarin1StudyGuide.pdf */,
+				603A6587188A723600352C0B /* 2009-02-08_Mandarin1Audio.mp3 */,
+				603A6588188A723600352C0B /* 2009-02-08_Mandarin1StudyGuide.pdf */,
+			);
+			path = Abraham;
+			sourceTree = "<group>";
+		};
 		60680292188828BE00D5217B /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -509,7 +532,6 @@
 				60E8D94A1888FC5C00C2EFC2 /* 一条朱红线绳.pdf */,
 				60E8D94B1888FC5C00C2EFC2 /* 亚干犯罪.pdf */,
 				60E8D94C1888FC5C00C2EFC2 /* 围绕耶利哥城.pdf */,
-				60E8D94D1888FC5C00C2EFC2 /* 数算主恩典.pdf */,
 				60E8D94E1888FC5C00C2EFC2 /* 狡猾的基遍人.pdf */,
 				60E8D94F1888FC5C00C2EFC2 /* 神与约书亚同在.pdf */,
 			);
@@ -519,6 +541,7 @@
 		60E8D957188905FC00C2EFC2 /* Media */ = {
 			isa = PBXGroup;
 			children = (
+				603A6582188A723600352C0B /* Abraham */,
 				60E8D958188905FC00C2EFC2 /* 寻见基督之人必大大地欢喜.mp3 */,
 				60E8D959188905FC00C2EFC2 /* 重生的生命，丰盛的人生.mp3 */,
 			);
@@ -985,11 +1008,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				603A658A188A723600352C0B /* 2009-01-18_Mandarin1StudyGuide.pdf in Resources */,
 				60E649F81878062400D5466B /* notifications8.plist in Resources */,
 				60E649EB1878062400D5466B /* notifications21.plist in Resources */,
 				60E8D9521888FC5C00C2EFC2 /* 围绕耶利哥城.pdf in Resources */,
 				6068029818883DCA00D5217B /* GRTabbarBackground.png in Resources */,
-				60E8D9531888FC5C00C2EFC2 /* 数算主恩典.pdf in Resources */,
+				603A6589188A723600352C0B /* 2009-01-18_Mandarin1Audio.mp3 in Resources */,
 				92CE914318755BEB00C7D3A1 /* gr.sqlite in Resources */,
 				60E649F01878062400D5466B /* notifications26.plist in Resources */,
 				923E49A31888ECF6006E9029 /* GRPreferenceTab.png in Resources */,
@@ -1002,6 +1026,7 @@
 				603A657A188A42FD00352C0B /* GRButton@2x.png in Resources */,
 				60E649861877FB1D00D5466B /* notifications.plist in Resources */,
 				9294D45118766369009352DB /* GRAudio.png in Resources */,
+				603A658D188A723600352C0B /* 2009-02-08_Mandarin1Audio.mp3 in Resources */,
 				6068029918883DCA00D5217B /* GRTabbarBackground@2x.png in Resources */,
 				92CE914618755BEB00C7D3A1 /* GRResourceTab@2x.png in Resources */,
 				60E649E31878062400D5466B /* notifications14.plist in Resources */,
@@ -1012,6 +1037,7 @@
 				92CE914B1875699A00C7D3A1 /* GRIconPDF@2x.png in Resources */,
 				9276F34C18877D6100E13763 /* GalleryViewDeleteButton@2x.png in Resources */,
 				920B99951885259B006BD620 /* GRExampleAvatar@2x.png in Resources */,
+				603A658B188A723600352C0B /* 2009-01-25_Mandarin1Audio.mp3 in Resources */,
 				92CE914718755BEB00C7D3A1 /* GRSermonTab@2x.png in Resources */,
 				60E649DD1878062400D5466B /* notifications0.plist in Resources */,
 				927C9FAD186D66DC00DC0EDC /* InfoPlist.strings in Resources */,
@@ -1038,6 +1064,7 @@
 				60E8D95A188905FC00C2EFC2 /* 寻见基督之人必大大地欢喜.mp3 in Resources */,
 				60E649F61878062400D5466B /* notifications6.plist in Resources */,
 				60E649F91878062400D5466B /* notifications9.plist in Resources */,
+				603A658C188A723600352C0B /* 2009-01-25_Mandarin1StudyGuide.pdf in Resources */,
 				9294D45218766369009352DB /* GRAudio@2x.png in Resources */,
 				60E649F41878062400D5466B /* notifications4.plist in Resources */,
 				9261929918867CA5001E0A72 /* week1.bundle in Resources */,
@@ -1052,6 +1079,7 @@
 				60E649E41878062400D5466B /* notifications15.plist in Resources */,
 				60F943901886DA59001F13E3 /* GRSermonBackground.jpeg in Resources */,
 				60E649E11878062400D5466B /* notifications12.plist in Resources */,
+				603A658E188A723600352C0B /* 2009-02-08_Mandarin1StudyGuide.pdf in Resources */,
 				923E49A21888ECF6006E9029 /* GRLocationTab.png in Resources */,
 				603A656F1889728E00352C0B /* PDFReaderResources.bundle in Resources */,
 				60E649EF1878062400D5466B /* notifications25.plist in Resources */,
