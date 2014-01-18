@@ -34,7 +34,7 @@
 #define GRDataServiceAllMemberForTeamIDAction    @"allMemberForTeamID:"
 
 #define GRDataServiceSendPushNotificationWithCallbackAction  @"sendPushNotification:callback:"
-
+#define GRDataServiceSendMessageToWeixinAction   @"sendMessageToWeixin:"
 #pragma mark - notification
 
 #define GRAccountLoginNotification          GRPrefix ".notification.login"

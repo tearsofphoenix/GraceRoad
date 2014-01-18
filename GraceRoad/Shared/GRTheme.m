@@ -36,4 +36,33 @@
     return blueColor;
 }
 
++ (UIColor *)lightBlueColor
+{
+    static UIColor *lightBlueColor = nil;
+    if (!lightBlueColor)
+    {
+        lightBlueColor = [[UIColor colorWithRed: 0.79
+                                          green: 0.85
+                                           blue: 0.96
+                                          alpha: 1] retain];
+    }
+    
+    return lightBlueColor;
+}
+
++ (UIColor *)headerBlueColor
+{
+    static UIColor *headerBlueColor = nil;
+    
+    if (!headerBlueColor)
+    {
+        headerBlueColor = [[UIColor colorWithRed: 83 / 255.0
+                                          green: 152 / 255.0
+                                           blue: 253 / 255.0
+                                           alpha: 0.8] retain];
+    }
+    
+    return headerBlueColor;
+}
+
 @end

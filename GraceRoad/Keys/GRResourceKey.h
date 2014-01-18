@@ -6,17 +6,19 @@
 //  Copyright (c) 2013年 Mac003. All rights reserved.
 //
 
-#define GRResourceTypeName  @"type-name"
 
-#define GRResourceTypePDF  @"type.pdf"
-#define GRResourceTypePPT  @"type.ppt"
-#define GRResourceTypeWord  @"type.word"
+#define GRResourceTypeHTML  @"HTML"
+#define GRResourceTypePDF   @"PDF"
+#define GRResourceTypePPT   @"PPT"
+#define GRResourceTypeWord  @"WORD"
+#define GRResourceTypeWAVE  @"WAV"
 
 #define GRResourceName          @"name"
 #define GRResourceID            @"id"
 #define GRResourcePath          @"path"
 #define GRResourceAbstract      @"abstract"
 #define GRResourceUploadDate    @"upload-date"
+#define GRResourceTypeName      @"type-name"
 
 #define GRResourceCategoryName  @"category-name"
 #define GRResourceCategoryID    @"category-id"

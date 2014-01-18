@@ -186,9 +186,38 @@
 
 #pragma mark - UITableViewDataSource & delegate
 
+- (NSInteger)numberOfSectionsInTableView: (UITableView *)tableView
+{
+    return 2;
+}
+
+- (UIView *) tableView: (UITableView *)tableView
+viewForHeaderInSection: (NSInteger)section
+{
+    UILabel *headerLabel = [[UILabel alloc] init];
+    
+    [headerLabel setBackgroundColor: [GRTheme headerBlueColor]];
+    [headerLabel setTextColor: [UIColor whiteColor]];
+
+    if (section == 0)
+    {
+        [headerLabel setText: @"    上周服事"];
+    }else
+    {
+        [headerLabel setText: @"    成员"];
+    }
+    
+    return [headerLabel autorelease];
+}
+
 - (NSInteger)tableView: (UITableView *)tableView
  numberOfRowsInSection: (NSInteger)section
 {
+    if (section == 0)
+    {
+        return 3;
+    }
+    
     return [_memberList count];
 }
 
@@ -226,6 +255,24 @@ didSelectRowAtIndexPath: (NSIndexPath *)indexPath
         [_selectedIndexPaths addObject: indexPath];
         [cell setAccessoryType: UITableViewCellAccessoryCheckmark];
     }
+}
+
+- (CGFloat)    tableView: (UITableView *)tableView
+heightForHeaderInSection: (NSInteger)section
+{
+    return 30;
+}
+
+- (CGFloat)    tableView: (UITableView *)tableView
+heightForFooterInSection: (NSInteger)section
+{
+    return 0;
+}
+
+- (CGFloat)   tableView: (UITableView *)tableView
+heightForRowAtIndexPath: (NSIndexPath *)indexPath
+{
+    return 40;
 }
 
 - (void)_handleSelectAllTappedEvent: (UIButton *)sender

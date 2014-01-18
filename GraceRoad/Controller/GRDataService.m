@@ -15,6 +15,7 @@
 #import "GRAccountKeys.h"
 #import "NSString+CMBExtensions.h"
 #import "GRTeamKeys.h"
+#import "WXApi.h"
 
 #import <NWPushNotification/NWHub.h>
 
@@ -81,7 +82,7 @@
                                      //GRResourcePath : @"1.html",
                                      GRResourcePath : @"week1.bundle",
                                      GRResourceUploadDate : date,
-                                     GRResourceTypeName : GRResourceTypePDF,
+                                     GRResourceTypeName : GRResourceTypeHTML,
                                      }),
                                   (@{
                                      GRResourceID : [[ERUUID UUID] stringDescription],
@@ -455,7 +456,7 @@
     {
         [self _connectToPushAPN];
     }
-
+    
     NSString *payload = [NSString stringWithFormat: @"{\"aps\":{\"alert\":\"%@\"}}", obj];
     NSString *token = @"04e7338bd3e7e3f191ffc6319b78eec9d39dcd8149bd05655c4ca55d598d8749";
     NSLog(@"Pushing..");
@@ -471,7 +472,7 @@
                         dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.4 * NSEC_PER_SEC));
                         
                         dispatch_after(popTime, dispatch_get_main_queue(),
-                        //dispatch_async(dispatch_get_main_queue(),
+                                       //dispatch_async(dispatch_get_main_queue(),
                                        (^
                                         {
                                             NSUInteger failed2 = failed + [_hub flushFailed];
@@ -541,6 +542,25 @@
                         NSLog(@"Notification could not be pushed: %@", [NWPusher stringFromResult: result]);
                     }));
     
+}
+
+- (void)sendMessageToWeixin: (NSString *)message
+{
+    if ([message length] > 0)
+    {
+        @autoreleasepool
+        {
+            SendMessageToWXReq* req = [[SendMessageToWXReq alloc] init];
+            
+            [req setText: message];
+            [req setBText: YES];
+            [req setScene: WXSceneSession];
+            
+            [WXApi sendReq: req];
+            
+            [req release];
+        }
+    }
 }
 
 @end

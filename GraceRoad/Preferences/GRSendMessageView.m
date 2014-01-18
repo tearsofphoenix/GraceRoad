@@ -15,8 +15,8 @@
 #import "GRMessageType.h"
 #import "UIAlertView+BlockSupport.h"
 #import "GRViewService.h"
-#import "WXApi.h"
 #import "GRDataService.h"
+#import "GRTheme.h"
 
 #import <MessageUI/MessageUI.h>
 
@@ -29,6 +29,8 @@ MFMessageComposeViewControllerDelegate, MFMailComposeViewControllerDelegate>
     ERGalleryView *_galleryView;
     UIButton *_notifyButton;
     UIButton *_typeButton;
+    
+    UILabel *_contentTitleLabel;
     UITextView *_textView;
     UIButton *_sendButton;
 }
@@ -97,7 +99,7 @@ MFMessageComposeViewControllerDelegate, MFMailComposeViewControllerDelegate>
         
         _notifyButton = [[UIButton alloc] initWithFrame: rect];
         
-        [_notifyButton setBackgroundColor: [UIColor whiteColor]];
+        [_notifyButton setBackgroundColor: [GRTheme lightBlueColor]];
         [_notifyButton setTitle: @"无"
                        forState: UIControlStateNormal];
         [[_notifyButton titleLabel] setFont: labelFont];
@@ -120,10 +122,13 @@ MFMessageComposeViewControllerDelegate, MFMailComposeViewControllerDelegate>
         rect.origin.x += rect.size.width;
         rect.size = CGSizeMake(50, 26);
         
+        [self setMessageType: GRMessageTypePushNotification];
+
         _typeButton = [[UIButton alloc] initWithFrame: rect];
-        [_typeButton setBackgroundColor: [UIColor whiteColor]];
+        [_typeButton setBackgroundColor: [GRTheme lightBlueColor]];
         [_typeButton setTitle: @"推送"
                      forState: UIControlStateNormal];
+        [[_typeButton titleLabel] setFont: labelFont];
         [_typeButton setTitleColor: [UIColor blackColor]
                           forState: UIControlStateNormal];
         [_typeButton addTarget: self
@@ -135,11 +140,10 @@ MFMessageComposeViewControllerDelegate, MFMailComposeViewControllerDelegate>
         rect.origin.x = 10;
         rect.size = CGSizeMake(50, 26);
         
-        UILabel *contentLabel = [[UILabel alloc] initWithFrame: rect];
-        [contentLabel setFont: labelFont];
-        [contentLabel setText: @"内容："];
-        [_scrollView addSubview: contentLabel];
-        [contentLabel release];
+        _contentTitleLabel = [[UILabel alloc] initWithFrame: rect];
+        [_contentTitleLabel setFont: labelFont];
+        [_contentTitleLabel setText: @"内容："];
+        [_scrollView addSubview: _contentTitleLabel];
         
         rect.origin.y += rect.size.height + 20;
         rect.size = CGSizeMake(frame.size.width - 2 * rect.origin.x, 120);
@@ -161,18 +165,17 @@ MFMessageComposeViewControllerDelegate, MFMailComposeViewControllerDelegate>
         _sendButton = [[UIButton alloc] initWithFrame: CGRectMake(30, bounds.size.height - 60,
                                                                   bounds.size.width - 30 * 2,
                                                                   40)];
-        [_sendButton setTitle: @"发送"
+        [_sendButton setTitle: @"确定"
                      forState: UIControlStateNormal];
-        [_sendButton setTitleColor: [UIColor blackColor]
+        [[_sendButton titleLabel] setFont: [UIFont boldSystemFontOfSize: 24]];
+        [_sendButton setTitleColor: [UIColor whiteColor]
                           forState: UIControlStateNormal];
         [_sendButton addTarget: self
                         action: @selector(_handleSendButtonTappedEvent:)
               forControlEvents: UIControlEventTouchUpInside];
-        [_sendButton setBackgroundColor: [UIColor whiteColor]];
+        [_sendButton setBackgroundColor: [GRTheme blueColor]];
         
         [_scrollView addSubview: _sendButton];
-        
-        [self setMessageType: GRMessageTypePushNotification];
         
         [[NSNotificationCenter defaultCenter] addObserver: self
                                                  selector: @selector(_notificationForKeyboardShow:)
@@ -195,6 +198,8 @@ MFMessageComposeViewControllerDelegate, MFMailComposeViewControllerDelegate>
     
     [_notifyButton release];
     [_typeButton release];
+    
+    [_contentTitleLabel release];
     [_textView release];
     [_sendButton release];
     [_messageType release];
@@ -271,11 +276,12 @@ numberOfThumbnailsInSectionAtIndex: (NSInteger)sectionIndex
     NSDictionary *account = _targetAccounts[section * GRAccountPerRow + row];
     
     UILabel *nameLabel = [[UILabel alloc] initWithFrame: CGRectMake(5, 1, 50, 24)];
+    [nameLabel setTextColor: [UIColor blackColor]];
     [nameLabel setText: account[GRAccountNameKey]];
     [nameLabel setFont: [UIFont systemFontOfSize: 13]];
     [thumbnail addSubview: nameLabel];
     [[nameLabel layer] setCornerRadius: 8];
-    [nameLabel setBackgroundColor: [UIColor colorWithRed:0.79 green:0.85 blue:0.96 alpha:1]];
+    [nameLabel setBackgroundColor: [GRTheme lightBlueColor]];
     [nameLabel setTextAlignment: NSTextAlignmentCenter];
     [[nameLabel layer] setBorderWidth: 0.5];
     [[nameLabel layer] setBorderColor: [[UIColor colorWithRed:0.67 green:0.72 blue:0.97 alpha:1] CGColor]];
@@ -343,6 +349,19 @@ weightForHeaderOfSection: (NSInteger)section
                                                         forState: UIControlStateNormal];
                                            
                                            [self setMessageType: types[buttonIndex - 1]];
+                                       }
+                                       
+                                       //is SMS or Mail ?
+                                       //
+                                       if (buttonIndex == 3
+                                           || buttonIndex == 4)
+                                       {
+                                           [_contentTitleLabel setAlpha: 0];
+                                           [_textView setAlpha: 0];
+                                       }else
+                                       {
+                                           [_contentTitleLabel setAlpha: 1];
+                                           [_textView setAlpha: 1];
                                        }
                                        
                                        NSLog(@"selected: %d", buttonIndex);
@@ -418,7 +437,6 @@ weightForHeaderOfSection: (NSInteger)section
         {
             MFMessageComposeViewController *controller = [[MFMessageComposeViewController alloc] init];
             [controller setMessageComposeDelegate: self];
-            [controller setBody: [_textView text]];
             
             NSMutableArray *recipients = [NSMutableArray arrayWithCapacity: [_targetAccounts count]];
             
@@ -444,16 +462,12 @@ weightForHeaderOfSection: (NSInteger)section
                         cancelButtonTitle: @"确定"];
         }
     }else if ([_messageType isEqualToString: GRMessageTypeWeiXin])
-    {
-        
-        SendMessageToWXReq* req = [[[SendMessageToWXReq alloc] init] autorelease];
-        
-        [req setText: [_textView text]];
-        [req setBText: YES];
-        [req setScene: WXSceneSession];
-        
-        [WXApi sendReq: req];
-        
+    {        
+        NSString *message = [_textView text];
+        if ([message length] > 0)
+        {
+            ERSC(GRDataServiceID, GRDataServiceSendMessageToWeixinAction, @[ message ], nil);
+        }
     }else if ([_messageType isEqualToString: GRMessageTypeEmail])
     {
         if([MFMailComposeViewController canSendMail])
@@ -461,8 +475,6 @@ weightForHeaderOfSection: (NSInteger)section
             MFMailComposeViewController *controller = [[MFMailComposeViewController alloc] init];
             
             [controller setMailComposeDelegate: self];
-            [controller setMessageBody: [_textView text]
-                                isHTML: NO];
             
             NSMutableArray *recipients = [NSMutableArray arrayWithCapacity: [_targetAccounts count]];
             

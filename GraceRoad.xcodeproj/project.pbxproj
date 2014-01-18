@@ -11,6 +11,9 @@
 		603A656F1889728E00352C0B /* PDFReaderResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 603A656E1889728E00352C0B /* PDFReaderResources.bundle */; };
 		603A6576188982AB00352C0B /* ck.pem in Resources */ = {isa = PBXBuildFile; fileRef = 603A6575188982AB00352C0B /* ck.pem */; };
 		603A65781889856400352C0B /* push.p12 in Resources */ = {isa = PBXBuildFile; fileRef = 603A65771889856300352C0B /* push.p12 */; };
+		603A657A188A42FD00352C0B /* GRButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 603A6579188A42FD00352C0B /* GRButton@2x.png */; };
+		603A657C188A5E0D00352C0B /* FileType in Resources */ = {isa = PBXBuildFile; fileRef = 603A657B188A5E0D00352C0B /* FileType */; };
+		603A657F188A625C00352C0B /* GRResourceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 603A657E188A625C00352C0B /* GRResourceCell.m */; };
 		606802901888233700D5217B /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 6068028F1888233700D5217B /* Reachability.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		60680295188828D200D5217B /* GRMapAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 60680294188828D200D5217B /* GRMapAnnotation.m */; };
 		6068029818883DCA00D5217B /* GRTabbarBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 6068029618883DCA00D5217B /* GRTabbarBackground.png */; };
@@ -219,6 +222,10 @@
 		603A656E1889728E00352C0B /* PDFReaderResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = PDFReaderResources.bundle; sourceTree = "<group>"; };
 		603A6575188982AB00352C0B /* ck.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ck.pem; sourceTree = "<group>"; };
 		603A65771889856300352C0B /* push.p12 */ = {isa = PBXFileReference; lastKnownFileType = file; path = push.p12; sourceTree = "<group>"; };
+		603A6579188A42FD00352C0B /* GRButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "GRButton@2x.png"; sourceTree = "<group>"; };
+		603A657B188A5E0D00352C0B /* FileType */ = {isa = PBXFileReference; lastKnownFileType = folder; path = FileType; sourceTree = "<group>"; };
+		603A657D188A625C00352C0B /* GRResourceCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRResourceCell.h; sourceTree = "<group>"; };
+		603A657E188A625C00352C0B /* GRResourceCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GRResourceCell.m; sourceTree = "<group>"; };
 		6068028E1888233700D5217B /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		6068028F1888233700D5217B /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		60680293188828D100D5217B /* GRMapAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRMapAnnotation.h; sourceTree = "<group>"; };
@@ -583,6 +590,8 @@
 			isa = PBXGroup;
 			children = (
 				9261923E18865752001E0A72 /* GRContentView.h */,
+				603A657D188A625C00352C0B /* GRResourceCell.h */,
+				603A657E188A625C00352C0B /* GRResourceCell.m */,
 				9261923F18865752001E0A72 /* GRContentView.m */,
 				9261924018865752001E0A72 /* GRNibPackage.h */,
 				9261924118865752001E0A72 /* GRNibPackage.m */,
@@ -808,19 +817,21 @@
 		92CE913D18755BEB00C7D3A1 /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				6068029618883DCA00D5217B /* GRTabbarBackground.png */,
-				6068029718883DCA00D5217B /* GRTabbarBackground@2x.png */,
-				9276F35B1887D22600E13763 /* GRShareButton.png */,
-				9276F35C1887D22600E13763 /* GRShareButton@2x.png */,
+				603A657B188A5E0D00352C0B /* FileType */,
+				92FFDF7C187A8CAE00FF3C15 /* GRAddButton.png */,
 				920B999618852B21006BD620 /* GRAddButton@2x.png */,
-				920B99921885259B006BD620 /* GRExampleAvatar.png */,
-				920B99931885259B006BD620 /* GRExampleAvatar@2x.png */,
 				92568CCB18850E5500994FC1 /* GRAvatarBackground.png */,
 				92568CC918850E3300994FC1 /* GRAvatarBackground@2x.png */,
-				92FFDF7C187A8CAE00FF3C15 /* GRAddButton.png */,
-				60E649671877ECA800D5466B /* GRHeart.jpg */,
 				9242AEFD1876A87B00F9FEFB /* GRBackButton.png */,
 				9242AEFE1876A87C00F9FEFB /* GRBackButton@2x.png */,
+				603A6579188A42FD00352C0B /* GRButton@2x.png */,
+				920B99921885259B006BD620 /* GRExampleAvatar.png */,
+				920B99931885259B006BD620 /* GRExampleAvatar@2x.png */,
+				60E649671877ECA800D5466B /* GRHeart.jpg */,
+				9276F35B1887D22600E13763 /* GRShareButton.png */,
+				9276F35C1887D22600E13763 /* GRShareButton@2x.png */,
+				6068029618883DCA00D5217B /* GRTabbarBackground.png */,
+				6068029718883DCA00D5217B /* GRTabbarBackground@2x.png */,
 				92CE913E18755BEB00C7D3A1 /* Main */,
 			);
 			path = Images;
@@ -881,6 +892,11 @@
 				TargetAttributes = {
 					927C9F9E186D66DC00DC0EDC = {
 						DevelopmentTeam = UU37DKREZ7;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -983,6 +999,7 @@
 				60E8D9511888FC5C00C2EFC2 /* 亚干犯罪.pdf in Resources */,
 				60E649E81878062400D5466B /* notifications19.plist in Resources */,
 				60E8D9501888FC5C00C2EFC2 /* 一条朱红线绳.pdf in Resources */,
+				603A657A188A42FD00352C0B /* GRButton@2x.png in Resources */,
 				60E649861877FB1D00D5466B /* notifications.plist in Resources */,
 				9294D45118766369009352DB /* GRAudio.png in Resources */,
 				6068029918883DCA00D5217B /* GRTabbarBackground@2x.png in Resources */,
@@ -1038,6 +1055,7 @@
 				923E49A21888ECF6006E9029 /* GRLocationTab.png in Resources */,
 				603A656F1889728E00352C0B /* PDFReaderResources.bundle in Resources */,
 				60E649EF1878062400D5466B /* notifications25.plist in Resources */,
+				603A657C188A5E0D00352C0B /* FileType in Resources */,
 				92CE914418755BEB00C7D3A1 /* GRLocationTab@2x.png in Resources */,
 				60B266061877CBFF008E881E /* 1.pdf in Resources */,
 				927C9FB5186D66DC00DC0EDC /* Images.xcassets in Resources */,
@@ -1071,6 +1089,7 @@
 				929989BA18768C2E0001EFDC /* MFNetworkFileCacheManager.m in Sources */,
 				9276F35318877DEA00E13763 /* UIView+CenterAdjustment.m in Sources */,
 				929989B718768C2E0001EFDC /* MFCacheManagerInternal.m in Sources */,
+				603A657F188A625C00352C0B /* GRResourceCell.m in Sources */,
 				9261927218865790001E0A72 /* GRLoginView.m in Sources */,
 				929989BB18768C2E0001EFDC /* MFNetworkFileCacheManagerInternal.m in Sources */,
 				9276F34818877D6100E13763 /* ERGalleryViewPrivateHandler.m in Sources */,

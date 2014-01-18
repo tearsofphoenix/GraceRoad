@@ -14,4 +14,8 @@
 
 + (UIColor *)blueColor;
 
++ (UIColor *)lightBlueColor;
+
++ (UIColor *)headerBlueColor;
+
 @end

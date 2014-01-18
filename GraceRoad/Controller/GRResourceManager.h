@@ -23,4 +23,6 @@ typedef void (^ GRResourceCallback)(NSData *data, NSError *error);
 + (void)downloadFileWithSubPath: (NSString *)subPath
                        callback: (GRResourceCallback)callback;
 
++ (UIImage *)imageForFileType: (NSString *)fileTypeName;
+
 @end

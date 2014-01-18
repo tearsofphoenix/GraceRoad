@@ -13,6 +13,9 @@
 #import "GRResourceManager.h"
 #import "GRSermonContentView.h"
 #import "UIAlertView+BlockSupport.h"
+#import "GRTheme.h"
+#import "GRResourceKey.h"
+#import "GRResourceCell.h"
 
 @interface GRSermonView ()<UITableViewDataSource, UITableViewDelegate>
 {
@@ -89,8 +92,8 @@
     NSDictionary *sermonInfo = sermons[row];
     
     [[cell textLabel] setText: sermonInfo[GRSermonTitle]];
-    [[cell imageView] setImage: [UIImage imageNamed: @"GRAudio"]];
-    
+    [[cell imageView] setImage: [GRResourceManager imageForFileType: GRResourceTypeWAVE]];
+        
     return [cell autorelease];
 }
 
@@ -102,10 +105,7 @@ viewForHeaderInSection: (NSInteger)section
     NSDictionary *sermonCategory = _sermonCategories[section];
     
     //[headerLabel setBackgroundColor: [UIColor colorWithRed:0.96f green:0.96f blue:0.96f alpha: 1.0f]];
-    [headerLabel setBackgroundColor: [UIColor colorWithRed: 83 / 255.0
-                                                     green: 152 / 255.0
-                                                      blue: 253 / 255.0
-                                                     alpha: 0.8]];
+    [headerLabel setBackgroundColor: [GRTheme headerBlueColor]];
     
     //[headerLabel setTextColor: [UIColor colorWithRed:0.55f green:0.55f blue:0.55f alpha:1.00f]];
     [headerLabel setTextColor: [UIColor whiteColor]];

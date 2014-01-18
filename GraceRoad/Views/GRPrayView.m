@@ -41,9 +41,11 @@
         
         [self addSubview: _prayListView];
         
-        _rightNavigationButton = [[UIButton alloc] initWithFrame: CGRectMake(0, 0, 60, 44)];
-        [_rightNavigationButton setBackgroundImage: [UIImage imageNamed: @"GRAddButton"]
-                                          forState: UIControlStateNormal];
+        _rightNavigationButton = [[UIButton alloc] initWithFrame: CGRectMake(0, 0, 40, 40)];
+        [_rightNavigationButton setImage: [UIImage imageNamed: @"GRAddButton"]
+                                forState: UIControlStateNormal];
+        [_rightNavigationButton setImageEdgeInsets: UIEdgeInsetsMake(8, 8, 8, 8)];
+
         [_rightNavigationButton addTarget: self
                                    action: @selector(_handleAddPrayButtonTappedEvent:)
                          forControlEvents: UIControlEventTouchUpInside];
@@ -113,6 +115,8 @@ heightForRowAtIndexPath: (NSIndexPath *)indexPath
                                                         atIndex: 0];
                                      
                                      [_prayListView reloadData];
+                                     
+                                     ERSC(GRDataServiceID, GRDataServiceSendMessageToWeixinAction, @[ text ], nil);
                                  }
                              })];
     [alertView show];

@@ -15,9 +15,14 @@ static NSString *serverFileRootPath = @"http://localhost/~veritas/grace/";
 
 static NSString *gsResourcePath = nil;
 
+static NSMutableDictionary *gsFileTypeImagesCache = nil;
+
 + (void)initialize
 {
-    
+    if (!gsFileTypeImagesCache)
+    {
+        gsFileTypeImagesCache = [[NSMutableDictionary alloc] init];
+    }
 }
 
 + (NSString *)resourcePath
@@ -144,6 +149,23 @@ static NSString *gsResourcePath = nil;
                         }
                     }));
 #endif
+}
+
++ (UIImage *)imageForFileType: (NSString *)fileTypeName
+{
+    UIImage *image = gsFileTypeImagesCache[fileTypeName];
+    if (!image)
+    {
+        NSString *path = [[NSBundle mainBundle] pathForResource: fileTypeName
+                                                         ofType: @"png"
+                                                    inDirectory: @"FileType"];
+        
+        image = [UIImage imageWithContentsOfFile: path];
+        [gsFileTypeImagesCache setObject: image
+                                  forKey: fileTypeName];
+    }
+    
+    return image;
 }
 
 @end
