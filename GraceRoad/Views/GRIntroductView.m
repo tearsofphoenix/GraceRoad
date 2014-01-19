@@ -80,6 +80,7 @@
         rect.size.height = 130;
         
         _placeHolderImageView = [[UIImageView alloc] initWithFrame: rect];
+        [_placeHolderImageView setImage: [UIImage imageNamed: @"GRMapPlaceHolder"]];
         [_placeHolderImageView setAlpha: 0];
         
         [_scrollView addSubview: _placeHolderImageView];

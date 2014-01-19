@@ -198,17 +198,15 @@
         NSMutableArray *categoryContent = [NSMutableArray array];
         [categoryContent addObject: (@{
                                        GRSermonID : [[ERUUID UUID] stringDescription],
-                                       GRSermonPath : @"重生的生命，丰盛的人生.mp3",
-                                       GRSermonTitle : @"重生的生命，丰盛的人生",
-                                       GRSermonAbstract : @"人失去神之后，对祝福的观念已经变质了。人无法对幸福有正确的认识与标准，专在肉身与暂时的亨通顺利找寻幸福。另外，人也对自己真正的问题也失去了知觉。鱼活着没有水，树没有泥土不能生长，人却没有意识到他离开那全善全爱的上帝是最大的问题。事实上，神赐下基督，将祂救恩的启示显明，使人再次得见而认识神。认识了神之后，人当要重新认识与设计自己的人生，好跟从这位神，才得以享受在祂里头的丰盛生命。因为基督来乃是叫人得生命，并且得的更丰盛。",
+                                       GRSermonPath : @"20140119-074248.m4a",
+                                       GRSermonTitle : @"真正的祝福（一）",
                                        GRSermonUploadDate : [NSDate date],
                                        })];
         
         [categoryContent addObject: (@{
                                        GRSermonID : [[ERUUID UUID] stringDescription],
-                                       GRSermonPath : @"寻见基督之人必大大地欢喜.mp3",
-                                       GRSermonTitle : @"寻见基督之人必大大地欢喜",
-                                       GRSermonAbstract : @"上帝已经将祂自己的生命完完整整的赐给我们了。凡在基督里重生之人，我们的好处不在祂以外。但是，如果我们要的不是基督，所寻求依靠的不是祂里头的属灵福气与大能，我们所寻求依靠的必定叫我们跌倒。这不是将来会看见的，乃是至今在不认识神的世界里都已经显明出来了。在主耶稣降临时，特别有两种因基督而被绊倒的人。",
+                                       GRSermonPath : @"20140119-074248.m4a",
+                                       GRSermonTitle : @"真正的祝福（二）",
                                        GRSermonUploadDate : [NSDate dateWithYear: year
                                                                            month: month
                                                                              day: day - 1],
@@ -227,16 +225,16 @@
         
         [categoryContent addObject: (@{
                                        GRSermonID : [[ERUUID UUID] stringDescription],
-                                       GRSermonPath : @"2009-01-18_Mandarin1Audio.mp3",
-                                       GRSermonTitle : @"應許與順服",
+                                       GRSermonPath : @"20140119-074248.m4a",
+                                       GRSermonTitle : @"真正的祝福（一）",
                                        GRSermonUploadDate : [NSDate dateWithYear: 2009
                                                                            month: 1
                                                                              day: 18],
                                        })];
         [categoryContent addObject: (@{
                                        GRSermonID : [[ERUUID UUID] stringDescription],
-                                       GRSermonPath : @"2009-01-25_Mandarin1Audio.mp3",
-                                       GRSermonTitle : @"信心和眼見",
+                                       GRSermonPath : @"20140119-074248.m4a",
+                                       GRSermonTitle : @"真正的祝福（二）",
                                        GRSermonUploadDate : [NSDate dateWithYear: 2009
                                                                            month: 1
                                                                              day: 25],
@@ -244,8 +242,8 @@
         
         [categoryContent addObject: (@{
                                        GRSermonID : [[ERUUID UUID] stringDescription],
-                                       GRSermonPath : @"2009-02-08_Mandarin1Audio.mp3",
-                                       GRSermonTitle : @"因信為義",
+                                       GRSermonPath : @"20140119-074248.m4a",
+                                       GRSermonTitle : @"真正的祝福（三）",
                                        GRSermonUploadDate : [NSDate dateWithYear: 2009
                                                                            month: 2
                                                                              day: 8],
@@ -660,6 +658,11 @@
             NSLog(@"%@", error);
         }
     }
+}
+
+- (void)sendFeedback: (NSString *)feedback
+{
+    NSLog(@"in func:%s feedback: %@", __func__, feedback);
 }
 
 @end

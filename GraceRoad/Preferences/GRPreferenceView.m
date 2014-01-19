@@ -14,6 +14,7 @@
 #import "GRDataService.h"
 #import "GRLoginView.h"
 #import "UIAlertView+BlockSupport.h"
+#import "GRFeedbackView.h"
 
 @interface GRPreferenceView ()<UITableViewDataSource, UITableViewDelegate>
 {
@@ -31,7 +32,7 @@
     {
         [self setTitle: @"设置"];
         
-        _titles = [@[ @"服事登陆", @"代祷", @"联系我们"] retain];
+        _titles = [@[ @"服事登陆", @"代祷", @"联系我们", @"反馈"] retain];
         
         _tableView = [[UITableView alloc] initWithFrame: [self bounds]];
         [_tableView setDataSource: self];
@@ -89,10 +90,7 @@ didSelectRowAtIndexPath: (NSIndexPath *)indexPath
         case 1:
         {
             GRPrayView *prayView = [[GRPrayView alloc] initWithFrame: [self frame]];
-            
-            ERSC(GRViewServiceID, GRViewServicePushContentViewAction,
-                 @[ prayView ], nil);
-            
+            ERSC(GRViewServiceID, GRViewServicePushContentViewAction, @[ prayView ], nil);            
             [prayView release];
             
             break;
@@ -101,6 +99,13 @@ didSelectRowAtIndexPath: (NSIndexPath *)indexPath
         {
             [UIAlertView alertWithMessage: @"请来教会吧！"
                         cancelButtonTitle: @"确定"];
+            break;
+        }
+        case 3:
+        {
+            GRFeedbackView *feedbackView = [[GRFeedbackView alloc] initWithFrame: [self frame]];
+            ERSC(GRViewServiceID, GRViewServicePushContentViewAction, @[ feedbackView ], nil);
+            [feedbackView release];
             break;
         }
         default:
