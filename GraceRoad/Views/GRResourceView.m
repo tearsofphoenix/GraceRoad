@@ -201,18 +201,13 @@
 - (UIView *) tableView: (UITableView *)tableView
 viewForHeaderInSection: (NSInteger)section
 {
-    UILabel *headerLabel = [[UILabel alloc] init];
+    UILabel *headerLabel = [GRTheme newheaderLabel];
     
     NSDictionary *resourceTypeInfo = _resourceCategories[section];
     
-    //    [headerLabel setBackgroundColor: [UIColor colorWithRed:0.96f green:0.96f blue:0.96f alpha: 1.0f]];
-    //    [headerLabel setTextColor: [UIColor colorWithRed:0.55f green:0.55f blue:0.55f alpha:1.00f]];
-    [headerLabel setBackgroundColor: [GRTheme headerBlueColor]];
-    [headerLabel setTextColor: [UIColor whiteColor]];
-    
     [headerLabel setText: [@"    " stringByAppendingString: resourceTypeInfo[GRResourceCategoryName]]];
     
-    return [headerLabel autorelease];
+    return headerLabel;
 }
 
 - (NSInteger)tableView: (UITableView *)tableView

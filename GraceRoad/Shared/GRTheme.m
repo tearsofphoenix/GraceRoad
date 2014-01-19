@@ -65,4 +65,14 @@
     return headerBlueColor;
 }
 
++ (UILabel *)newheaderLabel
+{
+    UILabel *headerLabel = [[UILabel alloc] init];
+    
+    [headerLabel setBackgroundColor: [GRTheme headerBlueColor]];
+    [headerLabel setTextColor: [UIColor whiteColor]];
+    
+    return [headerLabel autorelease];
+}
+
 @end

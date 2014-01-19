@@ -18,4 +18,6 @@
 
 + (UIColor *)headerBlueColor;
 
++ (UILabel *)newheaderLabel;
+
 @end

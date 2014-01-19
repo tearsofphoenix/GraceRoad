@@ -26,8 +26,9 @@
     
     CGRect bounds = [self bounds];
     
-    _leftNavigationButton = [[UIButton alloc] initWithFrame: CGRectMake(0, 0, 60, bounds.size.height)];
-    [_leftNavigationButton setImageEdgeInsets: UIEdgeInsetsMake(8, 10, 8, 15)];
+    CGRect leftButtonFrame = CGRectMake(0, 0, 45, bounds.size.height);
+    _leftNavigationButton = [[UIButton alloc] initWithFrame: leftButtonFrame];
+    [_leftNavigationButton setImageEdgeInsets: UIEdgeInsetsMake(8, 10, 8, 0)];
     [_leftNavigationButton setImage: [UIImage imageNamed: @"GRBackButton"]
                            forState: UIControlStateNormal];
     [_leftNavigationButton addTarget: self
@@ -39,7 +40,7 @@
     [self addSubview: _leftNavigationButton];
     
     CGRect rect = bounds;
-    rect.origin.x = 60;
+    rect.origin.x = leftButtonFrame.origin.x + leftButtonFrame.size.width;
     rect.size.width = bounds.size.width - rect.origin.x - bounds.size.height;
     
     _titleLabel = [[UILabel alloc] initWithFrame: rect];
@@ -50,6 +51,7 @@
     [_titleLabel setTextColor: [UIColor whiteColor]];
     [_titleLabel setAdjustsFontSizeToFitWidth: YES];
     [_titleLabel setNumberOfLines: 1];
+    //[_titleLabel setBackgroundColor: [UIColor redColor]];
     
     [self addSubview: _titleLabel];
 

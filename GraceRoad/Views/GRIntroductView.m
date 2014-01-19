@@ -9,15 +9,18 @@
 #import "GRIntroductView.h"
 #import "GRMapAnnotation.h"
 #import "Reachability.h"
+#import "GRTheme.h"
+#import "GRUIExtensions.h"
 #import <MapKit/MapKit.h>
 
-@interface GRIntroductView ()
+@interface GRIntroductView ()<UITableViewDataSource, UITableViewDelegate, MKMapViewDelegate>
 {
-    UIScrollView *_scrollView;
+    UITableView *_tableView;
     
     UIImageView *_placeHolderImageView;
     MKMapView *_mapView;
     GRMapAnnotation *_annotation;
+    NSArray *_telephones;
 }
 @end
 
@@ -28,31 +31,23 @@
     self = [super initWithFrame: frame];
     if (self)
     {
-        [self setTitle: @"简介"];
+        _telephones = [@[@"137-9535-2317",
+                         @"135-6426-9605",
+                         @"158-0193-5868",] retain];
+        
+        [self setTitle: @"新松江恩典教会"];
         
         CGRect bounds = [self bounds];
         
-        _scrollView = [[UIScrollView alloc] initWithFrame: bounds];
-        [self addSubview: _scrollView];
+        _tableView = [[UITableView alloc] initWithFrame: bounds];
+        [self addSubview: _tableView];
         
-        [_scrollView setBackgroundColor: [UIColor colorWithRed: 0.93f
+        [_tableView setBackgroundColor: [UIColor colorWithRed: 0.93f
                                                          green: 0.95f
                                                           blue: 0.96f
                                                          alpha: 1.00f]];
         
-        CGRect rect = CGRectMake(0, 20, frame.size.width, 44);
-        UILabel *titleLabel = [[UILabel alloc] initWithFrame: rect];
-        [titleLabel setTextAlignment: NSTextAlignmentCenter];
-        [titleLabel setText: @"新松江恩典教会"];
-        [titleLabel setFont: [UIFont boldSystemFontOfSize: 30]];
-        
-        [_scrollView addSubview: titleLabel];
-        [titleLabel release];
-        
-        rect.origin.x = 10;
-        rect.size.width -= rect.origin.x * 2;
-        rect.origin.y += rect.size.height;
-        rect.size.height = 270;
+        CGRect rect = CGRectMake(10, 20, frame.size.width - 10 * 2, 100);
         
         UITextView *contentView = [[UITextView alloc] initWithFrame: rect];
         
@@ -63,39 +58,34 @@
         [contentView setEditable: NO];
         
         [contentView setText: (@"      以马内利！新松江恩典教会欢迎您！\n"
-                               "进入会堂请把手机关机或者静音。\n"
                                "      感谢神把您带到我们当中，在基督里我们是一家人，"
                                "愿在以后的生活里我们共同学习神的话语。耶稣爱你！\n"
-                               "      以下是我们教会的常规事项，请仔细阅读。\n"
-                               "周日礼拜时间：\n"
-                               "            第一场 07:30-08:30\n"
-                               "            第二场 09:00-0:30\n"
-                               "            第三场 13:30-15:00\n"
-                               "成人主日学： 11:00-12:00\n"
                                "")];
-        [_scrollView addSubview: contentView];
+        [_tableView setTableHeaderView: contentView];
         [contentView release];
-        
-        rect.origin.y += rect.size.height;
+
+        rect.origin.x = 0;
+        rect.origin.y = 0;
+        rect.size.width = frame.size.width;
         rect.size.height = 130;
         
         _placeHolderImageView = [[UIImageView alloc] initWithFrame: rect];
         [_placeHolderImageView setImage: [UIImage imageNamed: @"GRMapPlaceHolder"]];
         [_placeHolderImageView setAlpha: 0];
         
-        [_scrollView addSubview: _placeHolderImageView];
         
         _mapView = [[MKMapView alloc] initWithFrame: rect];
+        [_mapView setDelegate: self];
         [self _updateMapViewIfNeeded];
-        [_scrollView addSubview: _mapView];
-        
-        [_scrollView setContentSize: CGSizeMake(bounds.size.width, rect.origin.y + rect.size.height)];
         
         [[Reachability reachabilityForInternetConnection] startNotifier];
         [[NSNotificationCenter defaultCenter] addObserver: self
                                                  selector: @selector(_notificationForNetworkUpdated:)
                                                      name: kReachabilityChangedNotification
                                                    object: nil];
+        
+        [_tableView setDataSource: self];
+        [_tableView setDelegate: self];
     }
     return self;
 }
@@ -105,7 +95,8 @@
     [[Reachability reachabilityForInternetConnection] stopNotifier];
     [[NSNotificationCenter defaultCenter] removeObserver: self];
     
-    [_scrollView release];
+    [_telephones release];
+    [_tableView release];
     [_mapView release];
     [_annotation release];
     [_placeHolderImageView release];
@@ -140,7 +131,7 @@
 {
     [super setFrame: frame];
     
-    [_scrollView setFrame: [self bounds]];
+    [_tableView setFrame: [self bounds]];
 }
 
 - (void)_updateMapViewIfNeeded
@@ -158,6 +149,198 @@
 - (void)_notificationForNetworkUpdated: (NSNotification *)notification
 {
     [self _updateMapViewIfNeeded];
+}
+
+- (NSInteger)numberOfSectionsInTableView: (UITableView *)tableView
+{
+    return 3;
+}
+
+- (UIView *) tableView: (UITableView *)tableView
+viewForHeaderInSection: (NSInteger)section
+{
+    UILabel *headerLabel = [GRTheme newheaderLabel];
+    
+    switch (section)
+    {
+        case 0:
+        {
+            [headerLabel setText: @"    周日事项"];
+            break;
+        }
+        case 1:
+        {
+            [headerLabel setText: @"    联系方式"];
+            break;
+        }
+        case 2:
+        {
+            [headerLabel setText: @"    地图"];
+            break;
+        }
+        default:
+            break;
+    }
+    
+    return headerLabel;
+}
+
+- (NSInteger)tableView: (UITableView *)tableView
+ numberOfRowsInSection: (NSInteger)section
+{
+    switch (section)
+    {
+        case 0:
+        {
+            return 4;
+        }
+        case 1:
+        {
+            return 3;
+        }
+        case 2:
+        {
+            return 1;
+        }
+        default:
+        {
+            return 0;
+        }
+    }
+}
+
+- (UITableViewCell *)tableView: (UITableView *)tableView
+         cellForRowAtIndexPath: (NSIndexPath *)indexPath
+{
+    NSInteger section = [indexPath section];
+    NSInteger row = [indexPath row];
+    
+    UITableViewCell *cell = [[UITableViewCell alloc] init];
+    [cell setBackgroundColor: [UIColor clearColor]];
+    
+    switch (section)
+    {
+        case 0:
+        {
+            switch (row)
+            {
+                case 0:
+                {
+                    [[cell textLabel] setText: @"第一场礼拜    07:30-08:30"];
+                    break;
+                }
+                case 1:
+                {
+                    [[cell textLabel] setText: @"第二场礼拜    09:00-0:30"];
+                    break;
+                }
+                case 2:
+                {
+                    [[cell textLabel] setText: @"第三场礼拜    13:30-15:00"];
+                    break;
+                }
+                case 3:
+                {
+                    [[cell textLabel] setText: @"成人主日学    11:00-12:00"];
+                    break;
+                }
+                default:
+                    break;
+            }
+            break;
+        }
+        case 1:
+        {
+            switch (row)
+            {
+                case 0:
+                {
+                    [[cell textLabel] setText: [NSString stringWithFormat: @"孙牧师    电话：%@", _telephones[0]]];
+                    break;
+                }
+                case 1:
+                {
+                    [[cell textLabel] setText: [NSString stringWithFormat: @"张传道    电话：%@", _telephones[1]]];
+                    break;
+                }
+                case 2:
+                {
+                    [[cell textLabel] setText: [NSString stringWithFormat: @"李传道    电话：%@", _telephones[2]]];
+                    break;
+                }
+                default:
+                    break;
+            }
+        }
+        case 2:
+        {
+            [[cell contentView] addSubview: _placeHolderImageView];
+            [[cell contentView] addSubview: _mapView];
+            break;
+        }
+        default:
+        {
+            break;
+        }
+    }
+
+    return [cell autorelease];
+}
+
+- (CGFloat)   tableView: (UITableView *)tableView
+heightForRowAtIndexPath: (NSIndexPath *)indexPath
+{
+    NSInteger section = [indexPath section];
+    switch (section)
+    {
+        case 0:
+        case 1:
+        {
+            return 40;
+        }
+        case 2:
+        {
+            return 130;
+        }
+        default:
+        {
+            return 0;
+        }
+    }
+}
+
+- (void)      tableView: (UITableView *)tableView
+didSelectRowAtIndexPath: (NSIndexPath *)indexPath
+{
+    NSInteger section = [indexPath section];
+    NSInteger row = [indexPath row];
+    
+    if (1 == section)
+    {
+        NSString *phoneNumber = [@"telprompt://" stringByAppendingString: _telephones[row]];
+        NSURL *URL = [NSURL URLWithString: phoneNumber];
+        if ([[UIApplication sharedApplication] canOpenURL: URL])
+        {
+            [[UIApplication sharedApplication] openURL: URL];
+        }else
+        {
+            [UIAlertView alertWithMessage: @"您的设备无法拨打电话！"
+                        cancelButtonTitle: @"确定"];
+        }
+    }
+}
+
+- (MKAnnotationView *)mapView: (MKMapView *)mapView
+            viewForAnnotation: (id <MKAnnotation>)annotation
+{
+    MKPinAnnotationView *annView=[[[MKPinAnnotationView alloc] initWithAnnotation: annotation
+                                                                  reuseIdentifier: @"pin"] autorelease];
+    annView.pinColor = MKPinAnnotationColorGreen;
+    [annView setEnabled:YES];
+    [annView setCanShowCallout:YES];
+    
+    return annView;
+
 }
 
 @end

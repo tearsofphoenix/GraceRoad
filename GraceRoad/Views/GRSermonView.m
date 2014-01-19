@@ -114,15 +114,13 @@
 - (UIView *) tableView: (UITableView *)tableView
 viewForHeaderInSection: (NSInteger)section
 {
-    UILabel *headerLabel = [[UILabel alloc] init];
+    UILabel *headerLabel = [GRTheme newheaderLabel];
     
     NSDictionary *sermonCategory = _sermonCategories[section];
     
-    [headerLabel setBackgroundColor: [GRTheme headerBlueColor]];
-    [headerLabel setTextColor: [UIColor whiteColor]];
     [headerLabel setText: [@"    " stringByAppendingString: sermonCategory[GRSermonCategoryTitle]]];
     
-    return [headerLabel autorelease];
+    return headerLabel;
 }
 
 
