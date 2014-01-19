@@ -15,6 +15,7 @@
 #import "GRLoginView.h"
 #import "UIAlertView+BlockSupport.h"
 #import "GRFeedbackView.h"
+#import "GRContactUSView.h"
 
 @interface GRPreferenceView ()<UITableViewDataSource, UITableViewDelegate>
 {
@@ -97,8 +98,9 @@ didSelectRowAtIndexPath: (NSIndexPath *)indexPath
         }
         case 2:
         {
-            [UIAlertView alertWithMessage: @"请来教会吧！"
-                        cancelButtonTitle: @"确定"];
+            GRContactUSView *view = [[GRContactUSView alloc] initWithFrame: [self frame]];
+            ERSC(GRViewServiceID, GRViewServicePushContentViewAction, @[ view ], nil);
+            [view release];
             break;
         }
         case 3:

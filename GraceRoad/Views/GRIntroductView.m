@@ -231,7 +231,7 @@ viewForHeaderInSection: (NSInteger)section
                 }
                 case 1:
                 {
-                    [[cell textLabel] setText: @"第二场礼拜    09:00-0:30"];
+                    [[cell textLabel] setText: @"第二场礼拜    09:00-10:30"];
                     break;
                 }
                 case 2:

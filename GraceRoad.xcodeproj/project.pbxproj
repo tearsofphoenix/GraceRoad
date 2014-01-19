@@ -18,6 +18,8 @@
 		603A658C188A723600352C0B /* 2009-01-25_Mandarin1StudyGuide.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 603A6586188A723600352C0B /* 2009-01-25_Mandarin1StudyGuide.pdf */; };
 		603A658E188A723600352C0B /* 2009-02-08_Mandarin1StudyGuide.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 603A6588188A723600352C0B /* 2009-02-08_Mandarin1StudyGuide.pdf */; };
 		604F1237188BFB5F00AEB247 /* GRFeedbackView.m in Sources */ = {isa = PBXBuildFile; fileRef = 604F1236188BFB5F00AEB247 /* GRFeedbackView.m */; };
+		604F1239188C353500AEB247 /* GRQRCode.png in Resources */ = {isa = PBXBuildFile; fileRef = 604F1238188C353500AEB247 /* GRQRCode.png */; };
+		604F123C188C354800AEB247 /* GRContactUSView.m in Sources */ = {isa = PBXBuildFile; fileRef = 604F123B188C354800AEB247 /* GRContactUSView.m */; };
 		606802901888233700D5217B /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 6068028F1888233700D5217B /* Reachability.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		60680295188828D200D5217B /* GRMapAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 60680294188828D200D5217B /* GRMapAnnotation.m */; };
 		6068029818883DCA00D5217B /* GRTabbarBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 6068029618883DCA00D5217B /* GRTabbarBackground.png */; };
@@ -222,6 +224,9 @@
 		603A6588188A723600352C0B /* 2009-02-08_Mandarin1StudyGuide.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "2009-02-08_Mandarin1StudyGuide.pdf"; sourceTree = "<group>"; };
 		604F1235188BFB5F00AEB247 /* GRFeedbackView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRFeedbackView.h; sourceTree = "<group>"; };
 		604F1236188BFB5F00AEB247 /* GRFeedbackView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GRFeedbackView.m; sourceTree = "<group>"; };
+		604F1238188C353500AEB247 /* GRQRCode.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GRQRCode.png; sourceTree = "<group>"; };
+		604F123A188C354800AEB247 /* GRContactUSView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRContactUSView.h; sourceTree = "<group>"; };
+		604F123B188C354800AEB247 /* GRContactUSView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GRContactUSView.m; sourceTree = "<group>"; };
 		6068028E1888233700D5217B /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		6068028F1888233700D5217B /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		60680293188828D100D5217B /* GRMapAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRMapAnnotation.h; sourceTree = "<group>"; };
@@ -605,6 +610,8 @@
 				9261923818865752001E0A72 /* GRSettingsView.m */,
 				9261923918865752001E0A72 /* GRUserDetailView.h */,
 				9261923A18865752001E0A72 /* GRUserDetailView.m */,
+				604F123A188C354800AEB247 /* GRContactUSView.h */,
+				604F123B188C354800AEB247 /* GRContactUSView.m */,
 				9276F3321887758100E13763 /* GRSendMessageView.h */,
 				9276F3331887758100E13763 /* GRSendMessageView.m */,
 				9261923B18865752001E0A72 /* GRUserProfileView.h */,
@@ -837,6 +844,7 @@
 		92CE913D18755BEB00C7D3A1 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				604F1238188C353500AEB247 /* GRQRCode.png */,
 				603A657B188A5E0D00352C0B /* FileType */,
 				92FFDF7C187A8CAE00FF3C15 /* GRAddButton.png */,
 				920B999618852B21006BD620 /* GRAddButton@2x.png */,
@@ -1040,6 +1048,7 @@
 				60E649EE1878062400D5466B /* notifications24.plist in Resources */,
 				607267BF188B63D6005B2330 /* 20140119-074248.m4a in Resources */,
 				60E649EC1878062400D5466B /* notifications22.plist in Resources */,
+				604F1239188C353500AEB247 /* GRQRCode.png in Resources */,
 				92CE914518755BEB00C7D3A1 /* GRPreferenceTab@2x.png in Resources */,
 				60E649DE1878062400D5466B /* notifications1.plist in Resources */,
 				60E649E51878062400D5466B /* notifications16.plist in Resources */,
@@ -1130,6 +1139,7 @@
 				9276F3341887758100E13763 /* GRSendMessageView.m in Sources */,
 				9261927518865790001E0A72 /* GRResourceInfoView.m in Sources */,
 				9276F3311887729E00E13763 /* GRTheme.m in Sources */,
+				604F123C188C354800AEB247 /* GRContactUSView.m in Sources */,
 				60F9438E1886D81A001F13E3 /* DKLiveBlurView.m in Sources */,
 				9261925218865752001E0A72 /* GRUserProfileView.m in Sources */,
 				929989BC18768C2E0001EFDC /* MFNetworkOperation.m in Sources */,
