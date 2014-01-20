@@ -7,12 +7,15 @@
 //
 
 #import "MFNetworkOperation.h"
+#import "NSString+CMBExtensions.h"
 
 @interface MFNetworkOperation ()<NSURLConnectionDataDelegate>
 {
     NSMutableData *_receivedData;
     NSURLConnection *_connection;
 }
+
+@property (nonatomic, retain) NSDictionary *parameters;
 
 @property (nonatomic, retain) NSURL *URL;
 
@@ -25,6 +28,7 @@
 @implementation MFNetworkOperation
 
 - (id)initWithURL: (NSURL *)URL
+       parameters: (NSDictionary *)parameters
  lifeTimeInterval: (NSTimeInterval)lifeTimeInterval
          callback: (MFNetworkConnectionCallback)callback
 {
@@ -32,6 +36,7 @@
     {
         _receivedData = [[NSMutableData alloc] init];
         
+        [self setParameters: parameters];
         [self setURL: URL];
         [self setLifeTimeInterval: lifeTimeInterval];
         [self setCallback: callback];
@@ -44,6 +49,7 @@
 {
     NSLog(@"in func: %s %@", __func__, self);
     
+    [_parameters release];
     [_receivedData release];
     [_URL release];
     [_connection release];
@@ -58,20 +64,52 @@
     [super dealloc];
 }
 
+- (void)_buildMultipartFormRequest: (NSMutableURLRequest *)request
+                    withParameters: (NSDictionary *)parameters
+{
+    @autoreleasepool
+    {
+        [request setValue: @"application/x-www-form-urlencoded; charset=utf-8;"
+       forHTTPHeaderField: @"Content-Type"];
+        
+        NSMutableArray *parts = [NSMutableArray arrayWithCapacity: [_parameters count]];
+        [parameters enumerateKeysAndObjectsUsingBlock: (^(NSString *key, NSString *obj, BOOL *stop)
+                                                        {
+                                                            [parts addObject: [NSString stringWithFormat: @"%@=%@", key, obj]];
+                                                        })];
+        
+        NSString *str = [parts componentsJoinedByString: @"&"];
+        NSData *data = [str dataUsingEncoding: NSUTF8StringEncoding];
+        
+        [request setHTTPBody: data];
+        [request setValue: [NSString stringWithFormat:@"%u", [data length]]
+       forHTTPHeaderField: @"Content-Length"];
+    }
+}
+
 - (void)operationDidStart
 {
     if (!_connection)
     {
-        _connection = [[NSURLConnection alloc] initWithRequest: [NSURLRequest requestWithURL: _URL]
+        NSMutableURLRequest *reuqest = [NSMutableURLRequest requestWithURL: _URL];
+        [reuqest setHTTPMethod: @"POST"];
+        
+        if ([_parameters count] > 0)
+        {
+            [self _buildMultipartFormRequest: reuqest
+                              withParameters: _parameters];
+        }
+        
+        _connection = [[NSURLConnection alloc] initWithRequest: reuqest
                                                       delegate: self
                                               startImmediately: YES];
     }
 }
 
 - (void)cancel
-{    
+{
     [_connection cancel];
-
+    
     [super cancel];
 }
 

@@ -20,6 +20,7 @@
 @interface MFNetworkOperation : MFRunLoopOperation
 
 - (id)initWithURL: (NSURL *)URL
+       parameters: (NSDictionary *)parameters
  lifeTimeInterval: (NSTimeInterval)lifeTimeInterval
          callback: (MFNetworkConnectionCallback)callback;
 

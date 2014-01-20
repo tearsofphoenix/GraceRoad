@@ -76,6 +76,7 @@ static NSUInteger MFNetworkTransferQueueCapacity = 4;
 }
 
 - (void)_postConnectionToURL: (NSURL *)targetURL
+                  parameters: (NSDictionary *)parameters
                     lifeTime: (NSTimeInterval)timeInterval
                     callback: (MFNetworkConnectionCallback)callback
 {
@@ -84,6 +85,7 @@ static NSUInteger MFNetworkTransferQueueCapacity = 4;
         if (!_connectionInformations[targetURL])
         {
             MFNetworkOperation *operation = [[MFNetworkOperation alloc] initWithURL: targetURL
+                                                                         parameters: parameters
                                                                    lifeTimeInterval: timeInterval
                                                                            callback: callback];
             [operation setDelegate: self];
@@ -111,26 +113,43 @@ static NSUInteger MFNetworkTransferQueueCapacity = 4;
                   lifeTime: (NSTimeInterval)timeInterval
                   callback: (MFNetworkConnectionCallback)callback
 {
+    [self postToURL: targetURL
+         parameters: nil
+           lifeTime: timeInterval
+           callback: callback];
+}
+
+- (void)postToURL: (NSURL *)targetURL
+       parameters: (NSDictionary *)parameters
+         lifeTime: (NSTimeInterval)timeInterval
+         callback: (MFNetworkConnectionCallback)callback
+{
+    BOOL shouldPostConnection = YES;
+
     //check if in cache
     //
-    NSData *cachedData =  [[MFCacheManager sharedManager] objectForKey: targetURL
-                                                                inPool: MFNetworkCachePoolID];
-    if (cachedData)
+    if (timeInterval > 0)
     {
-        if (callback)
+        NSData *cachedData =  [[MFCacheManager sharedManager] objectForKey: targetURL
+                                                                inPool: MFNetworkCachePoolID];
+        if (cachedData && callback)
         {
+            shouldPostConnection = NO;
+            
             callback(cachedData, nil);
         }
-    }else
+    }
+    
+    if (shouldPostConnection)
     {
         [self _postConnectionToURL: targetURL
+                        parameters: parameters
                           lifeTime: timeInterval
                           callback: callback];
     }
 }
 
 - (void)downloadFileAtURL: (NSURL *)fileURL
-              enableCache: (BOOL)enableCache
                  callback: (MFNetworkConnectionCallback)callback
 {
     if (fileURL)
@@ -145,16 +164,14 @@ static NSUInteger MFNetworkTransferQueueCapacity = 4;
         }else
         {
             [self _postConnectionToURL: fileURL
+                            parameters: nil
                               lifeTime: 0
                               callback: (^(id result, id error)
                                          {
                                              if (!error)
                                              {
-                                                 if (enableCache)
-                                                 {
-                                                    [manager cacheData: result
-                                                                withID: filePath];
-                                                 }
+                                                 [manager cacheData: result
+                                                             withID: filePath];
                                                  
                                                  if (callback)
                                                  {
@@ -162,6 +179,59 @@ static NSUInteger MFNetworkTransferQueueCapacity = 4;
                                                  }
                                              }
                                          })];
+        }
+    }
+}
+
+//If there are waiting operations and queue is not full,
+//add a waiting operation to transfer queue
+//
+- (void)_scheduleQueueIfNeeded
+{
+    if ([_connections count] > 0 && [_networkTransferQueue operationCount] < MFNetworkTransferQueueCapacity)
+    {
+        MFNetworkOperation *waitingOperation = _connections[0];
+        [_executingOperations addObject: waitingOperation];
+        [_connections removeObjectAtIndex: 0];
+        
+        [_networkTransferQueue addOperation: waitingOperation];
+    }
+}
+
+- (void)cancelRequestForURL: (NSURL *)targetURL
+{
+    @synchronized (self)
+    {
+        MFNetworkOperation *operation = _connectionInformations[targetURL];
+        
+        if (operation)
+        {
+            __block NSUInteger waitingIndex = NSNotFound;
+            //is it still waiting?
+            //
+            [_connections enumerateObjectsUsingBlock: (^(MFNetworkOperation *obj, NSUInteger idx, BOOL *stop)
+                                                       {
+                                                           if (obj == operation)
+                                                           {
+                                                               waitingIndex = idx;
+                                                               *stop = YES;
+                                                           }
+                                                       })];
+            
+            if (waitingIndex != NSNotFound)
+            {
+                [_connections removeObjectAtIndex: waitingIndex];
+            }else
+            {
+                //it's running, so cancel it and remove from queue
+                //
+                [operation cancel];
+                
+                [_executingOperations removeObject: operation];
+                [self _scheduleQueueIfNeeded];
+            }
+            
+            [_connectionInformations removeObjectForKey: targetURL];
         }
     }
 }
@@ -200,7 +270,7 @@ static NSUInteger MFNetworkTransferQueueCapacity = 4;
             }
             
             callback = Block_copy(callback);
-                        
+            
             [self performSelector: @selector(_performOperationWithArguments:)
                          onThread: callbackThread
                        withObject: @[callback, receivedData]
@@ -212,14 +282,7 @@ static NSUInteger MFNetworkTransferQueueCapacity = 4;
         [_connectionInformations removeObjectForKey: [operation URL]];
         [_executingOperations removeObject: operation];
         
-        if ([_connections count] > 0)
-        {
-            MFNetworkOperation *waitingOperation = _connections[0];
-            [_executingOperations addObject: waitingOperation];
-            [_connections removeObjectAtIndex: 0];
-
-            [_networkTransferQueue addOperation: waitingOperation];
-        }
+        [self _scheduleQueueIfNeeded];
     }
 }
 

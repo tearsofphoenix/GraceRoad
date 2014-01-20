@@ -13,12 +13,12 @@
 #import "GRPrayKeys.h"
 #import "GRViewService.h"
 #import "GRAccountKeys.h"
-#import "NSString+CMBExtensions.h"
 #import "GRTeamKeys.h"
 #import "WXApi.h"
+#import "GRFoundation.h"
+#import "GRConfiguration.h"
 
 #import <NWPushNotification/NWHub.h>
-
 #import <NoahsUtility/NoahsUtility.h>
 #import <EventKit/EventKit.h>
 
@@ -248,7 +248,7 @@
                                                                            month: 2
                                                                              day: 8],
                                        })];
-
+        
         [_sermonCategories addObject: category];
         
         [_sermons setObject: categoryContent
@@ -363,7 +363,7 @@
               {
                   if (granted)
                   {
-
+                      
                   }
               })];
         }
@@ -376,61 +376,64 @@
          password: (NSString *)password
          callback: (ERServiceCallback)callback
 {
-    ERSC(GRViewServiceID,
-         GRViewServiceShowLoadingIndicatorAction, nil, nil);
-    
     //login
     //
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    //NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     
-    [defaults setObject: (@{
-                            GRAccountEmailKey : userName,
-                            GRAccountPasswordKey : [password MD5String],
-                            GRAccountIDKey : [[NSUUID UUID] UUIDString],
-                            GRAccountNameKey : @"刘晓明",
-                            GRAccountMobilePhoneKey : @"13671765129",
-                            GRAccountQQKey : @"664943643",
-                            })
-                 forKey: GRCurrentAccountKey];
+    [[MFNetworkClient sharedClient] postToURL: [GRConfiguration serverURL]
+                                   parameters: (@{
+                                                  @"action" : @"login",
+                                                  @"email" : userName,
+                                                  @"password" : password,
+                                                  })
+                                     lifeTime: 0
+                                     callback: (^(NSData *data, id error)
+                                                {
+                                                    NSDictionary *result = [data JSONObject];
+                                                    if ([result[@"status"] isEqualToString: @"0"])
+                                                    {
+                                                        
+                                                    }else
+                                                    {
+                                                        callback(nil, nil);
+                                                    }
+                                                    
+                                                    NSLog(@"%@", result);
+                                                    
+                                                })];
     
-    [defaults synchronize];
-    
-    double delayInSeconds = 1.0;
-    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
-    dispatch_after(popTime, dispatch_get_main_queue(),
-                   (^(void)
-                    {
-                        ERSC(GRViewServiceID,
-                             GRViewServiceHideLoadingIndicatorAction,
-                             nil, nil);
-                        
-                        NSDictionary *scripture = [_scriptures lastObject];
-                        if (scripture)
-                        {
-                            double delayInSeconds = 2.0;
-                            dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
-                            dispatch_after(popTime, dispatch_get_main_queue(),
-                                           (^(void)
-                                            {
-                                                ERSC(GRViewServiceID, GRViewServiceShowDailyScriptureAction, @[ scripture ], nil);
-                                            }));
-                            
-                            [_scriptures removeLastObject];
-                        }
-                        
-                        if (callback)
-                        {
-                            callback(nil, nil);
-                        }
-                        
-                        dispatch_async(dispatch_get_main_queue(),
-                                       (^
-                                        {
-                                            [[NSNotificationCenter defaultCenter] postNotificationName: GRAccountLoginNotification
-                                                                                                object: nil
-                                                                                              userInfo: nil];
-                                        }));
-                    }));
+//    double delayInSeconds = 1.0;
+//    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+//    dispatch_after(popTime, dispatch_get_main_queue(),
+//                   (^(void)
+//                    {
+//                        NSDictionary *scripture = [_scriptures lastObject];
+//                        if (scripture)
+//                        {
+//                            double delayInSeconds = 2.0;
+//                            dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+//                            dispatch_after(popTime, dispatch_get_main_queue(),
+//                                           (^(void)
+//                                            {
+//                                                ERSC(GRViewServiceID, GRViewServiceShowDailyScriptureAction, @[ scripture ], nil);
+//                                            }));
+//                            
+//                            [_scriptures removeLastObject];
+//                        }
+//                        
+//                        if (callback)
+//                        {
+//                            callback(nil, nil);
+//                        }
+//                        
+//                        dispatch_async(dispatch_get_main_queue(),
+//                                       (^
+//                                        {
+//                                            [[NSNotificationCenter defaultCenter] postNotificationName: GRAccountLoginNotification
+//                                                                                                object: nil
+//                                                                                              userInfo: nil];
+//                                        }));
+//                    }));
 }
 
 - (void)addScripture: (NSDictionary *)scriptureInfo
@@ -637,7 +640,7 @@
         [reminder setTitle: eventContent];
         
         NSDateComponents *components = [[NSDateComponents alloc] init];
-
+        
         [components setYear: [[NSDate date] year]];
         [components setMonth: [month integerValue]];
         [components setDay: [day integerValue]];

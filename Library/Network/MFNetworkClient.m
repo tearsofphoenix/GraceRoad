@@ -55,25 +55,38 @@ static id gsNetworkClient = nil;
                          callback: callback];
 }
 
+- (void)postToURL: (NSURL *)targetURL
+       parameters: (NSDictionary *)parameters
+         lifeTime: (NSTimeInterval)timeInterval
+         callback: (MFNetworkConnectionCallback)callback
+{
+    [_internal postToURL: targetURL
+              parameters: parameters
+                lifeTime: timeInterval
+                callback: callback];
+}
+
+
 + (void)downloadFileAtPath: (NSString *)filePath
-               enableCache: (BOOL)enableCache
                   callback: (MFNetworkConnectionCallback)callback
 {
     if (filePath)
     {
         [[self sharedClient] downloadFileAtURL: [NSURL URLWithString: filePath]
-                                   enableCache: enableCache
                                       callback: callback];
     }
 }
 
 - (void)downloadFileAtURL: (NSURL *)fileURL
-              enableCache: (BOOL)enableCache
                  callback: (MFNetworkConnectionCallback)callback
 {
     [_internal downloadFileAtURL: fileURL
-                     enableCache: enableCache
                         callback: callback];
+}
+
+- (void)cancelRequestForURL: (NSURL *)targetURL
+{
+    [_internal cancelRequestForURL: targetURL];
 }
 
 @end

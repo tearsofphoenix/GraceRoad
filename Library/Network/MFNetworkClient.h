@@ -16,9 +16,15 @@ typedef void (^ MFNetworkConnectionCallback)(NSData *data, id error);
                   lifeTime: (NSTimeInterval)timeInterval
                   callback: (MFNetworkConnectionCallback)callback;
 
+- (void)postToURL: (NSURL *)targetURL
+       parameters: (NSDictionary *)parameters
+         lifeTime: (NSTimeInterval)timeInterval
+         callback: (MFNetworkConnectionCallback)callback;
+
 - (void)downloadFileAtURL: (NSURL *)fileURL
-              enableCache: (BOOL)enableCache
                  callback: (MFNetworkConnectionCallback)callback;
+
+- (void)cancelRequestForURL: (NSURL *)targetURL;
 
 @end
 
@@ -27,7 +33,6 @@ typedef void (^ MFNetworkConnectionCallback)(NSData *data, id error);
 + (id)sharedClient;
 
 + (void)downloadFileAtPath: (NSString *)filePath
-               enableCache: (BOOL)enableCache
                   callback: (MFNetworkConnectionCallback)callback;
 
 @end

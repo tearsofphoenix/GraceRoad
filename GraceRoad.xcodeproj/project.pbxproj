@@ -129,6 +129,7 @@
 		927C9FA7186D66DC00DC0EDC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 927C9FA6186D66DC00DC0EDC /* UIKit.framework */; };
 		927C9FAD186D66DC00DC0EDC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 927C9FAB186D66DC00DC0EDC /* InfoPlist.strings */; };
 		927C9FB5186D66DC00DC0EDC /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 927C9FB4186D66DC00DC0EDC /* Images.xcassets */; };
+		9288BA09188D05DA0095ADAE /* GRConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 9288BA08188D05DA0095ADAE /* GRConfiguration.m */; };
 		9294D45118766369009352DB /* GRAudio.png in Resources */ = {isa = PBXBuildFile; fileRef = 9294D44F18766369009352DB /* GRAudio.png */; };
 		9294D45218766369009352DB /* GRAudio@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9294D45018766369009352DB /* GRAudio@2x.png */; };
 		929989B618768C2E0001EFDC /* MFCacheManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 929989A918768C2E0001EFDC /* MFCacheManager.m */; };
@@ -392,6 +393,9 @@
 		927C9FB0186D66DC00DC0EDC /* GraceRoad-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GraceRoad-Prefix.pch"; sourceTree = "<group>"; };
 		927C9FB4186D66DC00DC0EDC /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		927C9FBB186D66DC00DC0EDC /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		9288BA07188D05DA0095ADAE /* GRConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRConfiguration.h; sourceTree = "<group>"; };
+		9288BA08188D05DA0095ADAE /* GRConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GRConfiguration.m; sourceTree = "<group>"; };
+		9288BA0C188D06A50095ADAE /* GRFoundation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GRFoundation.h; path = Library/GRFoundation.h; sourceTree = SOURCE_ROOT; };
 		9294D44F18766369009352DB /* GRAudio.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GRAudio.png; sourceTree = "<group>"; };
 		9294D45018766369009352DB /* GRAudio@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "GRAudio@2x.png"; sourceTree = "<group>"; };
 		929989A818768C2E0001EFDC /* MFCacheManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFCacheManager.h; sourceTree = "<group>"; };
@@ -588,6 +592,8 @@
 				9261922A18865752001E0A72 /* GRAppDelegate.m */,
 				9261922B18865752001E0A72 /* GRDataService.h */,
 				9261922C18865752001E0A72 /* GRDataService.m */,
+				9288BA07188D05DA0095ADAE /* GRConfiguration.h */,
+				9288BA08188D05DA0095ADAE /* GRConfiguration.m */,
 				9261922D18865752001E0A72 /* GRMainViewController.h */,
 				9261922E18865752001E0A72 /* GRMainViewController.m */,
 				9261922F18865752001E0A72 /* GRResourceManager.h */,
@@ -780,6 +786,7 @@
 		927CA014186D6FD500DC0EDC /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				9288BA0C188D06A50095ADAE /* GRFoundation.h */,
 				606E8FDF18894698000C5CB2 /* PDFReader.xcodeproj */,
 				60E8D95C1889131900C2EFC2 /* BlurView */,
 				9276F33518877D6100E13763 /* GalleryView */,
@@ -1145,6 +1152,7 @@
 				929989BC18768C2E0001EFDC /* MFNetworkOperation.m in Sources */,
 				9261927618865790001E0A72 /* GRResourceView.m in Sources */,
 				609723E5188AC7000020AEA0 /* UIView+FirstResponder.m in Sources */,
+				9288BA09188D05DA0095ADAE /* GRConfiguration.m in Sources */,
 				9276F34918877D6100E13763 /* ERGalleryViewThumbnail.m in Sources */,
 				9261924918865752001E0A72 /* GRAppDelegate.m in Sources */,
 				609723E1188AC7000020AEA0 /* UIActionSheet+BlockSupport.m in Sources */,

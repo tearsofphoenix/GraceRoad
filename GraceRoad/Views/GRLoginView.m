@@ -7,12 +7,12 @@
 //
 
 #import "GRLoginView.h"
-#import "UIView+FirstResponder.h"
-#import "UIAlertView+BlockSupport.h"
+#import "GRUIExtensions.h"
 #import "GRUserProfileView.h"
 #import "GRViewService.h"
 #import "GRDataService.h"
 #import "GRTheme.h"
+#import "GRFoundation.h"
 
 @interface GRLoginView ()
 {
@@ -222,13 +222,22 @@
     {
         ERServiceCallback callback = (^(id result, id exception)
                                       {
-                                          if (_disposableCallback)
+                                          ERSC(GRViewServiceID, GRViewServiceHideLoadingIndicatorAction, nil, nil);
+                                          
+                                          if (result)
                                           {
-                                              _disposableCallback();
-                                              [self setDisposableCallback: nil];
+                                              if (_disposableCallback)
+                                              {
+                                                  _disposableCallback();
+                                                  [self setDisposableCallback: nil];
+                                              }
                                           }
                                       });
         callback = Block_copy(callback);
+        
+        ERSC(GRViewServiceID, GRViewServiceShowLoadingIndicatorAction, nil, nil);
+        
+        password = [password MD5String];
         
         ERSC(GRDataServiceID,
              GRDataServiceLoginAction,

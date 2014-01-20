@@ -37,8 +37,7 @@ static NSString *gsCacheFolderPath = nil;
     if (!gsCacheFolderPath)
     {
         gsCacheFolderPath = [[NSSearchPathForDirectoriesInDomains(NSLibraryDirectory,
-                                                                  NSUserDomainMask, YES)[0]
-                              stringByAppendingPathComponent: @"/.grace-caches/"] retain];
+                                                                  NSUserDomainMask, YES)[0] stringByAppendingPathComponent: @"/.cmb-caches/"] retain];
     }
     
     return gsCacheFolderPath;
@@ -49,7 +48,7 @@ static NSString *gsCacheFolderPath = nil;
 {
     if (data && fileID)
     {
-        fileID = [fileID MD5String];
+        //fileID = [fileID CMBMP(MD5String)];
         NSString *localPath = [[[self class] _cacheFolderPath] stringByAppendingPathComponent: fileID];
         
         NSError *error = nil;
@@ -68,7 +67,7 @@ static NSString *gsCacheFolderPath = nil;
 - (NSData *)dataForFileID: (NSString *)fileID
 {
     NSString *path = [[self class] _cacheFolderPath];
-    fileID = [fileID MD5String];
+    //fileID = [fileID CMBMP(MD5String)];
     
     path = [path stringByAppendingPathComponent: fileID];
     

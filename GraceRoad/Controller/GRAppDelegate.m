@@ -32,7 +32,7 @@
 didFinishLaunchingWithOptions: (NSDictionary *)launchOptions
 {
     //[iOSHierarchyViewer start];
-    
+    NSLog(@"%@", [[UIDevice currentDevice] identifierForVendor]);
     [[UIApplication sharedApplication] setStatusBarHidden: YES];
     
     _window = [[UIWindow alloc] initWithFrame: [[UIScreen mainScreen] bounds]];
