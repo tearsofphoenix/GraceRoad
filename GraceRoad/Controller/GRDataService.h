@@ -37,6 +37,7 @@
 #define GRDataServiceSendMessageToWeixinAction   @"sendMessageToWeixin:"
 
 #define GRDataServiceExportNotificationToReminderAction      @"exportNotificationToReminder:"
+#define GRDataServiceRegisterDeviceTokenAction   @"registerDeviceToken:"
 
 #define GRDataServiceSendFeedbackAction          @"sendFeedback:"
 #pragma mark - notification

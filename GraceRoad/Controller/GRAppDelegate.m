@@ -12,6 +12,8 @@
 #import "UIAlertView+BlockSupport.h"
 #import "GRDataService.h"
 #import "WXApi.h"
+#import "NSObject+GRExtensions.h"
+#import <NoahsUtility/NSData+HEXStringDescription.h>
 
 @interface iOSHierarchyViewer : NSObject
 
@@ -32,7 +34,14 @@
 didFinishLaunchingWithOptions: (NSDictionary *)launchOptions
 {
     //[iOSHierarchyViewer start];
-    NSLog(@"%@", [[UIDevice currentDevice] identifierForVendor]);
+    
+    id obj = (@{
+               @"device_id" : @"a",
+               @"device_token" : @"b",
+               });
+    
+    NSLog(@"%@", [obj JSONString]);
+    
     [[UIApplication sharedApplication] setStatusBarHidden: YES];
     
     _window = [[UIWindow alloc] initWithFrame: [[UIScreen mainScreen] bounds]];
@@ -138,7 +147,11 @@ didReceiveRemoteNotification: (NSDictionary *)userInfo
 - (void)                             application: (UIApplication *)app
 didRegisterForRemoteNotificationsWithDeviceToken: (NSData *)deviceToken
 {
-    NSLog(@"devToken=%@",deviceToken);
+    NSString *deviceTokenString = [deviceToken hexBytesStringDescription];
+    
+    ERSC(GRDataServiceID,
+         GRDataServiceRegisterDeviceTokenAction,
+         @[ deviceTokenString ], nil);
 }
 
 - (void)                             application: (UIApplication *)app

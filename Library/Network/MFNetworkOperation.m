@@ -8,6 +8,8 @@
 
 #import "MFNetworkOperation.h"
 #import "NSString+CMBExtensions.h"
+#import "NSData+CMBExtensions.h"
+#import "NSObject+GRExtensions.h"
 
 @interface MFNetworkOperation ()<NSURLConnectionDataDelegate>
 {
@@ -46,9 +48,7 @@
 }
 
 - (void)dealloc
-{
-    NSLog(@"in func: %s %@", __func__, self);
-    
+{    
     [_parameters release];
     [_receivedData release];
     [_URL release];
@@ -73,9 +73,22 @@
        forHTTPHeaderField: @"Content-Type"];
         
         NSMutableArray *parts = [NSMutableArray arrayWithCapacity: [_parameters count]];
-        [parameters enumerateKeysAndObjectsUsingBlock: (^(NSString *key, NSString *obj, BOOL *stop)
+        
+        Class stringClass = [NSString class];
+        Class arrayClass = [NSArray class];
+        Class dictionaryClass = [NSDictionary class];
+        
+        [parameters enumerateKeysAndObjectsUsingBlock: (^(NSString *key, id obj, BOOL *stop)
                                                         {
-                                                            [parts addObject: [NSString stringWithFormat: @"%@=%@", key, obj]];
+                                                            if ([obj isKindOfClass: stringClass])
+                                                            {
+                                                                [parts addObject: [NSString stringWithFormat: @"%@=%@", key, obj]];
+                                                                
+                                                            }else if ([obj isKindOfClass: arrayClass]
+                                                                      || [obj isKindOfClass: dictionaryClass])
+                                                            {
+                                                                [parts addObject: [NSString stringWithFormat: @"%@=%@", key, [obj JSONString]]];
+                                                            }
                                                         })];
         
         NSString *str = [parts componentsJoinedByString: @"&"];

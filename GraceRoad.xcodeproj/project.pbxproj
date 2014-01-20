@@ -20,6 +20,7 @@
 		604F1237188BFB5F00AEB247 /* GRFeedbackView.m in Sources */ = {isa = PBXBuildFile; fileRef = 604F1236188BFB5F00AEB247 /* GRFeedbackView.m */; };
 		604F1239188C353500AEB247 /* GRQRCode.png in Resources */ = {isa = PBXBuildFile; fileRef = 604F1238188C353500AEB247 /* GRQRCode.png */; };
 		604F123C188C354800AEB247 /* GRContactUSView.m in Sources */ = {isa = PBXBuildFile; fileRef = 604F123B188C354800AEB247 /* GRContactUSView.m */; };
+		604F124B188D460B00AEB247 /* NSObject+GRExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 604F124A188D460B00AEB247 /* NSObject+GRExtensions.m */; };
 		606802901888233700D5217B /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 6068028F1888233700D5217B /* Reachability.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		60680295188828D200D5217B /* GRMapAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 60680294188828D200D5217B /* GRMapAnnotation.m */; };
 		6068029818883DCA00D5217B /* GRTabbarBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 6068029618883DCA00D5217B /* GRTabbarBackground.png */; };
@@ -228,6 +229,8 @@
 		604F1238188C353500AEB247 /* GRQRCode.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GRQRCode.png; sourceTree = "<group>"; };
 		604F123A188C354800AEB247 /* GRContactUSView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRContactUSView.h; sourceTree = "<group>"; };
 		604F123B188C354800AEB247 /* GRContactUSView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GRContactUSView.m; sourceTree = "<group>"; };
+		604F1249188D460B00AEB247 /* NSObject+GRExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+GRExtensions.h"; sourceTree = "<group>"; };
+		604F124A188D460B00AEB247 /* NSObject+GRExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+GRExtensions.m"; sourceTree = "<group>"; };
 		6068028E1888233700D5217B /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		6068028F1888233700D5217B /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		60680293188828D100D5217B /* GRMapAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRMapAnnotation.h; sourceTree = "<group>"; };
@@ -805,6 +808,8 @@
 			children = (
 				6068028E1888233700D5217B /* Reachability.h */,
 				6068028F1888233700D5217B /* Reachability.m */,
+				604F1249188D460B00AEB247 /* NSObject+GRExtensions.h */,
+				604F124A188D460B00AEB247 /* NSObject+GRExtensions.m */,
 				929989C318768D550001EFDC /* NSData+CMBExtensions.h */,
 				929989C418768D550001EFDC /* NSData+CMBExtensions.m */,
 				929989C018768C9C0001EFDC /* NSString+CMBExtensions.h */,
@@ -1144,6 +1149,7 @@
 				9261924E18865752001E0A72 /* GraceRoadMain.m in Sources */,
 				9261925418865752001E0A72 /* GRNibPackage.m in Sources */,
 				9276F3341887758100E13763 /* GRSendMessageView.m in Sources */,
+				604F124B188D460B00AEB247 /* NSObject+GRExtensions.m in Sources */,
 				9261927518865790001E0A72 /* GRResourceInfoView.m in Sources */,
 				9276F3311887729E00E13763 /* GRTheme.m in Sources */,
 				604F123C188C354800AEB247 /* GRContactUSView.m in Sources */,

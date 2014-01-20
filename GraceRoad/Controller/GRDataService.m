@@ -24,6 +24,13 @@
 
 #define GRLocalNotificationScheduleKey  GRPrefix ".hasScheduled"
 #define GRCurrentAccountKey             GRPrefix ".current-account"
+#define GRHasRegisterDeviceKey          GRPrefix ".hasRegisteredDevice"
+
+#define GRNetworkActionKey              @"action"
+#define GRNetworkStatusKey              @"status"
+#define GRNetworkDataKey                @"data"
+
+#define GRNetworkStatusOKValue          @"0"
 
 @interface GRDataService ()<NWHubDelegate>
 {
@@ -378,11 +385,10 @@
 {
     //login
     //
-    //NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     
     [[MFNetworkClient sharedClient] postToURL: [GRConfiguration serverURL]
                                    parameters: (@{
-                                                  @"action" : @"login",
+                                                  GRNetworkActionKey : @"login",
                                                   @"email" : userName,
                                                   @"password" : password,
                                                   })
@@ -390,9 +396,16 @@
                                      callback: (^(NSData *data, id error)
                                                 {
                                                     NSDictionary *result = [data JSONObject];
-                                                    if ([result[@"status"] isEqualToString: @"0"])
+                                                    if ([result[GRNetworkStatusKey] isEqualToString: GRNetworkStatusOKValue])
                                                     {
+                                                        NSDictionary *accountInfo = result[GRNetworkDataKey];
                                                         
+                                                        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+                                                        [defaults setObject: accountInfo
+                                                                     forKey: GRCurrentAccountKey];
+                                                        [defaults synchronize];
+                                                        
+                                                        callback(accountInfo, nil);
                                                     }else
                                                     {
                                                         callback(nil, nil);
@@ -402,38 +415,38 @@
                                                     
                                                 })];
     
-//    double delayInSeconds = 1.0;
-//    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
-//    dispatch_after(popTime, dispatch_get_main_queue(),
-//                   (^(void)
-//                    {
-//                        NSDictionary *scripture = [_scriptures lastObject];
-//                        if (scripture)
-//                        {
-//                            double delayInSeconds = 2.0;
-//                            dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
-//                            dispatch_after(popTime, dispatch_get_main_queue(),
-//                                           (^(void)
-//                                            {
-//                                                ERSC(GRViewServiceID, GRViewServiceShowDailyScriptureAction, @[ scripture ], nil);
-//                                            }));
-//                            
-//                            [_scriptures removeLastObject];
-//                        }
-//                        
-//                        if (callback)
-//                        {
-//                            callback(nil, nil);
-//                        }
-//                        
-//                        dispatch_async(dispatch_get_main_queue(),
-//                                       (^
-//                                        {
-//                                            [[NSNotificationCenter defaultCenter] postNotificationName: GRAccountLoginNotification
-//                                                                                                object: nil
-//                                                                                              userInfo: nil];
-//                                        }));
-//                    }));
+    //    double delayInSeconds = 1.0;
+    //    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+    //    dispatch_after(popTime, dispatch_get_main_queue(),
+    //                   (^(void)
+    //                    {
+    //                        NSDictionary *scripture = [_scriptures lastObject];
+    //                        if (scripture)
+    //                        {
+    //                            double delayInSeconds = 2.0;
+    //                            dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+    //                            dispatch_after(popTime, dispatch_get_main_queue(),
+    //                                           (^(void)
+    //                                            {
+    //                                                ERSC(GRViewServiceID, GRViewServiceShowDailyScriptureAction, @[ scripture ], nil);
+    //                                            }));
+    //
+    //                            [_scriptures removeLastObject];
+    //                        }
+    //
+    //                        if (callback)
+    //                        {
+    //                            callback(nil, nil);
+    //                        }
+    //
+    //                        dispatch_async(dispatch_get_main_queue(),
+    //                                       (^
+    //                                        {
+    //                                            [[NSNotificationCenter defaultCenter] postNotificationName: GRAccountLoginNotification
+    //                                                                                                object: nil
+    //                                                                                              userInfo: nil];
+    //                                        }));
+    //                    }));
 }
 
 - (void)addScripture: (NSDictionary *)scriptureInfo
@@ -666,6 +679,46 @@
 - (void)sendFeedback: (NSString *)feedback
 {
     NSLog(@"in func:%s feedback: %@", __func__, feedback);
+}
+
+- (void)registerDeviceToken: (NSString *)deviceToken
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    if (![defaults boolForKey: GRHasRegisterDeviceKey])
+    {
+        UIDevice *device = [UIDevice currentDevice];
+        NSString *idForVender = [[device identifierForVendor] UUIDString];
+        
+        NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+        [parameters setObject: [device model]
+                       forKey: @"model"];
+        [parameters setObject: [device systemVersion]
+                       forKey: @"system_version"];
+        [parameters setObject: deviceToken
+                       forKey: @"device_token"];
+        [parameters setObject: idForVender
+                       forKey: @"device_id"];
+        
+        [[MFNetworkClient sharedClient] postToURL: [GRConfiguration serverURL]
+                                       parameters: (@{
+                                                      GRNetworkActionKey : @"register_device",
+                                                      @"device_id" : idForVender,
+                                                      @"device_token" : deviceToken,
+                                                      @"properties" : parameters
+                                                      })
+                                         lifeTime: 0
+                                         callback: (^(NSData *data, id error)
+                                                    {
+                                                        NSDictionary *result = [data JSONObject];
+                                                        if ([result[GRNetworkStatusKey] isEqualToString: GRNetworkStatusOKValue])
+                                                        {
+                                                            [defaults setBool: YES
+                                                                       forKey: GRHasRegisterDeviceKey];
+                                                        }
+                                                        
+                                                        NSLog(@"%@", result);
+                                                    })];
+    }
 }
 
 @end

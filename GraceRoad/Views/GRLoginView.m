@@ -231,6 +231,10 @@
                                                   _disposableCallback();
                                                   [self setDisposableCallback: nil];
                                               }
+                                          }else
+                                          {
+                                              [UIAlertView alertWithMessage: @"登陆失败！"
+                                                          cancelButtonTitle: @"确定"];
                                           }
                                       });
         callback = Block_copy(callback);
