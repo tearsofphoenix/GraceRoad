@@ -14,5 +14,5 @@
 #define GRAccountTelephoneKey       @"telephone"
 #define GRAccountQQKey              @"qq"
 
-
-
+#define GRAccountKey                @"account"
+#define GRTeamKey                   @"team"

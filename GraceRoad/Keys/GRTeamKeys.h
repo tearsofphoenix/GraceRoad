@@ -7,5 +7,5 @@
 //
 
 
-#define GRTeamIDKey         @"uuid"
+#define GRTeamIDKey         @"team_id"
 #define GRTeamNameKey       @"name"

@@ -456,7 +456,7 @@
 
 - (NSDictionary *)currentAccount
 {
-    return [[NSUserDefaults standardUserDefaults] objectForKey: GRCurrentAccountKey];
+    return [[NSUserDefaults standardUserDefaults] objectForKey: GRCurrentAccountKey][GRAccountKey];
 }
 
 - (void)logout
