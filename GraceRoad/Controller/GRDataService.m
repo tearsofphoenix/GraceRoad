@@ -361,10 +361,10 @@
         
         _eventStore = [[EKEventStore alloc] init];
         
-        EKAuthorizationStatus status = [EKEventStore authorizationStatusForEntityType: EKEntityTypeReminder];
+        EKAuthorizationStatus status = [EKEventStore authorizationStatusForEntityType: EKEntityTypeEvent];
         if (status == EKAuthorizationStatusNotDetermined)
         {
-            [_eventStore requestAccessToEntityType: EKEntityTypeReminder
+            [_eventStore requestAccessToEntityType: EKEntityTypeEvent
                                         completion:
              (^(BOOL granted, NSError *error)
               {
@@ -642,37 +642,44 @@
 
 - (void)exportNotificationToReminder: (NSString *)content
 {
-    EKAuthorizationStatus status = [EKEventStore authorizationStatusForEntityType: EKEntityTypeReminder];
+    EKAuthorizationStatus status = [EKEventStore authorizationStatusForEntityType: EKEntityTypeEvent];
     if (EKAuthorizationStatusAuthorized == status)
     {
-        EKReminder *reminder = [[EKReminder alloc] init];
+        EKEvent *event = [EKEvent eventWithEventStore: _eventStore];
         NSString *month = [content substringWithRange: NSMakeRange(0, 2)];
         NSString *day = [content substringWithRange: NSMakeRange(2, 2)];
         NSString *eventContent = [content substringFromIndex: 4];
         
-        [reminder setTitle: eventContent];
+        [event setTitle: eventContent];
         
-        NSDateComponents *components = [[NSDateComponents alloc] init];
+        NSInteger year = [[NSDate date] year];
+        NSInteger monthValue = [month integerValue];
+        NSInteger dayValue = [day integerValue];
         
-        [components setYear: [[NSDate date] year]];
-        [components setMonth: [month integerValue]];
-        [components setDay: [day integerValue]];
+        EKAlarm *alarm = [EKAlarm alarmWithAbsoluteDate: [NSDate dateWithYear: year
+                                                                        month: monthValue
+                                                                          day: dayValue - 1]];
+        [event addAlarm: alarm];
+        [event setCalendar: [_eventStore calendarsForEntityType: EKEntityTypeEvent][0]];
         
-        [reminder setStartDateComponents: components];
-        [components release];
-        
-        [reminder setCalendar: [_eventStore defaultCalendarForNewReminders]];
-        
+        NSDate *startDate = [NSDate dateWithYear: year
+                                           month: monthValue
+                                             day: dayValue];
+        [event setStartDate: startDate];
+        [event setEndDate: [NSDate dateWithYear: year
+                                          month: monthValue
+                                            day: dayValue + 1]];
         NSError *error = nil;
-        [_eventStore saveReminder: reminder
-                           commit: YES
-                            error: &error];
-        [reminder release];
+        [_eventStore saveEvent: event
+                          span: EKSpanFutureEvents
+                        commit: YES
+                         error: &error];
         
         if (error)
         {
             NSLog(@"%@", error);
         }
+
     }
 }
 
