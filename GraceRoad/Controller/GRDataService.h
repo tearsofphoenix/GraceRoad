@@ -39,7 +39,7 @@
 #define GRDataServiceExportNotificationToReminderAction      @"exportNotificationToReminder:"
 #define GRDataServiceRegisterDeviceTokenAction   @"registerDeviceToken:"
 
-#define GRDataServiceSendFeedbackAction          @"sendFeedback:"
+#define GRDataServiceSendFeedbackAction          @"sendFeedback:callback:"
 #pragma mark - notification
 
 #define GRAccountLoginNotification          GRPrefix ".notification.login"

@@ -13,13 +13,17 @@
 #import "GRUIExtensions.h"
 #import <MapKit/MapKit.h>
 
+#define GRHasMap 0
+
 @interface GRIntroductView ()<UITableViewDataSource, UITableViewDelegate, MKMapViewDelegate>
 {
     UITableView *_tableView;
     
     UIImageView *_placeHolderImageView;
+#if GRHasMap
     MKMapView *_mapView;
     GRMapAnnotation *_annotation;
+#endif
     NSArray *_telephones;
 }
 @end
@@ -73,17 +77,18 @@
         [_placeHolderImageView setImage: [UIImage imageNamed: @"GRMapPlaceHolder"]];
         [_placeHolderImageView setAlpha: 0];
         
-        
+#if GRHasMap
         _mapView = [[MKMapView alloc] initWithFrame: rect];
         [_mapView setDelegate: self];
-        [self _updateMapViewIfNeeded];
         
         [[Reachability reachabilityForInternetConnection] startNotifier];
         [[NSNotificationCenter defaultCenter] addObserver: self
                                                  selector: @selector(_notificationForNetworkUpdated:)
                                                      name: kReachabilityChangedNotification
                                                    object: nil];
-        
+#endif
+        [self _updateMapViewIfNeeded];
+
         [_tableView setDataSource: self];
         [_tableView setDelegate: self];
     }
@@ -97,8 +102,10 @@
     
     [_telephones release];
     [_tableView release];
+#if GRHasMap
     [_mapView release];
     [_annotation release];
+#endif
     [_placeHolderImageView release];
     
     [super dealloc];
@@ -106,9 +113,10 @@
 
 - (void)_updateMapForChurchLocation
 {
+#if GRHasMap
     [_placeHolderImageView setAlpha: 0];
-    [_mapView setAlpha: 1];
     
+    [_mapView setAlpha: 1];
     [_mapView removeAnnotation: _annotation];
     
     if (!_annotation)
@@ -125,6 +133,9 @@
     }
     
     [_mapView addAnnotation: _annotation];
+#else
+    [_placeHolderImageView setAlpha: 1];
+#endif
 }
 
 - (void)setFrame: (CGRect)frame
@@ -136,6 +147,7 @@
 
 - (void)_updateMapViewIfNeeded
 {
+#if GRHasMap
     if([[Reachability reachabilityForInternetConnection] currentReachabilityStatus] != NotReachable)
     {
         [self _updateMapForChurchLocation];
@@ -144,6 +156,9 @@
         [_placeHolderImageView setAlpha: 1];
         [_mapView setAlpha: 0];
     }
+#else
+    [_placeHolderImageView setAlpha: 1];
+#endif
 }
 
 - (void)_notificationForNetworkUpdated: (NSNotification *)notification
@@ -275,7 +290,9 @@ viewForHeaderInSection: (NSInteger)section
         case 2:
         {
             [[cell contentView] addSubview: _placeHolderImageView];
+#if  GRHasMap
             [[cell contentView] addSubview: _mapView];
+#endif
             break;
         }
         default:

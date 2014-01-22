@@ -678,8 +678,30 @@
 }
 
 - (void)sendFeedback: (NSString *)feedback
+            callback: (ERServiceCallback)callback
 {
-    NSLog(@"in func:%s feedback: %@", __func__, feedback);
+    [GRNetworkService postMessage: (@{
+                                      GRNetworkActionKey : @"feedback",
+                                      GRNetworkArgumentsKey : (@{
+                                                                 @"device_id" : [[[UIDevice currentDevice] identifierForVendor] UUIDString],
+                                                                 @"content" : feedback
+                                                                 })
+                                      })
+                         callback: (^(NSDictionary *result, id exception)
+                                    {
+                                        if (result)
+                                        {
+                                            NSLog(@"feedback ok!");
+                                        }else
+                                        {
+                                            NSLog(@"feedback failed!");
+                                        }
+                                        
+                                        if (callback)
+                                        {
+                                            callback(result, exception);
+                                        }
+                                    })];
 }
 
 - (void)registerDeviceToken: (NSString *)deviceToken

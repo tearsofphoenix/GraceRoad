@@ -10,6 +10,9 @@
 #import "MFNetworkClient.h"
 #import "GRConfiguration.h"
 #import "GRFoundation.h"
+#import "GRViewService.h"
+#import "Reachability.h"
+#import "GRUIExtensions.h"
 
 @implementation GRNetworkService
 
@@ -26,47 +29,56 @@
 + (void)postMessage: (NSDictionary *)parameters
            callback: (ERServiceCallback)callback
 {
-    @autoreleasepool
+    if ([[Reachability reachabilityForInternetConnection] currentReachabilityStatus] == NotReachable)
     {
-        NSMutableDictionary *info = [NSMutableDictionary dictionaryWithDictionary: parameters];
-        NSString *action = parameters[GRNetworkActionKey];
+        ERSC(GRViewServiceID, GRViewServiceHideLoadingIndicatorAction, nil, nil);
         
-        NSString *messageID = [NSString randomStringWithLength: 8];
-        NSLog(@"messageID: %@", messageID);
-        
-        [info setObject: messageID
-                 forKey: GRNetworkMessageIDKey];
-        [info setObject: [[action stringByAppendingString: messageID] MD5String]
-                 forKey: GRNetworkMessageHashKey];
-        
-        NSString *str = [info JSONString];
-        if (str)
+        [UIAlertView alertWithMessage: @"请检查您的网络连接！"
+                    cancelButtonTitle: @"确定"];
+    }else
+    {
+        @autoreleasepool
         {
-            [[MFNetworkClient sharedClient] postToURL: [GRConfiguration serverURL]
-                                           parameters: (@{
-                                                          @"request" : str,
-                                                          })
-                                             lifeTime: 0
-                                             callback: (^(NSData *data, id error)
-                                                        {
-                                                            NSDictionary *result = nil;
-                                                            if (data)
+            NSMutableDictionary *info = [NSMutableDictionary dictionaryWithDictionary: parameters];
+            NSString *action = parameters[GRNetworkActionKey];
+            
+            NSString *messageID = [NSString randomStringWithLength: 8];
+            //        NSLog(@"messageID: %@", messageID);
+            
+            [info setObject: messageID
+                     forKey: GRNetworkMessageIDKey];
+            [info setObject: [[action stringByAppendingString: messageID] MD5String]
+                     forKey: GRNetworkMessageHashKey];
+            
+            NSString *str = [info JSONString];
+            if (str)
+            {
+                [[MFNetworkClient sharedClient] postToURL: [GRConfiguration serverURL]
+                                               parameters: (@{
+                                                              @"request" : str,
+                                                              })
+                                                 lifeTime: 0
+                                                 callback: (^(NSData *data, id error)
                                                             {
-                                                                result = [data JSONObject];
-                                                                if (!result)
+                                                                NSDictionary *result = nil;
+                                                                if (data)
                                                                 {
-                                                                    NSString *response = [[NSString alloc] initWithData: data
-                                                                                                               encoding: NSUTF8StringEncoding];
-                                                                    NSLog(@"network: %@", response);
-                                                                    [response release];
+                                                                    result = [data JSONObject];
+                                                                    if (!result)
+                                                                    {
+                                                                        NSString *response = [[NSString alloc] initWithData: data
+                                                                                                                   encoding: NSUTF8StringEncoding];
+                                                                        NSLog(@"network: %@", response);
+                                                                        [response release];
+                                                                    }
                                                                 }
-                                                            }
-                                                            
-                                                            if (callback)
-                                                            {
-                                                                callback(result, error);
-                                                            }
-                                                        })];
+                                                                
+                                                                if (callback)
+                                                                {
+                                                                    callback(result, error);
+                                                                }
+                                                            })];
+            }
         }
     }
 }

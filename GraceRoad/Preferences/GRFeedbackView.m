@@ -75,11 +75,19 @@
     {
         ERSC(GRViewServiceID, GRViewServiceShowLoadingIndicatorAction, nil, nil);
         
-        ERSC(GRDataServiceID, GRDataServiceSendFeedbackAction, @[ feedback ],
-             (^(id result, id exception)
-              {
-                  ERSC(GRViewServiceID, GRViewServiceHideLoadingIndicatorAction, nil, nil);
-              }));
+        ERServiceCallback callback = (^(id result, id exception)
+                                      {
+                                          ERSC(GRViewServiceID, GRViewServiceHideLoadingIndicatorAction, nil, nil);
+                                          
+                                          [UIAlertView alertWithMessage: @"反馈成功！谢谢。"
+                                                      cancelButtonTitle: @"确定"];
+                                      });
+        
+        callback = Block_copy(callback);
+        
+        ERSC(GRDataServiceID, GRDataServiceSendFeedbackAction, @[ feedback, callback ], nil);
+        
+        Block_release(callback);
     }else
     {
         [UIAlertView alertWithMessage: @"请检查您的输入！"
