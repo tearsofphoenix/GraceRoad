@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		600C339818857E2000656A5D /* libiOSHierarchyViewer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 600C339518857E1000656A5D /* libiOSHierarchyViewer.a */; };
 		603A656F1889728E00352C0B /* PDFReaderResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 603A656E1889728E00352C0B /* PDFReaderResources.bundle */; };
 		603A6576188982AB00352C0B /* ck.pem in Resources */ = {isa = PBXBuildFile; fileRef = 603A6575188982AB00352C0B /* ck.pem */; };
 		603A65781889856400352C0B /* push.p12 in Resources */ = {isa = PBXBuildFile; fileRef = 603A65771889856300352C0B /* push.p12 */; };
@@ -150,17 +149,11 @@
 		92CE914718755BEB00C7D3A1 /* GRSermonTab@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 92CE914218755BEB00C7D3A1 /* GRSermonTab@2x.png */; };
 		92CE914A1875699A00C7D3A1 /* GRIconPDF.png in Resources */ = {isa = PBXBuildFile; fileRef = 92CE91481875699A00C7D3A1 /* GRIconPDF.png */; };
 		92CE914B1875699A00C7D3A1 /* GRIconPDF@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 92CE91491875699A00C7D3A1 /* GRIconPDF@2x.png */; };
+		92FA8246188F97010055C9B2 /* GRNetworkService.m in Sources */ = {isa = PBXBuildFile; fileRef = 92FA8245188F97010055C9B2 /* GRNetworkService.m */; };
 		92FFDF7D187A8CAE00FF3C15 /* GRAddButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 92FFDF7C187A8CAE00FF3C15 /* GRAddButton.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		600C339418857E1000656A5D /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 600C339018857E0F00656A5D /* iOSHierarchyViewer.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 7C861E34153DF2E000935C95;
-			remoteInfo = iOSHierarchyViewer;
-		};
 		603A656C18894B9200352C0B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 606E8FDF18894698000C5CB2 /* PDFReader.xcodeproj */;
@@ -213,7 +206,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		600C339018857E0F00656A5D /* iOSHierarchyViewer.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = iOSHierarchyViewer.xcodeproj; path = "iOS-Hierarchy-Viewer/iOSHierarchyViewer.xcodeproj"; sourceTree = "<group>"; };
 		603A656E1889728E00352C0B /* PDFReaderResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = PDFReaderResources.bundle; sourceTree = "<group>"; };
 		603A6575188982AB00352C0B /* ck.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ck.pem; sourceTree = "<group>"; };
 		603A65771889856300352C0B /* push.p12 */ = {isa = PBXFileReference; lastKnownFileType = file; path = push.p12; sourceTree = "<group>"; };
@@ -428,6 +420,8 @@
 		92CE914218755BEB00C7D3A1 /* GRSermonTab@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "GRSermonTab@2x.png"; sourceTree = "<group>"; };
 		92CE91481875699A00C7D3A1 /* GRIconPDF.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GRIconPDF.png; sourceTree = "<group>"; };
 		92CE91491875699A00C7D3A1 /* GRIconPDF@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "GRIconPDF@2x.png"; sourceTree = "<group>"; };
+		92FA8244188F97010055C9B2 /* GRNetworkService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRNetworkService.h; sourceTree = "<group>"; };
+		92FA8245188F97010055C9B2 /* GRNetworkService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GRNetworkService.m; sourceTree = "<group>"; };
 		92FFDF7C187A8CAE00FF3C15 /* GRAddButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GRAddButton.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -439,7 +433,6 @@
 				606E8FEA188946A7000C5CB2 /* libPDFReaderStatic.a in Frameworks */,
 				923E4A0E1888F6F9006E9029 /* libNWPushNotification.a in Frameworks */,
 				9276F32E18876B0D00E13763 /* libWeChatSDK.a in Frameworks */,
-				600C339818857E2000656A5D /* libiOSHierarchyViewer.a in Frameworks */,
 				9267339F187266C600249E37 /* libsqlite3.dylib in Frameworks */,
 				9267334E187258C500249E37 /* libNoahsRecordStatic.a in Frameworks */,
 				927C9FA5186D66DC00DC0EDC /* CoreGraphics.framework in Frameworks */,
@@ -451,14 +444,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		600C339118857E0F00656A5D /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				600C339518857E1000656A5D /* libiOSHierarchyViewer.a */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		603A6582188A723600352C0B /* Abraham */ = {
 			isa = PBXGroup;
 			children = (
@@ -597,6 +582,8 @@
 				9261922C18865752001E0A72 /* GRDataService.m */,
 				9288BA07188D05DA0095ADAE /* GRConfiguration.h */,
 				9288BA08188D05DA0095ADAE /* GRConfiguration.m */,
+				92FA8244188F97010055C9B2 /* GRNetworkService.h */,
+				92FA8245188F97010055C9B2 /* GRNetworkService.m */,
 				9261922D18865752001E0A72 /* GRMainViewController.h */,
 				9261922E18865752001E0A72 /* GRMainViewController.m */,
 				9261922F18865752001E0A72 /* GRResourceManager.h */,
@@ -795,7 +782,6 @@
 				9276F33518877D6100E13763 /* GalleryView */,
 				9276F32A18876B0D00E13763 /* WeiXin */,
 				60F9438B1886D81A001F13E3 /* LiveBlur */,
-				600C339018857E0F00656A5D /* iOSHierarchyViewer.xcodeproj */,
 				929989A718768C2E0001EFDC /* Network */,
 				9267333D1872588400249E37 /* NoahsRecord.xcodeproj */,
 				923E49EE1888F6A8006E9029 /* NWPushNotification.xcodeproj */,
@@ -956,10 +942,6 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = 600C339118857E0F00656A5D /* Products */;
-					ProjectRef = 600C339018857E0F00656A5D /* iOSHierarchyViewer.xcodeproj */;
-				},
-				{
 					ProductGroup = 9267333E1872588400249E37 /* Products */;
 					ProjectRef = 9267333D1872588400249E37 /* NoahsRecord.xcodeproj */;
 				},
@@ -980,13 +962,6 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		600C339518857E1000656A5D /* libiOSHierarchyViewer.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libiOSHierarchyViewer.a;
-			remoteRef = 600C339418857E1000656A5D /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
 		603A656D18894B9200352C0B /* PDFReaderResources.bundle */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
@@ -1153,6 +1128,7 @@
 				9261927518865790001E0A72 /* GRResourceInfoView.m in Sources */,
 				9276F3311887729E00E13763 /* GRTheme.m in Sources */,
 				604F123C188C354800AEB247 /* GRContactUSView.m in Sources */,
+				92FA8246188F97010055C9B2 /* GRNetworkService.m in Sources */,
 				60F9438E1886D81A001F13E3 /* DKLiveBlurView.m in Sources */,
 				9261925218865752001E0A72 /* GRUserProfileView.m in Sources */,
 				929989BC18768C2E0001EFDC /* MFNetworkOperation.m in Sources */,

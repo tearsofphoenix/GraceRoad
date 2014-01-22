@@ -35,4 +35,6 @@
 + (id)stringWithData: (NSData *)data
                    encoding: (NSStringEncoding)encoding;
 
++ (id)randomStringWithLength: (NSInteger)length;
+
 @end

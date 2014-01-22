@@ -120,4 +120,24 @@
                               encoding: encoding] autorelease];
 }
 
+static char sources[] = "qwertyuiopasdfghjklzxcvbnm1234567890";
+#define SourceLength (36)
+
++ (id)randomStringWithLength: (NSInteger)length
+{
+    char *buffer = malloc(sizeof(*buffer) * (length + 1));
+    
+    for (NSInteger iLooper = 0; iLooper < length; ++iLooper)
+    {
+        buffer[iLooper] = sources[ arc4random() % 36];
+    }
+    
+    buffer[length] = '\0';
+    
+    NSString *str = [[NSString alloc] initWithUTF8String: buffer];
+    
+    free(buffer);
+    
+    return [str autorelease];
+}
 @end

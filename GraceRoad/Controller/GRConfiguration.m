@@ -10,7 +10,7 @@
 
 //#define GRServerURLPrefix @"http://www.xn--6oq90d37vryemman3g2vm.com/system/message.php"
 //#define GRServerURLPrefix @"http://www.xn--6oq90d37vryemman3g2vm.com/system/test_php.php"
-#define GRServerURLPrefix @"http://www.tearsofphoenix.com/system/message.php"
+#define GRServerURLPrefix @"http://www.tearsofphoenix.com/system/dispatch.php"
 
 @implementation GRConfiguration
 

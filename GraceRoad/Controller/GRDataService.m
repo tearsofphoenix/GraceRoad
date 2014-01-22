@@ -17,6 +17,7 @@
 #import "WXApi.h"
 #import "GRFoundation.h"
 #import "GRConfiguration.h"
+#import "GRNetworkService.h"
 
 #import <NWPushNotification/NWHub.h>
 #import <NoahsUtility/NoahsUtility.h>
@@ -26,11 +27,6 @@
 #define GRCurrentAccountKey             GRPrefix ".current-account"
 #define GRHasRegisterDeviceKey          GRPrefix ".hasRegisteredDevice"
 
-#define GRNetworkActionKey              @"action"
-#define GRNetworkStatusKey              @"status"
-#define GRNetworkDataKey                @"data"
-
-#define GRNetworkStatusOKValue          @"0"
 
 @interface GRDataService ()<NWHubDelegate>
 {
@@ -385,35 +381,33 @@
 {
     //login
     //
-    
-    [[MFNetworkClient sharedClient] postToURL: [GRConfiguration serverURL]
-                                   parameters: (@{
-                                                  GRNetworkActionKey : @"login",
-                                                  @"email" : userName,
-                                                  @"password" : password,
-                                                  })
-                                     lifeTime: 0
-                                     callback: (^(NSData *data, id error)
-                                                {
-                                                    NSDictionary *result = [data JSONObject];
-                                                    if ([result[GRNetworkStatusKey] isEqualToString: GRNetworkStatusOKValue])
-                                                    {
-                                                        NSDictionary *accountInfo = result[GRNetworkDataKey];
-                                                        
-                                                        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-                                                        [defaults setObject: accountInfo
-                                                                     forKey: GRCurrentAccountKey];
-                                                        [defaults synchronize];
-                                                        
-                                                        callback(accountInfo, nil);
-                                                    }else
-                                                    {
-                                                        callback(nil, nil);
-                                                    }
-                                                    
-                                                    NSLog(@"%@", result);
-                                                    
-                                                })];
+    [GRNetworkService postMessage: (@{
+                                      GRNetworkActionKey : @"login",
+                                      GRNetworkArgumentsKey : (@{
+                                                                 @"email" : userName,
+                                                                 @"password" : password,
+                                                                 })
+                                      })
+                         callback: (^(NSDictionary *result, id exception)
+                                    {
+                                        if ([result[GRNetworkStatusKey] isEqualToString: GRNetworkStatusOKValue])
+                                        {
+                                            NSDictionary *accountInfo = result[GRNetworkDataKey];
+                                            
+                                            NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+                                            [defaults setObject: accountInfo
+                                                         forKey: GRCurrentAccountKey];
+                                            [defaults synchronize];
+                                            
+                                            callback(accountInfo, nil);
+                                        }else
+                                        {
+                                            callback(nil, nil);
+                                        }
+                                        
+                                        NSLog(@"%@", result);
+                                        
+                                    })];
     
     //    double delayInSeconds = 1.0;
     //    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
@@ -679,7 +673,7 @@
         {
             NSLog(@"%@", error);
         }
-
+        
     }
 }
 
@@ -706,25 +700,24 @@
         [parameters setObject: idForVender
                        forKey: @"device_id"];
         
-        [[MFNetworkClient sharedClient] postToURL: [GRConfiguration serverURL]
-                                       parameters: (@{
-                                                      GRNetworkActionKey : @"register_device",
-                                                      @"device_id" : idForVender,
-                                                      @"device_token" : deviceToken,
-                                                      @"properties" : parameters
-                                                      })
-                                         lifeTime: 0
-                                         callback: (^(NSData *data, id error)
-                                                    {
-                                                        NSDictionary *result = [data JSONObject];
-                                                        if ([result[GRNetworkStatusKey] isEqualToString: GRNetworkStatusOKValue])
-                                                        {
-                                                            [defaults setBool: YES
-                                                                       forKey: GRHasRegisterDeviceKey];
-                                                        }
-                                                        
-                                                        NSLog(@"%@", result);
-                                                    })];
+        [GRNetworkService postMessage: (@{
+                                          GRNetworkActionKey : @"register_device",
+                                          GRNetworkArgumentsKey : (@{
+                                                                     @"device_id" : idForVender,
+                                                                     @"device_token" : deviceToken,
+                                                                     @"properties" : parameters
+                                                                     })
+                                          })
+                             callback: (^(NSDictionary *result, id exception)
+                                        {
+                                            if ([result[GRNetworkStatusKey] isEqualToString: GRNetworkStatusOKValue])
+                                            {
+                                                [defaults setBool: YES
+                                                           forKey: GRHasRegisterDeviceKey];
+                                            }
+                                            
+                                            NSLog(@"%@", result);
+                                        })];
     }
 }
 
