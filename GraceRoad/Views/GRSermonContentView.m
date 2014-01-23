@@ -10,12 +10,15 @@
 #import "GRSermonKeys.h"
 #import "GRResourceManager.h"
 #import "DKLiveBlurView.h"
+#import "ILTranslucentView.h"
 #import "GRViewService.h"
+
 #import <MediaPlayer/MediaPlayer.h>
 
 @interface GRSermonContentView ()
 {
-    DKLiveBlurView *_backgroundView;
+    UIImageView *_backgroundView;
+    ILTranslucentView *_blurView;
     UIView *_contentView;
     UIImageView *_imageView;
     UITextView *_contentTextView;
@@ -42,14 +45,22 @@
                                    action: @selector(_handleShareButtonTappedEvent:)
                          forControlEvents: UIControlEventTouchUpInside];
         
-        _backgroundView = [[DKLiveBlurView alloc] initWithFrame: [self bounds]];
-        [_backgroundView setOriginalImage: [UIImage imageNamed: @"GRSermonBackground.jpeg"]];
-        [_backgroundView setIsGlassEffectOn: YES];
-        [_backgroundView setBlurLevel: 1.2];
+        CGRect bounds = [self bounds];
         
+        _backgroundView = [[UIImageView alloc] initWithFrame: bounds];
+        [_backgroundView setImage: [UIImage imageNamed: @"GRSermonBackground.jpeg"]];
         [self addSubview: _backgroundView];
+        
+        _blurView = [[ILTranslucentView alloc] initWithFrame: bounds];
 
-        _contentView = [[UIView alloc] initWithFrame: [self bounds]];
+        [_blurView setTranslucentAlpha: 0.96];
+//        [_backgroundView setOriginalImage: ];
+//        [_backgroundView setIsGlassEffectOn: YES];
+//        [_backgroundView setBlurLevel: 1.2];
+        
+        [self addSubview: _blurView];
+
+        _contentView = [[UIView alloc] initWithFrame: bounds];
         [self addSubview: _contentView];
         
         CGRect rect = CGRectMake((frame.size.width - 100) / 2, 20, 100, 100);
@@ -81,6 +92,7 @@
 
 - (void)dealloc
 {
+    [_blurView release];
     [_contentView release];
     [_imageView release];
     [_contentTextView release];
@@ -99,6 +111,7 @@
     CGRect bounds = [self bounds];
     
     [_backgroundView setFrame: bounds];
+    [_blurView setFrame: bounds];
     [_contentView setFrame: bounds];
     [[_player view] setFrame: CGRectMake(0, bounds.size.height - 40, bounds.size.width, 40)];
 }
