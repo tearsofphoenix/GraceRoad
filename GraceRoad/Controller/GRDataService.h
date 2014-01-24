@@ -20,9 +20,11 @@
 
 #define GRDataServiceAllResourcesAction          @"allResources"
 #define GRDataServiceAllResourceCategoriesAction @"allResourceCategories"
+#define GRDataServiceRefreshResourceWithCallbackAction @"_tryToSynchronizeResourcesWithCallback:"
 
 #define GRDataServiceAllSermonCategoriesAction   @"allSermonCategories"
 #define GRDataServiceAllSermonsAction            @"allSermons"
+
 #define GRDataServiceRefreshSermonWithCallbackAction @"_tryToSynchronizeSermonWithCallback:"
 
 #define GRDataServiceAllPrayListAction           @"allPrayList"

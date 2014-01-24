@@ -83,12 +83,19 @@
         [self addSubview: contentView];
                 
         [self _updateContent];
+        
+        [[NSNotificationCenter defaultCenter] addObserver: self
+                                                 selector: @selector(_notificationForResourceSynchronize:)
+                                                     name: GRNotificationResourceSynchronizeFinished
+                                                   object: nil];
     }
     return self;
 }
 
 - (void)dealloc
 {
+    [[NSNotificationCenter defaultCenter] removeObserver: self];
+    
     [_resourceCategories release];
     [_resources release];
     [_contentViewController release];
@@ -310,6 +317,17 @@ didSelectRowAtIndexPath: (NSIndexPath *)indexPath
                            animated: YES];
 }
 
+- (void)_reloadData
+{
+    [_originCategories setArray: ERSSC(GRDataServiceID,
+                                       GRDataServiceAllResourceCategoriesAction,
+                                       nil)];
+    [_originResources setDictionary: ERSSC(GRDataServiceID,
+                                           GRDataServiceAllResourcesAction,
+                                           nil)];
+    [self  _updateContent];
+}
+
 - (void)_handleRefreshEvent: (id)sender
 {
     UIRefreshControl *refreshControl = [_contentViewController refreshControl];
@@ -318,16 +336,27 @@ didSelectRowAtIndexPath: (NSIndexPath *)indexPath
 
     ERSC(GRViewServiceID, GRViewServiceShowLoadingIndicatorAction, nil, nil);
     
-    double delayInSeconds = 1.0;
-    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
-    dispatch_after(popTime, dispatch_get_main_queue(),
-                   (^(void)
-                    {
-                        [refreshControl endRefreshing];                        
-                        [refreshControl setTitle: @"下拉刷新"];
-                        
-                        ERSC(GRViewServiceID, GRViewServiceHideLoadingIndicatorAction, nil, nil);
-                    }));
+    ERServiceCallback callback = (^(NSDictionary *result, id exception)
+                                  {
+                                      [refreshControl endRefreshing];
+                                      [refreshControl setTitle: @"下拉刷新"];
+                                      
+                                      ERSC(GRViewServiceID, GRViewServiceHideLoadingIndicatorAction, nil, nil);
+                                      
+                                      [self _reloadData];
+                                  });
+    callback = Block_copy(callback);
+    
+    ERSC(GRDataServiceID,
+         GRDataServiceRefreshResourceWithCallbackAction,
+         @[ callback ], nil);
+    
+    Block_release(callback);
+}
+
+- (void)_notificationForResourceSynchronize: (NSNotification *)notification
+{
+    [self _reloadData];
 }
 
 @end

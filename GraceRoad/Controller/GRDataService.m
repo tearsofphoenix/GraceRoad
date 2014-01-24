@@ -550,7 +550,7 @@
     return lastUpdateString;
 }
 
-- (void)_tryToSynchronizeResources
+- (void)_tryToSynchronizeResourcesWithCallback: (ERServiceCallback)callback
 {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSString *lastUpdateString = [self _lastUpdateStringForKey: GRResourceCatogryLastUpdateKey];
@@ -573,49 +573,57 @@
                                             NSDictionary *category = [data lastObject];
                                             [defaults setObject: category[GRNetworkLastUpdateKey]
                                                          forKey: GRResourceCatogryLastUpdateKey];
+                                            [defaults setObject: _resourceCategories
+                                                         forKey: GRResourceCatogriesKey];
+                                            
                                             [defaults synchronize];
                                         }
                                         
                                         NSMutableArray *resourceCategoriesCopy = [NSMutableArray arrayWithArray: _resourceCategories];
-                                        
-                                        for (NSDictionary *cLooper in  _resourceCategories)
+                                        if ([_resourceCategories count] > 0)
                                         {
-                                            NSString *categoryID = cLooper[@"uuid"];
-                                            [GRNetworkService postMessage: (@{
-                                                                              GRNetworkActionKey : @"fetch_resource",
-                                                                              GRNetworkArgumentsKey : (@{
-                                                                                                         @"category_id" : categoryID,
-                                                                                                         GRNetworkLastUpdateKey : [self _lastUpdateStringForKey: categoryID]
-                                                                                                         })
-                                                                              })
-                                                                 callback: (^(NSDictionary *result, id exception)
-                                                                            {
-                                                                                NSLog(@"in func: %s %@", __func__, result);
-                                                                                
-                                                                                NSArray *resourcesInCategory = result[GRNetworkDataKey];
-                                                                                if (resourcesInCategory)
+                                            for (NSDictionary *cLooper in  _resourceCategories)
+                                            {
+                                                NSString *categoryID = cLooper[@"uuid"];
+                                                [GRNetworkService postMessage: (@{
+                                                                                  GRNetworkActionKey : @"fetch_resource",
+                                                                                  GRNetworkArgumentsKey : (@{
+                                                                                                             @"category_id" : categoryID,
+                                                                                                             GRNetworkLastUpdateKey : [self _lastUpdateStringForKey: categoryID]
+                                                                                                             })
+                                                                                  })
+                                                                     callback: (^(NSDictionary *result, id exception)
                                                                                 {
-                                                                                    [_resources setObject: resourcesInCategory
-                                                                                                   forKey: categoryID];
-                                                                                }
-                                                                                
-                                                                                [defaults setObject: [GRConfiguration stringFromDate: [NSDate date]]
-                                                                                             forKey: categoryID];
-
-                                                                                [resourceCategoriesCopy removeObject: cLooper];
-                                                                                
-                                                                                if ([resourceCategoriesCopy count] == 0)
-                                                                                {
-                                                                                    [defaults synchronize];
+                                                                                    NSLog(@"in func: %s %@", __func__, result);
                                                                                     
-                                                                                    dispatch_async(dispatch_get_main_queue(),
-                                                                                                   (^
-                                                                                                    {
-                                                                                                        [[NSNotificationCenter defaultCenter] postNotificationName: GRNotificationResourceSynchronizeFinished
-                                                                                                                                                            object: nil];
-                                                                                                    }));
-                                                                                }
-                                                                            })];
+                                                                                    NSArray *resourcesInCategory = result[GRNetworkDataKey];
+                                                                                    if (resourcesInCategory)
+                                                                                    {
+                                                                                        [_resources setObject: resourcesInCategory
+                                                                                                       forKey: categoryID];
+                                                                                    }
+                                                                                    
+                                                                                    [defaults setObject: [GRConfiguration stringFromDate: [NSDate date]]
+                                                                                                 forKey: categoryID];
+                                                                                    
+                                                                                    [resourceCategoriesCopy removeObject: cLooper];
+                                                                                    
+                                                                                    if ([resourceCategoriesCopy count] == 0)
+                                                                                    {
+                                                                                        [defaults synchronize];
+                                                                                        if (callback)
+                                                                                        {
+                                                                                            callback(_resourceCategories, nil);
+                                                                                        }
+                                                                                    }
+                                                                                })];
+                                            }
+                                        }else
+                                        {
+                                            if (callback)
+                                            {
+                                                callback(_resourceCategories, nil);
+                                            }
                                         }
                                     })];
     
@@ -635,7 +643,7 @@
                                       })
                          callback: (^(NSDictionary *result, id exception)
                                     {
-                                        NSLog(@"in func: %s %@", __func__, result);
+                                        //NSLog(@"in func: %s %@", __func__, result);
                                         
                                         NSArray *data = result[GRNetworkDataKey];
                                         if (data)
@@ -651,43 +659,51 @@
                                         }
                                         
                                         NSMutableArray *sermonCategoriesCopy = [NSMutableArray arrayWithArray: _sermonCategories];
-                                        
-                                        for (NSDictionary *cLooper in  _sermonCategories)
+                                        if ([_sermonCategories count] > 0)
                                         {
-                                            NSString *categoryID = cLooper[@"uuid"];
-                                            [GRNetworkService postMessage: (@{
-                                                                              GRNetworkActionKey : @"fetch_sermon",
-                                                                              GRNetworkArgumentsKey : (@{
-                                                                                                         @"category_id" : categoryID,
-                                                                                                         GRNetworkLastUpdateKey : [self _lastUpdateStringForKey: categoryID]
-                                                                                                         })
-                                                                              })
-                                                                 callback: (^(NSDictionary *result, id exception)
-                                                                            {
-                                                                                NSLog(@"in func: %s %@", __func__, result);
-                                                                                
-                                                                                NSArray *sermonsInCategory = result[GRNetworkDataKey];
-                                                                                if (sermonsInCategory)
+                                            for (NSDictionary *cLooper in  _sermonCategories)
+                                            {
+                                                NSString *categoryID = cLooper[@"uuid"];
+                                                [GRNetworkService postMessage: (@{
+                                                                                  GRNetworkActionKey : @"fetch_sermon",
+                                                                                  GRNetworkArgumentsKey : (@{
+                                                                                                             @"category_id" : categoryID,
+                                                                                                             GRNetworkLastUpdateKey : [self _lastUpdateStringForKey: categoryID]
+                                                                                                             })
+                                                                                  })
+                                                                     callback: (^(NSDictionary *result, id exception)
                                                                                 {
-                                                                                    [_sermons setObject: sermonsInCategory
-                                                                                                 forKey: categoryID];
-                                                                                }
-                                                                                
-                                                                                [defaults setObject: [GRConfiguration stringFromDate: [NSDate date]]
-                                                                                             forKey: categoryID];
-                                                                                
-                                                                                [sermonCategoriesCopy removeObject: cLooper];
-                                                                                
-                                                                                if ([sermonCategoriesCopy count] == 0)
-                                                                                {
-                                                                                    [defaults synchronize];
+                                                                                    //NSLog(@"in func: %s %@", __func__, result);
                                                                                     
-                                                                                    if (callback)
+                                                                                    NSArray *sermonsInCategory = result[GRNetworkDataKey];
+                                                                                    if (sermonsInCategory)
                                                                                     {
-                                                                                        callback(_sermonCategories, nil);
+                                                                                        [_sermons setObject: sermonsInCategory
+                                                                                                     forKey: categoryID];
                                                                                     }
-                                                                                }
-                                                                            })];
+                                                                                    
+                                                                                    [defaults setObject: [GRConfiguration stringFromDate: [NSDate date]]
+                                                                                                 forKey: categoryID];
+                                                                                    
+                                                                                    [sermonCategoriesCopy removeObject: cLooper];
+                                                                                    
+                                                                                    if ([sermonCategoriesCopy count] == 0)
+                                                                                    {
+                                                                                        [defaults synchronize];
+                                                                                        
+                                                                                        if (callback)
+                                                                                        {
+                                                                                            callback(_sermonCategories, nil);
+                                                                                        }
+                                                                                    }
+                                                                                })];
+                                            }
+                                        }else
+                                        {
+                                            if (callback)
+                                            {
+                                                callback(_sermonCategories, nil);
+                                            }
                                         }
                                     })];
 }
@@ -703,7 +719,16 @@
                                                                                                                             object: nil];
                                                                     }));
                                                     
-                                                    [self _tryToSynchronizeResources];
+                                                    [self _tryToSynchronizeResourcesWithCallback: (^(id result, id exception)
+                                                                                                   {
+                                                                                                       dispatch_async(dispatch_get_main_queue(),
+                                                                                                                      (^
+                                                                                                                       {
+                                                                                                                           [[NSNotificationCenter defaultCenter] postNotificationName: GRNotificationResourceSynchronizeFinished
+                                                                                                                                                                               object: nil];
+                                                                                                                       }));
+                                                                                                       
+                                                                                                   })];
                                                 })];
 }
 

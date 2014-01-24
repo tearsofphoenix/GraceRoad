@@ -18,7 +18,7 @@
 #define GRResourcePath          @"path"
 #define GRResourceAbstract      @"abstract"
 #define GRResourceUploadDate    @"upload-date"
-#define GRResourceTypeName      @"type-name"
+#define GRResourceTypeName      @"type"
 
 #define GRResourceCategoryName  @"name"
 #define GRResourceCategoryID    @"uuid"
