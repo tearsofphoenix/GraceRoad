@@ -61,16 +61,24 @@
         
         [_sermonCategories setArray: ERSSC(GRDataServiceID,
                                            GRDataServiceAllSermonCategoriesAction, nil)];
+        
         [_sermons setDictionary: ERSSC(GRDataServiceID,
                                        GRDataServiceAllSermonsAction,
                                        nil)];
         [contentView reloadData];
+        
+        [[NSNotificationCenter defaultCenter] addObserver: self
+                                                 selector: @selector(_notificationForSermonSynchronize:)
+                                                     name: GRNotificationSermonSynchronizeFinished
+                                                   object: nil];
     }
     return self;
 }
 
 - (void)dealloc
 {
+    [[NSNotificationCenter defaultCenter] removeObserver: self];
+    
     [_contentViewController release];
     [_sermonCategories release];
     [_sermons release];
@@ -118,7 +126,7 @@ viewForHeaderInSection: (NSInteger)section
     
     NSDictionary *sermonCategory = _sermonCategories[section];
     
-    [headerLabel setText: [@"    " stringByAppendingString: sermonCategory[GRSermonCategoryTitle]]];
+    [headerLabel setText: [@"    " stringByAppendingString: sermonCategory[GRSermonCategoryNameKey]]];
     
     return headerLabel;
 }
@@ -212,6 +220,18 @@ heightForRowAtIndexPath: (NSIndexPath *)indexPath
                         
                         ERSC(GRViewServiceID, GRViewServiceHideLoadingIndicatorAction, nil, nil);
                     }));
+}
+
+- (void)_notificationForSermonSynchronize: (NSNotification *)notification
+{
+    [_sermonCategories setArray: ERSSC(GRDataServiceID,
+                                       GRDataServiceAllSermonCategoriesAction, nil)];
+    
+    [_sermons setDictionary: ERSSC(GRDataServiceID,
+                                   GRDataServiceAllSermonsAction,
+                                   nil)];
+    
+    [[_contentViewController tableView] reloadData];
 }
 
 @end

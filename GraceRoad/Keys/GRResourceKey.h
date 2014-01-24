@@ -20,5 +20,5 @@
 #define GRResourceUploadDate    @"upload-date"
 #define GRResourceTypeName      @"type-name"
 
-#define GRResourceCategoryName  @"category-name"
-#define GRResourceCategoryID    @"category-id"
+#define GRResourceCategoryName  @"name"
+#define GRResourceCategoryID    @"uuid"

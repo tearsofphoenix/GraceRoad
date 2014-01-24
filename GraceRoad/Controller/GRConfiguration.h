@@ -12,4 +12,6 @@
 
 + (NSURL *)serverURL;
 
++ (NSString *)stringFromDate: (NSDate *)date;
+
 @end

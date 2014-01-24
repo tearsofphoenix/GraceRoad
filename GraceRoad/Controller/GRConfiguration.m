@@ -25,4 +25,17 @@ static NSURL *gsServerURL = nil;
     return gsServerURL;
 }
 
+static NSDateFormatter *gsDateFormatter = nil;
+
++ (NSString *)stringFromDate: (NSDate *)date
+{
+    if (!gsDateFormatter)
+    {
+        gsDateFormatter = [[NSDateFormatter alloc] init];
+        [gsDateFormatter setDateFormat: @"yyyy-MM-dd hh:mm:ss"];
+    }
+    
+    return [gsDateFormatter stringFromDate: date];
+}
+
 @end

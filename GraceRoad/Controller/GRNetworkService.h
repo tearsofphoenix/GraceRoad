@@ -17,6 +17,7 @@
 #define GRNetworkDataKey                @"data"
 #define GRNetworkMessageIDKey           @"messageID"
 #define GRNetworkMessageHashKey         @"messageHash"
+#define GRNetworkLastUpdateKey          @"last_update"
 
 #define GRNetworkStatusOKValue          @"0"
 

@@ -27,6 +27,12 @@
 #define GRCurrentAccountKey             GRPrefix ".current-account"
 #define GRHasRegisterDeviceKey          GRPrefix ".hasRegisteredDevice"
 
+#define GRResourceCatogriesKey          @"resources.category"
+#define GRResourceCatogryLastUpdateKey  @"resources.category.last-update"
+
+#define GRSermonCategoriesKey           @"sermon.category"
+#define GRSermonCategoryLastUpdateKey    @"sermon.category.last-update"
+
 
 @interface GRDataService ()<NWHubDelegate>
 {
@@ -67,197 +73,16 @@
     if ((self = [super init]))
     {
         _scriptures = [[NSMutableArray alloc] init];
-        _resourceCategories = [[NSMutableArray alloc] init];
-        _resources = [[NSMutableDictionary alloc] init];
-        
-        NSDictionary *typeLooper = (@{
-                                      GRResourceCategoryName : @"每周作业",
-                                      GRResourceCategoryID : [[ERUUID UUID] stringDescription],
-                                      });
-        [_resourceCategories addObject: typeLooper];
-        
-        NSDate *date = [NSDate date];
-        NSInteger year = [date year];
-        NSInteger month = [date month];
-        NSInteger day = [date day];
-        
-        [_resources setObject: (@[
-                                  (@{
-                                     GRResourceID : [[ERUUID UUID] stringDescription],
-                                     GRResourceName : @"第一周作业",
-                                     GRResourceAbstract : @"作业的内容是...",
-                                     //GRResourcePath : @"1.html",
-                                     GRResourcePath : @"week1.bundle",
-                                     GRResourceUploadDate : date,
-                                     GRResourceTypeName : GRResourceTypeHTML,
-                                     }),
-                                  (@{
-                                     GRResourceID : [[ERUUID UUID] stringDescription],
-                                     GRResourceName : @"第二周作业",
-                                     GRResourceAbstract : @"这是一份作业...",
-                                     GRResourcePath : @"亚干犯罪.pdf",
-                                     GRResourceUploadDate : [NSDate dateWithYear: year
-                                                                           month: month
-                                                                             day: day - 1],
-                                     GRResourceTypeName : GRResourceTypePDF,
-                                     }),
-                                  (@{
-                                     GRResourceID : [[ERUUID UUID] stringDescription],
-                                     GRResourceName : @"第三周作业",
-                                     GRResourceAbstract : @"需要好好做...",
-                                     GRResourcePath : @"狡猾的基遍人.pdf",
-                                     GRResourceUploadDate : [NSDate dateWithYear: year
-                                                                           month: month
-                                                                             day: day - 1],
-                                     GRResourceTypeName : GRResourceTypePDF,
-                                     }),
-                                  ])
-                       forKey: typeLooper[GRResourceCategoryID]];
-        
-        typeLooper = (@{
-                        GRResourceCategoryName : @"CEF课程",
-                        GRResourceCategoryID : [[ERUUID UUID] stringDescription],
-                        });
-        [_resourceCategories addObject: typeLooper];
-        
-        [_resources setObject: (@[
-                                  (@{
-                                     GRResourceID : [[ERUUID UUID] stringDescription],
-                                     GRResourceName : @"神与约书亚同在",
-                                     GRResourceAbstract : @"神与约书亚同在",
-                                     GRResourcePath : @"神与约书亚同在.pdf",
-                                     GRResourceUploadDate : [NSDate dateWithYear: year
-                                                                           month: month
-                                                                             day: day - 2],
-                                     GRResourceTypeName : GRResourceTypePDF,
-                                     }),
-                                  (@{
-                                     GRResourceID : [[ERUUID UUID] stringDescription],
-                                     GRResourceName : @"一条朱红线绳",
-                                     GRResourceAbstract : @"一条朱红线绳",
-                                     GRResourcePath : @"一条朱红线绳.pdf",
-                                     GRResourceUploadDate : [NSDate dateWithYear: year
-                                                                           month: month
-                                                                             day: day - 2],
-                                     GRResourceTypeName : GRResourceTypePDF,
-                                     }),
-                                  (@{
-                                     GRResourceID : [[ERUUID UUID] stringDescription],
-                                     GRResourceName : @"围绕耶利哥城",
-                                     GRResourceAbstract : @"围绕耶利哥城",
-                                     GRResourcePath : @"围绕耶利哥城.pdf",
-                                     GRResourceUploadDate : [NSDate dateWithYear: year
-                                                                           month: month
-                                                                             day: day - 3],
-                                     GRResourceTypeName : GRResourceTypePDF,
-                                     }),
-                                  ])
-                       forKey: typeLooper[GRResourceCategoryID]];
-        
-        typeLooper = (@{
-                        GRResourceCategoryName : @"亞伯拉罕的故事",
-                        GRResourceCategoryID : [[ERUUID UUID] stringDescription],
-                        });
-        [_resourceCategories addObject: typeLooper];
-        
-        [_resources setObject: (@[
-                                  (@{
-                                     GRResourceID : [[ERUUID UUID] stringDescription],
-                                     GRResourceName : @"應許與順服",
-                                     GRResourcePath : @"2009-01-18_Mandarin1StudyGuide.pdf",
-                                     GRResourceUploadDate : [NSDate dateWithYear: 2009
-                                                                           month: 1
-                                                                             day: 18],
-                                     GRResourceTypeName : GRResourceTypePDF,
-                                     }),
-                                  (@{
-                                     GRResourceID : [[ERUUID UUID] stringDescription],
-                                     GRResourceName : @"信心和眼見",
-                                     GRResourcePath : @"2009-01-25_Mandarin1StudyGuide.pdf",
-                                     GRResourceUploadDate : [NSDate dateWithYear: 2009
-                                                                           month: 1
-                                                                             day: 25],
-                                     GRResourceTypeName : GRResourceTypePDF,
-                                     }),
-                                  (@{
-                                     GRResourceID : [[ERUUID UUID] stringDescription],
-                                     GRResourceName : @"因信為義",
-                                     GRResourcePath : @"2009-02-08_Mandarin1StudyGuide.pdf",
-                                     GRResourceUploadDate : [NSDate dateWithYear: 2009
-                                                                           month: 2
-                                                                             day: 8],
-                                     GRResourceTypeName : GRResourceTypePDF,
-                                     }),
-                                  ])
-                       forKey: typeLooper[GRResourceCategoryID]];
-        
-        _sermonCategories = [[NSMutableArray alloc] init];
-        _sermons = [[NSMutableDictionary alloc] init];
-        
-        NSDictionary *category = (@{
-                                    GRSermonCategoryID : [[ERUUID UUID] stringDescription],
-                                    GRSermonCategoryTitle : @"主日讲道",
-                                    });
-        NSMutableArray *categoryContent = [NSMutableArray array];
-        [categoryContent addObject: (@{
-                                       GRSermonID : [[ERUUID UUID] stringDescription],
-                                       GRSermonPath : @"20140119-074248.m4a",
-                                       GRSermonTitle : @"真正的祝福（一）",
-                                       GRSermonUploadDate : [NSDate date],
-                                       })];
-        
-        [categoryContent addObject: (@{
-                                       GRSermonID : [[ERUUID UUID] stringDescription],
-                                       GRSermonPath : @"20140119-074248.m4a",
-                                       GRSermonTitle : @"真正的祝福（二）",
-                                       GRSermonUploadDate : [NSDate dateWithYear: year
-                                                                           month: month
-                                                                             day: day - 1],
-                                       })];
-        
-        [_sermonCategories addObject: category];
-        
-        [_sermons setObject: categoryContent
-                     forKey: category[GRSermonCategoryID]];
-        
-        category = (@{
-                      GRSermonCategoryID : [[ERUUID UUID] stringDescription],
-                      GRSermonCategoryTitle : @"专题讲道",
-                      });
-        categoryContent = [NSMutableArray array];
-        
-        [categoryContent addObject: (@{
-                                       GRSermonID : [[ERUUID UUID] stringDescription],
-                                       GRSermonPath : @"20140119-074248.m4a",
-                                       GRSermonTitle : @"真正的祝福（一）",
-                                       GRSermonUploadDate : [NSDate dateWithYear: 2009
-                                                                           month: 1
-                                                                             day: 18],
-                                       })];
-        [categoryContent addObject: (@{
-                                       GRSermonID : [[ERUUID UUID] stringDescription],
-                                       GRSermonPath : @"20140119-074248.m4a",
-                                       GRSermonTitle : @"真正的祝福（二）",
-                                       GRSermonUploadDate : [NSDate dateWithYear: 2009
-                                                                           month: 1
-                                                                             day: 25],
-                                       })];
-        
-        [categoryContent addObject: (@{
-                                       GRSermonID : [[ERUUID UUID] stringDescription],
-                                       GRSermonPath : @"20140119-074248.m4a",
-                                       GRSermonTitle : @"真正的祝福（三）",
-                                       GRSermonUploadDate : [NSDate dateWithYear: 2009
-                                                                           month: 2
-                                                                             day: 8],
-                                       })];
-        
-        [_sermonCategories addObject: category];
-        
-        [_sermons setObject: categoryContent
-                     forKey: category[GRSermonCategoryID]];
         
         NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+        
+        _resourceCategories = [[NSMutableArray alloc] initWithArray: [userDefaults objectForKey: GRResourceCatogriesKey]];
+        _resources = [[NSMutableDictionary alloc] init];
+        
+        NSDate *date = [NSDate date];
+        
+        _sermonCategories = [[NSMutableArray alloc] initWithArray: [userDefaults objectForKey: GRSermonCategoriesKey]];
+        _sermons = [[NSMutableDictionary alloc] init];
         
         if (![userDefaults boolForKey: GRLocalNotificationScheduleKey])
         {
@@ -400,6 +225,7 @@
                                             [defaults synchronize];
                                             
                                             callback(accountInfo, nil);
+                                            
                                         }else
                                         {
                                             callback(nil, nil);
@@ -408,39 +234,6 @@
                                         NSLog(@"%@", result);
                                         
                                     })];
-    
-    //    double delayInSeconds = 1.0;
-    //    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
-    //    dispatch_after(popTime, dispatch_get_main_queue(),
-    //                   (^(void)
-    //                    {
-    //                        NSDictionary *scripture = [_scriptures lastObject];
-    //                        if (scripture)
-    //                        {
-    //                            double delayInSeconds = 2.0;
-    //                            dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
-    //                            dispatch_after(popTime, dispatch_get_main_queue(),
-    //                                           (^(void)
-    //                                            {
-    //                                                ERSC(GRViewServiceID, GRViewServiceShowDailyScriptureAction, @[ scripture ], nil);
-    //                                            }));
-    //
-    //                            [_scriptures removeLastObject];
-    //                        }
-    //
-    //                        if (callback)
-    //                        {
-    //                            callback(nil, nil);
-    //                        }
-    //
-    //                        dispatch_async(dispatch_get_main_queue(),
-    //                                       (^
-    //                                        {
-    //                                            [[NSNotificationCenter defaultCenter] postNotificationName: GRAccountLoginNotification
-    //                                                                                                object: nil
-    //                                                                                              userInfo: nil];
-    //                                        }));
-    //                    }));
 }
 
 - (void)addScripture: (NSDictionary *)scriptureInfo
@@ -741,6 +534,156 @@
                                             NSLog(@"%@", result);
                                         })];
     }
+}
+
+- (NSString *)_lastUpdateStringForKey: (NSString *)key
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *lastUpdateString = [defaults objectForKey: key];
+    if (!lastUpdateString)
+    {
+        lastUpdateString = [GRConfiguration stringFromDate: [NSDate dateWithYear: 2014
+                                                                           month: 1
+                                                                             day: 1]];
+    }
+    
+    return lastUpdateString;
+}
+
+- (void)_tryToSynchronizeResources
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *lastUpdateString = [self _lastUpdateStringForKey: GRResourceCatogryLastUpdateKey];
+    
+    [GRNetworkService postMessage: (@{
+                                      GRNetworkActionKey : @"fetch_resource_category",
+                                      GRNetworkArgumentsKey : (@{
+                                                                 GRNetworkLastUpdateKey : lastUpdateString
+                                                                 })
+                                      })
+                         callback: (^(NSDictionary *result, id exception)
+                                    {
+                                        NSLog(@"in func: %s %@", __func__, result);
+                                        
+                                        NSArray *data = result[GRNetworkDataKey];
+                                        if (data)
+                                        {
+                                            [_resourceCategories addObjectsFromArray: data];
+                                            
+                                            NSDictionary *category = [data lastObject];
+                                            [defaults setObject: category[GRNetworkLastUpdateKey]
+                                                         forKey: GRResourceCatogryLastUpdateKey];
+                                            [defaults synchronize];
+                                        }
+                                        
+                                        NSMutableArray *resourceCategoriesCopy = [NSMutableArray arrayWithArray: _resourceCategories];
+                                        
+                                        for (NSDictionary *cLooper in  _resourceCategories)
+                                        {
+                                            NSString *categoryID = cLooper[@"uuid"];
+                                            [GRNetworkService postMessage: (@{
+                                                                              GRNetworkActionKey : @"fetch_resource",
+                                                                              GRNetworkArgumentsKey : (@{
+                                                                                                         @"category_id" : categoryID,
+                                                                                                         GRNetworkLastUpdateKey : [self _lastUpdateStringForKey: categoryID]
+                                                                                                         })
+                                                                              })
+                                                                 callback: (^(NSDictionary *result, id exception)
+                                                                            {
+                                                                                NSLog(@"in func: %s %@", __func__, result);
+                                                                                
+                                                                                NSArray *resourcesInCategory = result[GRNetworkDataKey];
+                                                                                if (resourcesInCategory)
+                                                                                {
+                                                                                    [_resources setObject: resourcesInCategory
+                                                                                                   forKey: categoryID];
+                                                                                }
+                                                                                
+                                                                                [resourceCategoriesCopy removeObject: cLooper];
+                                                                                
+                                                                                if ([resourceCategoriesCopy count] == 0)
+                                                                                {
+                                                                                    dispatch_async(dispatch_get_main_queue(),
+                                                                                                   (^
+                                                                                                    {
+                                                                                                        [[NSNotificationCenter defaultCenter] postNotificationName: GRNotificationResourceSynchronizeFinished
+                                                                                                                                                            object: nil];
+                                                                                                    }));
+                                                                                }
+                                                                            })];
+                                        }
+                                    })];
+    
+}
+
+- (void)startToSynchronize
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+
+    NSString *lastUpdateString = [self _lastUpdateStringForKey: GRSermonCategoryLastUpdateKey];
+    
+    [GRNetworkService postMessage: (@{
+                                      GRNetworkActionKey : @"fetch_sermon_category",
+                                      GRNetworkArgumentsKey : (@{
+                                                                 GRNetworkLastUpdateKey : lastUpdateString
+                                                                 })
+                                      })
+                         callback: (^(NSDictionary *result, id exception)
+                                    {
+                                        NSLog(@"in func: %s %@", __func__, result);
+                                        
+                                        NSArray *data = result[GRNetworkDataKey];
+                                        if (data)
+                                        {
+                                            [_sermonCategories addObjectsFromArray: data];
+                                            
+                                            NSDictionary *category = [data lastObject];
+                                            [defaults setObject: category[GRNetworkLastUpdateKey]
+                                                         forKey: GRSermonCategoryLastUpdateKey];
+                                            [defaults setObject: _sermonCategories
+                                                         forKey: GRSermonCategoriesKey];
+                                            [defaults synchronize];
+                                        }
+                                        
+                                        NSMutableArray *sermonCategoriesCopy = [NSMutableArray arrayWithArray: _sermonCategories];
+                                        
+                                        for (NSDictionary *cLooper in  _sermonCategories)
+                                        {
+                                            NSString *categoryID = cLooper[@"uuid"];
+                                            [GRNetworkService postMessage: (@{
+                                                                              GRNetworkActionKey : @"fetch_sermon",
+                                                                              GRNetworkArgumentsKey : (@{
+                                                                                                         @"category_id" : categoryID,
+                                                                                                         GRNetworkLastUpdateKey : [self _lastUpdateStringForKey: categoryID]
+                                                                                                         })
+                                                                              })
+                                                                 callback: (^(NSDictionary *result, id exception)
+                                                                            {
+                                                                                NSLog(@"in func: %s %@", __func__, result);
+                                                                                
+                                                                                NSArray *sermonsInCategory = result[GRNetworkDataKey];
+                                                                                if (sermonsInCategory)
+                                                                                {
+                                                                                    [_sermons setObject: sermonsInCategory
+                                                                                                 forKey: categoryID];
+                                                                                }
+                                                                                
+                                                                                [sermonCategoriesCopy removeObject: cLooper];
+                                                                                
+                                                                                if ([sermonCategoriesCopy count] == 0)
+                                                                                {
+                                                                                    dispatch_async(dispatch_get_main_queue(),
+                                                                                                   (^
+                                                                                                    {
+                                                                                                        [[NSNotificationCenter defaultCenter] postNotificationName: GRNotificationSermonSynchronizeFinished
+                                                                                                                                                            object: nil];
+                                                                                                    }));
+                                                                                    
+                                                                                    [self _tryToSynchronizeResources];
+                                                                                }
+                                                                            })];
+                                        }
+                                    })];
 }
 
 @end

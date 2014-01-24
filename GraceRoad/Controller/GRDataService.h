@@ -40,10 +40,16 @@
 #define GRDataServiceRegisterDeviceTokenAction   @"registerDeviceToken:"
 
 #define GRDataServiceSendFeedbackAction          @"sendFeedback:callback:"
+
+#define GRDataServiceStartToSynchronizeAction    @"startToSynchronize"
+
 #pragma mark - notification
 
 #define GRAccountLoginNotification          GRPrefix ".notification.login"
 #define GRAccountLogoutNotification          GRPrefix ".notification.logout"
+
+#define GRNotificationResourceSynchronizeFinished   GRPrefix ".notification.resource.synchronized"
+#define GRNotificationSermonSynchronizeFinished     GRPrefix ".notification.sermon.synchronized"
 
 @interface GRDataService : ERService
 

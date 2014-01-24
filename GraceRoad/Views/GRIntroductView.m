@@ -11,6 +11,8 @@
 #import "Reachability.h"
 #import "GRTheme.h"
 #import "GRUIExtensions.h"
+#import "GRDataService.h"
+
 #import <MapKit/MapKit.h>
 
 #define GRHasMap 0
@@ -91,6 +93,8 @@
 
         [_tableView setDataSource: self];
         [_tableView setDelegate: self];
+        
+        ERSC(GRDataServiceID, GRDataServiceStartToSynchronizeAction, nil, nil);
     }
     return self;
 }

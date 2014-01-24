@@ -125,7 +125,7 @@
         
         [self setTitle: _sermonInfo[GRSermonTitle]];
         
-        [_contentTextView setText: _sermonInfo[GRSermonAbstract]];
+        [_contentTextView setText: _sermonInfo[GRSermonContent]];
         
         NSString *path = [GRResourceManager pathWithSubPath: _sermonInfo[GRSermonPath]];
         [_player setContentURL: [NSURL fileURLWithPath: path]];
