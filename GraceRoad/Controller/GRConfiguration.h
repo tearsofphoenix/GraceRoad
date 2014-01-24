@@ -12,6 +12,8 @@
 
 + (NSURL *)serverURL;
 
++ (NSString *)fileURLString;
+
 + (NSString *)stringFromDate: (NSDate *)date;
 
 @end

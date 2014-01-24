@@ -12,6 +12,6 @@
 #define GRSermonTitle       @"title"
 #define GRSermonUploadDate  @"upload-date"
 #define GRSermonID          @"uuid"
-#define GRSermonPath        @"path"
+#define GRSermonAudioPath   @"audio_path"
 #define GRSermonContent     @"content"
 

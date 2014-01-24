@@ -156,7 +156,7 @@ didSelectRowAtIndexPath: (NSIndexPath *)indexPath
     
     NSDictionary *sermonInfo = sermons[row];
     
-    NSString *subPath = sermonInfo[GRSermonPath];
+    NSString *subPath = sermonInfo[GRSermonAudioPath];
     if ([GRResourceManager fileExistsWithSubPath: subPath])
     {
         [self _showSermonContentWithInfo: sermonInfo];

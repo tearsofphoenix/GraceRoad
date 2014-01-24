@@ -8,10 +8,9 @@
 
 #import "GRResourceManager.h"
 #import "MFNetworkClient.h"
+#import "GRConfiguration.h"
 
 @implementation GRResourceManager
-
-static NSString *serverFileRootPath = @"http://localhost/~veritas/grace/";
 
 static NSString *gsResourcePath = nil;
 
@@ -76,16 +75,15 @@ static NSMutableDictionary *gsFileTypeImagesCache = nil;
 
 + (NSString *)_packResourcePathWithSubPath: (NSString *)subPath
 {
-    return [serverFileRootPath stringByAppendingPathComponent: subPath];
+    return [[GRConfiguration fileURLString] stringByAppendingPathComponent: subPath];
 }
 
 + (void)downloadFileWithSubPath: (NSString *)subPath
                        callback: (GRResourceCallback)callback
 {
-#if 0
-    [MFNetworkClient downloadFileAtPath: [self _packResourcePathWithSubPath: subPath]
-                            enableCache: NO
-                               callback: (^(NSData *data, id error)
+#if 1
+    [MFNetworkClient  downloadFileAtPath: [self _packResourcePathWithSubPath: subPath]
+                                callback: (^(NSData *data, id error)
                                           {
                                               double delayInSeconds = 1.0;
                                               dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));

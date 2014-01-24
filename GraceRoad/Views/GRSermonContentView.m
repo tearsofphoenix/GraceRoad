@@ -127,7 +127,7 @@
         
         [_contentTextView setText: _sermonInfo[GRSermonContent]];
         
-        NSString *path = [GRResourceManager pathWithSubPath: _sermonInfo[GRSermonPath]];
+        NSString *path = [GRResourceManager pathWithSubPath: _sermonInfo[GRSermonAudioPath]];
         [_player setContentURL: [NSURL fileURLWithPath: path]];
         [_player prepareToPlay];
         [_player play];

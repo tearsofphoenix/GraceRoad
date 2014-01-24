@@ -11,6 +11,7 @@
 //#define GRServerURLPrefix @"http://www.xn--6oq90d37vryemman3g2vm.com/system/message.php"
 //#define GRServerURLPrefix @"http://www.xn--6oq90d37vryemman3g2vm.com/system/test_php.php"
 #define GRServerURLPrefix @"http://www.tearsofphoenix.com/system/dispatch.php"
+#define GRFileURLString         @"http://www.tearsofphoenix.com/system/files/"
 
 @implementation GRConfiguration
 
@@ -36,6 +37,11 @@ static NSDateFormatter *gsDateFormatter = nil;
     }
     
     return [gsDateFormatter stringFromDate: date];
+}
+
++ (NSString *)fileURLString
+{
+    return GRFileURLString;
 }
 
 @end
