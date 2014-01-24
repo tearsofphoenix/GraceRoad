@@ -59,13 +59,7 @@
         
         [self addSubview: contentView];
         
-        [_sermonCategories setArray: ERSSC(GRDataServiceID,
-                                           GRDataServiceAllSermonCategoriesAction, nil)];
-        
-        [_sermons setDictionary: ERSSC(GRDataServiceID,
-                                       GRDataServiceAllSermonsAction,
-                                       nil)];
-        [contentView reloadData];
+        [self _reloadData];
         
         [[NSNotificationCenter defaultCenter] addObserver: self
                                                  selector: @selector(_notificationForSermonSynchronize:)
@@ -210,19 +204,24 @@ heightForRowAtIndexPath: (NSIndexPath *)indexPath
     
     ERSC(GRViewServiceID, GRViewServiceShowLoadingIndicatorAction, nil, nil);
 
-    double delayInSeconds = 1.0;
-    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
-    dispatch_after(popTime, dispatch_get_main_queue(),
-                   (^(void)
-                    {
-                        [refreshControl endRefreshing];
-                        [refreshControl setTitle: @"下拉刷新"];
-                        
-                        ERSC(GRViewServiceID, GRViewServiceHideLoadingIndicatorAction, nil, nil);
-                    }));
+    ERServiceCallback callback = (^(id result, id exception)
+                                  {
+                                      [refreshControl endRefreshing];
+                                      [refreshControl setTitle: @"下拉刷新"];
+                                      
+                                      ERSC(GRViewServiceID, GRViewServiceHideLoadingIndicatorAction, nil, nil);
+
+                                      [self _reloadData];
+                                  });
+    
+    callback = Block_copy(callback);
+    
+    ERSC(GRDataServiceID, GRDataServiceRefreshSermonWithCallbackAction, @[ callback ], nil);
+    
+    Block_release(callback);
 }
 
-- (void)_notificationForSermonSynchronize: (NSNotification *)notification
+- (void)_reloadData
 {
     [_sermonCategories setArray: ERSSC(GRDataServiceID,
                                        GRDataServiceAllSermonCategoriesAction, nil)];
@@ -232,6 +231,11 @@ heightForRowAtIndexPath: (NSIndexPath *)indexPath
                                    nil)];
     
     [[_contentViewController tableView] reloadData];
+}
+
+- (void)_notificationForSermonSynchronize: (NSNotification *)notification
+{
+    [self _reloadData];
 }
 
 @end

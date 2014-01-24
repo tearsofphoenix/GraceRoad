@@ -599,10 +599,15 @@
                                                                                                    forKey: categoryID];
                                                                                 }
                                                                                 
+                                                                                [defaults setObject: [GRConfiguration stringFromDate: [NSDate date]]
+                                                                                             forKey: categoryID];
+
                                                                                 [resourceCategoriesCopy removeObject: cLooper];
                                                                                 
                                                                                 if ([resourceCategoriesCopy count] == 0)
                                                                                 {
+                                                                                    [defaults synchronize];
+                                                                                    
                                                                                     dispatch_async(dispatch_get_main_queue(),
                                                                                                    (^
                                                                                                     {
@@ -616,10 +621,10 @@
     
 }
 
-- (void)startToSynchronize
+- (void)_tryToSynchronizeSermonWithCallback: (ERServiceCallback)callback
 {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-
+    
     NSString *lastUpdateString = [self _lastUpdateStringForKey: GRSermonCategoryLastUpdateKey];
     
     [GRNetworkService postMessage: (@{
@@ -668,22 +673,38 @@
                                                                                                  forKey: categoryID];
                                                                                 }
                                                                                 
+                                                                                [defaults setObject: [GRConfiguration stringFromDate: [NSDate date]]
+                                                                                             forKey: categoryID];
+                                                                                
                                                                                 [sermonCategoriesCopy removeObject: cLooper];
                                                                                 
                                                                                 if ([sermonCategoriesCopy count] == 0)
                                                                                 {
-                                                                                    dispatch_async(dispatch_get_main_queue(),
-                                                                                                   (^
-                                                                                                    {
-                                                                                                        [[NSNotificationCenter defaultCenter] postNotificationName: GRNotificationSermonSynchronizeFinished
-                                                                                                                                                            object: nil];
-                                                                                                    }));
+                                                                                    [defaults synchronize];
                                                                                     
-                                                                                    [self _tryToSynchronizeResources];
+                                                                                    if (callback)
+                                                                                    {
+                                                                                        callback(_sermonCategories, nil);
+                                                                                    }
                                                                                 }
                                                                             })];
                                         }
                                     })];
+}
+
+- (void)startToSynchronize
+{
+    [self _tryToSynchronizeSermonWithCallback: (^(id result, id exception)
+                                                {
+                                                    dispatch_async(dispatch_get_main_queue(),
+                                                                   (^
+                                                                    {
+                                                                        [[NSNotificationCenter defaultCenter] postNotificationName: GRNotificationSermonSynchronizeFinished
+                                                                                                                            object: nil];
+                                                                    }));
+                                                    
+                                                    [self _tryToSynchronizeResources];
+                                                })];
 }
 
 @end

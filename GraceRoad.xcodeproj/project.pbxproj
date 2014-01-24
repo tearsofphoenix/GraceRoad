@@ -13,9 +13,6 @@
 		603A657A188A42FD00352C0B /* GRButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 603A6579188A42FD00352C0B /* GRButton@2x.png */; };
 		603A657C188A5E0D00352C0B /* FileType in Resources */ = {isa = PBXBuildFile; fileRef = 603A657B188A5E0D00352C0B /* FileType */; };
 		603A657F188A625C00352C0B /* GRResourceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 603A657E188A625C00352C0B /* GRResourceCell.m */; };
-		603A658A188A723600352C0B /* 2009-01-18_Mandarin1StudyGuide.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 603A6584188A723600352C0B /* 2009-01-18_Mandarin1StudyGuide.pdf */; };
-		603A658C188A723600352C0B /* 2009-01-25_Mandarin1StudyGuide.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 603A6586188A723600352C0B /* 2009-01-25_Mandarin1StudyGuide.pdf */; };
-		603A658E188A723600352C0B /* 2009-02-08_Mandarin1StudyGuide.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 603A6588188A723600352C0B /* 2009-02-08_Mandarin1StudyGuide.pdf */; };
 		604F1237188BFB5F00AEB247 /* GRFeedbackView.m in Sources */ = {isa = PBXBuildFile; fileRef = 604F1236188BFB5F00AEB247 /* GRFeedbackView.m */; };
 		604F1239188C353500AEB247 /* GRQRCode.png in Resources */ = {isa = PBXBuildFile; fileRef = 604F1238188C353500AEB247 /* GRQRCode.png */; };
 		604F123C188C354800AEB247 /* GRContactUSView.m in Sources */ = {isa = PBXBuildFile; fileRef = 604F123B188C354800AEB247 /* GRContactUSView.m */; };
@@ -25,7 +22,6 @@
 		6068029818883DCA00D5217B /* GRTabbarBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 6068029618883DCA00D5217B /* GRTabbarBackground.png */; };
 		6068029918883DCA00D5217B /* GRTabbarBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6068029718883DCA00D5217B /* GRTabbarBackground@2x.png */; };
 		606E8FEA188946A7000C5CB2 /* libPDFReaderStatic.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 606E8FE718894699000C5CB2 /* libPDFReaderStatic.a */; };
-		607267BF188B63D6005B2330 /* 20140119-074248.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 607267BE188B63D6005B2330 /* 20140119-074248.m4a */; };
 		609723E1188AC7000020AEA0 /* UIActionSheet+BlockSupport.m in Sources */ = {isa = PBXBuildFile; fileRef = 609723D8188AC7000020AEA0 /* UIActionSheet+BlockSupport.m */; };
 		609723E2188AC7000020AEA0 /* UIAlertView+BlockSupport.m in Sources */ = {isa = PBXBuildFile; fileRef = 609723DA188AC7000020AEA0 /* UIAlertView+BlockSupport.m */; };
 		609723E3188AC7000020AEA0 /* UIRefreshControl+GRExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 609723DC188AC7000020AEA0 /* UIRefreshControl+GRExtensions.m */; };
@@ -63,11 +59,6 @@
 		60E649F71878062400D5466B /* notifications7.plist in Resources */ = {isa = PBXBuildFile; fileRef = 60E649DA1878062400D5466B /* notifications7.plist */; };
 		60E649F81878062400D5466B /* notifications8.plist in Resources */ = {isa = PBXBuildFile; fileRef = 60E649DB1878062400D5466B /* notifications8.plist */; };
 		60E649F91878062400D5466B /* notifications9.plist in Resources */ = {isa = PBXBuildFile; fileRef = 60E649DC1878062400D5466B /* notifications9.plist */; };
-		60E8D9501888FC5C00C2EFC2 /* 一条朱红线绳.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 60E8D94A1888FC5C00C2EFC2 /* 一条朱红线绳.pdf */; };
-		60E8D9511888FC5C00C2EFC2 /* 亚干犯罪.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 60E8D94B1888FC5C00C2EFC2 /* 亚干犯罪.pdf */; };
-		60E8D9521888FC5C00C2EFC2 /* 围绕耶利哥城.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 60E8D94C1888FC5C00C2EFC2 /* 围绕耶利哥城.pdf */; };
-		60E8D9541888FC5C00C2EFC2 /* 狡猾的基遍人.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 60E8D94E1888FC5C00C2EFC2 /* 狡猾的基遍人.pdf */; };
-		60E8D9551888FC5C00C2EFC2 /* 神与约书亚同在.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 60E8D94F1888FC5C00C2EFC2 /* 神与约书亚同在.pdf */; };
 		60E8D95F1889131900C2EFC2 /* ILTranslucentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 60E8D95E1889131900C2EFC2 /* ILTranslucentView.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		60EA23E6188B6A19001C2E24 /* GRMapPlaceHolder.png in Resources */ = {isa = PBXBuildFile; fileRef = 60EA23E4188B6A19001C2E24 /* GRMapPlaceHolder.png */; };
 		60EA23E7188B6A19001C2E24 /* GRMapPlaceHolder@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 60EA23E5188B6A19001C2E24 /* GRMapPlaceHolder@2x.png */; };
@@ -213,9 +204,6 @@
 		603A657B188A5E0D00352C0B /* FileType */ = {isa = PBXFileReference; lastKnownFileType = folder; path = FileType; sourceTree = "<group>"; };
 		603A657D188A625C00352C0B /* GRResourceCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRResourceCell.h; sourceTree = "<group>"; };
 		603A657E188A625C00352C0B /* GRResourceCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GRResourceCell.m; sourceTree = "<group>"; };
-		603A6584188A723600352C0B /* 2009-01-18_Mandarin1StudyGuide.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "2009-01-18_Mandarin1StudyGuide.pdf"; sourceTree = "<group>"; };
-		603A6586188A723600352C0B /* 2009-01-25_Mandarin1StudyGuide.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "2009-01-25_Mandarin1StudyGuide.pdf"; sourceTree = "<group>"; };
-		603A6588188A723600352C0B /* 2009-02-08_Mandarin1StudyGuide.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "2009-02-08_Mandarin1StudyGuide.pdf"; sourceTree = "<group>"; };
 		604F1235188BFB5F00AEB247 /* GRFeedbackView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRFeedbackView.h; sourceTree = "<group>"; };
 		604F1236188BFB5F00AEB247 /* GRFeedbackView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GRFeedbackView.m; sourceTree = "<group>"; };
 		604F1238188C353500AEB247 /* GRQRCode.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GRQRCode.png; sourceTree = "<group>"; };
@@ -230,7 +218,6 @@
 		6068029618883DCA00D5217B /* GRTabbarBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GRTabbarBackground.png; sourceTree = "<group>"; };
 		6068029718883DCA00D5217B /* GRTabbarBackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "GRTabbarBackground@2x.png"; sourceTree = "<group>"; };
 		606E8FDF18894698000C5CB2 /* PDFReader.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = PDFReader.xcodeproj; path = PDFReader/PDFReader.xcodeproj; sourceTree = "<group>"; };
-		607267BE188B63D6005B2330 /* 20140119-074248.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "20140119-074248.m4a"; sourceTree = "<group>"; };
 		609723D6188AC7000020AEA0 /* GRUIExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRUIExtensions.h; sourceTree = "<group>"; };
 		609723D7188AC7000020AEA0 /* UIActionSheet+BlockSupport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIActionSheet+BlockSupport.h"; sourceTree = "<group>"; };
 		609723D8188AC7000020AEA0 /* UIActionSheet+BlockSupport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIActionSheet+BlockSupport.m"; sourceTree = "<group>"; };
@@ -274,11 +261,6 @@
 		60E649DA1878062400D5466B /* notifications7.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = notifications7.plist; sourceTree = "<group>"; };
 		60E649DB1878062400D5466B /* notifications8.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = notifications8.plist; sourceTree = "<group>"; };
 		60E649DC1878062400D5466B /* notifications9.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = notifications9.plist; sourceTree = "<group>"; };
-		60E8D94A1888FC5C00C2EFC2 /* 一条朱红线绳.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "一条朱红线绳.pdf"; sourceTree = "<group>"; };
-		60E8D94B1888FC5C00C2EFC2 /* 亚干犯罪.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "亚干犯罪.pdf"; sourceTree = "<group>"; };
-		60E8D94C1888FC5C00C2EFC2 /* 围绕耶利哥城.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "围绕耶利哥城.pdf"; sourceTree = "<group>"; };
-		60E8D94E1888FC5C00C2EFC2 /* 狡猾的基遍人.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "狡猾的基遍人.pdf"; sourceTree = "<group>"; };
-		60E8D94F1888FC5C00C2EFC2 /* 神与约书亚同在.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "神与约书亚同在.pdf"; sourceTree = "<group>"; };
 		60E8D95D1889131900C2EFC2 /* ILTranslucentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ILTranslucentView.h; sourceTree = "<group>"; };
 		60E8D95E1889131900C2EFC2 /* ILTranslucentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ILTranslucentView.m; sourceTree = "<group>"; };
 		60EA23E4188B6A19001C2E24 /* GRMapPlaceHolder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GRMapPlaceHolder.png; sourceTree = "<group>"; };
@@ -444,16 +426,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		603A6582188A723600352C0B /* Abraham */ = {
-			isa = PBXGroup;
-			children = (
-				603A6584188A723600352C0B /* 2009-01-18_Mandarin1StudyGuide.pdf */,
-				603A6586188A723600352C0B /* 2009-01-25_Mandarin1StudyGuide.pdf */,
-				603A6588188A723600352C0B /* 2009-02-08_Mandarin1StudyGuide.pdf */,
-			);
-			path = Abraham;
-			sourceTree = "<group>";
-		};
 		60680292188828BE00D5217B /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -524,27 +496,6 @@
 				60E649DC1878062400D5466B /* notifications9.plist */,
 			);
 			path = notifications;
-			sourceTree = "<group>";
-		};
-		60E8D9491888FC5C00C2EFC2 /* Documents */ = {
-			isa = PBXGroup;
-			children = (
-				60E8D94A1888FC5C00C2EFC2 /* 一条朱红线绳.pdf */,
-				60E8D94B1888FC5C00C2EFC2 /* 亚干犯罪.pdf */,
-				60E8D94C1888FC5C00C2EFC2 /* 围绕耶利哥城.pdf */,
-				60E8D94E1888FC5C00C2EFC2 /* 狡猾的基遍人.pdf */,
-				60E8D94F1888FC5C00C2EFC2 /* 神与约书亚同在.pdf */,
-			);
-			path = Documents;
-			sourceTree = "<group>";
-		};
-		60E8D957188905FC00C2EFC2 /* Media */ = {
-			isa = PBXGroup;
-			children = (
-				607267BE188B63D6005B2330 /* 20140119-074248.m4a */,
-				603A6582188A723600352C0B /* Abraham */,
-			);
-			path = Media;
 			sourceTree = "<group>";
 		};
 		60E8D95C1889131900C2EFC2 /* BlurView */ = {
@@ -824,8 +775,6 @@
 			isa = PBXGroup;
 			children = (
 				603A656E1889728E00352C0B /* PDFReaderResources.bundle */,
-				60E8D957188905FC00C2EFC2 /* Media */,
-				60E8D9491888FC5C00C2EFC2 /* Documents */,
 				60E649BF1878062400D5466B /* notifications */,
 				60E649851877FB1D00D5466B /* notifications.plist */,
 				60B266041877CBFF008E881E /* 1.pdf */,
@@ -997,11 +946,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				603A658A188A723600352C0B /* 2009-01-18_Mandarin1StudyGuide.pdf in Resources */,
 				60EA23E7188B6A19001C2E24 /* GRMapPlaceHolder@2x.png in Resources */,
 				60E649F81878062400D5466B /* notifications8.plist in Resources */,
 				60E649EB1878062400D5466B /* notifications21.plist in Resources */,
-				60E8D9521888FC5C00C2EFC2 /* 围绕耶利哥城.pdf in Resources */,
 				6068029818883DCA00D5217B /* GRTabbarBackground.png in Resources */,
 				92CE914318755BEB00C7D3A1 /* gr.sqlite in Resources */,
 				60E649F01878062400D5466B /* notifications26.plist in Resources */,
@@ -1009,9 +956,7 @@
 				9242AF001876A87C00F9FEFB /* GRBackButton@2x.png in Resources */,
 				60E649F21878062400D5466B /* notifications28.plist in Resources */,
 				60E649E21878062400D5466B /* notifications13.plist in Resources */,
-				60E8D9511888FC5C00C2EFC2 /* 亚干犯罪.pdf in Resources */,
 				60E649E81878062400D5466B /* notifications19.plist in Resources */,
-				60E8D9501888FC5C00C2EFC2 /* 一条朱红线绳.pdf in Resources */,
 				603A657A188A42FD00352C0B /* GRButton@2x.png in Resources */,
 				60E649861877FB1D00D5466B /* notifications.plist in Resources */,
 				9294D45118766369009352DB /* GRAudio.png in Resources */,
@@ -1033,7 +978,6 @@
 				603A6576188982AB00352C0B /* ck.pem in Resources */,
 				60E649E71878062400D5466B /* notifications18.plist in Resources */,
 				60E649EE1878062400D5466B /* notifications24.plist in Resources */,
-				607267BF188B63D6005B2330 /* 20140119-074248.m4a in Resources */,
 				60E649EC1878062400D5466B /* notifications22.plist in Resources */,
 				604F1239188C353500AEB247 /* GRQRCode.png in Resources */,
 				92CE914518755BEB00C7D3A1 /* GRPreferenceTab@2x.png in Resources */,
@@ -1052,13 +996,11 @@
 				60E649F31878062400D5466B /* notifications3.plist in Resources */,
 				60E649F61878062400D5466B /* notifications6.plist in Resources */,
 				60E649F91878062400D5466B /* notifications9.plist in Resources */,
-				603A658C188A723600352C0B /* 2009-01-25_Mandarin1StudyGuide.pdf in Resources */,
 				9294D45218766369009352DB /* GRAudio@2x.png in Resources */,
 				60E649F41878062400D5466B /* notifications4.plist in Resources */,
 				9261929918867CA5001E0A72 /* week1.bundle in Resources */,
 				92568CCC18850E5500994FC1 /* GRAvatarBackground.png in Resources */,
 				60E649E61878062400D5466B /* notifications17.plist in Resources */,
-				60E8D9551888FC5C00C2EFC2 /* 神与约书亚同在.pdf in Resources */,
 				9276F35D1887D22600E13763 /* GRShareButton.png in Resources */,
 				60E649EA1878062400D5466B /* notifications20.plist in Resources */,
 				60E649E91878062400D5466B /* notifications2.plist in Resources */,
@@ -1066,7 +1008,6 @@
 				60E649E41878062400D5466B /* notifications15.plist in Resources */,
 				60F943901886DA59001F13E3 /* GRSermonBackground.jpeg in Resources */,
 				60E649E11878062400D5466B /* notifications12.plist in Resources */,
-				603A658E188A723600352C0B /* 2009-02-08_Mandarin1StudyGuide.pdf in Resources */,
 				923E49A21888ECF6006E9029 /* GRLocationTab.png in Resources */,
 				60EA23E6188B6A19001C2E24 /* GRMapPlaceHolder.png in Resources */,
 				603A656F1889728E00352C0B /* PDFReaderResources.bundle in Resources */,
@@ -1075,7 +1016,6 @@
 				92CE914418755BEB00C7D3A1 /* GRLocationTab@2x.png in Resources */,
 				60B266061877CBFF008E881E /* 1.pdf in Resources */,
 				927C9FB5186D66DC00DC0EDC /* Images.xcassets in Resources */,
-				60E8D9541888FC5C00C2EFC2 /* 狡猾的基遍人.pdf in Resources */,
 				60E649F71878062400D5466B /* notifications7.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

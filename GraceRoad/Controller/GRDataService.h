@@ -23,6 +23,7 @@
 
 #define GRDataServiceAllSermonCategoriesAction   @"allSermonCategories"
 #define GRDataServiceAllSermonsAction            @"allSermons"
+#define GRDataServiceRefreshSermonWithCallbackAction @"_tryToSynchronizeSermonWithCallback:"
 
 #define GRDataServiceAllPrayListAction           @"allPrayList"
 #define GRDataServiceAddPrayAction               @"addPray:"
@@ -34,7 +35,7 @@
 #define GRDataServiceAllMemberForTeamIDAction    @"allMemberForTeamID:"
 
 #define GRDataServiceSendPushNotificationWithCallbackAction  @"sendPushNotification:callback:"
-#define GRDataServiceSendMessageToWeixinAction   @"sendMessageToWeixin:"
+#define GRDataServiceSendMessageToWeixinAction               @"sendMessageToWeixin:"
 
 #define GRDataServiceExportNotificationToReminderAction      @"exportNotificationToReminder:"
 #define GRDataServiceRegisterDeviceTokenAction   @"registerDeviceToken:"
