@@ -54,9 +54,6 @@
         _blurView = [[ILTranslucentView alloc] initWithFrame: bounds];
 
         [_blurView setTranslucentAlpha: 0.96];
-//        [_backgroundView setOriginalImage: ];
-//        [_backgroundView setIsGlassEffectOn: YES];
-//        [_backgroundView setBlurLevel: 1.2];
         
         [self addSubview: _blurView];
 

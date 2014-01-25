@@ -31,8 +31,10 @@
 #define GRResourceCatogryLastUpdateKey  @"resources.category.last-update"
 
 #define GRSermonCategoriesKey           @"sermon.category"
-#define GRSermonCategoryLastUpdateKey    @"sermon.category.last-update"
+#define GRSermonCategoryLastUpdateKey   @"sermon.category.last-update"
 
+#define GRPrayListKey                   GRPrefix ".pray-list"
+#define GRPrayLastUpdateKey             GRPrefix ".pray.last-update"
 
 @interface GRDataService ()<NWHubDelegate>
 {
@@ -117,22 +119,8 @@
                            forKey: GRLocalNotificationScheduleKey];
         }
         
-        _prayList = [[NSMutableArray alloc] init];
-        [_prayList addObject: (@{
-                                 GRPrayTitleKey : @"为福音广传祷告",
-                                 GRPrayContentKey : @"传福音是每个基督徒的使命，请为这使命献上祷告。",
-                                 GRPrayUploadDateKey : [NSDate date],
-                                 })];
-        [_prayList addObject: (@{
-                                 GRPrayTitleKey : @"为恩典教会的复兴祷告",
-                                 GRPrayContentKey : @"教会需要复兴，需要在地上见证主、传扬主，请为教会献上祷告",
-                                 GRPrayUploadDateKey : [NSDate date],
-                                 })];
-        [_prayList addObject: (@{
-                                 GRPrayTitleKey : @"为自己的难处和软弱祷告",
-                                 GRPrayContentKey : @"所以我们只管坦然无惧的、来到施恩的宝座前、为要得怜恤、蒙恩惠作随时的帮助。(来4:16)",
-                                 GRPrayUploadDateKey : [NSDate date],
-                                 })];
+        _prayList = [[NSMutableArray alloc] initWithArray: [userDefaults objectForKey: GRPrayListKey]];
+        
         _receiveTeam = [(@{
                            GRTeamIDKey : @"8FF406E8-33A7-4374-8855-E58AC9397F2B",
                            GRTeamNameKey : @"接待组",
@@ -550,6 +538,41 @@
     return lastUpdateString;
 }
 
+- (void)_tryToRefreshPrayWithCallback: (ERServiceCallback)callback
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *lastUpdateString = [self _lastUpdateStringForKey: GRPrayLastUpdateKey];
+    
+    [GRNetworkService postMessage: (@{
+                                      GRNetworkActionKey : @"fetch_pray",
+                                      GRNetworkArgumentsKey : (@{
+                                                                 GRNetworkLastUpdateKey : lastUpdateString
+                                                                 })
+                                      })
+                         callback: (^(id result, id exception)
+                                    {
+                                        NSLog(@"in func: %s %@", __func__, result);
+                                        
+                                        NSArray *data = result[GRNetworkDataKey];
+                                        NSString *newLastUpdateString = [GRConfiguration stringFromDate: [NSDate date]];
+                                        
+                                        if (data)
+                                        {
+                                            [defaults setObject: newLastUpdateString
+                                                         forKey: GRPrayLastUpdateKey];
+                                            [defaults setObject: _prayList
+                                                         forKey: GRPrayListKey];
+                                            [_prayList addObjectsFromArray: data];
+                                            [defaults synchronize];
+                                        }
+                                        
+                                        if (callback)
+                                        {
+                                            callback(_prayList, nil);
+                                        }
+                                    })];
+}
+
 - (void)_tryToSynchronizeResourcesWithCallback: (ERServiceCallback)callback
 {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
@@ -710,26 +733,38 @@
 
 - (void)startToSynchronize
 {
-    [self _tryToSynchronizeSermonWithCallback: (^(id result, id exception)
-                                                {
-                                                    dispatch_async(dispatch_get_main_queue(),
-                                                                   (^
-                                                                    {
-                                                                        [[NSNotificationCenter defaultCenter] postNotificationName: GRNotificationSermonSynchronizeFinished
-                                                                                                                            object: nil];
-                                                                    }));
-                                                    
-                                                    [self _tryToSynchronizeResourcesWithCallback: (^(id result, id exception)
-                                                                                                   {
-                                                                                                       dispatch_async(dispatch_get_main_queue(),
-                                                                                                                      (^
-                                                                                                                       {
-                                                                                                                           [[NSNotificationCenter defaultCenter] postNotificationName: GRNotificationResourceSynchronizeFinished
-                                                                                                                                                                               object: nil];
-                                                                                                                       }));
-                                                                                                       
-                                                                                                   })];
-                                                })];
+    [self _tryToSynchronizeSermonWithCallback:
+     (^(id result, id exception)
+      {
+          dispatch_async(dispatch_get_main_queue(),
+                         (^
+                          {
+                              [[NSNotificationCenter defaultCenter] postNotificationName: GRNotificationSermonSynchronizeFinished
+                                                                                  object: nil];
+                          }));
+          
+          [self _tryToSynchronizeResourcesWithCallback:
+           (^(id result, id exception)
+            {
+                dispatch_async(dispatch_get_main_queue(),
+                               (^
+                                {
+                                    [[NSNotificationCenter defaultCenter] postNotificationName: GRNotificationResourceSynchronizeFinished
+                                                                                        object: nil];
+                                }));
+                [self _tryToRefreshPrayWithCallback:
+                 (^(id result, id exception)
+                  {
+                      dispatch_async(dispatch_get_main_queue(),
+                                     (^
+                                      {
+                                          [[NSNotificationCenter defaultCenter] postNotificationName: GRNotificationPraySynchronizeFinished
+                                                                                              object: nil];
+                                      }));
+                  })];
+                
+            })];
+      })];
 }
 
 @end

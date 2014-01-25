@@ -30,6 +30,8 @@
 #define GRDataServiceAllPrayListAction           @"allPrayList"
 #define GRDataServiceAddPrayAction               @"addPray:"
 
+#define GRDataServiceRefreshPrayWithCallbackAction @"_tryToRefreshPrayWithCallback:"
+
 #define GRDataServiceSaveLessonForIDAction       @"saveLesson:forID:"
 #define GRDataServiceLessonRecordForIDAction     @"lessonRecordForID:"
 
@@ -53,6 +55,7 @@
 
 #define GRNotificationResourceSynchronizeFinished   GRPrefix ".notification.resource.synchronized"
 #define GRNotificationSermonSynchronizeFinished     GRPrefix ".notification.sermon.synchronized"
+#define GRNotificationPraySynchronizeFinished       GRPrefix ".notification.pray.synchronized"
 
 @interface GRDataService : ERService
 
