@@ -5,3 +5,7 @@
 
 *.xcodeproj/xcuserdata/
 xcuserdata/
+
+*.xcbkptlist
+
+GraceRoad.xcodeproj/xcuserdata/*

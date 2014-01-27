@@ -36,6 +36,11 @@
 #define GRPrayListKey                   GRPrefix ".pray-list"
 #define GRPrayLastUpdateKey             GRPrefix ".pray.last-update"
 
+#define GRAccountTeamKey                GRPrefix ".account-team"
+#define GRAccountTeamLastUpdateKey      GRPrefix ".account-team.last-update"
+
+#define GRTeamMembersKey                GRPrefix ".team-members"
+
 @interface GRDataService ()<NWHubDelegate>
 {
     NSMutableArray *_resourceCategories;
@@ -47,8 +52,7 @@
     
     NSMutableArray *_scriptures;
     
-    NSDictionary *_receiveTeam;
-    NSArray *_receiveTeamMembers;
+    NSMutableArray *_receiveTeamMembers;
     
 #pragma mark - local push
     NWHub *_hub;
@@ -121,52 +125,7 @@
         
         _prayList = [[NSMutableArray alloc] initWithArray: [userDefaults objectForKey: GRPrayListKey]];
         
-        _receiveTeam = [(@{
-                           GRTeamIDKey : @"8FF406E8-33A7-4374-8855-E58AC9397F2B",
-                           GRTeamNameKey : @"接待组",
-                           }) retain];
-        _receiveTeamMembers = [(@[
-                                  (@{
-                                     GRAccountNameKey : @"陈晓娟",
-                                     GRAccountMobilePhoneKey : @"13671765129",
-                                     GRAccountEmailKey : @"tearsofphoenix@icloud.com",
-                                     }),
-                                  (@{
-                                     GRAccountNameKey : @"王顶君",
-                                     GRAccountMobilePhoneKey : @"13671765129",
-                                     GRAccountEmailKey : @"tearsofphoenix@icloud.com",
-                                     }),
-                                  (@{
-                                     GRAccountNameKey : @"唐义勇",
-                                     GRAccountMobilePhoneKey : @"13671765129",
-                                     GRAccountEmailKey : @"tearsofphoenix@icloud.com",
-                                     }),
-                                  (@{
-                                     GRAccountNameKey : @"仲怀玉",
-                                     GRAccountMobilePhoneKey : @"13671765129",
-                                     GRAccountEmailKey : @"tearsofphoenix@icloud.com",
-                                     }),
-                                  (@{
-                                     GRAccountNameKey : @"沈玉石",
-                                     GRAccountMobilePhoneKey : @"13671765129",
-                                     GRAccountEmailKey : @"tearsofphoenix@icloud.com",
-                                     }),
-                                  (@{
-                                     GRAccountNameKey : @"吴雷",
-                                     GRAccountMobilePhoneKey : @"13671765129",
-                                     GRAccountEmailKey : @"tearsofphoenix@icloud.com",
-                                     }),
-                                  (@{
-                                     GRAccountNameKey : @"向以平",
-                                     GRAccountMobilePhoneKey : @"13671765129",
-                                     GRAccountEmailKey : @"tearsofphoenix@icloud.com",
-                                     }),
-                                  (@{
-                                     GRAccountNameKey : @"韦红芬",
-                                     GRAccountMobilePhoneKey : @"13671765129",
-                                     GRAccountEmailKey : @"tearsofphoenix@icloud.com",
-                                     }),
-                                  ]) retain];
+        _receiveTeamMembers = [[NSMutableArray alloc] init];
         
         _eventStore = [[EKEventStore alloc] init];
         
@@ -211,8 +170,8 @@
                                             [defaults setObject: accountInfo
                                                          forKey: GRCurrentAccountKey];
                                             [defaults synchronize];
-                                            
-                                            callback(accountInfo, nil);
+                                         
+                                            [self _tryToSynchronizeAccountInfoWithCallback: callback];
                                             
                                         }else
                                         {
@@ -293,7 +252,7 @@
 
 - (NSDictionary *)teamForAccountID: (NSString *)accountID
 {
-    return _receiveTeam;
+    return [[NSUserDefaults standardUserDefaults] objectForKey: GRCurrentAccountKey][GRTeamKey];
 }
 
 - (NSArray *)allMemberForTeamID: (NSString *)teamID
@@ -729,6 +688,37 @@
                                             }
                                         }
                                     })];
+}
+
+- (void)_tryToSynchronizeAccountInfoWithCallback: (ERServiceCallback)callback
+{
+    NSDictionary *team = [self teamForAccountID: nil];
+    
+    [GRNetworkService postMessage: (@{
+                                      GRNetworkActionKey : @"get_team_members",
+                                      GRNetworkArgumentsKey : (@{
+                                                                 @"team_id" : team[GRTeamIDKey],
+                                                                 })
+                                      })
+                         callback: (^(NSDictionary *result, id exception)
+                                    {
+                                        NSArray *data = result[GRNetworkDataKey];
+                                        if (data)
+                                        {
+                                            NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+                                            [defaults setObject: data
+                                                         forKey: GRTeamMembersKey];
+                                            [defaults synchronize];
+                                            
+                                            [_receiveTeamMembers addObjectsFromArray: data];
+                                        }
+                                        
+                                        if (callback)
+                                        {
+                                            callback(data, nil);
+                                        }
+                                    })];
+    
 }
 
 - (void)startToSynchronize

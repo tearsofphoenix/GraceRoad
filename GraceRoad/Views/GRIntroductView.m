@@ -53,7 +53,7 @@
                                                           blue: 0.96f
                                                          alpha: 1.00f]];
         
-        CGRect rect = CGRectMake(10, 20, frame.size.width - 10 * 2, 100);
+        CGRect rect = CGRectMake(10, 30, frame.size.width - 10 * 2, 120);
         
         UITextView *contentView = [[UITextView alloc] initWithFrame: rect];
         
@@ -62,8 +62,9 @@
         [contentView setFont: [UIFont systemFontOfSize: 16]];
         [contentView setTextAlignment: NSTextAlignmentLeft];
         [contentView setEditable: NO];
-        
-        [contentView setText: (@"      以马内利！新松江恩典教会欢迎您！\n"
+        [contentView setScrollEnabled: NO];
+        [contentView setText: (@"\n"
+                               "      以马内利！新松江恩典教会欢迎您！\n"
                                "      感谢神把您带到我们当中，在基督里我们是一家人，"
                                "愿在以后的生活里我们共同学习神的话语。耶稣爱你！\n"
                                "")];

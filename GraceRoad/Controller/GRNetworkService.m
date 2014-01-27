@@ -31,8 +31,15 @@
 {
     if ([[Reachability reachabilityForInternetConnection] currentReachabilityStatus] == NotReachable)
     {
-        ERSC(GRViewServiceID, GRViewServiceHideLoadingIndicatorAction, nil, nil);
-        
+//        ERSC(GRViewServiceID, GRViewServiceHideLoadingIndicatorAction, nil, nil);
+        if (callback)
+        {
+            callback(nil, [NSError errorWithDomain: GRPrefix
+                                              code: -1
+                                          userInfo: (@{
+                                                       NSLocalizedDescriptionKey : @"网络异常！"
+                                                       })]);
+        }
         [UIAlertView alertWithMessage: @"请检查您的网络连接！"
                     cancelButtonTitle: @"确定"];
     }else

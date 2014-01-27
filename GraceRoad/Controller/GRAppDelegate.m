@@ -62,22 +62,7 @@ didFinishLaunchingWithOptions: (NSDictionary *)launchOptions
     
     [WXApi registerApp: @"wx862decf228c6b60b"
        withDescription: @"恩典之路"];
-    
-    double delayInSeconds = 3.0;
-    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
-    dispatch_after(popTime, dispatch_get_main_queue(),
-                   (^(void)
-    {
-        [self application: application
-didReceiveRemoteNotification: (@{
-                                 @"aps" : (@{
-                                             @"alert" : @"0126服侍",
-                                             @"sound" : @"default",
-                                             })
-                                 })
-   fetchCompletionHandler: nil];
-    }));
-    
+        
     [[UIApplication sharedApplication] registerForRemoteNotificationTypes: (UIRemoteNotificationTypeAlert
                                                                             | UIRemoteNotificationTypeBadge
                                                                             | UIRemoteNotificationTypeSound)];
