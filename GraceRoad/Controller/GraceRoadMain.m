@@ -14,7 +14,6 @@ int main(int argc, char * argv[])
 {
     @autoreleasepool
     {
-        //NSLog(@"%@", [NSUUID UUID]);
         return UIApplicationMain(argc, argv, nil, NSStringFromClass([GRAppDelegate class]));
     }
 }

@@ -19,6 +19,7 @@
 #import "GRConfiguration.h"
 #import "GRNetworkService.h"
 #import "GRDatabaseService.h"
+#import "GRSynchronizeService.h"
 
 #import <NWPushNotification/NWHub.h>
 #import <NoahsUtility/NoahsUtility.h>
@@ -306,7 +307,14 @@
 
 - (void)addPray: (NSDictionary *)prayInfo
 {
-    
+    ERSC(GRSynchronizeServiceID,
+         GRSynchronizeAddRecordsAction,
+         (@[ @[
+                 (@{
+                    GRNetworkActionKey : @"add_pray",
+                    GRNetworkArgumentsKey : prayInfo,
+                  })
+               ] ]), nil);
 }
 
 - (void)saveLesson: (NSDictionary *)lesson

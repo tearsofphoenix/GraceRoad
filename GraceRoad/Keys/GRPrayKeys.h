@@ -8,4 +8,4 @@
 
 #define GRPrayTitleKey      @"title"
 #define GRPrayContentKey    @"content"
-#define GRPrayUploadDateKey @"upload-date"
+#define GRPrayUploadDateKey @"last_update"
