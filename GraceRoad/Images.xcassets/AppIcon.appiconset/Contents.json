@@ -3,37 +3,37 @@
     {
       "size" : "29x29",
       "idiom" : "iphone",
-      "filename" : "GRIcon29x29.png",
+      "filename" : "29.png",
       "scale" : "1x"
     },
     {
       "size" : "29x29",
       "idiom" : "iphone",
-      "filename" : "GRIcon58x58.png",
+      "filename" : "58.png",
       "scale" : "2x"
     },
     {
       "size" : "40x40",
       "idiom" : "iphone",
-      "filename" : "GRIcon80x80.png",
+      "filename" : "80.png",
       "scale" : "2x"
     },
     {
       "size" : "57x57",
       "idiom" : "iphone",
-      "filename" : "GRIcon57x57.png",
+      "filename" : "57.png",
       "scale" : "1x"
     },
     {
       "size" : "57x57",
       "idiom" : "iphone",
-      "filename" : "GRIcon114x114.png",
+      "filename" : "114.png",
       "scale" : "2x"
     },
     {
       "size" : "60x60",
       "idiom" : "iphone",
-      "filename" : "GRIcon120x120.png",
+      "filename" : "120.png",
       "scale" : "2x"
     },
     {
@@ -44,7 +44,7 @@
     {
       "size" : "29x29",
       "idiom" : "ipad",
-      "filename" : "GRIcon-ipad58x58.png",
+      "filename" : "58-1.png",
       "scale" : "2x"
     },
     {
@@ -55,7 +55,7 @@
     {
       "size" : "40x40",
       "idiom" : "ipad",
-      "filename" : "GRIcon-ipad80x80.png",
+      "filename" : "80-1.png",
       "scale" : "2x"
     },
     {
