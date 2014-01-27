@@ -47,8 +47,8 @@
                                            GRDataServiceAllResourceCategoriesAction,
                                            nil)];
         [_originResources setDictionary: ERSSC(GRDataServiceID,
-                                               GRDataServiceAllResourcesAction,
-                                               nil)];
+                                               GRDataServiceAllResourcesInCategoriesAction,
+                                               @[ _originCategories ])];
         
         [self setTitle: @"资料"];
         
@@ -234,7 +234,7 @@ viewForHeaderInSection: (NSInteger)section
     
     [[cell textLabel] setText: resourceInfo[GRResourceName]];
     
-    [[cell imageView] setImage: [GRResourceManager imageForFileType: resourceInfo[GRResourceTypeName]]];
+    [[cell imageView] setImage: [GRResourceManager imageForFileType: resourceInfo[GRResourceTypeKey]]];
     
     return [cell autorelease];
 }
@@ -323,8 +323,8 @@ didSelectRowAtIndexPath: (NSIndexPath *)indexPath
                                        GRDataServiceAllResourceCategoriesAction,
                                        nil)];
     [_originResources setDictionary: ERSSC(GRDataServiceID,
-                                           GRDataServiceAllResourcesAction,
-                                           nil)];
+                                           GRDataServiceAllResourcesInCategoriesAction,
+                                           @[ _originCategories ])];
     [self  _updateContent];
 }
 

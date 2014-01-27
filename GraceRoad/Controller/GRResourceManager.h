@@ -25,4 +25,8 @@ typedef void (^ GRResourceCallback)(NSData *data, NSError *error);
 
 + (UIImage *)imageForFileType: (NSString *)fileTypeName;
 
++ (id)manager;
+
+- (NSString *)databasePath;
+
 @end

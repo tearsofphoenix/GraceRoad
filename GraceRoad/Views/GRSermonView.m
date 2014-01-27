@@ -227,8 +227,8 @@ heightForRowAtIndexPath: (NSIndexPath *)indexPath
                                        GRDataServiceAllSermonCategoriesAction, nil)];
     
     [_sermons setDictionary: ERSSC(GRDataServiceID,
-                                   GRDataServiceAllSermonsAction,
-                                   nil)];
+                                   GRDataServiceAllSermonsInCategoriesAction,
+                                   @[ _sermonCategories ])];
     
     [[_contentViewController tableView] reloadData];
 }

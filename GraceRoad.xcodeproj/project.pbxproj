@@ -67,6 +67,7 @@
 		920B99941885259B006BD620 /* GRExampleAvatar.png in Resources */ = {isa = PBXBuildFile; fileRef = 920B99921885259B006BD620 /* GRExampleAvatar.png */; };
 		920B99951885259B006BD620 /* GRExampleAvatar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 920B99931885259B006BD620 /* GRExampleAvatar@2x.png */; };
 		920B999718852B21006BD620 /* GRAddButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 920B999618852B21006BD620 /* GRAddButton@2x.png */; };
+		92217059189631B100A625EC /* GRDatabaseService.m in Sources */ = {isa = PBXBuildFile; fileRef = 92217058189631B100A625EC /* GRDatabaseService.m */; };
 		923E49A21888ECF6006E9029 /* GRLocationTab.png in Resources */ = {isa = PBXBuildFile; fileRef = 923E499E1888ECF6006E9029 /* GRLocationTab.png */; };
 		923E49A31888ECF6006E9029 /* GRPreferenceTab.png in Resources */ = {isa = PBXBuildFile; fileRef = 923E499F1888ECF6006E9029 /* GRPreferenceTab.png */; };
 		923E49A41888ECF6006E9029 /* GRResourceTab.png in Resources */ = {isa = PBXBuildFile; fileRef = 923E49A01888ECF6006E9029 /* GRResourceTab.png */; };
@@ -272,6 +273,8 @@
 		920B99921885259B006BD620 /* GRExampleAvatar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GRExampleAvatar.png; sourceTree = "<group>"; };
 		920B99931885259B006BD620 /* GRExampleAvatar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "GRExampleAvatar@2x.png"; sourceTree = "<group>"; };
 		920B999618852B21006BD620 /* GRAddButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "GRAddButton@2x.png"; sourceTree = "<group>"; };
+		92217057189631B100A625EC /* GRDatabaseService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRDatabaseService.h; sourceTree = "<group>"; };
+		92217058189631B100A625EC /* GRDatabaseService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GRDatabaseService.m; sourceTree = "<group>"; };
 		923E499E1888ECF6006E9029 /* GRLocationTab.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GRLocationTab.png; sourceTree = "<group>"; };
 		923E499F1888ECF6006E9029 /* GRPreferenceTab.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GRPreferenceTab.png; sourceTree = "<group>"; };
 		923E49A01888ECF6006E9029 /* GRResourceTab.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GRResourceTab.png; sourceTree = "<group>"; };
@@ -529,6 +532,8 @@
 			children = (
 				9261922918865752001E0A72 /* GRAppDelegate.h */,
 				9261922A18865752001E0A72 /* GRAppDelegate.m */,
+				92217057189631B100A625EC /* GRDatabaseService.h */,
+				92217058189631B100A625EC /* GRDatabaseService.m */,
 				9261922B18865752001E0A72 /* GRDataService.h */,
 				9261922C18865752001E0A72 /* GRDataService.m */,
 				9288BA07188D05DA0095ADAE /* GRConfiguration.h */,
@@ -1050,6 +1055,7 @@
 				9276F34818877D6100E13763 /* ERGalleryViewPrivateHandler.m in Sources */,
 				9261924B18865752001E0A72 /* GRMainViewController.m in Sources */,
 				9261924A18865752001E0A72 /* GRDataService.m in Sources */,
+				92217059189631B100A625EC /* GRDatabaseService.m in Sources */,
 				929989C518768D550001EFDC /* NSData+CMBExtensions.m in Sources */,
 				929989B818768C2E0001EFDC /* MFNetworkClient.m in Sources */,
 				9276F34D18877D6100E13763 /* NSIndexPath+ERGalleryView.m in Sources */,

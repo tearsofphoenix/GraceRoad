@@ -14,11 +14,11 @@
 #define GRResourceTypeWAVE  @"WAV"
 
 #define GRResourceName          @"name"
-#define GRResourceID            @"id"
+#define GRResourceID            @"uuid"
 #define GRResourcePath          @"path"
 #define GRResourceAbstract      @"abstract"
 #define GRResourceUploadDate    @"upload-date"
-#define GRResourceTypeName      @"type"
+#define GRResourceTypeKey      @"type"
 
 #define GRResourceCategoryName  @"name"
 #define GRResourceCategoryID    @"uuid"

@@ -18,12 +18,12 @@
 #define GRDataServiceLogoutAction                @"logout"
 #define GRDataServiceAddScriptureAlertAction     @"addScripture:"
 
-#define GRDataServiceAllResourcesAction          @"allResources"
-#define GRDataServiceAllResourceCategoriesAction @"allResourceCategories"
+#define GRDataServiceAllResourcesInCategoriesAction         @"allResourcesInCategories:"
+#define GRDataServiceAllResourceCategoriesAction            @"allResourceCategories"
 #define GRDataServiceRefreshResourceWithCallbackAction @"_tryToSynchronizeResourcesWithCallback:"
 
-#define GRDataServiceAllSermonCategoriesAction   @"allSermonCategories"
-#define GRDataServiceAllSermonsAction            @"allSermons"
+#define GRDataServiceAllSermonCategoriesAction              @"allSermonCategories"
+#define GRDataServiceAllSermonsInCategoriesAction           @"allSermonsInCategories:"
 
 #define GRDataServiceRefreshSermonWithCallbackAction @"_tryToSynchronizeSermonWithCallback:"
 

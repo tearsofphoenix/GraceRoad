@@ -9,6 +9,7 @@
 #import "GRResourceManager.h"
 #import "MFNetworkClient.h"
 #import "GRConfiguration.h"
+#import <UIKit/UIKit.h>
 
 @implementation GRResourceManager
 
@@ -17,35 +18,43 @@ static NSString *gsResourcePath = nil;
 static NSMutableDictionary *gsFileTypeImagesCache = nil;
 
 + (void)initialize
-{
+{    
     if (!gsFileTypeImagesCache)
     {
         gsFileTypeImagesCache = [[NSMutableDictionary alloc] init];
     }
 }
 
+static NSString *_CreateFolderUnderLibraryDirectoryIfNeeded(NSString *folderName)
+{
+    NSString *libraryPath = NSSearchPathForDirectoriesInDomains(NSLibraryDirectory,
+                                                                NSUserDomainMask,
+                                                                YES)[0];
+    NSString *path = [libraryPath stringByAppendingPathComponent: folderName];
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    
+    if (![fileManager fileExistsAtPath: path])
+    {
+        NSError *error = nil;
+        [fileManager createDirectoryAtPath: path
+               withIntermediateDirectories: YES
+                                attributes: nil
+                                     error: &error];
+        if (error)
+        {
+            NSLog(@"in function: %s error: %@", __func__, error);
+            return nil;
+        }
+    }
+    
+    return path;
+}
+
 + (NSString *)resourcePath
 {
     if (!gsResourcePath)
     {
-        NSString *libraryPath = NSSearchPathForDirectoriesInDomains(NSLibraryDirectory,
-                                                                    NSUserDomainMask,
-                                                                    YES)[0];
-        gsResourcePath = [[libraryPath stringByAppendingPathComponent: @"/.grace-road-resources"] retain];
-        NSFileManager *fileManager = [NSFileManager defaultManager];
-        
-        if (![fileManager fileExistsAtPath: gsResourcePath])
-        {
-            NSError *error = nil;
-            [fileManager createDirectoryAtPath: gsResourcePath
-                   withIntermediateDirectories: YES
-                                    attributes: nil
-                                         error: &error];
-            if (error)
-            {
-                NSLog(@"in function: %s error: %@", __func__, error);
-            }
-        }
+        gsResourcePath = [_CreateFolderUnderLibraryDirectoryIfNeeded(@"/.grace-road-resources") retain];
     }
     
     return gsResourcePath;
@@ -81,7 +90,6 @@ static NSMutableDictionary *gsFileTypeImagesCache = nil;
 + (void)downloadFileWithSubPath: (NSString *)subPath
                        callback: (GRResourceCallback)callback
 {
-#if 1
     [MFNetworkClient  downloadFileAtPath: [self _packResourcePathWithSubPath: subPath]
                                 callback: (^(NSData *data, id error)
                                           {
@@ -102,51 +110,6 @@ static NSMutableDictionary *gsFileTypeImagesCache = nil;
                                                                   }
                                                               }));
                                           })];
-#else
-    NSString *path = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent: subPath];
-    NSString *targetPath = [[self resourcePath] stringByAppendingPathComponent: subPath];
-    
-    NSData *data = nil;
-    BOOL isDirectory = NO;
-    NSFileManager *fileManager = [NSFileManager defaultManager];
-    
-    if([fileManager fileExistsAtPath: path
-                         isDirectory: &isDirectory])
-    {
-        if (isDirectory)
-        {
-            NSError *error = nil;
-            
-            [fileManager copyItemAtPath: path
-                                 toPath: targetPath
-                                  error: &error];
-            if (error)
-            {
-                NSLog(@"in func: %s error: %@", __func__, error);
-            }
-        }else
-        {
-            data = [NSData dataWithContentsOfFile: path];
-        }
-    }
-    
-    double delayInSeconds = 1.0;
-    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
-    dispatch_after(popTime, dispatch_get_main_queue(),
-                   (^(void)
-                    {
-                        if (data)
-                        {
-                            [data writeToFile: targetPath
-                                   atomically: YES];
-                        }
-                        
-                        if (callback)
-                        {
-                            callback(data, nil);
-                        }
-                    }));
-#endif
 }
 
 + (UIImage *)imageForFileType: (NSString *)fileTypeName
@@ -164,6 +127,48 @@ static NSMutableDictionary *gsFileTypeImagesCache = nil;
     }
     
     return image;
+}
+
+static id gsResourceManager = nil;
+
++ (id)manager
+{
+    if (!gsResourceManager)
+    {
+        gsResourceManager = [[self alloc] init];
+    }
+    
+    return gsResourceManager;
+}
+
+- (id)init
+{
+    if ((self = [super init]))
+    {
+        [[NSNotificationCenter defaultCenter] addObserver: self
+                                                 selector: @selector(_notificationForMemoryWarning:)
+                                                     name: UIApplicationDidReceiveMemoryWarningNotification
+                                                   object: nil];
+    }
+    
+    return self;
+}
+
+- (void)_notificationForMemoryWarning: (NSNotification *)notification
+{
+    [gsFileTypeImagesCache removeAllObjects];
+}
+
+static NSString *gsDatabasePath = nil;
+
+- (NSString *)databasePath
+{
+    if (!gsDatabasePath)
+    {
+        gsDatabasePath = [_CreateFolderUnderLibraryDirectoryIfNeeded(@"/.grace-road-database") retain];
+    }
+    
+    return gsDatabasePath;
 }
 
 @end
