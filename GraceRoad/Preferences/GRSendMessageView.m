@@ -22,8 +22,7 @@
 
 #define  GRAccountPerRow (5)
 
-@interface GRSendMessageView ()<ERGalleryViewDataSource, ERGalleryViewDelegate,
-MFMessageComposeViewControllerDelegate, MFMailComposeViewControllerDelegate>
+@interface GRSendMessageView ()<ERGalleryViewDataSource, ERGalleryViewDelegate, MFMailComposeViewControllerDelegate>
 {
     UIScrollView *_scrollView;
     ERGalleryView *_galleryView;
@@ -433,34 +432,21 @@ weightForHeaderOfSection: (NSInteger)section
         
     }else if ([_messageType isEqualToString: GRMessageTypeSMS])
     {
-        if ([MFMessageComposeViewController canSendText])
+        NSMutableArray *recipients = [NSMutableArray arrayWithCapacity: [_targetAccounts count]];
+        
+        for (NSDictionary *tLooper in _targetAccounts)
         {
-            MFMessageComposeViewController *controller = [[MFMessageComposeViewController alloc] init];
-            [controller setMessageComposeDelegate: self];
-            
-            NSMutableArray *recipients = [NSMutableArray arrayWithCapacity: [_targetAccounts count]];
-            
-            for (NSDictionary *tLooper in _targetAccounts)
+            NSString *phoneNumber = tLooper[GRAccountMobilePhoneKey];
+            if (phoneNumber)
             {
-                NSString *phoneNumber = tLooper[GRAccountMobilePhoneKey];
-                if (phoneNumber)
-                {
-                    [recipients addObject: phoneNumber];
-                }
+                [recipients addObject: phoneNumber];
             }
-            
-            [controller setRecipients: recipients];
-            
-            UIViewController *rootViewController = ERSSC(GRViewServiceID, GRViewServiceRootViewControllerAction, nil);
-            [rootViewController presentViewController: controller
-                                             animated: YES
-                                           completion: nil];
-            [controller release];
-        }else
-        {
-            [UIAlertView alertWithMessage: @"您的设备无法发送短息！"
-                        cancelButtonTitle: @"确定"];
         }
+
+        ERSC(GRViewServiceID,
+             GRViewServiceSendMessageAction,
+             @[ recipients ], nil);
+        
     }else if ([_messageType isEqualToString: GRMessageTypeWeiXin])
     {        
         NSString *message = [_textView text];
@@ -500,44 +486,6 @@ weightForHeaderOfSection: (NSInteger)section
             [UIAlertView alertWithMessage: @"您的设备无法发送邮件！"
                         cancelButtonTitle: @"确定"];
         }
-    }
-}
-
-- (void)messageComposeViewController: (MFMessageComposeViewController *)controller
-                 didFinishWithResult: (MessageComposeResult)result
-{
-    UIViewController *rootViewController = ERSSC(GRViewServiceID, GRViewServiceRootViewControllerAction, nil);
-    
-    switch (result)
-    {
-        case MessageComposeResultCancelled:
-        {
-            [rootViewController dismissViewControllerAnimated: YES
-                                                   completion: nil];
-            break;
-        }
-        case MessageComposeResultFailed:
-        {
-            [rootViewController dismissViewControllerAnimated: YES
-                                                   completion: (^
-                                                                {
-                                                                    [UIAlertView alertWithMessage: @"发送失败！"
-                                                                                cancelButtonTitle: @"确定"];
-                                                                })];
-            break;
-        }
-        case MessageComposeResultSent:
-        {
-            [rootViewController dismissViewControllerAnimated: YES
-                                                   completion: (^
-                                                                {
-                                                                    [UIAlertView alertWithMessage: @"发送成功！"
-                                                                                cancelButtonTitle: @"确定"];
-                                                                })];
-            break;
-        }
-        default:
-            break;
     }
 }
 

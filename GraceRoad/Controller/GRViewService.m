@@ -10,9 +10,10 @@
 #import "GRMainViewController.h"
 #import "UIAlertView+BlockSupport.h"
 
+#import <MessageUI/MessageUI.h>
 #import <PDFReader/ReaderViewController.h>
 
-@interface GRViewService ()<ReaderViewControllerDelegate>
+@interface GRViewService ()<ReaderViewControllerDelegate, MFMessageComposeViewControllerDelegate>
 
 @property (nonatomic, assign) GRMainViewController *rootViewController;
 
@@ -94,6 +95,67 @@
 {
     [_rootViewController dismissViewControllerAnimated: YES
                                             completion: nil];
+}
+
+- (void)sendMessageToRecipients: (NSArray *)recipients
+                       delegate: (id<MFMessageComposeViewControllerDelegate>)delegate
+{
+    if ([MFMessageComposeViewController canSendText])
+    {
+        MFMessageComposeViewController *controller = [[MFMessageComposeViewController alloc] init];
+        [controller setMessageComposeDelegate: self];
+        
+        [controller setRecipients: recipients];
+        
+        UIViewController *rootViewController = ERSSC(GRViewServiceID, GRViewServiceRootViewControllerAction, nil);
+        [rootViewController presentViewController: controller
+                                         animated: YES
+                                       completion: nil];
+        [controller release];
+    }else
+    {
+        [UIAlertView alertWithMessage: @"您的设备无法发送短息！"
+                    cancelButtonTitle: @"确定"];
+    }
+}
+
+
+- (void)messageComposeViewController: (MFMessageComposeViewController *)controller
+                 didFinishWithResult: (MessageComposeResult)result
+{
+    UIViewController *rootViewController = ERSSC(GRViewServiceID, GRViewServiceRootViewControllerAction, nil);
+    
+    switch (result)
+    {
+        case MessageComposeResultCancelled:
+        {
+            [rootViewController dismissViewControllerAnimated: YES
+                                                   completion: nil];
+            break;
+        }
+        case MessageComposeResultFailed:
+        {
+            [rootViewController dismissViewControllerAnimated: YES
+                                                   completion: (^
+                                                                {
+                                                                    [UIAlertView alertWithMessage: @"发送失败！"
+                                                                                cancelButtonTitle: @"确定"];
+                                                                })];
+            break;
+        }
+        case MessageComposeResultSent:
+        {
+            [rootViewController dismissViewControllerAnimated: YES
+                                                   completion: (^
+                                                                {
+                                                                    [UIAlertView alertWithMessage: @"发送成功！"
+                                                                                cancelButtonTitle: @"确定"];
+                                                                })];
+            break;
+        }
+        default:
+            break;
+    }
 }
 
 @end

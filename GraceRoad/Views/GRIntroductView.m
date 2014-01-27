@@ -12,7 +12,9 @@
 #import "GRTheme.h"
 #import "GRUIExtensions.h"
 #import "GRDataService.h"
+#import "GRViewService.h"
 
+#import <MessageUI/MessageUI.h>
 #import <MapKit/MapKit.h>
 
 #define GRHasMap 0
@@ -74,7 +76,7 @@
         rect.origin.x = 0;
         rect.origin.y = 0;
         rect.size.width = frame.size.width;
-        rect.size.height = 130;
+        rect.size.height = 227;
         
         _placeHolderImageView = [[UIImageView alloc] initWithFrame: rect];
         [_placeHolderImageView setImage: [UIImage imageNamed: @"GRMapPlaceHolder"]];
@@ -322,7 +324,7 @@ heightForRowAtIndexPath: (NSIndexPath *)indexPath
         }
         case 2:
         {
-            return 130;
+            return 240;
         }
         default:
         {
@@ -339,16 +341,32 @@ didSelectRowAtIndexPath: (NSIndexPath *)indexPath
     
     if (1 == section)
     {
-        NSString *phoneNumber = [@"telprompt://" stringByAppendingString: _telephones[row]];
-        NSURL *URL = [NSURL URLWithString: phoneNumber];
-        if ([[UIApplication sharedApplication] canOpenURL: URL])
-        {
-            [[UIApplication sharedApplication] openURL: URL];
-        }else
-        {
-            [UIAlertView alertWithMessage: @"您的设备无法拨打电话！"
-                        cancelButtonTitle: @"确定"];
-        }
+        [UIActionSheet showWithTitle: nil
+                             choices: @[ @"打电话", @"发短信" ]
+                              inView: self
+                            callback: (^(NSInteger buttonIndex)
+                                       {
+                                           if (1 == buttonIndex)
+                                           {
+                                               NSString *phoneNumber = [@"telprompt://" stringByAppendingString: _telephones[row]];
+                                               NSURL *URL = [NSURL URLWithString: phoneNumber];
+                                               if ([[UIApplication sharedApplication] canOpenURL: URL])
+                                               {
+                                                   [[UIApplication sharedApplication] openURL: URL];
+                                               }else
+                                               {
+                                                   [UIAlertView alertWithMessage: @"您的设备无法拨打电话！"
+                                                               cancelButtonTitle: @"确定"];
+                                               }
+                                           }else if (2 == buttonIndex)
+                                           {
+                                               ERSC(GRViewServiceID,
+                                                    GRViewServiceSendMessageAction,
+                                                    (@[
+                                                       @[_telephones[row]],
+                                                       ]), nil);
+                                           }
+                                       })];
     }
 }
 

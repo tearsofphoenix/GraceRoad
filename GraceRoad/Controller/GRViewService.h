@@ -23,6 +23,8 @@
 #define GRViewServiceShowDailyScriptureAction           @"showDailyScripture:"
 #define GRViewServiceViewPDFAtPathAction                @"viewPDFAtPath:"
 
+#define GRViewServiceSendMessageAction                  @"sendMessageToRecipients:delegate:"
+
 @interface GRViewService : ERService
 
 @end
