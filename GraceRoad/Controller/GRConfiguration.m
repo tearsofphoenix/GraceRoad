@@ -8,10 +8,14 @@
 
 #import "GRConfiguration.h"
 
-//#define GRServerURLPrefix @"http://www.xn--6oq90d37vryemman3g2vm.com/system/message.php"
-//#define GRServerURLPrefix @"http://www.xn--6oq90d37vryemman3g2vm.com/system/test_php.php"
-#define GRServerURLPrefix @"http://www.tearsofphoenix.com/system/dispatch.php"
-#define GRFileURLString         @"http://www.tearsofphoenix.com/system/files/"
+#if 1
+#define GRServerDomain      @"http://www.xn--6oq90d37vryemman3g2vm.com"
+#else
+#define GRServerDomain      @"http://www.tearsofphoenix.com"
+#endif
+
+#define GRServerMessageURLString        GRServerDomain "/system/dispatch.php"
+#define GRFileURLString                 GRServerDomain "/system/files/"
 
 @implementation GRConfiguration
 
@@ -20,7 +24,7 @@ static NSURL *gsServerURL = nil;
 {
     if (!gsServerURL)
     {
-        gsServerURL = [[NSURL URLWithString: GRServerURLPrefix] retain];
+        gsServerURL = [[NSURL URLWithString: GRServerMessageURLString] retain];
     }
     
     return gsServerURL;

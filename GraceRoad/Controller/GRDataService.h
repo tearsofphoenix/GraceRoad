@@ -29,6 +29,7 @@
 
 #define GRDataServiceAllPrayListAction           @"allPrayList"
 #define GRDataServiceAddPrayAction               @"addPray:"
+#define GRDataServiceHidePrayByIDAction          @"hidePrayByID:"
 
 #define GRDataServiceRefreshPrayWithCallbackAction @"_tryToRefreshPrayWithCallback:"
 

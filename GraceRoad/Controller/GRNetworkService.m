@@ -31,7 +31,6 @@
 {
     if ([[Reachability reachabilityForInternetConnection] currentReachabilityStatus] == NotReachable)
     {
-//        ERSC(GRViewServiceID, GRViewServiceHideLoadingIndicatorAction, nil, nil);
         if (callback)
         {
             callback(nil, [NSError errorWithDomain: GRPrefix
@@ -50,7 +49,6 @@
             NSString *action = parameters[GRNetworkActionKey];
             
             NSString *messageID = [NSString randomStringWithLength: 8];
-            //        NSLog(@"messageID: %@", messageID);
             
             [info setObject: messageID
                      forKey: GRNetworkMessageIDKey];

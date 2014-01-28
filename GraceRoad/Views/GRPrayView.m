@@ -147,6 +147,38 @@ viewForHeaderInSection: (NSInteger)section
     return headerLabel;
 }
 
+- (NSString *)                          tableView: (UITableView *)tableView
+titleForDeleteConfirmationButtonForRowAtIndexPath: (NSIndexPath *)indexPath
+{
+    return @"隐藏";
+}
+
+- (BOOL)    tableView: (UITableView *)tableView
+canEditRowAtIndexPath: (NSIndexPath *)indexPath
+{
+    return YES;
+}
+
+- (void) tableView: (UITableView *)tableView
+commitEditingStyle: (UITableViewCellEditingStyle)editingStyle
+ forRowAtIndexPath: (NSIndexPath *)indexPath
+{
+    if (editingStyle == UITableViewCellEditingStyleDelete)
+    {
+        NSString *dateString = _dateArray[[indexPath section]];
+        NSMutableArray *prays = _prayMap[dateString];
+        NSInteger row = [indexPath row];
+        NSDictionary *prayInfo = prays[row];
+
+        ERSC(GRDataServiceID, GRDataServiceHidePrayByIDAction, @[ prayInfo[@"uuid"] ], nil);
+        
+        [prays removeObjectAtIndex: row];
+        
+        [tableView deleteRowsAtIndexPaths: @[ indexPath ]
+                         withRowAnimation: UITableViewRowAnimationAutomatic];
+    }
+}
+
 - (void)_handleAddPrayButtonTappedEvent: (id)sender
 {
     UIAlertView *alertView = [UIAlertView alertWithTitle: @"请输入代祷内容："

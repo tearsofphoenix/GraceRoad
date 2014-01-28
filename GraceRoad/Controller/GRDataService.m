@@ -20,6 +20,7 @@
 #import "GRNetworkService.h"
 #import "GRDatabaseService.h"
 #import "GRSynchronizeService.h"
+#import "Reachability.h"
 
 #import <NWPushNotification/NWHub.h>
 #import <NoahsUtility/NoahsUtility.h>
@@ -292,7 +293,7 @@
     
     GRDBT((^(id<ERSQLBatchStatements> batchStatements)
            {
-               id<ERSQLResultSet> resultSet = [batchStatements resultSetFromSQL: (@"select properties from pray")];
+               id<ERSQLResultSet> resultSet = [batchStatements resultSetFromSQL: (@"select properties from pray where hide=0")];
                
                while ([resultSet moveCursorToNextRecord])
                {
@@ -307,14 +308,33 @@
 
 - (void)addPray: (NSDictionary *)prayInfo
 {
-    ERSC(GRSynchronizeServiceID,
-         GRSynchronizeAddRecordsAction,
-         (@[ @[
-                 (@{
-                    GRNetworkActionKey : @"add_pray",
-                    GRNetworkArgumentsKey : prayInfo,
-                  })
-               ] ]), nil);
+    if ([[Reachability reachabilityForInternetConnection] currentReachabilityStatus] != NotReachable)
+    {
+        [GRNetworkService postMessage: (@{
+                                          GRNetworkActionKey : @"add_pray",
+                                          GRNetworkArgumentsKey : prayInfo
+                                          })
+                             callback: nil];
+    }else
+    {
+        ERSC(GRSynchronizeServiceID,
+             GRSynchronizeAddRecordsAction,
+             (@[ @[
+                     (@{
+                        GRNetworkActionKey : @"add_pray",
+                        GRNetworkArgumentsKey : prayInfo,
+                        })
+                     ] ]), nil);
+    }
+}
+
+- (void)hidePrayByID: (NSString *)prayID
+{
+    GRDBT((^(id<ERSQLBatchStatements> batchStatements)
+           {
+               [batchStatements executeStatementForSQL: (@"update pray set hide=1 where uuid=?")
+                                        withParameters: @[ prayID ]];
+           }));
 }
 
 - (void)saveLesson: (NSDictionary *)lesson
