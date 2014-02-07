@@ -39,8 +39,8 @@
                                                        NSLocalizedDescriptionKey : @"网络异常！"
                                                        })]);
         }
-        [UIAlertView alertWithMessage: @"请检查您的网络连接！"
-                    cancelButtonTitle: @"确定"];
+        
+        ERSC(GRViewServiceID, GRViewServiceAlertMessageAction, @[ @"请检查您的网络连接！"], nil);
     }else
     {
         @autoreleasepool

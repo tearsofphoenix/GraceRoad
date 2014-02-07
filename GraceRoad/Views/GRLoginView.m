@@ -216,8 +216,7 @@
     
     if (errorMessage)
     {
-        [UIAlertView alertWithMessage: errorMessage
-                    cancelButtonTitle: @"确定"];
+        ERSC(GRViewServiceID, GRViewServiceAlertMessageAction, @[ errorMessage], nil);
     }else
     {
         ERServiceCallback callback = (^(id result, id exception)
@@ -233,8 +232,7 @@
                                               }
                                           }else
                                           {
-                                              [UIAlertView alertWithMessage: @"登陆失败！"
-                                                          cancelButtonTitle: @"确定"];
+                                             ERSC(GRViewServiceID, GRViewServiceAlertMessageAction, @[ @"登陆失败！"], nil);
                                           }
                                       });
         callback = Block_copy(callback);
@@ -253,8 +251,7 @@
 
 - (void)_handleForgotPasswordButtonTappedEvent: (id)sender
 {
-    [UIAlertView alertWithMessage: @"一封邮件已发送到您的邮箱，请检查！"
-                cancelButtonTitle: @"确定"];
+    ERSC(GRViewServiceID, GRViewServiceAlertMessageAction, @[ @"一封邮件已发送到您的邮箱，请检查！"], nil);
 }
 
 - (void)_handleBackgroundTappedEvent: (id)sender

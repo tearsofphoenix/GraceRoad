@@ -355,8 +355,7 @@ didSelectRowAtIndexPath: (NSIndexPath *)indexPath
                                                    [[UIApplication sharedApplication] openURL: URL];
                                                }else
                                                {
-                                                   [UIAlertView alertWithMessage: @"您的设备无法拨打电话！"
-                                                               cancelButtonTitle: @"确定"];
+                                                   ERSC(GRViewServiceID, GRViewServiceAlertMessageAction, @[ @"您的设备无法拨打电话！"], nil);
                                                }
                                            }else if (2 == buttonIndex)
                                            {

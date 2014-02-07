@@ -79,8 +79,7 @@
                                       {
                                           ERSC(GRViewServiceID, GRViewServiceHideLoadingIndicatorAction, nil, nil);
                                           
-                                          [UIAlertView alertWithMessage: @"反馈成功！谢谢。"
-                                                      cancelButtonTitle: @"确定"];
+                                          ERSC(GRViewServiceID, GRViewServiceAlertMessageAction, @[@"反馈成功！谢谢。"], nil);
                                       });
         
         callback = Block_copy(callback);
@@ -90,8 +89,7 @@
         Block_release(callback);
     }else
     {
-        [UIAlertView alertWithMessage: @"请检查您的输入！"
-                    cancelButtonTitle: @"确定"];
+        ERSC(GRViewServiceID, GRViewServiceAlertMessageAction, @[ @"请检查您的输入！"], nil);
     }
 }
 

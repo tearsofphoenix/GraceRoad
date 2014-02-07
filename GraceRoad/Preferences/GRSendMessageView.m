@@ -412,12 +412,10 @@ weightForHeaderOfSection: (NSInteger)section
                                           
                                           if (error)
                                           {
-                                              [UIAlertView alertWithMessage: [error localizedDescription]
-                                                          cancelButtonTitle: @"确定"];
+                                              ERSC(GRViewServiceID, GRViewServiceAlertMessageAction, @[ [error localizedDescription]], nil);
                                           }else
                                           {
-                                              [UIAlertView alertWithMessage: @"发送成功！"
-                                                          cancelButtonTitle: @"确定"];
+                                              ERSC(GRViewServiceID, GRViewServiceAlertMessageAction, @[ @"发送成功！"], nil);
                                           }
                                       });
         callback = Block_copy(callback);
@@ -483,8 +481,7 @@ weightForHeaderOfSection: (NSInteger)section
             
         }else
         {
-            [UIAlertView alertWithMessage: @"您的设备无法发送邮件！"
-                        cancelButtonTitle: @"确定"];
+           ERSC(GRViewServiceID, GRViewServiceAlertMessageAction, @[ @"您的设备无法发送邮件！"], nil);
         }
     }
 }
@@ -511,9 +508,7 @@ weightForHeaderOfSection: (NSInteger)section
                                                                 {
                                                                     NSString *errorMessage = error ? [error localizedDescription] : @"发送失败！";
                                                                     
-                                                                    [UIAlertView alertWithMessage: errorMessage
-                                                                                cancelButtonTitle: @"确定"];
-                                                                    
+                                                                    ERSC(GRViewServiceID, GRViewServiceAlertMessageAction, @[ errorMessage], nil);
                                                                 })];
             break;
         }
@@ -522,9 +517,7 @@ weightForHeaderOfSection: (NSInteger)section
             [rootViewController dismissViewControllerAnimated: YES
                                                    completion: (^
                                                                 {
-                                                                    [UIAlertView alertWithMessage: @"发送成功！"
-                                                                                cancelButtonTitle: @"确定"];
-                                                                    
+                                                                    ERSC(GRViewServiceID, GRViewServiceAlertMessageAction, @[ @"发送成功！"], nil);                                                                    
                                                                 })];
             
             break;

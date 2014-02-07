@@ -16,6 +16,7 @@
 @interface GRViewService ()<ReaderViewControllerDelegate, MFMessageComposeViewControllerDelegate>
 
 @property (nonatomic, assign) GRMainViewController *rootViewController;
+@property (nonatomic) BOOL isShowingAlertView;
 
 @end
 
@@ -58,14 +59,14 @@
 
 - (void)showDailyScripture: (NSDictionary *)scripture
 {
-    [[UIAlertView alertWithTitle: @"每日读经"
-                         message: [NSString stringWithFormat: @"%@\n%@\n%@",
-                                   scripture[@"address"],
-                                   scripture[@"zh_TW"],
-                                   scripture[@"en"]]
-               cancelButtonTitle: @"确定"
-               otherButtonTitles: nil
-                        callback: nil] show];
+    [self alertTitle: @"每日读经"
+             message: [NSString stringWithFormat: @"%@\n%@\n%@",
+                       scripture[@"address"],
+                       scripture[@"zh_TW"],
+                       scripture[@"en"]]
+    cancelButtonTile: @"确定"
+   otherButtonTitles: nil
+            callback: nil];
 }
 
 - (void)viewPDFAtPath: (NSString *)path
@@ -114,8 +115,7 @@
         [controller release];
     }else
     {
-        [UIAlertView alertWithMessage: @"您的设备无法发送短息！"
-                    cancelButtonTitle: @"确定"];
+        [self alertMessage: @"您的设备无法发送短息！"];
     }
 }
 
@@ -138,8 +138,7 @@
             [rootViewController dismissViewControllerAnimated: YES
                                                    completion: (^
                                                                 {
-                                                                    [UIAlertView alertWithMessage: @"发送失败！"
-                                                                                cancelButtonTitle: @"确定"];
+                                                                    [self alertMessage: @"发送失败！"];
                                                                 })];
             break;
         }
@@ -148,13 +147,46 @@
             [rootViewController dismissViewControllerAnimated: YES
                                                    completion: (^
                                                                 {
-                                                                    [UIAlertView alertWithMessage: @"发送成功！"
-                                                                                cancelButtonTitle: @"确定"];
+                                                                    [self alertMessage: @"发送成功！"];
                                                                 })];
             break;
         }
         default:
             break;
+    }
+}
+
+- (void)alertMessage: (NSString *)message
+{
+    [self alertTitle: nil
+             message: message
+    cancelButtonTile: @"确定"
+   otherButtonTitles: nil
+            callback: nil];
+}
+
+- (void)alertTitle: (NSString *)title
+           message: (NSString *)message
+  cancelButtonTile: (NSString *)cancelButtonTitle
+ otherButtonTitles: (NSArray *)otherButtonTitles
+          callback: (GRAlertViewCallback)callback
+{
+    if (!_isShowingAlertView)
+    {
+        _isShowingAlertView = YES;
+        
+        [[UIAlertView alertWithTitle: title
+                             message: message
+                   cancelButtonTitle: cancelButtonTitle
+                   otherButtonTitles: otherButtonTitles
+                            callback: (^(NSInteger buttonIndex)
+                                       {
+                                           _isShowingAlertView = NO;
+                                           if (callback)
+                                           {
+                                               callback(buttonIndex);
+                                           }
+                                       })] show];
     }
 }
 

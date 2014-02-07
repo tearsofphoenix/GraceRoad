@@ -13,7 +13,6 @@
 #import "GRTeamKeys.h"
 #import "GRTheme.h"
 #import "GRSendMessageView.h"
-#import "UIAlertView+BlockSupport.h"
 
 @interface GRUserDetailView ()<UITableViewDataSource, UITableViewDelegate>
 {
@@ -319,8 +318,9 @@ heightForRowAtIndexPath: (NSIndexPath *)indexPath
     NSInteger count = [_selectedIndexPaths count];
     if (count == 0)
     {
-        [UIAlertView alertWithMessage: @"请先选择成员！"
-                    cancelButtonTitle: @"确定"];
+        ERSC(GRViewServiceID,
+             GRViewServiceAlertMessageAction,
+             @[@"请先选择成员！"], nil);
     }else
     {
         NSMutableArray *targetAccounts = [NSMutableArray arrayWithCapacity: count];

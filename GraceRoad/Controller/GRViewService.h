@@ -24,6 +24,8 @@
 #define GRViewServiceViewPDFAtPathAction                @"viewPDFAtPath:"
 
 #define GRViewServiceSendMessageAction                  @"sendMessageToRecipients:delegate:"
+#define GRViewServiceAlertMessageWithCallbackAction     @"alertTitle:message:cancelButtonTile:otherButtonTitles:callback:"
+#define GRViewServiceAlertMessageAction                 @"alertMessage:"
 
 @interface GRViewService : ERService
 
