@@ -22,7 +22,6 @@
 #import "GRSynchronizeService.h"
 #import "Reachability.h"
 
-#import <NWPushNotification/NWHub.h>
 #import <NoahsUtility/NoahsUtility.h>
 #import <EventKit/EventKit.h>
 
@@ -35,12 +34,9 @@
 #define GRPrayLastUpdateKey             GRPrefix ".pray.last-update"
 #define GRAccountTeamLastUpdateKey      GRPrefix ".account-team.last-update"
 
-@interface GRDataService ()<NWHubDelegate>
+@interface GRDataService ()
 {
     NSMutableArray *_scriptures;
-    
-#pragma mark - local push
-    NWHub *_hub;
     
 #pragma mark - export
     EKEventStore *_eventStore;
@@ -380,96 +376,7 @@
 - (void)sendPushNotification: (NSString *)obj
                     callback: (ERServiceCallback)callback
 {
-    if (!_hub)
-    {
-        [self _connectToPushAPN];
-    }
-    
-    NSString *payload = [NSString stringWithFormat: @"{\"aps\":{\"alert\":\"%@\"}}", obj];
-    NSString *token = @"04e7338bd3e7e3f191ffc6319b78eec9d39dcd8149bd05655c4ca55d598d8749";
-    NSLog(@"Pushing..");
-    
-    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-    
-    dispatch_async(queue,
-                   (^
-                    {
-                        NSUInteger failed = [_hub pushPayload: payload
-                                                        token: token];
-                        
-                        dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.4 * NSEC_PER_SEC));
-                        
-                        dispatch_after(popTime, dispatch_get_main_queue(),
-                                       //dispatch_async(dispatch_get_main_queue(),
-                                       (^
-                                        {
-                                            NSUInteger failed2 = failed + [_hub flushFailed];
-                                            if (!failed2)
-                                            {
-                                                if (callback)
-                                                {
-                                                    callback(nil, nil);
-                                                }
-                                                
-                                                NSLog(@"Payload has been pushed");
-                                            }else
-                                            {
-                                                if (callback)
-                                                {
-                                                    callback(nil, [NSError errorWithDomain: GRPrefix ".error"
-                                                                                      code: -1
-                                                                                  userInfo: (@{
-                                                                                               NSLocalizedDescriptionKey : @"发送失败",
-                                                                                               })]);
-                                                }
-                                            }
-                                        }));
-                    }));
-}
 
-- (void)_connectToPushAPN
-{
-    if (!_hub)
-    {
-        NWPusher *p = [[NWPusher alloc] init];
-        NSURL *url = [NSBundle.mainBundle URLForResource: @"push.p12"
-                                           withExtension: nil];
-        
-        NSData *pkcs12 = [NSData dataWithContentsOfURL:url];
-        
-        dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-        dispatch_async(queue,
-                       (^
-                        {
-                            NWPusherResult connected = [p connectWithPKCS12Data: pkcs12
-                                                                       password: @"3141"
-                                                                        sandbox: YES];
-                            dispatch_async(dispatch_get_main_queue(),
-                                           (^
-                                            {
-                                                if (connected == kNWPusherResultSuccess)
-                                                {
-                                                    NSLog(@"Connected to APN");
-                                                    _hub = [[NWHub alloc] initWithPusher: p
-                                                                                delegate: self];
-                                                } else
-                                                {
-                                                    NSLog(@"Unable to connect: %@", [NWPusher stringFromResult: connected]);
-                                                }
-                                            }));
-                        }));
-    }
-}
-
-- (void)notification: (NWNotification *)notification
-   didFailWithResult: (NWPusherResult)result
-{
-    dispatch_async(dispatch_get_main_queue(),
-                   (^
-                    {
-                        NSLog(@"Notification could not be pushed: %@", [NWPusher stringFromResult: result]);
-                    }));
-    
 }
 
 - (void)sendMessageToWeixin: (NSString *)message
@@ -593,6 +500,7 @@
                                             {
                                                 [defaults setBool: YES
                                                            forKey: GRHasRegisterDeviceKey];
+                                                [defaults synchronize];
                                             }
                                             
                                             NSLog(@"%@", result);

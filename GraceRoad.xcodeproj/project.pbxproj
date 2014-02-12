@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		603A656F1889728E00352C0B /* PDFReaderResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 603A656E1889728E00352C0B /* PDFReaderResources.bundle */; };
-		603A6576188982AB00352C0B /* ck.pem in Resources */ = {isa = PBXBuildFile; fileRef = 603A6575188982AB00352C0B /* ck.pem */; };
-		603A65781889856400352C0B /* push.p12 in Resources */ = {isa = PBXBuildFile; fileRef = 603A65771889856300352C0B /* push.p12 */; };
 		603A657A188A42FD00352C0B /* GRButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 603A6579188A42FD00352C0B /* GRButton@2x.png */; };
 		603A657C188A5E0D00352C0B /* FileType in Resources */ = {isa = PBXBuildFile; fileRef = 603A657B188A5E0D00352C0B /* FileType */; };
 		603A657F188A625C00352C0B /* GRResourceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 603A657E188A625C00352C0B /* GRResourceCell.m */; };
@@ -73,7 +71,6 @@
 		923E49A31888ECF6006E9029 /* GRPreferenceTab.png in Resources */ = {isa = PBXBuildFile; fileRef = 923E499F1888ECF6006E9029 /* GRPreferenceTab.png */; };
 		923E49A41888ECF6006E9029 /* GRResourceTab.png in Resources */ = {isa = PBXBuildFile; fileRef = 923E49A01888ECF6006E9029 /* GRResourceTab.png */; };
 		923E49A51888ECF6006E9029 /* GRSermonTab.png in Resources */ = {isa = PBXBuildFile; fileRef = 923E49A11888ECF6006E9029 /* GRSermonTab.png */; };
-		923E4A0E1888F6F9006E9029 /* libNWPushNotification.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 923E49F41888F6A9006E9029 /* libNWPushNotification.a */; };
 		9242AEFF1876A87C00F9FEFB /* GRBackButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 9242AEFD1876A87B00F9FEFB /* GRBackButton.png */; };
 		9242AF001876A87C00F9FEFB /* GRBackButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9242AEFE1876A87C00F9FEFB /* GRBackButton@2x.png */; };
 		92568CCA18850E3400994FC1 /* GRAvatarBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 92568CC918850E3300994FC1 /* GRAvatarBackground@2x.png */; };
@@ -167,20 +164,6 @@
 			remoteGlobalIDString = 606E8F90188945A7000C5CB2;
 			remoteInfo = PDFReaderStatic;
 		};
-		923E49F31888F6A9006E9029 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 923E49EE1888F6A8006E9029 /* NWPushNotification.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 923E49C51888F6A8006E9029;
-			remoteInfo = NWPushNotification;
-		};
-		923E4A0C1888F6F0006E9029 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 923E49EE1888F6A8006E9029 /* NWPushNotification.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 923E49C41888F6A8006E9029;
-			remoteInfo = NWPushNotification;
-		};
 		9267334A1872588400249E37 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 9267333D1872588400249E37 /* NoahsRecord.xcodeproj */;
@@ -199,8 +182,6 @@
 
 /* Begin PBXFileReference section */
 		603A656E1889728E00352C0B /* PDFReaderResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = PDFReaderResources.bundle; sourceTree = "<group>"; };
-		603A6575188982AB00352C0B /* ck.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ck.pem; sourceTree = "<group>"; };
-		603A65771889856300352C0B /* push.p12 */ = {isa = PBXFileReference; lastKnownFileType = file; path = push.p12; sourceTree = "<group>"; };
 		603A6579188A42FD00352C0B /* GRButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "GRButton@2x.png"; sourceTree = "<group>"; };
 		603A657B188A5E0D00352C0B /* FileType */ = {isa = PBXFileReference; lastKnownFileType = folder; path = FileType; sourceTree = "<group>"; };
 		603A657D188A625C00352C0B /* GRResourceCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRResourceCell.h; sourceTree = "<group>"; };
@@ -281,7 +262,6 @@
 		923E499F1888ECF6006E9029 /* GRPreferenceTab.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GRPreferenceTab.png; sourceTree = "<group>"; };
 		923E49A01888ECF6006E9029 /* GRResourceTab.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GRResourceTab.png; sourceTree = "<group>"; };
 		923E49A11888ECF6006E9029 /* GRSermonTab.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GRSermonTab.png; sourceTree = "<group>"; };
-		923E49EE1888F6A8006E9029 /* NWPushNotification.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = NWPushNotification.xcodeproj; path = NWPushNotification/NWPushNotification.xcodeproj; sourceTree = "<group>"; };
 		9242AEFD1876A87B00F9FEFB /* GRBackButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = GRBackButton.png; path = Main/GRBackButton.png; sourceTree = "<group>"; };
 		9242AEFE1876A87C00F9FEFB /* GRBackButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "GRBackButton@2x.png"; path = "Main/GRBackButton@2x.png"; sourceTree = "<group>"; };
 		92568CC918850E3300994FC1 /* GRAvatarBackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "GRAvatarBackground@2x.png"; sourceTree = "<group>"; };
@@ -417,7 +397,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				606E8FEA188946A7000C5CB2 /* libPDFReaderStatic.a in Frameworks */,
-				923E4A0E1888F6F9006E9029 /* libNWPushNotification.a in Frameworks */,
 				9276F32E18876B0D00E13763 /* libWeChatSDK.a in Frameworks */,
 				9267339F187266C600249E37 /* libsqlite3.dylib in Frameworks */,
 				9267334E187258C500249E37 /* libNoahsRecordStatic.a in Frameworks */,
@@ -518,14 +497,6 @@
 				60F9438D1886D81A001F13E3 /* DKLiveBlurView.m */,
 			);
 			path = LiveBlur;
-			sourceTree = "<group>";
-		};
-		923E49EF1888F6A8006E9029 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				923E49F41888F6A9006E9029 /* libNWPushNotification.a */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		9261922818865752001E0A72 /* Controller */ = {
@@ -743,7 +714,6 @@
 				60F9438B1886D81A001F13E3 /* LiveBlur */,
 				929989A718768C2E0001EFDC /* Network */,
 				9267333D1872588400249E37 /* NoahsRecord.xcodeproj */,
-				923E49EE1888F6A8006E9029 /* NWPushNotification.xcodeproj */,
 			);
 			path = Library;
 			sourceTree = "<group>";
@@ -785,8 +755,6 @@
 				603A656E1889728E00352C0B /* PDFReaderResources.bundle */,
 				60E649BF1878062400D5466B /* notifications */,
 				60E649851877FB1D00D5466B /* notifications.plist */,
-				603A6575188982AB00352C0B /* ck.pem */,
-				603A65771889856300352C0B /* push.p12 */,
 				60F9438F1886DA59001F13E3 /* GRSermonBackground.jpeg */,
 				92CE913C18755BEB00C7D3A1 /* gr.sqlite */,
 				60C31A0518968F5700A18701 /* synchronize.sqlite */,
@@ -855,7 +823,6 @@
 			);
 			dependencies = (
 				606E8FE91889469F000C5CB2 /* PBXTargetDependency */,
-				923E4A0D1888F6F0006E9029 /* PBXTargetDependency */,
 				9267334D187258B600249E37 /* PBXTargetDependency */,
 			);
 			name = GraceRoad;
@@ -902,10 +869,6 @@
 					ProjectRef = 9267333D1872588400249E37 /* NoahsRecord.xcodeproj */;
 				},
 				{
-					ProductGroup = 923E49EF1888F6A8006E9029 /* Products */;
-					ProjectRef = 923E49EE1888F6A8006E9029 /* NWPushNotification.xcodeproj */;
-				},
-				{
 					ProductGroup = 606E8FE018894698000C5CB2 /* Products */;
 					ProjectRef = 606E8FDF18894698000C5CB2 /* PDFReader.xcodeproj */;
 				},
@@ -930,13 +893,6 @@
 			fileType = archive.ar;
 			path = libPDFReaderStatic.a;
 			remoteRef = 606E8FE618894699000C5CB2 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		923E49F41888F6A9006E9029 /* libNWPushNotification.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libNWPushNotification.a;
-			remoteRef = 923E49F31888F6A9006E9029 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		9267334B1872588400249E37 /* libNoahsRecordStatic.a */ = {
@@ -982,7 +938,6 @@
 				927C9FAD186D66DC00DC0EDC /* InfoPlist.strings in Resources */,
 				60E649DF1878062400D5466B /* notifications10.plist in Resources */,
 				9276F34B18877D6100E13763 /* GalleryViewDeleteButton.png in Resources */,
-				603A6576188982AB00352C0B /* ck.pem in Resources */,
 				60E649E71878062400D5466B /* notifications18.plist in Resources */,
 				60E649EE1878062400D5466B /* notifications24.plist in Resources */,
 				60E649EC1878062400D5466B /* notifications22.plist in Resources */,
@@ -993,7 +948,6 @@
 				92568CCA18850E3400994FC1 /* GRAvatarBackground@2x.png in Resources */,
 				92CE914A1875699A00C7D3A1 /* GRIconPDF.png in Resources */,
 				920B99941885259B006BD620 /* GRExampleAvatar.png in Resources */,
-				603A65781889856400352C0B /* push.p12 in Resources */,
 				60E649681877ECA800D5466B /* GRHeart.jpg in Resources */,
 				923E49A51888ECF6006E9029 /* GRSermonTab.png in Resources */,
 				920B999718852B21006BD620 /* GRAddButton@2x.png in Resources */,
@@ -1101,11 +1055,6 @@
 			isa = PBXTargetDependency;
 			name = PDFReaderStatic;
 			targetProxy = 606E8FE81889469F000C5CB2 /* PBXContainerItemProxy */;
-		};
-		923E4A0D1888F6F0006E9029 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = NWPushNotification;
-			targetProxy = 923E4A0C1888F6F0006E9029 /* PBXContainerItemProxy */;
 		};
 		9267334D187258B600249E37 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
