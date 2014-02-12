@@ -29,10 +29,11 @@
 #define GRCurrentAccountKey             GRPrefix ".current-account"
 #define GRHasRegisterDeviceKey          GRPrefix ".hasRegisteredDevice"
 
-#define GRResourceCatogryLastUpdateKey  @"resources.category.last-update"
-#define GRSermonCategoryLastUpdateKey   @"sermon.category.last-update"
-#define GRPrayLastUpdateKey             GRPrefix ".pray.last-update"
-#define GRAccountTeamLastUpdateKey      GRPrefix ".account-team.last-update"
+#define GRResourceCatogryLastUpdateKey      GRPrefix @".resources.category.last-update"
+#define GRSermonCategoryLastUpdateKey       GRPrefix @".sermon.category.last-update"
+#define GRPrayLastUpdateKey                 GRPrefix ".pray.last-update"
+#define GRAccountTeamLastUpdateKey          GRPrefix ".account-team.last-update"
+#define GRTeamAccountRelationLastUpdateKey  GRPrefix ".team-account-relation.last-update"
 
 @interface GRDataService ()
 {
@@ -148,7 +149,27 @@
                                                          forKey: GRCurrentAccountKey];
                                             [defaults synchronize];
                                             
-                                            [self _tryToSynchronizeAccountInfoWithCallback: callback];
+                                            GRDBT(^(id<ERSQLBatchStatements> batchStatements)
+                                                  {
+                                                      NSArray *teams = accountInfo[GRTeamKey];
+                                                      
+                                                      for (NSDictionary *tLooper in teams)
+                                                      {
+                                                          [batchStatements addStatement: (@"insert or replace into team"
+                                                                                          "  (uuid, name, properties)  "
+                                                                                          "  values(?, ?, ?)           "
+                                                                                          )
+                                                                         withParameters: (@[
+                                                                                            tLooper[GRTeamIDKey],
+                                                                                            tLooper[GRTeamNameKey],
+                                                                                            [NSKeyedArchiver archivedDataWithRootObject: tLooper],
+                                                                                            ])];
+                                                      }
+                                                      
+                                                      [batchStatements executeAll];
+                                                  });
+                                            
+                                            [self _tryToSynchronizeTeamInfoWithCallback: callback];
                                             
                                         }else
                                         {
@@ -359,7 +380,11 @@
     
     GRDBT((^(id<ERSQLBatchStatements> batchStatements)
            {
-               id<ERSQLResultSet> resultSet = [batchStatements resultSetFromSQL: (@"select properties from account where team_id=?")
+               id<ERSQLResultSet> resultSet = [batchStatements resultSetFromSQL: (@"select account.properties from account "
+                                                                                  "     left join team_account_relation    "
+                                                                                  "     on account.uuid=team_account_relation.account_id "
+                                                                                  "     where team_account_relation.team_id=?; "
+                                                                                  )
                                                                  withParameters: @[ teamID ]];
                
                while ([resultSet moveCursorToNextRecord])
@@ -376,7 +401,7 @@
 - (void)sendPushNotification: (NSString *)obj
                     callback: (ERServiceCallback)callback
 {
-
+    
 }
 
 - (void)sendMessageToWeixin: (NSString *)message
@@ -811,7 +836,58 @@
     }
 }
 
-- (void)_tryToSynchronizeAccountInfoWithCallback: (ERServiceCallback)callback
+- (void)_tryToSynchronizeMembersInTeams: (NSArray *)teamIDs
+                           withCallback: (ERServiceCallback)callback
+{
+    [GRNetworkService postMessage: (@{
+                                      GRNetworkActionKey : @"get_team_members",
+                                      GRNetworkArgumentsKey : (@{
+                                                                 @"team_ids" : teamIDs,
+                                                                 })
+                                      })
+                         callback: (^(NSDictionary *result, id exception)
+                                    {
+                                        NSDictionary *data = result[GRNetworkDataKey];
+                                        if (data)
+                                        {
+                                            GRDBT((^(id<ERSQLBatchStatements> batchStatements)
+                                                   {
+                                                       [data enumerateKeysAndObjectsUsingBlock:
+                                                        (^(NSString *teamID, NSArray *obj, BOOL *stop)
+                                                         {
+                                                             for (NSDictionary *mLooper in obj)
+                                                             {
+                                                                 [batchStatements addStatement: (@"insert or replace into account"
+                                                                                                 "    (uuid, email, mobilephone, qq, wechat, name, role, properties)"
+                                                                                                 "    values(?, ?, ?, ?, ?, ?, ?, ?);"
+                                                                                                 )
+                                                                                withParameters: (@[
+                                                                                                   mLooper[GRAccountIDKey],
+                                                                                                   mLooper[GRAccountEmailKey] ?: [NSNull null],
+                                                                                                   mLooper[GRAccountMobilePhoneKey] ?: [NSNull null],
+                                                                                                   mLooper[GRAccountQQKey] ?: [NSNull null],
+                                                                                                   mLooper[GRAccountWeChatKey] ?: [NSNull null],
+                                                                                                   mLooper[GRAccountNameKey] ?: [NSNull null],
+                                                                                                   mLooper[GRAccountRoleKey] ?: [NSNull null],
+                                                                                                   [NSKeyedArchiver archivedDataWithRootObject: mLooper],
+                                                                                                   ])];
+                                                             }
+                                                         })];
+                                                       
+                                                       [batchStatements executeAll];
+                                                   }));
+                                        }
+                                        
+                                        [self setIsSynchronizeTeam: NO];
+                                        
+                                        if (callback)
+                                        {
+                                            callback(data, nil);
+                                        }
+                                    })];
+}
+
+- (void)_tryToSynchronizeTeamInfoWithCallback: (ERServiceCallback)callback
 {
     if (!_isSynchronizeTeam)
     {
@@ -820,49 +896,60 @@
         NSArray *teams = [self teamsForAccountID: nil];
         if ([teams count] > 0)
         {
-            NSDictionary *team = teams[0];
+            NSMutableArray *teamIDs = [[NSMutableArray alloc] initWithCapacity: [teams count]];
+            for (NSDictionary *tLooper in teams)
+            {
+                [teamIDs addObject: tLooper[GRTeamIDKey]];
+            }
+            
+            NSString *lastUpdateString = [self _lastUpdateStringForKey: GRTeamAccountRelationLastUpdateKey];
             
             [GRNetworkService postMessage: (@{
-                                              GRNetworkActionKey : @"get_team_members",
+                                              GRNetworkActionKey : @"get_team_relations",
                                               GRNetworkArgumentsKey : (@{
-                                                                         @"team_id" : team[GRTeamIDKey],
+                                                                         @"team_ids" : teamIDs,
+                                                                         GRNetworkLastUpdateKey : lastUpdateString,
                                                                          })
                                               })
                                  callback: (^(NSDictionary *result, id exception)
                                             {
-                                                NSArray *data = result[GRNetworkDataKey];
+                                                NSDictionary *data = result[GRNetworkDataKey];
                                                 if (data)
                                                 {
                                                     GRDBT((^(id<ERSQLBatchStatements> batchStatements)
                                                            {
-                                                               for (NSDictionary *mLooper in data)
-                                                               {
-                                                                   [batchStatements addStatement: (@"insert or replace into account"
-                                                                                                   "    (uuid, email, mobilephone, qq, wechat, name, role, properties)"
-                                                                                                   "    values(?, ?, ?, ?, ?, ?, ?, ?);"
-                                                                                                   )
-                                                                                  withParameters: (@[
-                                                                                                     mLooper[GRAccountIDKey],
-                                                                                                     mLooper[GRAccountEmailKey] ?: [NSNull null],
-                                                                                                     mLooper[GRAccountMobilePhoneKey] ?: [NSNull null],
-                                                                                                     mLooper[GRAccountQQKey] ?: [NSNull null],
-                                                                                                     mLooper[GRAccountWeChatKey] ?: [NSNull null],
-                                                                                                     mLooper[GRAccountNameKey] ?: [NSNull null],
-                                                                                                     mLooper[GRAccountRoleKey] ?: [NSNull null],
-                                                                                                     [NSKeyedArchiver archivedDataWithRootObject: mLooper],
-                                                                                                     ])];
-                                                               }
+                                                               [data enumerateKeysAndObjectsUsingBlock:
+                                                                (^(NSString *teamID, NSArray *obj, BOOL *stop)
+                                                                 {
+                                                                     for (NSDictionary *mLooper in obj)
+                                                                     {
+                                                                         [batchStatements addStatement: (@"insert or replace into team_account_relation"
+                                                                                                         "    (uuid, team_id, account_id, role, last_update)"
+                                                                                                         "    values(?, ?, ?, ?, ?);"
+                                                                                                         )
+                                                                                        withParameters: (@[
+                                                                                                           mLooper[@"uuid"],
+                                                                                                           mLooper[@"team_id"],
+                                                                                                           mLooper[@"account_id"],
+                                                                                                           mLooper[@"role"],
+                                                                                                           mLooper[@"last_update"],
+                                                                                                           ])];
+                                                                     }
+                                                                 })];
                                                                
                                                                [batchStatements executeAll];
+                                                               
+                                                               NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+                                                               [defaults setObject: [GRConfiguration stringFromDate: [NSDate date]]
+                                                                            forKey: GRTeamAccountRelationLastUpdateKey];
+                                                               [defaults synchronize];
+                                                               
+                                                               [self _tryToSynchronizeMembersInTeams: teamIDs
+                                                                                        withCallback: callback];
                                                            }));
                                                 }
                                                 
                                                 [self setIsSynchronizeTeam: NO];
-                                                
-                                                if (callback)
-                                                {
-                                                    callback(data, nil);
-                                                }
                                             })];
         }
     }
