@@ -36,7 +36,7 @@
 #define GRDataServiceSaveLessonForIDAction       @"saveLesson:forID:"
 #define GRDataServiceLessonRecordForIDAction     @"lessonRecordForID:"
 
-#define GRDataServiceTeamForAccountIDAction      @"teamForAccountID:"
+#define GRDataServiceTeamsForAccountIDAction      @"teamsForAccountID:"
 #define GRDataServiceAllMemberForTeamIDAction    @"allMemberForTeamID:"
 
 #define GRDataServiceSendPushNotificationWithCallbackAction  @"sendPushNotification:callback:"

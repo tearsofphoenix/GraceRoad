@@ -13,9 +13,8 @@
 #define GRAccountMobilePhoneKey     @"mobilephone"
 #define GRAccountTelephoneKey       @"telephone"
 #define GRAccountQQKey              @"qq"
-#define GRAccountTeamIDKey          @"team_id"
 #define GRAccountWeChatKey          @"wechat"
 #define GRAccountRoleKey            @"role"
 
 #define GRAccountKey                @"account"
-#define GRTeamKey                   @"team"
+#define GRTeamKey                   @"teams"

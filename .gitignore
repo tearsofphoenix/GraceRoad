@@ -9,3 +9,7 @@ xcuserdata/
 *.xcbkptlist
 
 GraceRoad.xcodeproj/xcuserdata/*
+
+grace-church.pem
+
+connect.sh

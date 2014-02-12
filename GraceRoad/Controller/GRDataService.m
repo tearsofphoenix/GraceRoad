@@ -352,7 +352,7 @@
     return [[NSUserDefaults standardUserDefaults] objectForKey: lessonID];
 }
 
-- (NSDictionary *)teamForAccountID: (NSString *)accountID
+- (NSArray *)teamsForAccountID: (NSString *)accountID
 {
     return [[NSUserDefaults standardUserDefaults] objectForKey: GRCurrentAccountKey][GRTeamKey];
 }
@@ -909,51 +909,54 @@
     {
         [self setIsSynchronizeTeam: YES];
         
-        NSDictionary *team = [self teamForAccountID: nil];
-        
-        [GRNetworkService postMessage: (@{
-                                          GRNetworkActionKey : @"get_team_members",
-                                          GRNetworkArgumentsKey : (@{
-                                                                     @"team_id" : team[GRTeamIDKey],
-                                                                     })
-                                          })
-                             callback: (^(NSDictionary *result, id exception)
-                                        {
-                                            NSArray *data = result[GRNetworkDataKey];
-                                            if (data)
+        NSArray *teams = [self teamsForAccountID: nil];
+        if ([teams count] > 0)
+        {
+            NSDictionary *team = teams[0];
+            
+            [GRNetworkService postMessage: (@{
+                                              GRNetworkActionKey : @"get_team_members",
+                                              GRNetworkArgumentsKey : (@{
+                                                                         @"team_id" : team[GRTeamIDKey],
+                                                                         })
+                                              })
+                                 callback: (^(NSDictionary *result, id exception)
                                             {
-                                                GRDBT((^(id<ERSQLBatchStatements> batchStatements)
-                                                       {
-                                                           for (NSDictionary *mLooper in data)
+                                                NSArray *data = result[GRNetworkDataKey];
+                                                if (data)
+                                                {
+                                                    GRDBT((^(id<ERSQLBatchStatements> batchStatements)
                                                            {
-                                                               [batchStatements addStatement: (@"insert or replace into account"
-                                                                                               "    (uuid, team_id, email, mobilephone, qq, wechat, name, role, properties)"
-                                                                                               "    values(?, ?, ?, ?, ?, ?, ?, ?, ?);"
-                                                                                               )
-                                                                              withParameters: (@[
-                                                                                                 mLooper[GRAccountIDKey],
-                                                                                                 mLooper[GRAccountTeamIDKey],
-                                                                                                 mLooper[GRAccountEmailKey] ?: [NSNull null],
-                                                                                                 mLooper[GRAccountMobilePhoneKey] ?: [NSNull null],
-                                                                                                 mLooper[GRAccountQQKey] ?: [NSNull null],
-                                                                                                 mLooper[GRAccountWeChatKey] ?: [NSNull null],
-                                                                                                 mLooper[GRAccountNameKey] ?: [NSNull null],
-                                                                                                 mLooper[GRAccountRoleKey] ?: [NSNull null],
-                                                                                                 [NSKeyedArchiver archivedDataWithRootObject: mLooper],
-                                                                                                 ])];
-                                                           }
-                                                           
-                                                           [batchStatements executeAll];
-                                                       }));
-                                            }
-                                            
-                                            [self setIsSynchronizeTeam: NO];
-                                            
-                                            if (callback)
-                                            {
-                                                callback(data, nil);
-                                            }
-                                        })];
+                                                               for (NSDictionary *mLooper in data)
+                                                               {
+                                                                   [batchStatements addStatement: (@"insert or replace into account"
+                                                                                                   "    (uuid, email, mobilephone, qq, wechat, name, role, properties)"
+                                                                                                   "    values(?, ?, ?, ?, ?, ?, ?, ?);"
+                                                                                                   )
+                                                                                  withParameters: (@[
+                                                                                                     mLooper[GRAccountIDKey],
+                                                                                                     mLooper[GRAccountEmailKey] ?: [NSNull null],
+                                                                                                     mLooper[GRAccountMobilePhoneKey] ?: [NSNull null],
+                                                                                                     mLooper[GRAccountQQKey] ?: [NSNull null],
+                                                                                                     mLooper[GRAccountWeChatKey] ?: [NSNull null],
+                                                                                                     mLooper[GRAccountNameKey] ?: [NSNull null],
+                                                                                                     mLooper[GRAccountRoleKey] ?: [NSNull null],
+                                                                                                     [NSKeyedArchiver archivedDataWithRootObject: mLooper],
+                                                                                                     ])];
+                                                               }
+                                                               
+                                                               [batchStatements executeAll];
+                                                           }));
+                                                }
+                                                
+                                                [self setIsSynchronizeTeam: NO];
+                                                
+                                                if (callback)
+                                                {
+                                                    callback(data, nil);
+                                                }
+                                            })];
+        }
     }
 }
 

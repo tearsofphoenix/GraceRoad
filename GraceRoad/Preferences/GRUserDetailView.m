@@ -28,6 +28,9 @@
     
     UIButton *_logoutButton;
 }
+
+@property (nonatomic, retain) NSDictionary *team;
+
 @end
 
 @implementation GRUserDetailView
@@ -79,13 +82,14 @@
         [self addSubview: _titleLabel];
         
         NSDictionary *accountInfo = ERSSC(GRDataServiceID, GRDataServiceCurrentAccountAction, nil);
-        NSDictionary *team = nil;
+        //TODO: Isaac team logic
+
         if (accountInfo)
         {
-             team = ERSSC(GRDataServiceID, GRDataServiceTeamForAccountIDAction, @[ accountInfo[GRAccountIDKey] ]);
-        
+             [self setTeam: ERSSC(GRDataServiceID, GRDataServiceTeamsForAccountIDAction, @[ accountInfo[GRAccountIDKey] ])[0]];
+
             [_nameLabel setText: accountInfo[GRAccountNameKey]];
-            [_titleLabel setText: team[GRTeamNameKey]];
+            [_titleLabel setText: _team[GRTeamNameKey]];
         }
         
         _logoutButton = [[UIButton alloc] initWithFrame: CGRectMake(30, bounds.size.height - 60,
@@ -128,9 +132,9 @@
         
         _memberList = [[NSMutableArray alloc] init];
         
-        if (team)
+        if (_team)
         {
-            NSArray *members = ERSSC(GRDataServiceID, GRDataServiceAllMemberForTeamIDAction, @[ team[GRTeamIDKey] ]);
+            NSArray *members = ERSSC(GRDataServiceID, GRDataServiceAllMemberForTeamIDAction, @[ _team[GRTeamIDKey] ]);
             [_memberList setArray: members];
         }
 
@@ -158,6 +162,7 @@
     [_memberList release];
     [_memberListView release];
     [_selectedIndexPaths release];
+    [_team release];
     
     [super dealloc];
 }
@@ -187,7 +192,7 @@
 
 - (NSInteger)numberOfSectionsInTableView: (UITableView *)tableView
 {
-    return 2;
+    return 1;
 }
 
 - (UIView *) tableView: (UITableView *)tableView
@@ -198,10 +203,10 @@ viewForHeaderInSection: (NSInteger)section
     [headerLabel setBackgroundColor: [GRTheme headerBlueColor]];
     [headerLabel setTextColor: [UIColor whiteColor]];
 
-    if (section == 0)
-    {
-        [headerLabel setText: @"    上周服事"];
-    }else
+//    if (section == 0)
+//    {
+//        [headerLabel setText: @"    上周服事"];
+//    }else
     {
         [headerLabel setText: @"    成员"];
     }
@@ -212,12 +217,13 @@ viewForHeaderInSection: (NSInteger)section
 - (NSInteger)tableView: (UITableView *)tableView
  numberOfRowsInSection: (NSInteger)section
 {
-    if (section == 0)
+    if (_team)
     {
-        return 3;
+        return [_memberList count];
+    }else
+    {
+        return 0;
     }
-    
-    return [_memberList count];
 }
 
 - (UITableViewCell *)tableView: (UITableView *)tableView

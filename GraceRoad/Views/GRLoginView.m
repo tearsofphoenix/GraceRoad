@@ -85,9 +85,8 @@
         _userNameField = [[UITextField alloc] initWithFrame: rect];
         [_userNameField setBackgroundColor: [UIColor whiteColor]];
         [[_userNameField layer] setCornerRadius: 3];
-        [_userNameField setPlaceholder: @"username"];
-        [_userNameField setText: @"tearsofphoenix@icloud.com"];
         
+        [_userNameField setPlaceholder: @"username"];
         [_userNameField setLeftView: [[[UIView alloc] initWithFrame: CGRectMake(0, 0, 10, 10)] autorelease]];
         [_userNameField setLeftViewMode: UITextFieldViewModeAlways];
         [_userNameField setFont: [UIFont fontWithName: fontName
@@ -100,7 +99,12 @@
         [_passwordField setBackgroundColor: [UIColor whiteColor]];
         [[_passwordField layer] setCornerRadius: 3];
         [_passwordField setPlaceholder: @"password"];
+        
+#ifdef DEBUG
+//        [_userNameField setText: @"tearsofphoenix@icloud.com"];
+        [_userNameField setText: @"13671765129"];
         [_passwordField setText: @"hello"];
+#endif
         
         [_passwordField setLeftView: [[[UIView alloc] initWithFrame: CGRectMake(0, 0, 10, 10)] autorelease]];
         [_passwordField setLeftViewMode: UITextFieldViewModeAlways];
