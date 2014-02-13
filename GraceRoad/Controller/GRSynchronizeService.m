@@ -130,6 +130,11 @@
             waitUntilDone: NO];
 }
 
+- (NSThread *)synchronizeThread
+{
+    return _synchronizeThread;
+}
+
 - (void)_synchronizeMain
 {
     while (YES)

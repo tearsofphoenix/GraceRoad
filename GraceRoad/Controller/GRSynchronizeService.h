@@ -10,8 +10,8 @@
 #import "GRShared.h"
 
 #define GRSynchronizeServiceID               GRPrefix ".service.synchronize"
-#define GRSynchronizeAddRecordsAction        @"addRecords:"
-
+#define GRSynchronizeAddRecordsAction                               @"addRecords:"
+#define GRSynchronizeServiceGetSynchronizeThreadAction              @"synchronizeThread"
 @interface GRSynchronizeService : ERService
 
 @end

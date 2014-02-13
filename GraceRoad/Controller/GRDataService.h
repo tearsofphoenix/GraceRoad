@@ -16,7 +16,6 @@
 #define GRDataServiceCurrentAccountAction        @"currentAccount"
 #define GRDataServiceLoginAction                 @"loginUser:password:callback:"
 #define GRDataServiceLogoutAction                @"logout"
-#define GRDataServiceAddScriptureAlertAction     @"addScripture:"
 
 #define GRDataServiceAllResourcesInCategoriesAction         @"allResourcesInCategories:"
 #define GRDataServiceAllResourceCategoriesAction            @"allResourceCategories"

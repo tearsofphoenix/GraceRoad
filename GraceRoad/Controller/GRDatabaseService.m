@@ -9,6 +9,8 @@
 #import "GRDatabaseService.h"
 #import "GRResourceManager.h"
 
+#define GRLocalNotificationScheduleKey  GRPrefix ".hasScheduled"
+
 @interface GRDatabaseService ()
 {
     id<ERSQLDatabase> _database;
@@ -50,6 +52,8 @@
         }
         
         _database = [[ERSQLiteDatabase alloc] initWithFilePath: databasePath];
+        
+        [self _prepareLocalNotificationIfNeeded];
     }
     
     return self;
@@ -72,6 +76,61 @@
             transactionBlock(statement);
         }
     }
+}
+
+- (void)_prepareLocalNotificationIfNeeded
+{
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    
+    if (![userDefaults objectForKey: GRLocalNotificationScheduleKey])
+    {
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0),
+                       (^
+                        {
+                            NSDate *date = [NSDate date];
+                            GRDBT(^(id<ERSQLBatchStatements> batchStatements)
+                                  {
+                                      id<ERSQLResultSet> resultSet = [batchStatements resultSetFromSQL: (@"select * from scripture limit 10")];
+                                      NSInteger idx = 0;
+                                      
+                                      while ([resultSet moveCursorToNextRecord])
+                                      {
+                                          @autoreleasepool
+                                          {
+                                              id<ERSQLRecord> record = [resultSet currentRecord];
+                                              
+                                              NSMutableDictionary *obj = [NSMutableDictionary dictionary];
+                                              NSString *address = [record stringAtColumnWithName: @"address"];
+                                              [obj setObject: address
+                                                      forKey: @"address"];
+                                              [obj setObject: [record stringAtColumnWithName: @"en"]
+                                                      forKey: @"en"];
+                                              [obj setObject: [record stringAtColumnWithName: @"zh_TW"]
+                                                      forKey: @"zh_TW"];
+                                              
+                                              UILocalNotification *notificationLooper = [[UILocalNotification alloc] init];
+                                              
+                                              [notificationLooper setFireDate: [date dateByAddingTimeInterval: idx * (24 * 60 * 60)]];
+                                              
+                                              [notificationLooper setSoundName: UILocalNotificationDefaultSoundName];
+                                              [notificationLooper setUserInfo: obj];
+                                              [notificationLooper setAlertBody: [NSString stringWithFormat: @"每日读经： %@", address]];
+                                              
+                                              [[UIApplication sharedApplication] scheduleLocalNotification: notificationLooper];
+                                              
+                                              [notificationLooper release];
+                                          }
+                                          
+                                          ++idx;
+                                      }
+                                  });
+                            
+                            [userDefaults setObject: @YES
+                                             forKey: GRLocalNotificationScheduleKey];
+                            [userDefaults synchronize];
+                        }));
+    }
+    
 }
 
 @end
