@@ -71,6 +71,7 @@
 		923E49A31888ECF6006E9029 /* GRPreferenceTab.png in Resources */ = {isa = PBXBuildFile; fileRef = 923E499F1888ECF6006E9029 /* GRPreferenceTab.png */; };
 		923E49A41888ECF6006E9029 /* GRResourceTab.png in Resources */ = {isa = PBXBuildFile; fileRef = 923E49A01888ECF6006E9029 /* GRResourceTab.png */; };
 		923E49A51888ECF6006E9029 /* GRSermonTab.png in Resources */ = {isa = PBXBuildFile; fileRef = 923E49A11888ECF6006E9029 /* GRSermonTab.png */; };
+		923F031718ACC946006198E9 /* resource.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 923F031618ACC946006198E9 /* resource.sqlite */; };
 		9242AEFF1876A87C00F9FEFB /* GRBackButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 9242AEFD1876A87B00F9FEFB /* GRBackButton.png */; };
 		9242AF001876A87C00F9FEFB /* GRBackButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9242AEFE1876A87C00F9FEFB /* GRBackButton@2x.png */; };
 		92568CCA18850E3400994FC1 /* GRAvatarBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 92568CC918850E3300994FC1 /* GRAvatarBackground@2x.png */; };
@@ -262,6 +263,7 @@
 		923E499F1888ECF6006E9029 /* GRPreferenceTab.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GRPreferenceTab.png; sourceTree = "<group>"; };
 		923E49A01888ECF6006E9029 /* GRResourceTab.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GRResourceTab.png; sourceTree = "<group>"; };
 		923E49A11888ECF6006E9029 /* GRSermonTab.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GRSermonTab.png; sourceTree = "<group>"; };
+		923F031618ACC946006198E9 /* resource.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = resource.sqlite; sourceTree = "<group>"; };
 		9242AEFD1876A87B00F9FEFB /* GRBackButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = GRBackButton.png; path = Main/GRBackButton.png; sourceTree = "<group>"; };
 		9242AEFE1876A87C00F9FEFB /* GRBackButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "GRBackButton@2x.png"; path = "Main/GRBackButton@2x.png"; sourceTree = "<group>"; };
 		92568CC918850E3300994FC1 /* GRAvatarBackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "GRAvatarBackground@2x.png"; sourceTree = "<group>"; };
@@ -757,6 +759,7 @@
 				60E649851877FB1D00D5466B /* notifications.plist */,
 				60F9438F1886DA59001F13E3 /* GRSermonBackground.jpeg */,
 				92CE913C18755BEB00C7D3A1 /* gr.sqlite */,
+				923F031618ACC946006198E9 /* resource.sqlite */,
 				60C31A0518968F5700A18701 /* synchronize.sqlite */,
 				92CE913D18755BEB00C7D3A1 /* Images */,
 			);
@@ -966,6 +969,7 @@
 				60E649EA1878062400D5466B /* notifications20.plist in Resources */,
 				60E649E91878062400D5466B /* notifications2.plist in Resources */,
 				60E649F51878062400D5466B /* notifications5.plist in Resources */,
+				923F031718ACC946006198E9 /* resource.sqlite in Resources */,
 				60E649E41878062400D5466B /* notifications15.plist in Resources */,
 				60F943901886DA59001F13E3 /* GRSermonBackground.jpeg in Resources */,
 				60E649E11878062400D5466B /* notifications12.plist in Resources */,
