@@ -12,6 +12,7 @@
 #define GRResourceTypePPT   @"PPT"
 #define GRResourceTypeWord  @"WORD"
 #define GRResourceTypeWAVE  @"WAV"
+#define GRResourceTypeExcel @"EXCEL"
 
 #define GRResourceName          @"name"
 #define GRResourceID            @"uuid"

@@ -30,6 +30,7 @@
 #define GRHasRegisterDeviceKey          GRPrefix ".hasRegisteredDevice"
 
 #define GRResourceCatogryLastUpdateKey      GRPrefix @".resources.category.last-update"
+#define GRResourceLastUpdateKey             GRPrefix @".resources.last-update"
 #define GRSermonCategoryLastUpdateKey       GRPrefix @".sermon.category.last-update"
 #define GRPrayLastUpdateKey                 GRPrefix ".pray.last-update"
 #define GRAccountTeamLastUpdateKey          GRPrefix ".account-team.last-update"
@@ -667,9 +668,7 @@
                                                                      })
                                           })
                              callback: (^(NSDictionary *result, id exception)
-                                        {
-                                            NSLog(@"in func: %s %@", __func__, result);
-                                            
+                                        {                                            
                                             NSArray *data = result[GRNetworkDataKey];
                                             if ([data count] > 0)
                                             {
@@ -692,76 +691,58 @@
                                                        }));
                                             }
                                             
-                                            NSMutableArray *resourceCategoriesCopy = [NSMutableArray arrayWithArray: data];
-                                            if ([data count] > 0)
-                                            {
-                                                for (NSDictionary *cLooper in  data)
-                                                {
-                                                    NSString *categoryID = cLooper[@"uuid"];
-                                                    [GRNetworkService postMessage: (@{
-                                                                                      GRNetworkActionKey : @"fetch_resource",
-                                                                                      GRNetworkArgumentsKey : (@{
-                                                                                                                 @"category_id" : categoryID,
-                                                                                                                 GRNetworkLastUpdateKey : [self _lastUpdateStringForKey: categoryID]
-                                                                                                                 })
-                                                                                      })
-                                                                         callback: (^(NSDictionary *result, id exception)
-                                                                                    {
-                                                                                        NSLog(@"in func: %s %@", __func__, result);
-                                                                                        
-                                                                                        NSArray *resourcesInCategory = result[GRNetworkDataKey];
-                                                                                        if ([resourcesInCategory count] > 0)
-                                                                                        {
-                                                                                            GRDBT((^(id<ERSQLBatchStatements> batchStatements)
-                                                                                                   {
-                                                                                                       for (NSDictionary *rLooper in resourcesInCategory)
-                                                                                                       {
-                                                                                                           [batchStatements addStatement: (@"insert or replace into resource"
-                                                                                                                                           "     (uuid, category_id, name, content, path, type, properties)"
-                                                                                                                                           "   values(?, ?, ?, ?, ?, ?, ?)"
-                                                                                                                                           )
-                                                                                                                          withParameters: (@[
-                                                                                                                                             rLooper[GRResourceID],
-                                                                                                                                             rLooper[@"category_id"],
-                                                                                                                                             rLooper[GRResourceName] ?: [NSNull null],
-                                                                                                                                             rLooper[@"content"] ?: [NSNull null],
-                                                                                                                                             rLooper[GRResourcePath],
-                                                                                                                                             rLooper[GRResourceTypeKey],
-                                                                                                                                             [NSKeyedArchiver archivedDataWithRootObject: rLooper],
-                                                                                                                                             ])];
-                                                                                                       }
-                                                                                                       
-                                                                                                       [batchStatements executeAll];
-                                                                                                   }));
-                                                                                        }
-                                                                                        
-                                                                                        [defaults setObject: [GRConfiguration stringFromDate: [NSDate date]]
-                                                                                                     forKey: categoryID];
-                                                                                        
-                                                                                        [resourceCategoriesCopy removeObject: cLooper];
-                                                                                        
-                                                                                        if ([resourceCategoriesCopy count] == 0)
-                                                                                        {
-                                                                                            [defaults synchronize];
-                                                                                            
-                                                                                            [self setIsSynchronizeResource: NO];
-                                                                                            
-                                                                                            if (callback)
-                                                                                            {
-                                                                                                callback(nil, nil);
-                                                                                            }
-                                                                                        }
-                                                                                    })];
-                                                }
-                                            }else
-                                            {
-                                                [self setIsSynchronizeResource: NO];
-                                                
-                                                if (callback)
-                                                {
-                                                    callback(nil, nil);
-                                                }
-                                            }
+                                            [defaults setObject: [GRConfiguration stringFromDate: [NSDate date]]
+                                                         forKey: GRResourceCatogryLastUpdateKey];
+                                            [defaults synchronize];
+                                            
+                                            
+                                            [GRNetworkService postMessage: (@{
+                                                                              GRNetworkActionKey : @"fetch_resource",
+                                                                              GRNetworkArgumentsKey : (@{
+                                                                                                         GRNetworkLastUpdateKey : [self _lastUpdateStringForKey: GRResourceLastUpdateKey]
+                                                                                                         })
+                                                                              })
+                                                                 callback: (^(NSDictionary *result, id exception)
+                                                                            {
+                                                                                NSArray *resourcesInCategory = result[GRNetworkDataKey];
+                                                                                
+                                                                                if ([resourcesInCategory count] > 0)
+                                                                                {
+                                                                                    GRDBT((^(id<ERSQLBatchStatements> batchStatements)
+                                                                                           {
+                                                                                               for (NSDictionary *rLooper in resourcesInCategory)
+                                                                                               {
+                                                                                                   [batchStatements addStatement: (@"insert or replace into resource"
+                                                                                                                                   "     (uuid, category_id, name, content, path, type, properties)"
+                                                                                                                                   "   values(?, ?, ?, ?, ?, ?, ?)"
+                                                                                                                                   )
+                                                                                                                  withParameters: (@[
+                                                                                                                                     rLooper[GRResourceID],
+                                                                                                                                     rLooper[@"category_id"],
+                                                                                                                                     rLooper[GRResourceName] ?: [NSNull null],
+                                                                                                                                     rLooper[@"content"] ?: [NSNull null],
+                                                                                                                                     rLooper[GRResourcePath],
+                                                                                                                                     rLooper[GRResourceTypeKey],
+                                                                                                                                     [NSKeyedArchiver archivedDataWithRootObject: rLooper],
+                                                                                                                                     ])];
+                                                                                               }
+                                                                                               
+                                                                                               [batchStatements executeAll];
+                                                                                           }));
+                                                                                }
+                                                                                
+                                                                                [defaults setObject: [GRConfiguration stringFromDate: [NSDate date]]
+                                                                                             forKey: GRResourceLastUpdateKey];
+                                                                                
+                                                                                
+                                                                                [self setIsSynchronizeResource: NO];
+                                                                                
+                                                                                if (callback)
+                                                                                {
+                                                                                    callback(nil, nil);
+                                                                                }
+                                                                            })];
+                                            
                                         })];
     }
     

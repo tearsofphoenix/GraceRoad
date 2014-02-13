@@ -17,10 +17,12 @@
 
 #import <PDFReader/ReaderView.h>
 #import <PDFReader/ReaderDocument.h>
+#import <QuickLook/QuickLook.h>
 
-@interface GRResourceInfoView ()
+@interface GRResourceInfoView ()<QLPreviewControllerDataSource, QLPreviewControllerDelegate>
 {
     UIButton *_doneButton;
+    QLPreviewController *_previewController;
 }
 
 @property (nonatomic, retain) UIButton *rightNavigationButton;
@@ -74,6 +76,11 @@
 
     [_doneButton release];
     
+    [_package release];
+    [_packageView release];
+    
+    [_previewController release];
+    
     [super dealloc];
 }
 
@@ -100,6 +107,16 @@
     }
 }
 
+- (void)_createPreviewControllerIfNeeded
+{
+    if (!_previewController)
+    {
+        _previewController = [[QLPreviewController alloc] init];
+        [_previewController setDataSource: self];
+        [_previewController setDelegate: self];
+    }
+}
+
 - (void)setResourceInfo: (NSDictionary *)resourceInfo
 {
     if (_resourceInfo != resourceInfo)
@@ -109,15 +126,10 @@
         
         [self setTitle: _resourceInfo[GRResourceName]];
         
-        //        NSString *path = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent: _resourceInfo[GRResourcePath]];
-        //
-        //        GRPackage *package = [[GRPackage alloc] initWithPath: path];
-        //
-        //        [self addSubview: [package view]];
-        
         NSString *path = [GRResourceManager pathWithSubPath: _resourceInfo[GRResourcePath]];
+        NSString *resourceType = _resourceInfo[GRResourceTypeKey];
         
-        if ([path hasSuffix: @".pdf"])
+        if ([resourceType isEqualToString: GRResourceTypePDF] || [path hasSuffix: @".pdf"])
         {
             [self setPackage: nil];
             
@@ -130,9 +142,22 @@
             
             [view release];
             [document release];
-            //ERSC(GRViewServiceID, GRViewServiceViewPDFAtPathAction, @[ path ], nil);
             
             [_doneButton setAlpha: 0];
+            
+        }else if([resourceType isEqualToString: GRResourceTypePPT]
+                 || [resourceType isEqualToString: GRResourceTypeWord]
+                 || [resourceType isEqualToString: GRResourceTypeExcel])
+        {
+            [self _createPreviewControllerIfNeeded];
+            
+            UIView *view = [_previewController view];
+            [view setFrame: [self bounds]];
+            
+            [self addSubview: view];
+            
+//            [_previewController reloadData];
+            
         }else
         {
             GRHTMLPackage *package = [[GRHTMLPackage alloc] initWithPath: path];
@@ -151,6 +176,19 @@
             [self setPackageView: [_package view]];
         }
     }
+}
+
+- (NSInteger)numberOfPreviewItemsInPreviewController: (QLPreviewController *)controller
+{
+    return 1;
+}
+
+- (id<QLPreviewItem>)previewController: (QLPreviewController *)controller
+                     previewItemAtIndex: (NSInteger)index
+{
+    NSString *path = [GRResourceManager pathWithSubPath: _resourceInfo[GRResourcePath]];
+    NSURL *fileURL = [NSURL fileURLWithPath: path];
+    return fileURL;
 }
 
 - (void)_handleDoneButtonTappedEvent: (id)sender
