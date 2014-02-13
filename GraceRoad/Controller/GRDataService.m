@@ -71,28 +71,31 @@
         
         NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
         
-        NSDate *date = [NSDate date];
-        
         if (![userDefaults boolForKey: GRLocalNotificationScheduleKey])
         {
             dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0),
                            (^
                             {
+                                NSDate *date = [NSDate date];
+
                                 NSArray *notificationList = [[NSArray alloc] initWithContentsOfFile: [[NSBundle mainBundle] pathForResource: @"notifications0"
                                                                                                                                      ofType: @"plist"]];
-                                
                                 [notificationList enumerateObjectsUsingBlock:
                                  (^(NSDictionary *obj, NSUInteger idx, BOOL *stop)
                                   {
                                       UILocalNotification *notificationLooper = [[UILocalNotification alloc] init];
                                       
                                       [notificationLooper setFireDate: [date dateByAddingTimeInterval: idx * (24 * 60 * 60)]];
-                                      [notificationLooper setTimeZone: [NSTimeZone defaultTimeZone]];
                                       
                                       [notificationLooper setSoundName: UILocalNotificationDefaultSoundName];
                                       [notificationLooper setUserInfo: obj];
+                                      [notificationLooper setAlertBody: [NSString stringWithFormat: @"每日读经： %@", obj[@"address"]]];
                                       
-                                      [[UIApplication sharedApplication] scheduleLocalNotification: notificationLooper];
+                                      dispatch_async(dispatch_get_main_queue(),
+                                                     (^
+                                                      {
+                                                          [[UIApplication sharedApplication] scheduleLocalNotification: notificationLooper];
+                                                      }));
                                       
                                       [notificationLooper release];
                                       
@@ -668,7 +671,7 @@
                                                                      })
                                           })
                              callback: (^(NSDictionary *result, id exception)
-                                        {                                            
+                                        {
                                             NSArray *data = result[GRNetworkDataKey];
                                             if ([data count] > 0)
                                             {
