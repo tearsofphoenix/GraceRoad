@@ -13,6 +13,7 @@
 #import "GRTeamKeys.h"
 #import "GRTheme.h"
 #import "GRSendMessageView.h"
+#import "UIActionSheet+BlockSupport.h"
 
 @interface GRUserDetailView ()<UITableViewDataSource, UITableViewDelegate>
 {
@@ -20,7 +21,7 @@
     UIImageView *_avatarView;
     UILabel *_nameLabel;
     
-    UILabel *_titleLabel;
+    UIButton *_teamNameButton;
     
     NSMutableArray *_memberList;
     UITableView *_memberListView;
@@ -29,7 +30,8 @@
     UIButton *_logoutButton;
 }
 
-@property (nonatomic, retain) NSDictionary *team;
+@property (nonatomic, retain) NSArray *teams;
+@property (nonatomic, retain) NSDictionary *selectedTeam;
 
 @end
 
@@ -76,20 +78,27 @@
         [self addSubview: label];
         [label release];
         
-        _titleLabel = [[UILabel alloc] initWithFrame: CGRectMake(144, 35, 260, 60)];
-        [_titleLabel setTextColor: [UIColor whiteColor]];
-        [_titleLabel setBackgroundColor: [UIColor clearColor]];
-        [self addSubview: _titleLabel];
+        _teamNameButton = [[UIButton alloc] initWithFrame: CGRectMake(144, 50, 80, 36)];
+        [_teamNameButton addTarget: self
+                            action: @selector(_handleTeamNameButtonTappedEvent:)
+                  forControlEvents: UIControlEventTouchUpInside];
+        [[_teamNameButton titleLabel] setTextAlignment: NSTextAlignmentCenter];
+        [[_teamNameButton titleLabel] setFont: [UIFont systemFontOfSize: 15]];
+        [_teamNameButton setTitleColor: [UIColor whiteColor]
+                              forState: UIControlStateNormal];
+        [_teamNameButton setBackgroundColor: [GRTheme darkColor]];
+        [self addSubview: _teamNameButton];
         
         NSDictionary *accountInfo = ERSSC(GRDataServiceID, GRDataServiceCurrentAccountAction, nil);
         //TODO: Isaac team logic
 
         if (accountInfo)
         {
-             [self setTeam: ERSSC(GRDataServiceID, GRDataServiceTeamsForAccountIDAction, @[ accountInfo[GRAccountIDKey] ])[0]];
-
             [_nameLabel setText: accountInfo[GRAccountNameKey]];
-            [_titleLabel setText: _team[GRTeamNameKey]];
+
+            [self setTeams: ERSSC(GRDataServiceID,
+                                  GRDataServiceTeamsForAccountIDAction,
+                                  @[ accountInfo[GRAccountIDKey] ])];
         }
         
         _logoutButton = [[UIButton alloc] initWithFrame: CGRectMake(30, bounds.size.height - 60,
@@ -132,12 +141,6 @@
         
         _memberList = [[NSMutableArray alloc] init];
         
-        if (_team)
-        {
-            NSArray *members = ERSSC(GRDataServiceID, GRDataServiceAllMemberForTeamIDAction, @[ _team[GRTeamIDKey] ]);
-            [_memberList setArray: members];
-        }
-
         CGFloat originY = avatarBackgroundFrame.origin.y + avatarBackgroundFrame.size.height;
         _memberListView = [[UITableView alloc] initWithFrame: CGRectMake(0, originY, frame.size.width, frame.size.height - originY - 60)];
         [_memberListView setDataSource: self];
@@ -146,6 +149,11 @@
         [self addSubview: _memberListView];
         
         _selectedIndexPaths = [[NSMutableSet alloc] init];
+        
+        if ([_teams count] > 0)
+        {
+            [self setSelectedTeam: _teams[0]];
+        }
     }
     return self;
 }
@@ -155,16 +163,37 @@
     [_avatarBackgroundView release];
     [_avatarView release];
     [_nameLabel release];
-    [_titleLabel release];
+    [_teamNameButton release];
     
     [_logoutButton release];
     
     [_memberList release];
     [_memberListView release];
     [_selectedIndexPaths release];
-    [_team release];
+    
+    [_teams release];
+    [_selectedTeam release];
     
     [super dealloc];
+}
+
+- (void)setSelectedTeam: (NSDictionary *)selectedTeam
+{
+    if (_selectedTeam != selectedTeam)
+    {
+        [_selectedTeam release];
+        _selectedTeam = [selectedTeam retain];
+        
+        [_teamNameButton setTitle: _selectedTeam[GRTeamNameKey]
+                         forState: UIControlStateNormal];
+
+        NSArray *members = ERSSC(GRDataServiceID,
+                                 GRDataServiceAllMemberForTeamIDAction,
+                                 @[ _selectedTeam[GRTeamIDKey] ]);
+        [_memberList setArray: members];
+        
+        [_memberListView reloadData];
+    }
 }
 
 - (void)setFrame: (CGRect)frame
@@ -217,13 +246,7 @@ viewForHeaderInSection: (NSInteger)section
 - (NSInteger)tableView: (UITableView *)tableView
  numberOfRowsInSection: (NSInteger)section
 {
-    if (_team)
-    {
-        return [_memberList count];
-    }else
-    {
-        return 0;
-    }
+    return [_memberList count];
 }
 
 - (UITableViewCell *)tableView: (UITableView *)tableView
@@ -344,6 +367,27 @@ heightForRowAtIndexPath: (NSIndexPath *)indexPath
         
         [sendMessageView release];
     }
+}
+
+- (void)_handleTeamNameButtonTappedEvent: (id)sender
+{
+    NSMutableArray *teams = [NSMutableArray arrayWithCapacity: [_teams count]];
+    for (NSDictionary *tLooper in _teams)
+    {
+        [teams addObject: tLooper[GRTeamNameKey]];
+    }
+    
+    [UIActionSheet showWithTitle: nil
+                         choices: teams
+                          inView: self
+                        callback: (^(NSInteger buttonIndex)
+                                   {
+                                       NSLog(@"%d", buttonIndex);
+                                       if (buttonIndex > 0)
+                                       {
+                                           [self setSelectedTeam: _teams[buttonIndex - 1]];
+                                       }
+                                   })];
 }
 
 @end
