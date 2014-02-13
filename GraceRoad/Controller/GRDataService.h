@@ -36,14 +36,14 @@
 #define GRDataServiceSaveLessonForIDAction       @"saveLesson:forID:"
 #define GRDataServiceLessonRecordForIDAction     @"lessonRecordForID:"
 
-#define GRDataServiceTeamsForAccountIDAction      @"teamsForAccountID:"
-#define GRDataServiceAllMemberForTeamIDAction    @"allMemberForTeamID:"
+#define GRDataServiceTeamsForAccountIDAction        @"teamsForAccountID:"
+#define GRDataServiceAllMemberForTeamIDAction       @"allMemberForTeamID:"
 
-#define GRDataServiceSendPushNotificationWithCallbackAction  @"sendPushNotification:callback:"
-#define GRDataServiceSendMessageToWeixinAction               @"sendMessageToWeixin:"
+#define GRDataServiceSendPushNotificationToAccountsWithCallbackAction   @"sendPushNotification:toAccounts:callback:"
+#define GRDataServiceSendMessageToWeixinAction                          @"sendMessageToWeixin:"
 
-#define GRDataServiceExportNotificationToReminderAction      @"exportNotificationToReminder:"
-#define GRDataServiceRegisterDeviceTokenAction   @"registerDeviceToken:"
+#define GRDataServiceExportNotificationToReminderAction         @"exportNotificationToReminder:"
+#define GRDataServiceRegisterDeviceTokenAction                  @"registerDeviceToken:"
 
 #define GRDataServiceSendFeedbackAction          @"sendFeedback:callback:"
 
@@ -57,6 +57,9 @@
 #define GRNotificationResourceSynchronizeFinished   GRPrefix ".notification.resource.synchronized"
 #define GRNotificationSermonSynchronizeFinished     GRPrefix ".notification.sermon.synchronized"
 #define GRNotificationPraySynchronizeFinished       GRPrefix ".notification.pray.synchronized"
+
+#define GRPushActionReminder    @"reminder"
+#define GRPushArgumentDateKey   @"d"
 
 @interface GRDataService : ERService
 

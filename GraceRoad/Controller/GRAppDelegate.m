@@ -35,13 +35,6 @@ didFinishLaunchingWithOptions: (NSDictionary *)launchOptions
 {
     //[iOSHierarchyViewer start];
     
-    id obj = (@{
-               @"device_id" : @"a",
-               @"device_token" : @"b",
-               });
-    
-    NSLog(@"%@", [obj JSONString]);
-    
     [[UIApplication sharedApplication] setStatusBarHidden: YES];
     
     _window = [[UIWindow alloc] initWithFrame: [[UIScreen mainScreen] bounds]];
@@ -63,9 +56,6 @@ didFinishLaunchingWithOptions: (NSDictionary *)launchOptions
     [WXApi registerApp: @"wx862decf228c6b60b"
        withDescription: @"恩典之路"];
         
-    [[UIApplication sharedApplication] registerForRemoteNotificationTypes: (UIRemoteNotificationTypeAlert
-                                                                            | UIRemoteNotificationTypeBadge
-                                                                            | UIRemoteNotificationTypeSound)];
     return YES;
 }
 
@@ -83,10 +73,9 @@ didReceiveLocalNotification: (UILocalNotification *)notification
 - (void)         application: (UIApplication *)application
 didReceiveRemoteNotification: (NSDictionary *)userInfo
 {
-    NSString *alert = userInfo[@"aps"][@"alert"];
     ERSC(GRDataServiceID,
          GRDataServiceExportNotificationToReminderAction,
-         @[ alert ], nil);
+         @[ userInfo ], nil);
     
     NSLog(@"in func: %s, userInfo: %@", __func__, userInfo);
 }
@@ -95,10 +84,9 @@ didReceiveRemoteNotification: (NSDictionary *)userInfo
 didReceiveRemoteNotification: (NSDictionary *)userInfo
       fetchCompletionHandler: (void (^)(UIBackgroundFetchResult))completionHandler
 {
-    NSString *alert = userInfo[@"aps"][@"alert"];
     ERSC(GRDataServiceID,
          GRDataServiceExportNotificationToReminderAction,
-         @[ alert ], nil);
+         @[ userInfo ], nil);
     
     NSLog(@"in func: %s, userInfo: %@", __func__, userInfo);
 }

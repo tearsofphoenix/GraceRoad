@@ -421,10 +421,17 @@ weightForHeaderOfSection: (NSInteger)section
         callback = Block_copy(callback);
         
         ERSC(GRViewServiceID, GRViewServiceShowLoadingIndicatorAction, nil, nil);
+
+        NSMutableArray *recipients = [NSMutableArray arrayWithCapacity: [_targetAccounts count]];
         
+        for (NSDictionary *tLooper in _targetAccounts)
+        {
+            [recipients addObject: tLooper[GRAccountIDKey]];
+        }
+
         ERSSC(GRDataServiceID,
-              GRDataServiceSendPushNotificationWithCallbackAction,
-              @[ [_textView text], callback ]);
+              GRDataServiceSendPushNotificationToAccountsWithCallbackAction,
+              @[ [_textView text], recipients, callback ]);
         
         Block_release(callback);
         

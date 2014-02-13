@@ -32,15 +32,25 @@ static NSURL *gsServerURL = nil;
 
 static NSDateFormatter *gsDateFormatter = nil;
 
-+ (NSString *)stringFromDate: (NSDate *)date
+static void __CreateDateFormatterIfNeeded(void)
 {
     if (!gsDateFormatter)
     {
         gsDateFormatter = [[NSDateFormatter alloc] init];
         [gsDateFormatter setDateFormat: @"yyyy-MM-dd hh:mm:ss"];
     }
-    
+}
+
++ (NSString *)stringFromDate: (NSDate *)date
+{
+    __CreateDateFormatterIfNeeded();
     return [gsDateFormatter stringFromDate: date];
+}
+
++ (NSDate *)dateFromString: (NSString *)str
+{
+    __CreateDateFormatterIfNeeded();
+    return [gsDateFormatter dateFromString: str];
 }
 
 + (NSString *)fileURLString

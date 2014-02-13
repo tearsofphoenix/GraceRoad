@@ -125,6 +125,13 @@
     return self;
 }
 
+- (void)_tryToRegisterRemoteNotification
+{
+    [[UIApplication sharedApplication] registerForRemoteNotificationTypes: (UIRemoteNotificationTypeAlert
+                                                                            | UIRemoteNotificationTypeBadge
+                                                                            | UIRemoteNotificationTypeSound)];
+}
+
 - (void)loginUser: (NSString *)userName
          password: (NSString *)password
          callback: (ERServiceCallback)callback
@@ -169,6 +176,7 @@
                                                       [batchStatements executeAll];
                                                   });
                                             
+                                            [self _tryToRegisterRemoteNotification];
                                             [self _tryToSynchronizeTeamInfoWithCallback: callback];
                                             
                                         }else
@@ -399,9 +407,23 @@
 }
 
 - (void)sendPushNotification: (NSString *)obj
+                  toAccounts: (NSArray *)accountIDs
                     callback: (ERServiceCallback)callback
 {
-    
+    [GRNetworkService postMessage: (@{
+                                      GRNetworkActionKey : @"aps_push",
+                                      GRNetworkArgumentsKey : (@{
+                                                                 @"account_ids" : accountIDs,
+                                                                 @"message" : obj
+                                                                 })
+                                      })
+                         callback: (^(NSDictionary *result, id exception)
+                                    {
+                                        if (callback)
+                                        {
+                                            callback(result, exception);
+                                        }
+                                    })];
 }
 
 - (void)sendMessageToWeixin: (NSString *)message
@@ -423,46 +445,64 @@
     }
 }
 
-- (void)exportNotificationToReminder: (NSString *)content
+- (void)exportNotificationToReminder: (NSDictionary *)userInfo
 {
-    EKAuthorizationStatus status = [EKEventStore authorizationStatusForEntityType: EKEntityTypeEvent];
-    if (EKAuthorizationStatusAuthorized == status)
+    NSDictionary *aps = userInfo[@"aps"];
+    NSString *action = userInfo[@"action"];
+    NSString *argsString = userInfo[@"args"];
+    
+    if ([action isEqualToString: GRPushActionReminder] && [argsString length] > 0)
     {
-        EKEvent *event = [EKEvent eventWithEventStore: _eventStore];
-        NSString *month = [content substringWithRange: NSMakeRange(0, 2)];
-        NSString *day = [content substringWithRange: NSMakeRange(2, 2)];
-        NSString *eventContent = [content substringFromIndex: 4];
-        
-        [event setTitle: eventContent];
-        
-        NSInteger year = [[NSDate date] year];
-        NSInteger monthValue = [month integerValue];
-        NSInteger dayValue = [day integerValue];
-        
-        EKAlarm *alarm = [EKAlarm alarmWithAbsoluteDate: [NSDate dateWithYear: year
-                                                                        month: monthValue
-                                                                          day: dayValue - 1]];
-        [event addAlarm: alarm];
-        [event setCalendar: [_eventStore calendarsForEntityType: EKEntityTypeEvent][0]];
-        
-        NSDate *startDate = [NSDate dateWithYear: year
-                                           month: monthValue
-                                             day: dayValue];
-        [event setStartDate: startDate];
-        [event setEndDate: [NSDate dateWithYear: year
-                                          month: monthValue
-                                            day: dayValue + 1]];
         NSError *error = nil;
-        [_eventStore saveEvent: event
-                          span: EKSpanFutureEvents
-                        commit: YES
-                         error: &error];
-        
+        NSDictionary *args = [NSJSONSerialization JSONObjectWithData: [argsString dataUsingEncoding: NSUTF8StringEncoding]
+                                                             options: 0
+                                                               error: &error];
         if (error)
         {
-            NSLog(@"%@", error);
+            NSLog(@"in func: %s error: %@", __func__, error);
+        }else
+        {
+            EKAuthorizationStatus status = [EKEventStore authorizationStatusForEntityType: EKEntityTypeEvent];
+            if (EKAuthorizationStatusAuthorized == status)
+            {
+                EKEvent *event = [EKEvent eventWithEventStore: _eventStore];
+                
+                NSString *dateString = args[GRPushArgumentDateKey];
+                NSDate *date = [GRConfiguration dateFromString: dateString];
+                
+                NSString *eventContent = aps[@"alert"];
+                
+                [event setTitle: eventContent];
+                
+                NSInteger year = [date year];
+                NSInteger monthValue = [date month];
+                NSInteger dayValue = [date day];
+                
+                EKAlarm *alarm = [EKAlarm alarmWithAbsoluteDate: [NSDate dateWithYear: year
+                                                                                month: monthValue
+                                                                                  day: dayValue - 1]];
+                [event addAlarm: alarm];
+                [event setCalendar: [_eventStore calendarsForEntityType: EKEntityTypeEvent][0]];
+                
+                NSDate *startDate = [NSDate dateWithYear: year
+                                                   month: monthValue
+                                                     day: dayValue];
+                [event setStartDate: startDate];
+                [event setEndDate: [NSDate dateWithYear: year
+                                                  month: monthValue
+                                                    day: dayValue + 1]];
+                NSError *error = nil;
+                [_eventStore saveEvent: event
+                                  span: EKSpanFutureEvents
+                                commit: YES
+                                 error: &error];
+                
+                if (error)
+                {
+                    NSLog(@"%@", error);
+                }
+            }
         }
-        
     }
 }
 
@@ -496,7 +536,7 @@
 - (void)registerDeviceToken: (NSString *)deviceToken
 {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    if (![defaults boolForKey: GRHasRegisterDeviceKey])
+    if (![defaults objectForKey: GRHasRegisterDeviceKey])
     {
         UIDevice *device = [UIDevice currentDevice];
         NSString *idForVender = [[device identifierForVendor] UUIDString];
@@ -511,11 +551,14 @@
         [parameters setObject: idForVender
                        forKey: @"device_id"];
         
+        NSDictionary *account = [self currentAccount];
+        
         [GRNetworkService postMessage: (@{
                                           GRNetworkActionKey : @"register_device",
                                           GRNetworkArgumentsKey : (@{
                                                                      @"device_id" : idForVender,
                                                                      @"device_token" : deviceToken,
+                                                                     @"account_id" : account[GRAccountIDKey],
                                                                      @"properties" : parameters
                                                                      })
                                           })
@@ -523,8 +566,8 @@
                                         {
                                             if ([result[GRNetworkStatusKey] isEqualToString: GRNetworkStatusOKValue])
                                             {
-                                                [defaults setBool: YES
-                                                           forKey: GRHasRegisterDeviceKey];
+                                                [defaults setObject: @YES
+                                                             forKey: GRHasRegisterDeviceKey];
                                                 [defaults synchronize];
                                             }
                                             
