@@ -406,16 +406,17 @@
     return result;
 }
 
-- (void)sendPushNotification: (NSString *)obj
+- (void)sendPushNotification: (NSDictionary *)info
                   toAccounts: (NSArray *)accountIDs
                     callback: (ERServiceCallback)callback
 {
+    NSMutableDictionary *arguments = [NSMutableDictionary dictionaryWithDictionary: info];
+    [arguments setObject: accountIDs
+                  forKey: @"account_ids"];
+    
     [GRNetworkService postMessage: (@{
                                       GRNetworkActionKey : @"aps_push",
-                                      GRNetworkArgumentsKey : (@{
-                                                                 @"account_ids" : accountIDs,
-                                                                 @"message" : obj
-                                                                 })
+                                      GRNetworkArgumentsKey : arguments
                                       })
                          callback: (^(NSDictionary *result, id exception)
                                     {
@@ -448,59 +449,61 @@
 - (void)exportNotificationToReminder: (NSDictionary *)userInfo
 {
     NSDictionary *aps = userInfo[@"aps"];
-    NSString *action = userInfo[@"action"];
-    NSString *argsString = userInfo[@"args"];
+    NSString *action = userInfo[GRPushActionKey];
+    NSDictionary *args = userInfo[GRPushArgumentsKey];
     
-    if ([action isEqualToString: GRPushActionReminder] && [argsString length] > 0)
+    if ([action isEqualToString: GRPushActionReminder])
     {
-        NSError *error = nil;
-        NSDictionary *args = [NSJSONSerialization JSONObjectWithData: [argsString dataUsingEncoding: NSUTF8StringEncoding]
-                                                             options: 0
-                                                               error: &error];
-        if (error)
+        EKAuthorizationStatus status = [EKEventStore authorizationStatusForEntityType: EKEntityTypeEvent];
+        if (EKAuthorizationStatusAuthorized == status)
         {
-            NSLog(@"in func: %s error: %@", __func__, error);
-        }else
-        {
-            EKAuthorizationStatus status = [EKEventStore authorizationStatusForEntityType: EKEntityTypeEvent];
-            if (EKAuthorizationStatusAuthorized == status)
+            EKEvent *event = [EKEvent eventWithEventStore: _eventStore];
+            
+            NSString *dateString = args[GRPushArgumentDateKey];
+            NSDate *date = [GRConfiguration dateFromString: dateString];
+            NSInteger offset = [args[GRPushArgumentOffsetKey] integerValue];
+            
+            NSString *eventContent = aps[@"alert"];
+            
+            [event setTitle: eventContent];
+            
+            NSInteger year = [date year];
+            NSInteger monthValue = [date month];
+            NSInteger dayValue = [date day];
+            
+            EKAlarm *alarm = [EKAlarm alarmWithAbsoluteDate: [NSDate dateWithYear: year
+                                                                            month: monthValue
+                                                                              day: dayValue - offset]];
+            [event addAlarm: alarm];
+            EKCalendar *calendar = nil;
+            NSArray *allCalendars = [_eventStore calendarsForEntityType: EKEntityTypeEvent];
+            for (EKCalendar *cLooper in allCalendars)
             {
-                EKEvent *event = [EKEvent eventWithEventStore: _eventStore];
-                
-                NSString *dateString = args[GRPushArgumentDateKey];
-                NSDate *date = [GRConfiguration dateFromString: dateString];
-                
-                NSString *eventContent = aps[@"alert"];
-                
-                [event setTitle: eventContent];
-                
-                NSInteger year = [date year];
-                NSInteger monthValue = [date month];
-                NSInteger dayValue = [date day];
-                
-                EKAlarm *alarm = [EKAlarm alarmWithAbsoluteDate: [NSDate dateWithYear: year
-                                                                                month: monthValue
-                                                                                  day: dayValue - 1]];
-                [event addAlarm: alarm];
-                [event setCalendar: [_eventStore calendarsForEntityType: EKEntityTypeEvent][0]];
-                
-                NSDate *startDate = [NSDate dateWithYear: year
-                                                   month: monthValue
-                                                     day: dayValue];
-                [event setStartDate: startDate];
-                [event setEndDate: [NSDate dateWithYear: year
-                                                  month: monthValue
-                                                    day: dayValue + 1]];
-                NSError *error = nil;
-                [_eventStore saveEvent: event
-                                  span: EKSpanFutureEvents
-                                commit: YES
-                                 error: &error];
-                
-                if (error)
+                if (![cLooper isImmutable])
                 {
-                    NSLog(@"%@", error);
+                    calendar = cLooper;
+                    break;
                 }
+            }
+            
+            [event setCalendar: calendar];
+            
+            NSDate *startDate = [NSDate dateWithYear: year
+                                               month: monthValue
+                                                 day: dayValue];
+            [event setStartDate: startDate];
+            [event setEndDate: [NSDate dateWithYear: year
+                                              month: monthValue
+                                                day: dayValue + 1]];
+            NSError *error = nil;
+            [_eventStore saveEvent: event
+                              span: EKSpanFutureEvents
+                            commit: YES
+                             error: &error];
+            
+            if (error)
+            {
+                NSLog(@"%@", error);
             }
         }
     }

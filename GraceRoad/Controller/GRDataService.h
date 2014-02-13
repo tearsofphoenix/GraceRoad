@@ -58,8 +58,12 @@
 #define GRNotificationSermonSynchronizeFinished     GRPrefix ".notification.sermon.synchronized"
 #define GRNotificationPraySynchronizeFinished       GRPrefix ".notification.pray.synchronized"
 
-#define GRPushActionReminder    @"reminder"
-#define GRPushArgumentDateKey   @"d"
+#define GRPushActionKey             @"action"
+#define GRPushArgumentsKey          @"args"
+
+#define GRPushActionReminder        @"r"    //for `reminder'
+#define GRPushArgumentDateKey       @"d"    //for `date'
+#define GRPushArgumentOffsetKey     @"o"    //for `offset'
 
 @interface GRDataService : ERService
 

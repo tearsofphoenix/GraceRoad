@@ -99,4 +99,6 @@ typedef enum
 
 - (NSDate *)mostCloseAnniversaryForDate: (NSDate *)date;
 
+- (NSDate *)sundayInSameWeek;
+
 @end

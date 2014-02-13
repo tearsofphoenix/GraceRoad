@@ -18,6 +18,8 @@
 #import "GRDataService.h"
 #import "GRTheme.h"
 
+#import "GRConfiguration.h"
+#import <NoahsUtility/NoahsUtility.h>
 #import <MessageUI/MessageUI.h>
 
 #define  GRAccountPerRow (5)
@@ -35,6 +37,7 @@
 }
 
 @property (nonatomic, retain) NSString *messageType;
+@property (nonatomic) NSInteger notifyIndex;
 
 @end
 
@@ -94,7 +97,7 @@
         [notifyLabel release];
         
         rect.origin.x += rect.size.width;
-        rect.size = CGSizeMake(50, 26);
+        rect.size = CGSizeMake(90, 26);
         
         _notifyButton = [[UIButton alloc] initWithFrame: rect];
         
@@ -318,11 +321,10 @@ weightForHeaderOfSection: (NSInteger)section
                                    {
                                        if (buttonIndex > 0)
                                        {
-                                           [_notifyButton setTitle: choices[buttonIndex - 1]
+                                           _notifyIndex = buttonIndex - 1;
+                                           [_notifyButton setTitle: choices[_notifyIndex]
                                                           forState: UIControlStateNormal];
                                        }
-                                       
-                                       NSLog(@"selected: %d", buttonIndex);
                                    })];
 }
 
@@ -429,9 +431,24 @@ weightForHeaderOfSection: (NSInteger)section
             [recipients addObject: tLooper[GRAccountIDKey]];
         }
 
+        NSMutableDictionary *info = [NSMutableDictionary dictionary];
+        [info setObject: [_textView text]
+                 forKey: @"message"];
+        
+        if (_notifyIndex != 0)
+        {
+            [info setObject: GRPushActionReminder
+                     forKey: GRPushActionKey];
+            [info setObject: (@{
+                                GRPushArgumentDateKey : [GRConfiguration stringFromDate: [[NSDate date] sundayInSameWeek]],
+                                GRPushArgumentOffsetKey : [NSString stringWithFormat: @"%@", @(_notifyIndex)],
+                                })
+                     forKey: GRPushArgumentsKey];
+        }
+        
         ERSSC(GRDataServiceID,
               GRDataServiceSendPushNotificationToAccountsWithCallbackAction,
-              @[ [_textView text], recipients, callback ]);
+              @[ info, recipients, callback ]);
         
         Block_release(callback);
         

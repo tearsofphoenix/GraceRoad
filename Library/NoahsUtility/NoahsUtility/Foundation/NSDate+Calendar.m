@@ -200,7 +200,7 @@ static void ERUtilityDateInitializeUTCComponent(NSDate *date)
 
         NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier: NSGregorianCalendar];
 
-        [calendar setTimeZone: [[NSLocale currentLocale] timeZone]];
+        [calendar setTimeZone: [NSTimeZone systemTimeZone]];
 
         NSDateComponents *dateComponents = [calendar components: NSWeekdayCalendarUnit
                                                        fromDate: self];
@@ -450,6 +450,18 @@ static void ERUtilityDateInitializeUTCComponent(NSDate *date)
 {
     return [self mostCloseAnniversaryAtMonth: [date month]
                                          day: [date day]];
+}
+
+- (NSDate *)sundayInSameWeek
+{
+    ERWeekDay weekDay = [self weekDay];
+    if (ERSunday == weekDay)
+    {
+        return self;
+    }else
+    {
+        return [self dateByAddingTimeInterval: ERSecondsInOneDay * (ERSaturday - weekDay + 1)];
+    }
 }
 
 @end
