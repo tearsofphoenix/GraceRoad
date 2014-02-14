@@ -9,6 +9,12 @@
 #ifndef GraceRoad_GRDefines_h
 #define GraceRoad_GRDefines_h
 
+#ifdef DEBUG
 
+#else
+
+#define NSLog(...) do{}while(0)
+
+#endif
 
 #endif

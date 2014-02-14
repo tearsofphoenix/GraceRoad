@@ -193,6 +193,7 @@
 		60F9438C1886D81A001F13E3 /* DKLiveBlurView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DKLiveBlurView.h; sourceTree = "<group>"; };
 		60F9438D1886D81A001F13E3 /* DKLiveBlurView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DKLiveBlurView.m; sourceTree = "<group>"; };
 		60F9438F1886DA59001F13E3 /* GRSermonBackground.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = GRSermonBackground.jpeg; path = Images/Main/GRSermonBackground.jpeg; sourceTree = "<group>"; };
+		920B56A518ADAB0E0062DA63 /* GRDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRDefines.h; sourceTree = "<group>"; };
 		920B99921885259B006BD620 /* GRExampleAvatar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GRExampleAvatar.png; sourceTree = "<group>"; };
 		920B99931885259B006BD620 /* GRExampleAvatar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "GRExampleAvatar@2x.png"; sourceTree = "<group>"; };
 		920B999618852B21006BD620 /* GRAddButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "GRAddButton@2x.png"; sourceTree = "<group>"; };
@@ -611,6 +612,7 @@
 			isa = PBXGroup;
 			children = (
 				9288BA0C188D06A50095ADAE /* GRFoundation.h */,
+				920B56A518ADAB0E0062DA63 /* GRDefines.h */,
 				606E8FDF18894698000C5CB2 /* PDFReader.xcodeproj */,
 				60E8D95C1889131900C2EFC2 /* BlurView */,
 				9276F33518877D6100E13763 /* GalleryView */,
