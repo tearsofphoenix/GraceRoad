@@ -817,6 +817,8 @@
                                         {
                                             GRDBT((^(id<ERSQLBatchStatements> batchStatements)
                                                    {
+                                                       NSLog(@"in func: %s %@", __func__, data);
+                                                       
                                                        [data enumerateKeysAndObjectsUsingBlock:
                                                         (^(NSString *teamID, NSArray *obj, BOOL *stop)
                                                          {
@@ -837,9 +839,10 @@
                                                                                                    [NSKeyedArchiver archivedDataWithRootObject: mLooper],
                                                                                                    ])];
                                                              }
+                                                             
+                                                             [batchStatements executeAll];
+                                                             
                                                          })];
-                                                       
-                                                       [batchStatements executeAll];
                                                    }));
                                         }
                                         
@@ -878,6 +881,8 @@
                                               })
                                  callback: (^(NSDictionary *result, id exception)
                                             {
+                                                NSLog(@"in func: %s %@", __func__, result);
+
                                                 NSDictionary *data = result[GRNetworkDataKey];
                                                 if (data)
                                                 {

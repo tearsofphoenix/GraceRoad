@@ -12,7 +12,7 @@
 #import "MFNetworkFileCacheManager.h"
 
 static NSString * const MFNetworkCachePoolID = @"cache.pool.network";
-static NSUInteger MFNetworkTransferQueueCapacity = 4;
+static NSUInteger MFNetworkTransferQueueCapacity = 6;
 
 @interface MFNetworkClientInternal ()<MFNetworkOperationDelegate>
 {
