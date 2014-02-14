@@ -382,7 +382,6 @@ heightForRowAtIndexPath: (NSIndexPath *)indexPath
                           inView: self
                         callback: (^(NSInteger buttonIndex)
                                    {
-                                       NSLog(@"%d", buttonIndex);
                                        if (buttonIndex > 0)
                                        {
                                            [self setSelectedTeam: _teams[buttonIndex - 1]];

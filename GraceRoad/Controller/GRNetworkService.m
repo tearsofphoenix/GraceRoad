@@ -73,7 +73,7 @@
                                                                     {
                                                                         NSString *response = [[NSString alloc] initWithData: data
                                                                                                                    encoding: NSUTF8StringEncoding];
-                                                                        NSLog(@"network: %@", response);
+                                                                        NSLog(@"in func: %s network: %@", __func__, response);
                                                                         [response release];
                                                                     }
                                                                 }
