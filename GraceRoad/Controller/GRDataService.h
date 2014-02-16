@@ -64,6 +64,8 @@
 #define GRPushArgumentDateKey       @"d"    //for `date'
 #define GRPushArgumentOffsetKey     @"o"    //for `offset'
 
+#define GRSavedUserNameKey      GRPrefix ".saved-user-name"
+
 @interface GRDataService : ERService
 
 @end

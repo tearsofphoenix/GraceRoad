@@ -116,6 +116,9 @@
                                             NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
                                             [defaults setObject: accountInfo
                                                          forKey: GRCurrentAccountKey];
+                                            [defaults setObject: userName
+                                                         forKey: GRSavedUserNameKey];
+                                            
                                             [defaults synchronize];
                                             
                                             GRDBT(^(id<ERSQLBatchStatements> batchStatements)
