@@ -13,6 +13,7 @@
 #import "GRDataService.h"
 #import "WXApi.h"
 #import "NSObject+GRExtensions.h"
+#import "GRTheme.h"
 #import <NoahsUtility/NSData+HEXStringDescription.h>
 
 @interface iOSHierarchyViewer : NSObject
@@ -35,11 +36,11 @@ didFinishLaunchingWithOptions: (NSDictionary *)launchOptions
 {
     //[iOSHierarchyViewer start];
     
-    [[UIApplication sharedApplication] setStatusBarHidden: YES];
+//    [[UIApplication sharedApplication] setStatusBarHidden: YES];
     
     _window = [[UIWindow alloc] initWithFrame: [[UIScreen mainScreen] bounds]];
     
-    [_window setBackgroundColor: [UIColor whiteColor]];
+    [_window setBackgroundColor: [GRTheme blueColor]];
     
     GRMainViewController *rootViewController = [[GRMainViewController alloc] init];
     

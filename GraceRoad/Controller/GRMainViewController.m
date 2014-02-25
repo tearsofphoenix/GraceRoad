@@ -54,8 +54,8 @@
     [super viewDidLoad];
     
     CGRect bounds = [[self view] bounds];
-    
-    _navigationBarView = [[GRNavigationBarView alloc] initWithFrame: CGRectMake(0, 0, bounds.size.width, 44)];
+    CGRect navigationBarFrame = CGRectMake(0, 20, bounds.size.width, 44);
+    _navigationBarView = [[GRNavigationBarView alloc] initWithFrame: navigationBarFrame];
     [[self view] addSubview: _navigationBarView];
     
     _tabbar = [[UITabBar alloc] initWithFrame: CGRectMake(0, bounds.size.height - 49, bounds.size.width, 49)];
@@ -81,7 +81,10 @@
     [item2 release];
     [item3 release];
     
-    _contentView = [[UIView alloc] initWithFrame: CGRectMake(0, 44, bounds.size.width, bounds.size.height - 44 - 49)];
+    _contentView = [[UIView alloc] initWithFrame: CGRectMake(0,
+                                                             CGRectGetMaxY(navigationBarFrame),
+                                                             bounds.size.width,
+                                                             bounds.size.height - 44 - CGRectGetMaxY(navigationBarFrame))];
     [[self view] addSubview: _contentView];
     
 //    [_tabbar setTintColor: [GRTheme blueColor]];
@@ -228,10 +231,10 @@
     }
 }
 
-- (BOOL)prefersStatusBarHidden
-{
-    return YES;
-}
+//- (BOOL)prefersStatusBarHidden
+//{
+//    return YES;
+//}
 
 - (void)pushContentView: (GRContentView *)contentView
 {

@@ -72,7 +72,7 @@ static id gsNetworkClient = nil;
 {
     if (filePath)
     {
-        [[self sharedClient] downloadFileAtURL: [NSURL URLWithString: filePath]
+        [[self sharedClient] downloadFileAtURL: [NSURL URLWithString: [filePath stringByAddingPercentEscapesUsingEncoding: NSUTF8StringEncoding]]
                                       callback: callback];
     }
 }
