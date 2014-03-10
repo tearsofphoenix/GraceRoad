@@ -6,6 +6,8 @@
 //  Copyright (c) 2013年 Mac003. All rights reserved.
 //
 
+#define GRHasMap 0
+
 #import "GRIntroductView.h"
 #import "GRMapAnnotation.h"
 #import "Reachability.h"
@@ -14,10 +16,13 @@
 #import "GRDataService.h"
 #import "GRViewService.h"
 
+#if GRHasMap
+#import "CallOutAnnotationVifew.h"
+#import "JingDianMapCell.h"
+#endif
+
 #import <MessageUI/MessageUI.h>
 #import <MapKit/MapKit.h>
-
-#define GRHasMap 0
 
 @interface GRIntroductView ()<UITableViewDataSource, UITableViewDelegate, MKMapViewDelegate>
 {
@@ -76,7 +81,7 @@
         rect.origin.x = 0;
         rect.origin.y = 0;
         rect.size.width = frame.size.width;
-        rect.size.height = 227;
+        rect.size.height = 222;
         
         _placeHolderImageView = [[UIImageView alloc] initWithFrame: rect];
         [_placeHolderImageView setImage: [UIImage imageNamed: @"GRMapPlaceHolder"]];
@@ -136,7 +141,7 @@
         _annotation = [[GRMapAnnotation alloc] init];
         
         [_annotation setCoordinate: coordinate];
-        [_annotation setTitle: @"新松江路276号文荟建材广场"];
+        [_annotation setTitle: @"新松江路276号文荟建材广场3楼19号"];
     }
     
     [_mapView addAnnotation: _annotation];
@@ -214,7 +219,7 @@ viewForHeaderInSection: (NSInteger)section
     {
         case 0:
         {
-            return 4;
+            return 5;
         }
         case 1:
         {
@@ -258,10 +263,15 @@ viewForHeaderInSection: (NSInteger)section
                 }
                 case 2:
                 {
-                    [[cell textLabel] setText: @"第三场礼拜    13:30-15:00"];
+                    [[cell textLabel] setText: @"第三场礼拜    11:00-12:00（韩语）"];
                     break;
                 }
                 case 3:
+                {
+                    [[cell textLabel] setText: @"青年礼拜        13:30-15:00"];
+                    break;
+                }
+                case 4:
                 {
                     [[cell textLabel] setText: @"成人主日学    11:00-12:00"];
                     break;
@@ -324,7 +334,7 @@ heightForRowAtIndexPath: (NSIndexPath *)indexPath
         }
         case 2:
         {
-            return 240;
+            return [_placeHolderImageView bounds].size.height;
         }
         default:
         {
@@ -369,17 +379,32 @@ didSelectRowAtIndexPath: (NSIndexPath *)indexPath
     }
 }
 
+#if GRHasMap
 - (MKAnnotationView *)mapView: (MKMapView *)mapView
             viewForAnnotation: (id <MKAnnotation>)annotation
 {
-    MKPinAnnotationView *annView=[[[MKPinAnnotationView alloc] initWithAnnotation: annotation
-                                                                  reuseIdentifier: @"pin"] autorelease];
-    annView.pinColor = MKPinAnnotationColorGreen;
-    [annView setEnabled:YES];
-    [annView setCanShowCallout:YES];
-    
-    return annView;
+    CallOutAnnotationVifew *annotationView = (CallOutAnnotationVifew *)[mapView dequeueReusableAnnotationViewWithIdentifier:@"CalloutView"];
+    if (!annotationView)
+    {
+        annotationView = [[[CallOutAnnotationVifew alloc] initWithAnnotation:annotation reuseIdentifier:@"CalloutView"] autorelease];
+        JingDianMapCell  *cell = [[[NSBundle mainBundle] loadNibNamed:@"JingDianMapCell" owner:self options:nil] objectAtIndex:0];
+        [annotationView.contentView addSubview:cell];
+        
+    }
+    return annotationView;
+
+//    MKPinAnnotationView *annView=[[[MKPinAnnotationView alloc] initWithAnnotation: annotation
+//                                                                  reuseIdentifier: @"pin"] autorelease];
+//    annView.pinColor = MKPinAnnotationColorGreen;
+//
+//    [annView setBackgroundColor: [UIColor whiteColor]];
+//    [annView setEnabled:YES];
+//    [annView setCanShowCallout:YES];
+//    
+//    return annView;
 
 }
+
+#endif
 
 @end
