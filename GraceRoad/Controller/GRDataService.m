@@ -37,6 +37,7 @@
 #define GRPrayLastUpdateKey                 GRPrefix ".pray.last-update"
 #define GRAccountTeamLastUpdateKey          GRPrefix ".account-team.last-update"
 #define GRTeamAccountRelationLastUpdateKey  GRPrefix ".team-account-relation.last-update"
+#define GRQTLastUpdateKey                   GRPrefix ".qt.last-update"
 
 @interface GRDataService ()
 {
@@ -44,10 +45,7 @@
     EKEventStore *_eventStore;
 }
 
-@property (nonatomic) BOOL isSynchronizeResource;
-@property (nonatomic) BOOL isSynchronizeSermon;
-@property (nonatomic) BOOL isSynchronizePray;
-@property (nonatomic) BOOL isSynchronizeTeam;
+@property (nonatomic) BOOL isSynchronize;
 
 @end
 
@@ -560,17 +558,8 @@
               while ([resultSet moveCursorToNextRecord])
               {
                   id<ERSQLRecord> record = [resultSet currentRecord];
-                  NSMutableDictionary *dict = [NSMutableDictionary dictionary];
-                  [dict setObject: [record stringAtColumnWithName: @"uuid"]
-                           forKey: @"uuid"];
-                  [dict setObject: [record stringAtColumnWithName: @"title"]
-                           forKey: @"title"];
-                  [dict setObject: [record stringAtColumnWithName: @"scripture"]
-                           forKey: @"scripture"];
-                  [dict setObject: [record stringAtColumnWithName: @"questions"]
-                           forKey: @"questions"];
                   
-                  [qtContents addObject: dict];
+                  [qtContents addObject: [NSKeyedUnarchiver unarchiveObjectWithData: [record dataAtColumnWithName: @"properties"]]];
               }
           });
     
@@ -593,11 +582,69 @@
     return lastUpdateString;
 }
 
+- (void)_tryToRefreshQTDataWithCallback: (ERServiceCallback)callback
+{
+    if (!_isSynchronize)
+    {
+        [self setIsSynchronize: YES];
+        
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        NSString *lastUpdateString = [self _lastUpdateStringForKey: GRQTLastUpdateKey];
+        
+        [GRNetworkService postMessage: (@{
+                                          GRNetworkActionKey : @"fetch_qt",
+                                          GRNetworkArgumentsKey : (@{
+                                                                     GRNetworkLastUpdateKey : lastUpdateString
+                                                                     })
+                                          })
+                             callback: (^(id result, id exception)
+                                        {
+                                            NSLog(@"in func: %s %@", __func__, result);
+                                            
+                                            NSArray *data = result[GRNetworkDataKey];
+                                            NSString *newLastUpdateString = [GRConfiguration stringFromDate: [NSDate date]];
+                                            
+                                            [self setIsSynchronize: NO];
+                                            
+                                            if (data)
+                                            {
+                                                [defaults setObject: newLastUpdateString
+                                                             forKey: GRQTLastUpdateKey];
+                                                [defaults synchronize];
+                                                
+                                                GRDBT((^(id<ERSQLBatchStatements> batchStatements)
+                                                       {
+                                                           for (NSDictionary *pLooper in data)
+                                                           {
+                                                               [batchStatements addStatement: (@"insert or replace into qt"
+                                                                                               "    (uuid, title, last_update, properties)"
+                                                                                               "    values(?, ?, ?, ?)"
+                                                                                               )
+                                                                              withParameters: (@[
+                                                                                                 pLooper[@"uuid"],
+                                                                                                 pLooper[@"title"] ?: [NSNull null],
+                                                                                                 pLooper[GRNetworkLastUpdateKey] ?: [NSNull null],
+                                                                                                 [NSKeyedArchiver archivedDataWithRootObject: pLooper],
+                                                                                                 ])];
+                                                           }
+                                                           
+                                                           [batchStatements executeAll];
+                                                       }));
+                                            }
+                                            
+                                            if (callback)
+                                            {
+                                                callback(nil, nil);
+                                            }
+                                        })];
+    }
+}
+
 - (void)_tryToRefreshPrayWithCallback: (ERServiceCallback)callback
 {
-    if (!_isSynchronizePray)
+    if (!_isSynchronize)
     {
-        [self setIsSynchronizePray: YES];
+        [self setIsSynchronize: YES];
         
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
         NSString *lastUpdateString = [self _lastUpdateStringForKey: GRPrayLastUpdateKey];
@@ -615,7 +662,7 @@
                                             NSArray *data = result[GRNetworkDataKey];
                                             NSString *newLastUpdateString = [GRConfiguration stringFromDate: [NSDate date]];
                                             
-                                            [self setIsSynchronizePray: NO];
+                                            [self setIsSynchronize: NO];
                                             
                                             if (data)
                                             {
@@ -654,9 +701,9 @@
 
 - (void)_tryToSynchronizeResourcesWithCallback: (ERServiceCallback)callback
 {
-    if (!_isSynchronizeResource)
+    if (!_isSynchronize)
     {
-        [self setIsSynchronizeResource: YES];
+        [self setIsSynchronize: YES];
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
         NSString *lastUpdateString = [self _lastUpdateStringForKey: GRResourceCatogryLastUpdateKey];
         
@@ -734,7 +781,7 @@
                                                                                              forKey: GRResourceLastUpdateKey];
                                                                                 
                                                                                 
-                                                                                [self setIsSynchronizeResource: NO];
+                                                                                [self setIsSynchronize: NO];
                                                                                 
                                                                                 if (callback)
                                                                                 {
@@ -749,9 +796,9 @@
 
 - (void)_tryToSynchronizeSermonWithCallback: (ERServiceCallback)callback
 {
-    if (!_isSynchronizeSermon)
+    if (!_isSynchronize)
     {
-        [self setIsSynchronizeSermon: YES];
+        [self setIsSynchronize: YES];
         
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
         
@@ -833,7 +880,7 @@
                                                                                 
                                                                                 [defaults synchronize];
                                                                                 
-                                                                                [self setIsSynchronizeSermon: NO];
+                                                                                [self setIsSynchronize: NO];
                                                                                 
                                                                                 if (callback)
                                                                                 {
@@ -889,7 +936,7 @@
                                                    }));
                                         }
                                         
-                                        [self setIsSynchronizeTeam: NO];
+                                        [self setIsSynchronize: NO];
                                         
                                         if (callback)
                                         {
@@ -900,9 +947,9 @@
 
 - (void)_tryToSynchronizeTeamInfoWithCallback: (ERServiceCallback)callback
 {
-    if (!_isSynchronizeTeam)
+    if (!_isSynchronize)
     {
-        [self setIsSynchronizeTeam: YES];
+        [self setIsSynchronize: YES];
         
         NSArray *teams = [self teamsForAccountID: nil];
         if ([teams count] > 0)
@@ -962,7 +1009,7 @@
                                                            }));
                                                 }
                                                 
-                                                [self setIsSynchronizeTeam: NO];
+                                                [self setIsSynchronize: NO];
                                             })];
         }
     }
@@ -998,6 +1045,16 @@
                                           [[NSNotificationCenter defaultCenter] postNotificationName: GRNotificationPraySynchronizeFinished
                                                                                               object: nil];
                                       }));
+                      [self _tryToRefreshQTDataWithCallback:
+                       (^(id result, id exception)
+                        {
+                            dispatch_async(dispatch_get_main_queue(),
+                                           (^
+                                            {
+                                                [[NSNotificationCenter defaultCenter] postNotificationName: GRNotificationQTSynchronizeFinished
+                                                                                                    object: nil];
+                                            }));
+                        })];
                   })];
                 
             })];

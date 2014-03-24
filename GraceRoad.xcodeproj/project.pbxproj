@@ -34,6 +34,7 @@
 		60F9438E1886D81A001F13E3 /* DKLiveBlurView.m in Sources */ = {isa = PBXBuildFile; fileRef = 60F9438D1886D81A001F13E3 /* DKLiveBlurView.m */; };
 		60F943901886DA59001F13E3 /* GRSermonBackground.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 60F9438F1886DA59001F13E3 /* GRSermonBackground.jpeg */; };
 		9200E25F18E008210067608A /* GRQTView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9200E25E18E008210067608A /* GRQTView.m */; };
+		9200E26318E020040067608A /* GRQTInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9200E26218E020040067608A /* GRQTInfoView.m */; };
 		920B99941885259B006BD620 /* GRExampleAvatar.png in Resources */ = {isa = PBXBuildFile; fileRef = 920B99921885259B006BD620 /* GRExampleAvatar.png */; };
 		920B99951885259B006BD620 /* GRExampleAvatar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 920B99931885259B006BD620 /* GRExampleAvatar@2x.png */; };
 		920B999718852B21006BD620 /* GRAddButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 920B999618852B21006BD620 /* GRAddButton@2x.png */; };
@@ -196,6 +197,8 @@
 		60F9438F1886DA59001F13E3 /* GRSermonBackground.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = GRSermonBackground.jpeg; path = Images/Main/GRSermonBackground.jpeg; sourceTree = "<group>"; };
 		9200E25D18E008210067608A /* GRQTView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRQTView.h; sourceTree = "<group>"; };
 		9200E25E18E008210067608A /* GRQTView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GRQTView.m; sourceTree = "<group>"; };
+		9200E26118E020040067608A /* GRQTInfoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRQTInfoView.h; sourceTree = "<group>"; };
+		9200E26218E020040067608A /* GRQTInfoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GRQTInfoView.m; sourceTree = "<group>"; };
 		920B56A518ADAB0E0062DA63 /* GRDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRDefines.h; sourceTree = "<group>"; };
 		920B99921885259B006BD620 /* GRExampleAvatar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GRExampleAvatar.png; sourceTree = "<group>"; };
 		920B99931885259B006BD620 /* GRExampleAvatar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "GRExampleAvatar@2x.png"; sourceTree = "<group>"; };
@@ -440,6 +443,8 @@
 				9261923618865752001E0A72 /* GRPreferenceView.m */,
 				9200E25D18E008210067608A /* GRQTView.h */,
 				9200E25E18E008210067608A /* GRQTView.m */,
+				9200E26118E020040067608A /* GRQTInfoView.h */,
+				9200E26218E020040067608A /* GRQTInfoView.m */,
 				604F1235188BFB5F00AEB247 /* GRFeedbackView.h */,
 				604F1236188BFB5F00AEB247 /* GRFeedbackView.m */,
 				9261923718865752001E0A72 /* GRSettingsView.h */,
@@ -908,6 +913,7 @@
 				9276F3341887758100E13763 /* GRSendMessageView.m in Sources */,
 				604F124B188D460B00AEB247 /* NSObject+GRExtensions.m in Sources */,
 				9261927518865790001E0A72 /* GRResourceInfoView.m in Sources */,
+				9200E26318E020040067608A /* GRQTInfoView.m in Sources */,
 				9276F3311887729E00E13763 /* GRTheme.m in Sources */,
 				604F123C188C354800AEB247 /* GRContactUSView.m in Sources */,
 				92FA8246188F97010055C9B2 /* GRNetworkService.m in Sources */,

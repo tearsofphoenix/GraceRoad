@@ -11,4 +11,6 @@
 
 @interface MFNetworkClientInternal : NSObject<MFNetworkClient>
 
+- (id)initWithThreadName: (NSString *)name;
+
 @end

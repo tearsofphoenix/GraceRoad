@@ -65,11 +65,11 @@
         [_titleLabel setTextColor: [UIColor whiteColor]];
         [_titleLabel setFont: [UIFont fontWithName: boldFontName
                                               size: 24]];
-        [_titleLabel setText: @"    敬畏耶和華心存謙卑, 就得富有, 尊榮, 生命, 為賞賜."];
+        [_titleLabel setText: @"      敬畏耶和华心存谦卑，就得富有，尊容，生命，为赏赐。"];
         [_titleLabel setNumberOfLines: 0];
         [_loginContentView addSubview: _titleLabel];
         
-        rect = CGRectMake(35, 120 + offsetY, 257, 25);
+        rect = CGRectMake(35, 126 + offsetY, 257, 25);
         
         _subtitleLabel = [[UILabel alloc] initWithFrame: rect];
         [_subtitleLabel setBackgroundColor: [UIColor clearColor]];
@@ -86,7 +86,7 @@
         [_userNameField setBackgroundColor: [UIColor whiteColor]];
         [[_userNameField layer] setCornerRadius: 3];
         
-        [_userNameField setPlaceholder: @"username"];
+        [_userNameField setPlaceholder: @"手机号/邮箱/微信号/QQ"];
         [_userNameField setLeftView: [[[UIView alloc] initWithFrame: CGRectMake(0, 0, 10, 10)] autorelease]];
         [_userNameField setLeftViewMode: UITextFieldViewModeAlways];
         [_userNameField setFont: [UIFont fontWithName: fontName
@@ -100,7 +100,7 @@
         [[_passwordField layer] setCornerRadius: 3];
         [_passwordField setPlaceholder: @"password"];
         
-#ifdef DEBUG
+#if DEBUG
 //        [_userNameField setText: @"tearsofphoenix@icloud.com"];
         [_userNameField setText: @"13671765129"];
         [_passwordField setText: @"hello"];

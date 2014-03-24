@@ -48,7 +48,7 @@ static NSString *gsCacheFolderPath = nil;
 {
     if (data && fileID)
     {
-        //fileID = [fileID CMBMP(MD5String)];
+        fileID = [fileID CMBMP(MD5String)];
         NSString *localPath = [[[self class] _cacheFolderPath] stringByAppendingPathComponent: fileID];
         
         NSError *error = nil;
@@ -67,7 +67,7 @@ static NSString *gsCacheFolderPath = nil;
 - (NSData *)dataForFileID: (NSString *)fileID
 {
     NSString *path = [[self class] _cacheFolderPath];
-    //fileID = [fileID CMBMP(MD5String)];
+    fileID = [fileID CMBMP(MD5String)];
     
     path = [path stringByAppendingPathComponent: fileID];
     
@@ -106,6 +106,23 @@ static NSString *gsCacheFolderPath = nil;
     if (error)
     {
         NSLog(@"in func: %s error: %@", __func__, [error localizedDescription]);
+    }
+}
+
+- (void)removeFileWithID: (NSString *)fileID
+{
+    NSString *path = [[self class] _cacheFolderPath];
+    fileID = [fileID CMBMP(MD5String)];
+    
+    path = [path stringByAppendingPathComponent: fileID];
+    
+    NSError *error = nil;
+    [[NSFileManager defaultManager] removeItemAtPath: path
+                                               error: &error];
+    
+    if (error)
+    {
+        NSLog(@"%@", error);
     }
 }
 

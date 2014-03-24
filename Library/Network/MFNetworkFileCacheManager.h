@@ -17,6 +17,7 @@
 
 - (void)clearCache;
 
+- (void)removeFileWithID: (NSString *)fileID;
 
 @end
 

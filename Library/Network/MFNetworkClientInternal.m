@@ -12,7 +12,7 @@
 #import "MFNetworkFileCacheManager.h"
 
 static NSString * const MFNetworkCachePoolID = @"cache.pool.network";
-static NSUInteger MFNetworkTransferQueueCapacity = 6;
+static NSUInteger MFNetworkTransferQueueCapacity = 4;
 
 @interface MFNetworkClientInternal ()<MFNetworkOperationDelegate>
 {
@@ -26,7 +26,7 @@ static NSUInteger MFNetworkTransferQueueCapacity = 6;
 
 @implementation MFNetworkClientInternal
 
-- (id)init
+- (id)initWithThreadName: (NSString *)name
 {
     if ((self = [super init]))
     {
@@ -41,7 +41,7 @@ static NSUInteger MFNetworkTransferQueueCapacity = 6;
                                                  selector: @selector(_networkThreadMain)
                                                    object: nil];
         
-        [_networkThread setName: @"com.cmb.foundation.thread.network"];
+        [_networkThread setName: name];
         
         [_networkThread start];
     }
@@ -68,11 +68,35 @@ static NSUInteger MFNetworkTransferQueueCapacity = 6;
     {
         @autoreleasepool
         {
-            [[NSRunLoop currentRunLoop] run];
+            if ([_connections count] > 0)
+            {
+                [[NSRunLoop currentRunLoop] run];
+            }else
+            {
+                [NSThread sleepForTimeInterval: 0.5];
+            }
         }
     }
     
     assert(NO);
+}
+
+- (void)_addOperation: (MFNetworkOperation *)operation
+               forURL: (NSURL *)targetURL
+{
+    NSLog(@"network.internal: %@ %@ %@ %@", _connectionInformations, operation, targetURL, _connections);
+    
+    [_connectionInformations setObject: operation
+                                forKey: targetURL];
+    
+    if ([_networkTransferQueue operationCount] < [_networkTransferQueue maxConcurrentOperationCount])
+    {
+        [_executingOperations addObject: operation];
+        [_networkTransferQueue addOperation: operation];
+    }else
+    {
+        [_connections addObject: operation];
+    }
 }
 
 - (void)_postConnectionToURL: (NSURL *)targetURL
@@ -92,17 +116,8 @@ static NSUInteger MFNetworkTransferQueueCapacity = 6;
             [operation setRunLoopThread: _networkThread];
             [operation setCallbackThread: [NSThread currentThread]];
             
-            [_connectionInformations setObject: operation
-                                        forKey: targetURL];
-            
-            if ([_networkTransferQueue operationCount] < [_networkTransferQueue maxConcurrentOperationCount])
-            {
-                [_executingOperations addObject: operation];
-                [_networkTransferQueue addOperation: operation];
-            }else
-            {
-                [_connections addObject: operation];
-            }
+            [self _addOperation: operation
+                         forURL: targetURL];
             
             [operation release];
         }
@@ -131,7 +146,7 @@ static NSUInteger MFNetworkTransferQueueCapacity = 6;
     if (timeInterval > 0)
     {
         NSData *cachedData =  [[MFCacheManager sharedManager] objectForKey: targetURL
-                                                                inPool: MFNetworkCachePoolID];
+                                                                    inPool: MFNetworkCachePoolID];
         if (cachedData && callback)
         {
             shouldPostConnection = NO;
@@ -163,22 +178,40 @@ static NSUInteger MFNetworkTransferQueueCapacity = 6;
             callback(data, nil);
         }else
         {
-            [self _postConnectionToURL: fileURL
-                            parameters: nil
-                              lifeTime: 0
-                              callback: (^(id result, id error)
-                                         {
-                                             if (!error)
-                                             {
-                                                 [manager cacheData: result
-                                                             withID: filePath];
-                                                 
-                                                 if (callback)
-                                                 {
-                                                     callback(result, error);
-                                                 }
-                                             }
-                                         })];
+            @synchronized (self)
+            {
+                if (!_connectionInformations[fileURL])
+                {
+                    MFNetworkOperation *operation = [[MFNetworkOperation alloc] initWithURL: fileURL
+                                                                                 parameters: nil
+                                                                           lifeTimeInterval: 0
+                                                                                   callback: (^(NSData *result, id error)
+                                                                                              {
+                                                                                                  if (!error)
+                                                                                                  {
+                                                                                                      if ([result length] > 0)
+                                                                                                      {
+                                                                                                          [manager cacheData: result
+                                                                                                                      withID: filePath];
+                                                                                                      }
+                                                                                                      
+                                                                                                      if (callback)
+                                                                                                      {
+                                                                                                          callback(result, error);
+                                                                                                      }
+                                                                                                  }
+                                                                                              })];
+                    [operation setHTTPMethod: @"GET"];
+                    [operation setDelegate: self];
+                    [operation setRunLoopThread: _networkThread];
+                    [operation setCallbackThread: [NSThread currentThread]];
+                    
+                    [self _addOperation: operation
+                                 forURL: fileURL];
+                    
+                    [operation release];
+                }
+            }
         }
     }
 }

@@ -47,6 +47,7 @@
 #define GRDataServiceSendFeedbackAction          @"sendFeedback:callback:"
 
 #define GRDataServiceFetchQTDataAction           @"fetchQTData"
+#define GRDataServiceRefreshQTDataAction         @"_tryToRefreshQTDataWithCallback:"
 
 #define GRDataServiceStartToSynchronizeAction    @"startToSynchronize"
 
@@ -58,6 +59,7 @@
 #define GRNotificationResourceSynchronizeFinished   GRPrefix ".notification.resource.synchronized"
 #define GRNotificationSermonSynchronizeFinished     GRPrefix ".notification.sermon.synchronized"
 #define GRNotificationPraySynchronizeFinished       GRPrefix ".notification.pray.synchronized"
+#define GRNotificationQTSynchronizeFinished         GRPrefix ".notification.qt.synchronized"
 
 #define GRPushActionKey             @"action"
 #define GRPushArgumentsKey          @"args"

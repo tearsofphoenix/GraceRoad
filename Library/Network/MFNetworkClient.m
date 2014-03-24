@@ -11,7 +11,8 @@
 
 @interface MFNetworkClient ()
 {
-    id<MFNetworkClient> _internal;
+    MFNetworkClientInternal *_internal;
+    MFNetworkClientInternal *_fileDownloadInternal;
 }
 @end
 
@@ -33,7 +34,8 @@ static id gsNetworkClient = nil;
 {
     if ((self = [super init]))
     {
-        _internal = [[MFNetworkClientInternal alloc] init];
+        _internal = [[MFNetworkClientInternal alloc] initWithThreadName: @"com.cmb.foundation.thread.network"];
+        _fileDownloadInternal = [[MFNetworkClientInternal alloc] initWithThreadName: @"com.cmb.foundation.thread.network.file-download"];
     }
     
     return self;
@@ -42,6 +44,7 @@ static id gsNetworkClient = nil;
 - (void)dealloc
 {
     [_internal release];
+    [_fileDownloadInternal release];
     
     [super dealloc];
 }
@@ -72,7 +75,7 @@ static id gsNetworkClient = nil;
 {
     if (filePath)
     {
-        [[self sharedClient] downloadFileAtURL: [NSURL URLWithString: [filePath stringByAddingPercentEscapesUsingEncoding: NSUTF8StringEncoding]]
+        [[self sharedClient] downloadFileAtURL: [NSURL URLWithString: filePath]
                                       callback: callback];
     }
 }
@@ -80,13 +83,14 @@ static id gsNetworkClient = nil;
 - (void)downloadFileAtURL: (NSURL *)fileURL
                  callback: (MFNetworkConnectionCallback)callback
 {
-    [_internal downloadFileAtURL: fileURL
-                        callback: callback];
+    [_fileDownloadInternal downloadFileAtURL: fileURL
+                                    callback: callback];
 }
 
 - (void)cancelRequestForURL: (NSURL *)targetURL
 {
     [_internal cancelRequestForURL: targetURL];
+    [_fileDownloadInternal cancelRequestForURL: targetURL];
 }
 
 @end

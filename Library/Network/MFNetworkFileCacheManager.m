@@ -81,4 +81,9 @@ static id gsNetworkFileCacheManager = nil;
     [_internal clearCache];
 }
 
+- (void)removeFileWithID: (NSString *)fileID
+{
+    [_internal removeFileWithID: fileID];
+}
+
 @end

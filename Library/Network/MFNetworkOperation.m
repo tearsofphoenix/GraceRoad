@@ -8,8 +8,6 @@
 
 #import "MFNetworkOperation.h"
 #import "NSString+CMBExtensions.h"
-#import "NSData+CMBExtensions.h"
-#import "NSObject+GRExtensions.h"
 
 @interface MFNetworkOperation ()<NSURLConnectionDataDelegate>
 {
@@ -24,6 +22,8 @@
 @property (nonatomic) NSTimeInterval lifeTimeInterval;
 
 @property (nonatomic, copy) MFNetworkConnectionCallback callback;
+
+@property (nonatomic) NSInteger statusCode;
 
 @end
 
@@ -42,17 +42,22 @@
         [self setURL: URL];
         [self setLifeTimeInterval: lifeTimeInterval];
         [self setCallback: callback];
+        [self setHTTPMethod: @"POST"];
     }
     
     return self;
 }
 
 - (void)dealloc
-{    
+{
+#if DEBUG
+    NSLog(@"in func: %s %@ %@", __func__, self, _URL);
+#endif
     [_parameters release];
     [_receivedData release];
     [_URL release];
     [_connection release];
+    [_HTTPMethod release];
     
     if (_callback)
     {
@@ -71,33 +76,18 @@
     {
         [request setValue: @"application/x-www-form-urlencoded; charset=utf-8;"
        forHTTPHeaderField: @"Content-Type"];
-        [request setValue: @"gzip"
-       forHTTPHeaderField: @"Accept-Encoding"];
         
         NSMutableArray *parts = [NSMutableArray arrayWithCapacity: [_parameters count]];
-        
-        Class stringClass = [NSString class];
-        Class arrayClass = [NSArray class];
-        Class dictionaryClass = [NSDictionary class];
-        
-        [parameters enumerateKeysAndObjectsUsingBlock: (^(NSString *key, id obj, BOOL *stop)
+        [parameters enumerateKeysAndObjectsUsingBlock: (^(NSString *key, NSString *obj, BOOL *stop)
                                                         {
-                                                            if ([obj isKindOfClass: stringClass])
-                                                            {
-                                                                [parts addObject: [NSString stringWithFormat: @"%@=%@", key, obj]];
-                                                                
-                                                            }else if ([obj isKindOfClass: arrayClass]
-                                                                      || [obj isKindOfClass: dictionaryClass])
-                                                            {
-                                                                [parts addObject: [NSString stringWithFormat: @"%@=%@", key, [obj JSONString]]];
-                                                            }
+                                                            [parts addObject: [NSString stringWithFormat: @"%@=%@", key, obj]];
                                                         })];
         
         NSString *str = [parts componentsJoinedByString: @"&"];
         NSData *data = [str dataUsingEncoding: NSUTF8StringEncoding];
         
         [request setHTTPBody: data];
-        [request setValue: [NSString stringWithFormat:@"%u", [data length]]
+        [request setValue: [NSString stringWithFormat:@"%lu", (unsigned long)[data length]]
        forHTTPHeaderField: @"Content-Length"];
     }
 }
@@ -107,7 +97,7 @@
     if (!_connection)
     {
         NSMutableURLRequest *reuqest = [NSMutableURLRequest requestWithURL: _URL];
-        [reuqest setHTTPMethod: @"POST"];
+        [reuqest setHTTPMethod: _HTTPMethod];
         
         if ([_parameters count] > 0)
         {
@@ -130,6 +120,13 @@
 
 - (void)operationWillFinish
 {
+    //clear data if error happened
+    //
+    if (_statusCode / 100 == 4)
+    {
+        [_receivedData setLength: 0];
+    }
+
     [_delegate operationWillFinish: self];
 }
 
@@ -143,6 +140,7 @@
 - (void)connection: (NSURLConnection *)connection
 didReceiveResponse: (NSURLResponse *)response
 {
+    [self setStatusCode: [(NSHTTPURLResponse *)response statusCode]];
     [_receivedData setLength: 0];
 }
 

@@ -31,5 +31,6 @@
 
 @property (nonatomic, assign) id<MFNetworkOperationDelegate> delegate;
 @property (nonatomic, retain) NSThread *callbackThread;
+@property (nonatomic, retain) NSString *HTTPMethod;
 
 @end
