@@ -46,6 +46,8 @@
 
 #define GRDataServiceSendFeedbackAction          @"sendFeedback:callback:"
 
+#define GRDataServiceFetchQTDataAction           @"fetchQTData"
+
 #define GRDataServiceStartToSynchronizeAction    @"startToSynchronize"
 
 #pragma mark - notification

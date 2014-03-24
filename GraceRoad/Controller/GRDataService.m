@@ -68,23 +68,32 @@
     if ((self = [super init]))
     {
         _eventStore = [[EKEventStore alloc] init];
-        
-        EKAuthorizationStatus status = [EKEventStore authorizationStatusForEntityType: EKEntityTypeEvent];
-        if (status == EKAuthorizationStatusNotDetermined)
-        {
-            [_eventStore requestAccessToEntityType: EKEntityTypeEvent
-                                        completion:
-             (^(BOOL granted, NSError *error)
-              {
-                  if (granted)
-                  {
-                      
-                  }
-              })];
-        }
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(10 * NSEC_PER_SEC)),
+                       dispatch_get_main_queue(),
+                       (^
+                        {
+                            [self _authorizeCalendar];
+                        }));
     }
     
     return self;
+}
+
+- (void)_authorizeCalendar
+{
+    EKAuthorizationStatus status = [EKEventStore authorizationStatusForEntityType: EKEntityTypeEvent];
+    if (status == EKAuthorizationStatusNotDetermined)
+    {
+        [_eventStore requestAccessToEntityType: EKEntityTypeEvent
+                                    completion:
+         (^(BOOL granted, NSError *error)
+          {
+              if (granted)
+              {
+                  
+              }
+          })];
+    }
 }
 
 - (void)_tryToRegisterRemoteNotification
@@ -539,6 +548,37 @@
     }
 }
 
+#pragma mark - qt
+
+- (NSArray *)fetchQTData
+{
+    NSMutableArray *qtContents = [NSMutableArray arrayWithCapacity: 30];
+    
+    GRDBT(^(id<ERSQLBatchStatements> batchStatements)
+          {
+              id<ERSQLResultSet> resultSet = [batchStatements resultSetFromSQL: (@"select * from qt order by last_update limit 30")];
+              while ([resultSet moveCursorToNextRecord])
+              {
+                  id<ERSQLRecord> record = [resultSet currentRecord];
+                  NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+                  [dict setObject: [record stringAtColumnWithName: @"uuid"]
+                           forKey: @"uuid"];
+                  [dict setObject: [record stringAtColumnWithName: @"title"]
+                           forKey: @"title"];
+                  [dict setObject: [record stringAtColumnWithName: @"scripture"]
+                           forKey: @"scripture"];
+                  [dict setObject: [record stringAtColumnWithName: @"questions"]
+                           forKey: @"questions"];
+                  
+                  [qtContents addObject: dict];
+              }
+          });
+    
+    return qtContents;
+}
+
+#pragma mark - sync
+
 - (NSString *)_lastUpdateStringForKey: (NSString *)key
 {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
@@ -885,7 +925,7 @@
                                  callback: (^(NSDictionary *result, id exception)
                                             {
                                                 NSLog(@"in func: %s %@", __func__, result);
-
+                                                
                                                 NSDictionary *data = result[GRNetworkDataKey];
                                                 if (data)
                                                 {
