@@ -103,7 +103,7 @@
         
         _logoutButton = [[UIButton alloc] initWithFrame: CGRectMake(30, bounds.size.height - 60,
                                                                     bounds.size.width - 30 * 2,
-                                                                    40)];
+                                                                    30)];
         [_logoutButton setBackgroundColor: [UIColor redColor]];
         [_logoutButton setTitle: @"登出"
                        forState: UIControlStateNormal];
@@ -205,7 +205,7 @@
     [_memberListView setFrame: CGRectMake(0, originY, frame.size.width, frame.size.height - originY - 60)];
     
     CGRect bounds = [self bounds];
-    [_logoutButton setFrame: CGRectMake(30, bounds.size.height - 50, bounds.size.width - 30 * 2, 40)];
+    [_logoutButton setFrame: CGRectMake(30, bounds.size.height - 60, bounds.size.width - 30 * 2, 34)];
 }
 
 - (void)_handleLogoutButtonTappedEvent: (id)sender
