@@ -7,3 +7,5 @@
 //
 
 #define GRPrefix    @"com.veritas.ios.gr"
+
+#define IsIPhone5 (CGSizeEqualToSize(CGSizeMake(640, 1136), [[[UIScreen mainScreen] currentMode] size]))

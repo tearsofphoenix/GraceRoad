@@ -7,6 +7,7 @@
 //
 
 #import "GRQTInfoView.h"
+#import "GRShared.h"
 #import <QuartzCore/QuartzCore.h>
 
 @interface GRQTInfoView ()
@@ -29,14 +30,27 @@
         [self setHideTabbar: YES];
         [self addSubview: _titleLabel];
         
-        _scriptureView = [[UITextView alloc] initWithFrame: CGRectMake(10, 20, 300, 120)];
+        CGFloat offset = 0;
+        if (IsIPhone5)
+        {
+            offset = 50;
+        }
+        
+        CGRect rect = CGRectMake(10, 20, 300, 120 + offset);
+        _scriptureView = [[UITextView alloc] initWithFrame: rect];
         [_scriptureView setEditable: NO];
         [[_scriptureView layer] setCornerRadius: 6];
+        [_scriptureView setFont: [UIFont systemFontOfSize: 16]];
+        
         [self addSubview: _scriptureView];
         
-        _questionView = [[UITextView alloc] initWithFrame: CGRectMake(10, 160, 300, 200)];
+        rect.origin.y += rect.size.height + 20;
+        rect.size.height = 200 + offset;
+        
+        _questionView = [[UITextView alloc] initWithFrame: rect];
         [_questionView setEditable: NO];
         [[_questionView layer] setCornerRadius: 6];
+        [_questionView setFont: [UIFont systemFontOfSize: 16]];
         [self addSubview: _questionView];
     }
     return self;
