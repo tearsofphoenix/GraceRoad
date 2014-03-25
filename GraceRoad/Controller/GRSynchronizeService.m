@@ -124,10 +124,11 @@
         [_synchronizeThread start];
     }
     
-    [self performSelector: @selector(_synchronizeData)
-                 onThread: _synchronizeThread
-               withObject: nil
-            waitUntilDone: NO];
+    [self _synchronizeData];
+//    [self performSelector: @selector(_synchronizeData)
+//                 onThread: _synchronizeThread
+//               withObject: nil
+//            waitUntilDone: NO];
 }
 
 - (NSThread *)synchronizeThread
@@ -137,13 +138,13 @@
 
 - (void)_synchronizeMain
 {
-    while (YES)
-    {
-        @autoreleasepool
-        {
-            [[NSRunLoop currentRunLoop] runUntilDate: [NSDate distantFuture]];
-        }
-    }
+//    while (YES)
+//    {
+//        @autoreleasepool
+//        {
+//            [[NSRunLoop currentRunLoop] runUntilDate: [NSDate distantFuture]];
+//        }
+//    }
 }
 
 @end

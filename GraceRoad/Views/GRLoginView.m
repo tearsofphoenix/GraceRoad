@@ -105,7 +105,11 @@
         [_userNameField setText: @"13671765129"];
         [_passwordField setText: @"hello"];
 #endif
-        [_userNameField setText: [[NSUserDefaults standardUserDefaults] objectForKey: GRSavedUserNameKey]];
+        NSString *userName = [[NSUserDefaults standardUserDefaults] objectForKey: GRSavedUserNameKey];
+        if (userName)
+        {
+            [_userNameField setText: userName];
+        }
         
         [_passwordField setLeftView: [[[UIView alloc] initWithFrame: CGRectMake(0, 0, 10, 10)] autorelease]];
         [_passwordField setLeftViewMode: UITextFieldViewModeAlways];

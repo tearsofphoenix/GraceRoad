@@ -45,7 +45,7 @@
     EKEventStore *_eventStore;
 }
 
-@property (nonatomic) BOOL isSynchronize;
+//@property (nonatomic) BOOL isSynchronize;
 
 @end
 
@@ -584,311 +584,285 @@
 
 - (void)_tryToRefreshQTDataWithCallback: (ERServiceCallback)callback
 {
-    if (!_isSynchronize)
-    {
-        [self setIsSynchronize: YES];
-        
-        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-        NSString *lastUpdateString = [self _lastUpdateStringForKey: GRQTLastUpdateKey];
-        
-        [GRNetworkService postMessage: (@{
-                                          GRNetworkActionKey : @"fetch_qt",
-                                          GRNetworkArgumentsKey : (@{
-                                                                     GRNetworkLastUpdateKey : lastUpdateString
-                                                                     })
-                                          })
-                             callback: (^(id result, id exception)
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *lastUpdateString = [self _lastUpdateStringForKey: GRQTLastUpdateKey];
+    
+    [GRNetworkService postMessage: (@{
+                                      GRNetworkActionKey : @"fetch_qt",
+                                      GRNetworkArgumentsKey : (@{
+                                                                 GRNetworkLastUpdateKey : lastUpdateString
+                                                                 })
+                                      })
+                         callback: (^(id result, id exception)
+                                    {
+                                        NSLog(@"in func: %s %@", __func__, result);
+                                        
+                                        NSArray *data = result[GRNetworkDataKey];
+                                        NSString *newLastUpdateString = [GRConfiguration stringFromDate: [NSDate date]];
+                                                                                
+                                        if (data)
                                         {
-                                            NSLog(@"in func: %s %@", __func__, result);
+                                            [defaults setObject: newLastUpdateString
+                                                         forKey: GRQTLastUpdateKey];
+                                            [defaults synchronize];
                                             
-                                            NSArray *data = result[GRNetworkDataKey];
-                                            NSString *newLastUpdateString = [GRConfiguration stringFromDate: [NSDate date]];
-                                            
-                                            [self setIsSynchronize: NO];
-                                            
-                                            if (data)
-                                            {
-                                                [defaults setObject: newLastUpdateString
-                                                             forKey: GRQTLastUpdateKey];
-                                                [defaults synchronize];
-                                                
-                                                GRDBT((^(id<ERSQLBatchStatements> batchStatements)
+                                            GRDBT((^(id<ERSQLBatchStatements> batchStatements)
+                                                   {
+                                                       for (NSDictionary *pLooper in data)
                                                        {
-                                                           for (NSDictionary *pLooper in data)
-                                                           {
-                                                               [batchStatements addStatement: (@"insert or replace into qt"
-                                                                                               "    (uuid, title, last_update, properties)"
-                                                                                               "    values(?, ?, ?, ?)"
-                                                                                               )
-                                                                              withParameters: (@[
-                                                                                                 pLooper[@"uuid"],
-                                                                                                 pLooper[@"title"] ?: [NSNull null],
-                                                                                                 pLooper[GRNetworkLastUpdateKey] ?: [NSNull null],
-                                                                                                 [NSKeyedArchiver archivedDataWithRootObject: pLooper],
-                                                                                                 ])];
-                                                           }
-                                                           
-                                                           [batchStatements executeAll];
-                                                       }));
-                                            }
-                                            
-                                            if (callback)
-                                            {
-                                                callback(nil, nil);
-                                            }
-                                        })];
-    }
+                                                           [batchStatements addStatement: (@"insert or replace into qt"
+                                                                                           "    (uuid, title, last_update, properties)"
+                                                                                           "    values(?, ?, ?, ?)"
+                                                                                           )
+                                                                          withParameters: (@[
+                                                                                             pLooper[@"uuid"],
+                                                                                             pLooper[@"title"] ?: [NSNull null],
+                                                                                             pLooper[GRNetworkLastUpdateKey] ?: [NSNull null],
+                                                                                             [NSKeyedArchiver archivedDataWithRootObject: pLooper],
+                                                                                             ])];
+                                                       }
+                                                       
+                                                       [batchStatements executeAll];
+                                                   }));
+                                        }
+                                        
+                                        if (callback)
+                                        {
+                                            callback(nil, nil);
+                                        }
+                                    })];
 }
 
 - (void)_tryToRefreshPrayWithCallback: (ERServiceCallback)callback
 {
-    if (!_isSynchronize)
-    {
-        [self setIsSynchronize: YES];
-        
-        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-        NSString *lastUpdateString = [self _lastUpdateStringForKey: GRPrayLastUpdateKey];
-        
-        [GRNetworkService postMessage: (@{
-                                          GRNetworkActionKey : @"fetch_pray",
-                                          GRNetworkArgumentsKey : (@{
-                                                                     GRNetworkLastUpdateKey : lastUpdateString
-                                                                     })
-                                          })
-                             callback: (^(id result, id exception)
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *lastUpdateString = [self _lastUpdateStringForKey: GRPrayLastUpdateKey];
+    
+    [GRNetworkService postMessage: (@{
+                                      GRNetworkActionKey : @"fetch_pray",
+                                      GRNetworkArgumentsKey : (@{
+                                                                 GRNetworkLastUpdateKey : lastUpdateString
+                                                                 })
+                                      })
+                         callback: (^(id result, id exception)
+                                    {
+                                        NSLog(@"in func: %s %@", __func__, result);
+                                        
+                                        NSArray *data = result[GRNetworkDataKey];
+                                        NSString *newLastUpdateString = [GRConfiguration stringFromDate: [NSDate date]];
+                                        
+                                        if (data)
                                         {
-                                            NSLog(@"in func: %s %@", __func__, result);
+                                            [defaults setObject: newLastUpdateString
+                                                         forKey: GRPrayLastUpdateKey];
+                                            [defaults synchronize];
                                             
-                                            NSArray *data = result[GRNetworkDataKey];
-                                            NSString *newLastUpdateString = [GRConfiguration stringFromDate: [NSDate date]];
-                                            
-                                            [self setIsSynchronize: NO];
-                                            
-                                            if (data)
-                                            {
-                                                [defaults setObject: newLastUpdateString
-                                                             forKey: GRPrayLastUpdateKey];
-                                                [defaults synchronize];
-                                                
-                                                GRDBT((^(id<ERSQLBatchStatements> batchStatements)
+                                            GRDBT((^(id<ERSQLBatchStatements> batchStatements)
+                                                   {
+                                                       for (NSDictionary *pLooper in data)
                                                        {
-                                                           for (NSDictionary *pLooper in data)
-                                                           {
-                                                               [batchStatements addStatement: (@"insert or replace into pray"
-                                                                                               "    (uuid, title, content, last_update, properties)"
-                                                                                               "    values(?, ?, ?, ?, ?)"
-                                                                                               )
-                                                                              withParameters: (@[
-                                                                                                 pLooper[@"uuid"],
-                                                                                                 pLooper[GRPrayTitleKey] ?: [NSNull null],
-                                                                                                 pLooper[GRPrayContentKey] ?: [NSNull null],
-                                                                                                 pLooper[GRNetworkLastUpdateKey] ?: [NSNull null],
-                                                                                                 [NSKeyedArchiver archivedDataWithRootObject: pLooper],
-                                                                                                 ])];
-                                                           }
-                                                           
-                                                           [batchStatements executeAll];
-                                                       }));
-                                            }
-                                            
-                                            if (callback)
-                                            {
-                                                callback(nil, nil);
-                                            }
-                                        })];
-    }
+                                                           [batchStatements addStatement: (@"insert or replace into pray"
+                                                                                           "    (uuid, title, content, last_update, properties)"
+                                                                                           "    values(?, ?, ?, ?, ?)"
+                                                                                           )
+                                                                          withParameters: (@[
+                                                                                             pLooper[@"uuid"],
+                                                                                             pLooper[GRPrayTitleKey] ?: [NSNull null],
+                                                                                             pLooper[GRPrayContentKey] ?: [NSNull null],
+                                                                                             pLooper[GRNetworkLastUpdateKey] ?: [NSNull null],
+                                                                                             [NSKeyedArchiver archivedDataWithRootObject: pLooper],
+                                                                                             ])];
+                                                       }
+                                                       
+                                                       [batchStatements executeAll];
+                                                   }));
+                                        }
+                                        
+                                        if (callback)
+                                        {
+                                            callback(nil, nil);
+                                        }
+                                    })];
 }
 
 - (void)_tryToSynchronizeResourcesWithCallback: (ERServiceCallback)callback
 {
-    if (!_isSynchronize)
-    {
-        [self setIsSynchronize: YES];
-        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-        NSString *lastUpdateString = [self _lastUpdateStringForKey: GRResourceCatogryLastUpdateKey];
-        
-        [GRNetworkService postMessage: (@{
-                                          GRNetworkActionKey : @"fetch_resource_category",
-                                          GRNetworkArgumentsKey : (@{
-                                                                     GRNetworkLastUpdateKey : lastUpdateString
-                                                                     })
-                                          })
-                             callback: (^(NSDictionary *result, id exception)
-                                        {
-                                            NSArray *data = result[GRNetworkDataKey];
-                                            if ([data count] > 0)
-                                            {
-                                                
-                                                GRDBT((^(id<ERSQLBatchStatements> batchStatements)
-                                                       {
-                                                           for (NSDictionary *cLooper in data)
-                                                           {
-                                                               [batchStatements addStatement: (@"insert or replace into resource_category"
-                                                                                               "    (uuid, name, properties)"
-                                                                                               "    values(?, ?, ?);"
-                                                                                               )
-                                                                              withParameters: (@[cLooper[GRResourceID],
-                                                                                                 cLooper[GRResourceName],
-                                                                                                 [NSKeyedArchiver archivedDataWithRootObject: cLooper],
-                                                                                                 ])];
-                                                           }
-                                                           
-                                                           [batchStatements executeAll];
-                                                       }));
-                                            }
-                                            
-                                            [defaults setObject: [GRConfiguration stringFromDate: [NSDate date]]
-                                                         forKey: GRResourceCatogryLastUpdateKey];
-                                            [defaults synchronize];
-                                            
-                                            
-                                            [GRNetworkService postMessage: (@{
-                                                                              GRNetworkActionKey : @"fetch_resource",
-                                                                              GRNetworkArgumentsKey : (@{
-                                                                                                         GRNetworkLastUpdateKey : [self _lastUpdateStringForKey: GRResourceLastUpdateKey]
-                                                                                                         })
-                                                                              })
-                                                                 callback: (^(NSDictionary *result, id exception)
-                                                                            {
-                                                                                NSArray *resourcesInCategory = result[GRNetworkDataKey];
-                                                                                
-                                                                                if ([resourcesInCategory count] > 0)
-                                                                                {
-                                                                                    GRDBT((^(id<ERSQLBatchStatements> batchStatements)
-                                                                                           {
-                                                                                               for (NSDictionary *rLooper in resourcesInCategory)
-                                                                                               {
-                                                                                                   [batchStatements addStatement: (@"insert or replace into resource"
-                                                                                                                                   "     (uuid, category_id, name, content, path, type, properties)"
-                                                                                                                                   "   values(?, ?, ?, ?, ?, ?, ?)"
-                                                                                                                                   )
-                                                                                                                  withParameters: (@[
-                                                                                                                                     rLooper[GRResourceID],
-                                                                                                                                     rLooper[@"category_id"],
-                                                                                                                                     rLooper[GRResourceName] ?: [NSNull null],
-                                                                                                                                     rLooper[@"content"] ?: [NSNull null],
-                                                                                                                                     rLooper[GRResourcePath],
-                                                                                                                                     rLooper[GRResourceTypeKey],
-                                                                                                                                     [NSKeyedArchiver archivedDataWithRootObject: rLooper],
-                                                                                                                                     ])];
-                                                                                               }
-                                                                                               
-                                                                                               [batchStatements executeAll];
-                                                                                           }));
-                                                                                }
-                                                                                
-                                                                                [defaults setObject: [GRConfiguration stringFromDate: [NSDate date]]
-                                                                                             forKey: GRResourceLastUpdateKey];
-                                                                                
-                                                                                
-                                                                                [self setIsSynchronize: NO];
-                                                                                
-                                                                                if (callback)
-                                                                                {
-                                                                                    callback(nil, nil);
-                                                                                }
-                                                                            })];
-                                            
-                                        })];
-    }
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *lastUpdateString = [self _lastUpdateStringForKey: GRResourceCatogryLastUpdateKey];
     
+    [GRNetworkService postMessage: (@{
+                                      GRNetworkActionKey : @"fetch_resource_category",
+                                      GRNetworkArgumentsKey : (@{
+                                                                 GRNetworkLastUpdateKey : lastUpdateString
+                                                                 })
+                                      })
+                         callback: (^(NSDictionary *result, id exception)
+                                    {
+                                        NSArray *data = result[GRNetworkDataKey];
+                                        if ([data count] > 0)
+                                        {
+                                            
+                                            GRDBT((^(id<ERSQLBatchStatements> batchStatements)
+                                                   {
+                                                       for (NSDictionary *cLooper in data)
+                                                       {
+                                                           [batchStatements addStatement: (@"insert or replace into resource_category"
+                                                                                           "    (uuid, name, properties)"
+                                                                                           "    values(?, ?, ?);"
+                                                                                           )
+                                                                          withParameters: (@[cLooper[GRResourceID],
+                                                                                             cLooper[GRResourceName],
+                                                                                             [NSKeyedArchiver archivedDataWithRootObject: cLooper],
+                                                                                             ])];
+                                                       }
+                                                       
+                                                       [batchStatements executeAll];
+                                                   }));
+                                        }
+                                        
+                                        [defaults setObject: [GRConfiguration stringFromDate: [NSDate date]]
+                                                     forKey: GRResourceCatogryLastUpdateKey];
+                                        [defaults synchronize];
+                                        
+                                        
+                                        [GRNetworkService postMessage: (@{
+                                                                          GRNetworkActionKey : @"fetch_resource",
+                                                                          GRNetworkArgumentsKey : (@{
+                                                                                                     GRNetworkLastUpdateKey : [self _lastUpdateStringForKey: GRResourceLastUpdateKey]
+                                                                                                     })
+                                                                          })
+                                                             callback: (^(NSDictionary *result, id exception)
+                                                                        {
+                                                                            NSArray *resourcesInCategory = result[GRNetworkDataKey];
+                                                                            
+                                                                            if ([resourcesInCategory count] > 0)
+                                                                            {
+                                                                                GRDBT((^(id<ERSQLBatchStatements> batchStatements)
+                                                                                       {
+                                                                                           for (NSDictionary *rLooper in resourcesInCategory)
+                                                                                           {
+                                                                                               [batchStatements addStatement: (@"insert or replace into resource"
+                                                                                                                               "     (uuid, category_id, name, content, path, type, properties)"
+                                                                                                                               "   values(?, ?, ?, ?, ?, ?, ?)"
+                                                                                                                               )
+                                                                                                              withParameters: (@[
+                                                                                                                                 rLooper[GRResourceID],
+                                                                                                                                 rLooper[@"category_id"],
+                                                                                                                                 rLooper[GRResourceName] ?: [NSNull null],
+                                                                                                                                 rLooper[@"content"] ?: [NSNull null],
+                                                                                                                                 rLooper[GRResourcePath],
+                                                                                                                                 rLooper[GRResourceTypeKey],
+                                                                                                                                 [NSKeyedArchiver archivedDataWithRootObject: rLooper],
+                                                                                                                                 ])];
+                                                                                           }
+                                                                                           
+                                                                                           [batchStatements executeAll];
+                                                                                       }));
+                                                                            }
+                                                                            
+                                                                            [defaults setObject: [GRConfiguration stringFromDate: [NSDate date]]
+                                                                                         forKey: GRResourceLastUpdateKey];
+                                                                            
+                                                                            
+                                                                            if (callback)
+                                                                            {
+                                                                                callback(nil, nil);
+                                                                            }
+                                                                        })];
+                                        
+                                    })];
 }
 
 - (void)_tryToSynchronizeSermonWithCallback: (ERServiceCallback)callback
 {
-    if (!_isSynchronize)
-    {
-        [self setIsSynchronize: YES];
-        
-        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-        
-        NSString *lastUpdateString = [self _lastUpdateStringForKey: GRSermonCategoryLastUpdateKey];
-        
-        [GRNetworkService postMessage: (@{
-                                          GRNetworkActionKey : @"fetch_sermon_category",
-                                          GRNetworkArgumentsKey : (@{
-                                                                     GRNetworkLastUpdateKey : lastUpdateString
-                                                                     })
-                                          })
-                             callback: (^(NSDictionary *result, id exception)
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
+    NSString *lastUpdateString = [self _lastUpdateStringForKey: GRSermonCategoryLastUpdateKey];
+    
+    [GRNetworkService postMessage: (@{
+                                      GRNetworkActionKey : @"fetch_sermon_category",
+                                      GRNetworkArgumentsKey : (@{
+                                                                 GRNetworkLastUpdateKey : lastUpdateString
+                                                                 })
+                                      })
+                         callback: (^(NSDictionary *result, id exception)
+                                    {
+                                        NSLog(@"in func: %s %@", __func__, result);
+                                        
+                                        NSArray *data = result[GRNetworkDataKey];
+                                        if ([data count] > 0)
                                         {
-                                            NSLog(@"in func: %s %@", __func__, result);
-                                            
-                                            NSArray *data = result[GRNetworkDataKey];
-                                            if ([data count] > 0)
-                                            {
-                                                GRDBT((^(id<ERSQLBatchStatements> batchStatements)
+                                            GRDBT((^(id<ERSQLBatchStatements> batchStatements)
+                                                   {
+                                                       for (NSDictionary *cLooper in data)
                                                        {
-                                                           for (NSDictionary *cLooper in data)
-                                                           {
-                                                               [batchStatements addStatement: (@"insert or replace into sermon_category"
-                                                                                               "    (uuid, name, properties)"
-                                                                                               "    values(?, ?, ?);"
-                                                                                               )
-                                                                              withParameters: (@[
-                                                                                                 cLooper[GRSermonCategoryID],
-                                                                                                 cLooper[GRSermonCategoryNameKey],
-                                                                                                 [NSKeyedArchiver archivedDataWithRootObject: cLooper],
-                                                                                                 ])];
-                                                           }
-                                                           
-                                                           [batchStatements executeAll];
-                                                       }));
-                                            }
-                                            
-                                            [defaults setObject: [GRConfiguration stringFromDate: [NSDate date]]
-                                                         forKey: GRSermonCategoryLastUpdateKey];
-                                            
-                                            [GRNetworkService postMessage: (@{
-                                                                              GRNetworkActionKey : @"fetch_sermon",
-                                                                              GRNetworkArgumentsKey : (@{
-                                                                                                         GRNetworkLastUpdateKey : [self _lastUpdateStringForKey: GRSermonLastUpdateKey]
-                                                                                                         })
-                                                                              })
-                                                                 callback: (^(NSDictionary *result, id exception)
+                                                           [batchStatements addStatement: (@"insert or replace into sermon_category"
+                                                                                           "    (uuid, name, properties)"
+                                                                                           "    values(?, ?, ?);"
+                                                                                           )
+                                                                          withParameters: (@[
+                                                                                             cLooper[GRSermonCategoryID],
+                                                                                             cLooper[GRSermonCategoryNameKey],
+                                                                                             [NSKeyedArchiver archivedDataWithRootObject: cLooper],
+                                                                                             ])];
+                                                       }
+                                                       
+                                                       [batchStatements executeAll];
+                                                   }));
+                                        }
+                                        
+                                        [defaults setObject: [GRConfiguration stringFromDate: [NSDate date]]
+                                                     forKey: GRSermonCategoryLastUpdateKey];
+                                        
+                                        [GRNetworkService postMessage: (@{
+                                                                          GRNetworkActionKey : @"fetch_sermon",
+                                                                          GRNetworkArgumentsKey : (@{
+                                                                                                     GRNetworkLastUpdateKey : [self _lastUpdateStringForKey: GRSermonLastUpdateKey]
+                                                                                                     })
+                                                                          })
+                                                             callback: (^(NSDictionary *result, id exception)
+                                                                        {
+                                                                            NSLog(@"in func: %s %@", __func__, result);
+                                                                            
+                                                                            NSArray *sermonsInCategory = result[GRNetworkDataKey];
+                                                                            if ([sermonsInCategory count] > 0)
                                                                             {
-                                                                                NSLog(@"in func: %s %@", __func__, result);
-                                                                                
-                                                                                NSArray *sermonsInCategory = result[GRNetworkDataKey];
-                                                                                if ([sermonsInCategory count] > 0)
-                                                                                {
-                                                                                    GRDBT((^(id<ERSQLBatchStatements> batchStatements)
+                                                                                GRDBT((^(id<ERSQLBatchStatements> batchStatements)
+                                                                                       {
+                                                                                           for (NSDictionary *sLooper in sermonsInCategory)
                                                                                            {
-                                                                                               for (NSDictionary *sLooper in sermonsInCategory)
-                                                                                               {
-                                                                                                   [batchStatements addStatement: (@"insert or replace into sermon"
-                                                                                                                                   "    (uuid, category_id, image_path, title, content, audio_path, properties)"
-                                                                                                                                   "    values(?, ?, ?, ?, ?, ?, ?)"
-                                                                                                                                   )
-                                                                                                                  withParameters: (@[
-                                                                                                                                     sLooper[GRSermonID],
-                                                                                                                                     sLooper[@"category_id"],
-                                                                                                                                     sLooper[@"image_path"] ?: [NSNull null],
-                                                                                                                                     sLooper[GRSermonTitle] ?: [NSNull null],
-                                                                                                                                     sLooper[GRSermonContent] ?: [NSNull null],
-                                                                                                                                     sLooper[@"audio_path"] ?: [NSNull null],
-                                                                                                                                     [NSKeyedArchiver archivedDataWithRootObject: sLooper],
-                                                                                                                                     ])];
-                                                                                               }
-                                                                                               
-                                                                                               [batchStatements executeAll];
-                                                                                           }));
-                                                                                }
-                                                                                
-                                                                                [defaults setObject: [GRConfiguration stringFromDate: [NSDate date]]
-                                                                                             forKey: GRSermonLastUpdateKey];
-                                                                                
-                                                                                [defaults synchronize];
-                                                                                
-                                                                                [self setIsSynchronize: NO];
-                                                                                
-                                                                                if (callback)
-                                                                                {
-                                                                                    callback(nil, nil);
-                                                                                }
-                                                                            })];
-                                        })];
-    }
+                                                                                               [batchStatements addStatement: (@"insert or replace into sermon"
+                                                                                                                               "    (uuid, category_id, image_path, title, content, audio_path, properties)"
+                                                                                                                               "    values(?, ?, ?, ?, ?, ?, ?)"
+                                                                                                                               )
+                                                                                                              withParameters: (@[
+                                                                                                                                 sLooper[GRSermonID],
+                                                                                                                                 sLooper[@"category_id"],
+                                                                                                                                 sLooper[@"image_path"] ?: [NSNull null],
+                                                                                                                                 sLooper[GRSermonTitle] ?: [NSNull null],
+                                                                                                                                 sLooper[GRSermonContent] ?: [NSNull null],
+                                                                                                                                 sLooper[@"audio_path"] ?: [NSNull null],
+                                                                                                                                 [NSKeyedArchiver archivedDataWithRootObject: sLooper],
+                                                                                                                                 ])];
+                                                                                           }
+                                                                                           
+                                                                                           [batchStatements executeAll];
+                                                                                       }));
+                                                                            }
+                                                                            
+                                                                            [defaults setObject: [GRConfiguration stringFromDate: [NSDate date]]
+                                                                                         forKey: GRSermonLastUpdateKey];
+                                                                            
+                                                                            [defaults synchronize];
+                                                                            
+                                                                            if (callback)
+                                                                            {
+                                                                                callback(nil, nil);
+                                                                            }
+                                                                        })];
+                                    })];
 }
 
 - (void)_tryToSynchronizeMembersInTeams: (NSArray *)teamIDs
@@ -936,8 +910,6 @@
                                                    }));
                                         }
                                         
-                                        [self setIsSynchronize: NO];
-                                        
                                         if (callback)
                                         {
                                             callback(data, nil);
@@ -947,71 +919,64 @@
 
 - (void)_tryToSynchronizeTeamInfoWithCallback: (ERServiceCallback)callback
 {
-    if (!_isSynchronize)
+    NSArray *teams = [self teamsForAccountID: nil];
+    if ([teams count] > 0)
     {
-        [self setIsSynchronize: YES];
-        
-        NSArray *teams = [self teamsForAccountID: nil];
-        if ([teams count] > 0)
+        NSMutableArray *teamIDs = [[NSMutableArray alloc] initWithCapacity: [teams count]];
+        for (NSDictionary *tLooper in teams)
         {
-            NSMutableArray *teamIDs = [[NSMutableArray alloc] initWithCapacity: [teams count]];
-            for (NSDictionary *tLooper in teams)
-            {
-                [teamIDs addObject: tLooper[GRTeamIDKey]];
-            }
-            
-            NSString *lastUpdateString = [self _lastUpdateStringForKey: GRTeamAccountRelationLastUpdateKey];
-            
-            [GRNetworkService postMessage: (@{
-                                              GRNetworkActionKey : @"get_team_relations",
-                                              GRNetworkArgumentsKey : (@{
-                                                                         @"team_ids" : teamIDs,
-                                                                         GRNetworkLastUpdateKey : lastUpdateString,
-                                                                         })
-                                              })
-                                 callback: (^(NSDictionary *result, id exception)
-                                            {
-                                                NSLog(@"in func: %s %@", __func__, result);
-                                                
-                                                NSDictionary *data = result[GRNetworkDataKey];
-                                                if (data)
-                                                {
-                                                    GRDBT((^(id<ERSQLBatchStatements> batchStatements)
-                                                           {
-                                                               [data enumerateKeysAndObjectsUsingBlock:
-                                                                (^(NSString *teamID, NSArray *obj, BOOL *stop)
-                                                                 {
-                                                                     for (NSDictionary *mLooper in obj)
-                                                                     {
-                                                                         [batchStatements addStatement: (@"insert or replace into team_account_relation"
-                                                                                                         "    (uuid, team_id, account_id, role, last_update)"
-                                                                                                         "    values(?, ?, ?, ?, ?);"
-                                                                                                         )
-                                                                                        withParameters: (@[
-                                                                                                           mLooper[@"uuid"],
-                                                                                                           mLooper[@"team_id"],
-                                                                                                           mLooper[@"account_id"],
-                                                                                                           mLooper[@"role"],
-                                                                                                           mLooper[@"last_update"],
-                                                                                                           ])];
-                                                                     }
-                                                                 })];
-                                                               
-                                                               [batchStatements executeAll];
-                                                               
-                                                               NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-                                                               [defaults setObject: [GRConfiguration stringFromDate: [NSDate date]]
-                                                                            forKey: GRTeamAccountRelationLastUpdateKey];
-                                                               [defaults synchronize];
-                                                               
-                                                               [self _tryToSynchronizeMembersInTeams: teamIDs
-                                                                                        withCallback: callback];
-                                                           }));
-                                                }
-                                                
-                                                [self setIsSynchronize: NO];
-                                            })];
+            [teamIDs addObject: tLooper[GRTeamIDKey]];
         }
+        
+        NSString *lastUpdateString = [self _lastUpdateStringForKey: GRTeamAccountRelationLastUpdateKey];
+        
+        [GRNetworkService postMessage: (@{
+                                          GRNetworkActionKey : @"get_team_relations",
+                                          GRNetworkArgumentsKey : (@{
+                                                                     @"team_ids" : teamIDs,
+                                                                     GRNetworkLastUpdateKey : lastUpdateString,
+                                                                     })
+                                          })
+                             callback: (^(NSDictionary *result, id exception)
+                                        {
+                                            NSLog(@"in func: %s %@", __func__, result);
+                                            
+                                            NSDictionary *data = result[GRNetworkDataKey];
+                                            if (data)
+                                            {
+                                                GRDBT((^(id<ERSQLBatchStatements> batchStatements)
+                                                       {
+                                                           [data enumerateKeysAndObjectsUsingBlock:
+                                                            (^(NSString *teamID, NSArray *obj, BOOL *stop)
+                                                             {
+                                                                 for (NSDictionary *mLooper in obj)
+                                                                 {
+                                                                     [batchStatements addStatement: (@"insert or replace into team_account_relation"
+                                                                                                     "    (uuid, team_id, account_id, role, last_update)"
+                                                                                                     "    values(?, ?, ?, ?, ?);"
+                                                                                                     )
+                                                                                    withParameters: (@[
+                                                                                                       mLooper[@"uuid"],
+                                                                                                       mLooper[@"team_id"],
+                                                                                                       mLooper[@"account_id"],
+                                                                                                       mLooper[@"role"],
+                                                                                                       mLooper[@"last_update"],
+                                                                                                       ])];
+                                                                 }
+                                                             })];
+                                                           
+                                                           [batchStatements executeAll];
+                                                           
+                                                           NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+                                                           [defaults setObject: [GRConfiguration stringFromDate: [NSDate date]]
+                                                                        forKey: GRTeamAccountRelationLastUpdateKey];
+                                                           [defaults synchronize];
+                                                           
+                                                           [self _tryToSynchronizeMembersInTeams: teamIDs
+                                                                                    withCallback: callback];
+                                                       }));
+                                            }
+                                        })];
     }
 }
 
@@ -1071,10 +1036,11 @@
         [thread start];
     }
     
-    [self performSelector: @selector(_startToSynchronize)
-                 onThread: thread
-               withObject: nil
-            waitUntilDone: NO];
+    [self _startToSynchronize];
+//    [self performSelector: @selector(_startToSynchronize)
+//                 onThread: thread
+//               withObject: nil
+//            waitUntilDone: NO];
 }
 
 @end

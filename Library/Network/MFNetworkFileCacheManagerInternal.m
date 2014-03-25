@@ -48,7 +48,7 @@ static NSString *gsCacheFolderPath = nil;
 {
     if (data && fileID)
     {
-        fileID = [fileID CMBMP(MD5String)];
+        fileID = [fileID MD5String];
         NSString *localPath = [[[self class] _cacheFolderPath] stringByAppendingPathComponent: fileID];
         
         NSError *error = nil;
@@ -67,7 +67,7 @@ static NSString *gsCacheFolderPath = nil;
 - (NSData *)dataForFileID: (NSString *)fileID
 {
     NSString *path = [[self class] _cacheFolderPath];
-    fileID = [fileID CMBMP(MD5String)];
+    fileID = [fileID MD5String];
     
     path = [path stringByAppendingPathComponent: fileID];
     
@@ -112,7 +112,7 @@ static NSString *gsCacheFolderPath = nil;
 - (void)removeFileWithID: (NSString *)fileID
 {
     NSString *path = [[self class] _cacheFolderPath];
-    fileID = [fileID CMBMP(MD5String)];
+    fileID = [fileID MD5String];
     
     path = [path stringByAppendingPathComponent: fileID];
     

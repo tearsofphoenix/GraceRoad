@@ -8,6 +8,7 @@
 
 #import "MFNetworkOperation.h"
 #import "NSString+CMBExtensions.h"
+#import "NSObject+GRExtensions.h"
 
 @interface MFNetworkOperation ()<NSURLConnectionDataDelegate>
 {
@@ -24,6 +25,7 @@
 @property (nonatomic, copy) MFNetworkConnectionCallback callback;
 
 @property (nonatomic) NSInteger statusCode;
+@property (nonatomic, strong) NSString *identity;
 
 @end
 
@@ -58,6 +60,7 @@
     [_URL release];
     [_connection release];
     [_HTTPMethod release];
+    [_identity release];
     
     if (_callback)
     {
@@ -161,4 +164,15 @@ didReceiveResponse: (NSURLResponse *)response
     [self finishWithError: nil];
 }
 
+- (NSString *)identity
+{
+    if (!_identity)
+    {
+        NSString *urlString = [_URL absoluteString];
+        
+        _identity = [[urlString stringByAppendingString: [_parameters JSONString]] retain];
+    }
+    
+    return _identity;
+}
 @end
