@@ -41,6 +41,7 @@
 		921619C918E2A8D80005FA52 /* GRDate.png in Resources */ = {isa = PBXBuildFile; fileRef = 921619C718E2A8D80005FA52 /* GRDate.png */; };
 		921619CA18E2A8D80005FA52 /* GRDate@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 921619C818E2A8D80005FA52 /* GRDate@2x.png */; };
 		921619CE18E2A9760005FA52 /* GRCalendarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 921619CD18E2A9760005FA52 /* GRCalendarView.m */; };
+		921619D118E2B2B90005FA52 /* GREventCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 921619D018E2B2B90005FA52 /* GREventCell.m */; };
 		92217059189631B100A625EC /* GRDatabaseService.m in Sources */ = {isa = PBXBuildFile; fileRef = 92217058189631B100A625EC /* GRDatabaseService.m */; };
 		923E49A21888ECF6006E9029 /* GRLocationTab.png in Resources */ = {isa = PBXBuildFile; fileRef = 923E499E1888ECF6006E9029 /* GRLocationTab.png */; };
 		923E49A31888ECF6006E9029 /* GRPreferenceTab.png in Resources */ = {isa = PBXBuildFile; fileRef = 923E499F1888ECF6006E9029 /* GRPreferenceTab.png */; };
@@ -210,6 +211,8 @@
 		921619C818E2A8D80005FA52 /* GRDate@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "GRDate@2x.png"; sourceTree = "<group>"; };
 		921619CC18E2A9760005FA52 /* GRCalendarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRCalendarView.h; sourceTree = "<group>"; };
 		921619CD18E2A9760005FA52 /* GRCalendarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GRCalendarView.m; sourceTree = "<group>"; };
+		921619CF18E2B2B90005FA52 /* GREventCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GREventCell.h; sourceTree = "<group>"; };
+		921619D018E2B2B90005FA52 /* GREventCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GREventCell.m; sourceTree = "<group>"; };
 		92217057189631B100A625EC /* GRDatabaseService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRDatabaseService.h; sourceTree = "<group>"; };
 		92217058189631B100A625EC /* GRDatabaseService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GRDatabaseService.m; sourceTree = "<group>"; };
 		923E499E1888ECF6006E9029 /* GRLocationTab.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GRLocationTab.png; sourceTree = "<group>"; };
@@ -466,6 +469,8 @@
 				9261923C18865752001E0A72 /* GRUserProfileView.m */,
 				921619CC18E2A9760005FA52 /* GRCalendarView.h */,
 				921619CD18E2A9760005FA52 /* GRCalendarView.m */,
+				921619CF18E2B2B90005FA52 /* GREventCell.h */,
+				921619D018E2B2B90005FA52 /* GREventCell.m */,
 			);
 			path = Preferences;
 			sourceTree = "<group>";
@@ -901,6 +906,7 @@
 				929989BA18768C2E0001EFDC /* MFNetworkFileCacheManager.m in Sources */,
 				9276F35318877DEA00E13763 /* UIView+CenterAdjustment.m in Sources */,
 				929989B718768C2E0001EFDC /* MFCacheManagerInternal.m in Sources */,
+				921619D118E2B2B90005FA52 /* GREventCell.m in Sources */,
 				603A657F188A625C00352C0B /* GRResourceCell.m in Sources */,
 				609723E3188AC7000020AEA0 /* UIRefreshControl+GRExtensions.m in Sources */,
 				9261927218865790001E0A72 /* GRLoginView.m in Sources */,
