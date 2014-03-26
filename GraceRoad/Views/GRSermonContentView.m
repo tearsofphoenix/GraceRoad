@@ -82,7 +82,7 @@
         _player = [[MPMoviePlayerController alloc] init];
         [_contentView addSubview: [_player view]];
         
-        [[_player view] setFrame: CGRectMake(0, frame.size.height - 40, frame.size.width, 40)];
+        [[_player view] setFrame: CGRectMake(0, frame.size.height - 60, frame.size.width, 40)];
     }
     return self;
 }
@@ -110,7 +110,7 @@
     [_backgroundView setFrame: bounds];
     [_blurView setFrame: bounds];
     [_contentView setFrame: bounds];
-    [[_player view] setFrame: CGRectMake(0, bounds.size.height - 40, bounds.size.width, 40)];
+    [[_player view] setFrame: CGRectMake(0, bounds.size.height - 60, bounds.size.width, 40)];
 }
 
 - (void)setSermonInfo: (NSDictionary *)sermonInfo
@@ -123,9 +123,14 @@
         [self setTitle: _sermonInfo[GRSermonTitle]];
         
         [_contentTextView setText: _sermonInfo[GRSermonContent]];
-        
+
+#if 1
+        NSString *path = [GRResourceManager serverResourcePathWithSubPath: _sermonInfo[GRSermonAudioPath]];
+        [_player setContentURL: [NSURL URLWithString: path]];
+#else
         NSString *path = [GRResourceManager pathWithSubPath: _sermonInfo[GRSermonAudioPath]];
         [_player setContentURL: [NSURL fileURLWithPath: path]];
+#endif
         [_player prepareToPlay];
         [_player play];
     }

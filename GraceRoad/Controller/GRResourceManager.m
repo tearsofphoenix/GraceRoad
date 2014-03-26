@@ -82,7 +82,7 @@ static NSString *_CreateFolderUnderLibraryDirectoryIfNeeded(NSString *folderName
     return nil;
 }
 
-+ (NSString *)_packResourcePathWithSubPath: (NSString *)subPath
++ (NSString *)serverResourcePathWithSubPath: (NSString *)subPath
 {
     return [[GRConfiguration fileURLString] stringByAppendingPathComponent: subPath];
 }
@@ -90,7 +90,7 @@ static NSString *_CreateFolderUnderLibraryDirectoryIfNeeded(NSString *folderName
 + (void)downloadFileWithSubPath: (NSString *)subPath
                        callback: (GRResourceCallback)callback
 {
-    [MFNetworkClient  downloadFileAtPath: [self _packResourcePathWithSubPath: subPath]
+    [MFNetworkClient  downloadFileAtPath: [self serverResourcePathWithSubPath: subPath]
                                 callback: (^(NSData *data, id error)
                                           {
                                               double delayInSeconds = 1.0;

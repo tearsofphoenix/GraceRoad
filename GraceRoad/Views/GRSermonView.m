@@ -164,20 +164,20 @@ didSelectRowAtIndexPath: (NSIndexPath *)indexPath
           (^(NSInteger buttonIndex)
            {
                if (1 == buttonIndex)
-               {
-                   ERSC(GRViewServiceID,
-                        GRViewServiceShowLoadingIndicatorAction,
-                        nil, nil);
+               {                   
+                   [self _showSermonContentWithInfo: sermonInfo];
+
+//                   ERSC(GRViewServiceID,
+//                        GRViewServiceShowLoadingIndicatorAction,
+//                        nil, nil);
                    
                    [GRResourceManager downloadFileWithSubPath: subPath
                                                      callback:
                     (^(NSData *data, NSError *error)
                      {
-                         ERSC(GRViewServiceID,
-                              GRViewServiceHideLoadingIndicatorAction,
-                              nil, nil);
-                         
-                         [self _showSermonContentWithInfo: sermonInfo];
+//                         ERSC(GRViewServiceID,
+//                              GRViewServiceHideLoadingIndicatorAction,
+//                              nil, nil);
                      })];
                }
            })] show];

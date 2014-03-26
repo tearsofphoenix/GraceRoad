@@ -29,4 +29,6 @@ typedef void (^ GRResourceCallback)(NSData *data, NSError *error);
 
 - (NSString *)databasePath;
 
++ (NSString *)serverResourcePathWithSubPath: (NSString *)subPath;
+
 @end
