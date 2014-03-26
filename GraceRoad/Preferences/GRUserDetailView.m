@@ -43,7 +43,7 @@
     if (self)
     {
         CGRect bounds = [self bounds];
-        
+                
         CGRect avatarBackgroundFrame = CGRectMake(0, 0, 320, 120);
         _avatarBackgroundView = [[UIImageView alloc] initWithFrame: avatarBackgroundFrame];
         [_avatarBackgroundView setImage: [UIImage imageNamed: @"GRAvatarBackground"]];

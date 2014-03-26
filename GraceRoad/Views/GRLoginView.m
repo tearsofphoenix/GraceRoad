@@ -127,7 +127,7 @@
         [[loginButton layer] setCornerRadius: 3.0f];
         [[loginButton titleLabel] setFont: [UIFont fontWithName: boldFontName
                                                            size: 20.0f]];
-        [loginButton setTitle: @"登陆"
+        [loginButton setTitle: @"登录"
                      forState: UIControlStateNormal];
         [loginButton setTitleColor: [UIColor whiteColor]
                           forState: UIControlStateNormal];
@@ -241,7 +241,7 @@
                                               }
                                           }else
                                           {
-                                             ERSC(GRViewServiceID, GRViewServiceAlertMessageAction, @[ @"登陆失败！"], nil);
+                                             ERSC(GRViewServiceID, GRViewServiceAlertMessageAction, @[ @"登录失败！"], nil);
                                           }
                                       });
         callback = Block_copy(callback);

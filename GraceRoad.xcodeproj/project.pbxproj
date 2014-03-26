@@ -38,6 +38,9 @@
 		920B99941885259B006BD620 /* GRExampleAvatar.png in Resources */ = {isa = PBXBuildFile; fileRef = 920B99921885259B006BD620 /* GRExampleAvatar.png */; };
 		920B99951885259B006BD620 /* GRExampleAvatar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 920B99931885259B006BD620 /* GRExampleAvatar@2x.png */; };
 		920B999718852B21006BD620 /* GRAddButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 920B999618852B21006BD620 /* GRAddButton@2x.png */; };
+		921619C918E2A8D80005FA52 /* GRDate.png in Resources */ = {isa = PBXBuildFile; fileRef = 921619C718E2A8D80005FA52 /* GRDate.png */; };
+		921619CA18E2A8D80005FA52 /* GRDate@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 921619C818E2A8D80005FA52 /* GRDate@2x.png */; };
+		921619CE18E2A9760005FA52 /* GRCalendarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 921619CD18E2A9760005FA52 /* GRCalendarView.m */; };
 		92217059189631B100A625EC /* GRDatabaseService.m in Sources */ = {isa = PBXBuildFile; fileRef = 92217058189631B100A625EC /* GRDatabaseService.m */; };
 		923E49A21888ECF6006E9029 /* GRLocationTab.png in Resources */ = {isa = PBXBuildFile; fileRef = 923E499E1888ECF6006E9029 /* GRLocationTab.png */; };
 		923E49A31888ECF6006E9029 /* GRPreferenceTab.png in Resources */ = {isa = PBXBuildFile; fileRef = 923E499F1888ECF6006E9029 /* GRPreferenceTab.png */; };
@@ -203,6 +206,10 @@
 		920B99921885259B006BD620 /* GRExampleAvatar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GRExampleAvatar.png; sourceTree = "<group>"; };
 		920B99931885259B006BD620 /* GRExampleAvatar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "GRExampleAvatar@2x.png"; sourceTree = "<group>"; };
 		920B999618852B21006BD620 /* GRAddButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "GRAddButton@2x.png"; sourceTree = "<group>"; };
+		921619C718E2A8D80005FA52 /* GRDate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GRDate.png; sourceTree = "<group>"; };
+		921619C818E2A8D80005FA52 /* GRDate@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "GRDate@2x.png"; sourceTree = "<group>"; };
+		921619CC18E2A9760005FA52 /* GRCalendarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRCalendarView.h; sourceTree = "<group>"; };
+		921619CD18E2A9760005FA52 /* GRCalendarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GRCalendarView.m; sourceTree = "<group>"; };
 		92217057189631B100A625EC /* GRDatabaseService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRDatabaseService.h; sourceTree = "<group>"; };
 		92217058189631B100A625EC /* GRDatabaseService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GRDatabaseService.m; sourceTree = "<group>"; };
 		923E499E1888ECF6006E9029 /* GRLocationTab.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GRLocationTab.png; sourceTree = "<group>"; };
@@ -457,6 +464,8 @@
 				9276F3331887758100E13763 /* GRSendMessageView.m */,
 				9261923B18865752001E0A72 /* GRUserProfileView.h */,
 				9261923C18865752001E0A72 /* GRUserProfileView.m */,
+				921619CC18E2A9760005FA52 /* GRCalendarView.h */,
+				921619CD18E2A9760005FA52 /* GRCalendarView.m */,
 			);
 			path = Preferences;
 			sourceTree = "<group>";
@@ -680,6 +689,8 @@
 		92CE913D18755BEB00C7D3A1 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				921619C718E2A8D80005FA52 /* GRDate.png */,
+				921619C818E2A8D80005FA52 /* GRDate@2x.png */,
 				604F1238188C353500AEB247 /* GRQRCode.png */,
 				603A657B188A5E0D00352C0B /* FileType */,
 				92FFDF7C187A8CAE00FF3C15 /* GRAddButton.png */,
@@ -840,11 +851,13 @@
 				927C9FAD186D66DC00DC0EDC /* InfoPlist.strings in Resources */,
 				9276F34B18877D6100E13763 /* GalleryViewDeleteButton.png in Resources */,
 				604F1239188C353500AEB247 /* GRQRCode.png in Resources */,
+				921619CA18E2A8D80005FA52 /* GRDate@2x.png in Resources */,
 				92CE914518755BEB00C7D3A1 /* GRPreferenceTab@2x.png in Resources */,
 				92568CCA18850E3400994FC1 /* GRAvatarBackground@2x.png in Resources */,
 				92CE914A1875699A00C7D3A1 /* GRIconPDF.png in Resources */,
 				920B99941885259B006BD620 /* GRExampleAvatar.png in Resources */,
 				60E649681877ECA800D5466B /* GRHeart.jpg in Resources */,
+				921619C918E2A8D80005FA52 /* GRDate.png in Resources */,
 				923E49A51888ECF6006E9029 /* GRSermonTab.png in Resources */,
 				920B999718852B21006BD620 /* GRAddButton@2x.png in Resources */,
 				9276F35E1887D22600E13763 /* GRShareButton@2x.png in Resources */,
@@ -877,6 +890,7 @@
 				9261924C18865752001E0A72 /* GRResourceManager.m in Sources */,
 				9276F34718877D6100E13763 /* ERGalleryView.m in Sources */,
 				9261927418865790001E0A72 /* GRPrayView.m in Sources */,
+				921619CE18E2A9760005FA52 /* GRCalendarView.m in Sources */,
 				60E8D95F1889131900C2EFC2 /* ILTranslucentView.m in Sources */,
 				9261927718865790001E0A72 /* GRSermonContentView.m in Sources */,
 				604F1237188BFB5F00AEB247 /* GRFeedbackView.m in Sources */,

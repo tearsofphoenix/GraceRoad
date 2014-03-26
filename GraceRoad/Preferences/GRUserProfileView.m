@@ -10,12 +10,18 @@
 #import "GRLoginView.h"
 #import "GRUserDetailView.h"
 #import "GRDataService.h"
+#import "GRCalendarView.h"
+#import "GRViewService.h"
 
 @interface GRUserProfileView ()
 {
     GRLoginView *_loginView;
     GRUserDetailView *_detailView;
 }
+
+@property (nonatomic, retain) UIButton *rightNavigationButton;
+@property (nonatomic, strong) GRCalendarView *calendarView;
+
 @end
 
 
@@ -27,7 +33,7 @@
     
     _detailView = [[GRUserDetailView alloc] initWithFrame: [self bounds]];
     [self addSubview: _detailView];
-    
+
     if (animate)
     {
         [_detailView setAlpha: 0];
@@ -39,6 +45,12 @@
                                       })];
     }
     
+    _rightNavigationButton = [[UIButton alloc] initWithFrame: CGRectMake(0, 0, 40, 40)];
+    [_rightNavigationButton setImage: [UIImage imageNamed: @"GRDate"]
+                            forState: UIControlStateNormal];
+    [_rightNavigationButton addTarget: self
+                               action: @selector(_handleDateButtonTappedEvent:)
+                     forControlEvents: UIControlEventTouchUpInside];
 }
 
 - (id)initWithFrame: (CGRect)frame
@@ -58,7 +70,7 @@
                                                 })];
             
             [self addSubview: _loginView];
-            [self setTitle: @"组长登陆"];
+            [self setTitle: @"组长登录"];
         }else
         {
             [self _createDetailViewWithAnimation: NO];
@@ -71,6 +83,8 @@
 {
     [_detailView release];
     [_loginView release];
+    [_rightNavigationButton release];
+    [_calendarView release];
     
     [super dealloc];
 }
@@ -83,6 +97,13 @@
     
     [_loginView setFrame: rect];
     [_detailView setFrame: rect];
+}
+
+- (void)_handleDateButtonTappedEvent: (id)sender
+{
+    GRCalendarView *view = [[GRCalendarView alloc] initWithFrame: [self frame]];
+    ERSC(GRViewServiceID, GRViewServicePushContentViewAction, @[ view ], nil);
+    [view release];
 }
 
 @end

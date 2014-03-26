@@ -34,7 +34,7 @@
     {
         [self setTitle: @"设置"];
         
-        _titles = [@[ @"服事登陆", @"每日灵修", @"代祷", @"联系我们", @"反馈"] retain];
+        _titles = [@[ @"服事登录", @"每日灵修", @"代祷", @"联系我们", @"反馈"] retain];
         
         _tableView = [[UITableView alloc] initWithFrame: [self bounds]];
         [_tableView setDataSource: self];
