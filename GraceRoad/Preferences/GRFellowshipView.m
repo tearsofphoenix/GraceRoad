@@ -10,6 +10,11 @@
 #import "ERGalleryView.h"
 #import "ERGalleryViewThumbnail.h"
 #import "GRFellowshipCell.h"
+#import "NSObject+GRExtensions.h"
+#import "GRShared.h"
+#import "GRNetworkService.h"
+
+#define GRFellowshipKey     GRPrefix ".fellowship"
 
 @interface GRFellowshipView ()<UITableViewDataSource, UITableViewDelegate>
 
@@ -26,33 +31,34 @@
     self = [super initWithFrame:frame];
     if (self)
     {
-        [self setData: @[
-                         (@{
-                            GRFellowshipNameKey : @"香柏树团契",
-                            GRFellowshipAddressKey : @"三湘2期46号1401",
-                            GRFellowshipPhoneKey : @"135-0162-5880",
-                            }),
-                         (@{
-                            GRFellowshipNameKey : @"无花果树团契",
-                            GRFellowshipAddressKey : @"月亮河桂园别墅53号",
-                            GRFellowshipPhoneKey : @"130-0310-0418",
-                            }),
-                         (@{
-                            GRFellowshipNameKey : @"皂荚树团契",
-                            GRFellowshipAddressKey : @"建设花园79号301",
-                            GRFellowshipPhoneKey : @"189-3064-8530",
-                            }),
-                         (@{
-                            GRFellowshipNameKey : @"仁爱团契",
-                            GRFellowshipAddressKey : @"御上海30号702",
-                            GRFellowshipPhoneKey : @"139-1768-3163",
-                            }),
-                         (@{
-                            GRFellowshipNameKey : @"以琳团契",
-                            GRFellowshipAddressKey : @"泗泾金港花园二期66号202",
-                            GRFellowshipPhoneKey : @"135-6556-9288",
-                            }),
-                         ]];
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        
+        NSArray *fellowShipInfo = [defaults objectForKey: GRFellowshipKey];
+        if (fellowShipInfo)
+        {
+            [self setData: fellowShipInfo];
+        }else
+        {
+            //
+            [GRNetworkService postMessage: (@{
+                                              GRNetworkActionKey : @"get_fellowship",
+                                              })
+                                 callback: (^(NSDictionary *result, id exception)
+                                            {
+                                                if ([result[GRNetworkStatusKey] isEqualToString: GRNetworkStatusOKValue])
+                                                {
+                                                    NSArray *info = result[GRNetworkDataKey];
+                                                    
+                                                    [defaults setObject: info
+                                                                 forKey: GRFellowshipKey];
+                                                    [defaults synchronize];
+                                                    
+                                                    [self setData: info];
+                                                    
+                                                }
+                                            })];
+            
+        }
         
         [self setTitle: @"团契"];
         [self setHideTabbar: YES];
@@ -64,6 +70,25 @@
         [_contentView setDelegate: self];
     }
     return self;
+}
+
+- (void)dealloc
+{
+    [_data release];
+    [_contentView release];
+    
+    [super dealloc];
+}
+
+- (void)setData: (NSArray *)data
+{
+    if (_data != data)
+    {
+        [_data release];
+        _data = [data retain];
+        
+        [_contentView reloadData];
+    }
 }
 
 - (void)setFrame: (CGRect)frame

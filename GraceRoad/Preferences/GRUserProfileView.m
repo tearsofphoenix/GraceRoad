@@ -33,7 +33,9 @@
     
     _detailView = [[GRUserDetailView alloc] initWithFrame: [self bounds]];
     [self addSubview: _detailView];
-
+    
+    [_rightNavigationButton setAlpha: 1];
+    
     if (animate)
     {
         [_detailView setAlpha: 0];
@@ -45,12 +47,6 @@
                                       })];
     }
     
-    _rightNavigationButton = [[UIButton alloc] initWithFrame: CGRectMake(0, 0, 40, 40)];
-    [_rightNavigationButton setImage: [UIImage imageNamed: @"GRDate"]
-                            forState: UIControlStateNormal];
-    [_rightNavigationButton addTarget: self
-                               action: @selector(_handleDateButtonTappedEvent:)
-                     forControlEvents: UIControlEventTouchUpInside];
 }
 
 - (id)initWithFrame: (CGRect)frame
@@ -59,6 +55,15 @@
     if (self)
     {
         [self setHideTabbar: YES];
+        
+        _rightNavigationButton = [[UIButton alloc] initWithFrame: CGRectMake(0, 0, 40, 40)];
+        [_rightNavigationButton setImage: [UIImage imageNamed: @"GRDate"]
+                                forState: UIControlStateNormal];
+        [_rightNavigationButton addTarget: self
+                                   action: @selector(_handleDateButtonTappedEvent:)
+                         forControlEvents: UIControlEventTouchUpInside];
+        [_rightNavigationButton setAlpha: 0];
+        
         CGRect bounds = [self bounds];
         
         if (!ERSSC(GRDataServiceID, GRDataServiceCurrentAccountAction, nil))

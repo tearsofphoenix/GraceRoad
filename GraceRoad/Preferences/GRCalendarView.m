@@ -8,11 +8,16 @@
 
 #import "GRCalendarView.h"
 #import "GRTheme.h"
+#import "NSObject+GRExtensions.h"
+#import "GRShared.h"
+#import "GRNetworkService.h"
 
 #define GRSectionTitleKey       @"section.title"
 #define GREventListKey          @"event-list"
 #define GRDateKey               @"date"
 #define GRContentKey            @"content"
+
+#define GRCalendarStoreKey  GRPrefix ".calendar"
 
 @interface GRCalendarView ()<UITableViewDataSource, UITableViewDelegate>
 
@@ -31,82 +36,33 @@
         [self setTitle: @"行事历"];
         [self setHideTabbar: YES];
         
-        _data = [(@[
-                   (@{
-                      GRSectionTitleKey : @"4月",
-                      GREventListKey :
-                          @[
-                              (@{
-                                 GRDateKey : @"4月11日-14日",
-                                 GRContentKey : @"赴釜山教会参观学习"
-                                 })
-                              ]
-                      }),
-                   (@{
-                      GRSectionTitleKey : @"5月",
-                      GREventListKey :
-                          @[
-                              (@{
-                                 GRDateKey : @"5月1日-3日",
-                                 GRContentKey : @"培灵会"
-                                 })
-                              ]
-                      }),
-                   (@{
-                      GRSectionTitleKey : @"6月",
-                      GREventListKey :
-                          @[
-                              (@{
-                                 GRDateKey : @"6月1日",
-                                 GRContentKey : @"春季运动会"
-                                 })
-                              ]
-                      }),
-                   (@{
-                      GRSectionTitleKey : @"8月",
-                      GREventListKey :
-                          @[
-                              (@{
-                                 GRDateKey : @"8月",
-                                 GRContentKey : @"贵州短宣"
-                                 })
-                              ]
-                      }),
-                   (@{
-                      GRSectionTitleKey : @"9月",
-                      GREventListKey :
-                          @[
-                              (@{
-                                 GRDateKey : @"9月",
-                                 GRContentKey : @"退修会"
-                                 })
-                              ]
-                      }),
-                   (@{
-                      GRSectionTitleKey : @"11月",
-                      GREventListKey :
-                          @[
-                              (@{
-                                 GRDateKey : @"11月27",
-                                 GRContentKey : @"感恩节"
-                                 })
-                              ]
-                      }),
-                   (@{
-                      GRSectionTitleKey : @"12月",
-                      GREventListKey :
-                          @[
-                              (@{
-                                 GRDateKey : @"12月20",
-                                 GRContentKey : @"圣诞节晚会"
-                                 }),
-                              (@{
-                                 GRDateKey : @"12月24",
-                                 GRContentKey : @"平安夜"
-                                 })
-                              ]
-                      }),
-                   ]) retain];
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        
+        NSArray *calendarInfo = [defaults objectForKey: GRCalendarStoreKey];
+        if (calendarInfo)
+        {
+            [self setData: calendarInfo];
+        }else
+        {
+            [GRNetworkService postMessage: (@{
+                                              GRNetworkActionKey : @"get_calendar",
+                                              })
+                                 callback: (^(NSDictionary *result, id exception)
+                                            {
+                                                if ([result[GRNetworkStatusKey] isEqualToString: GRNetworkStatusOKValue])
+                                                {
+                                                    NSArray *info = result[GRNetworkDataKey];
+                                                    
+                                                    [defaults setObject: info
+                                                                 forKey: GRCalendarStoreKey];
+                                                    [defaults synchronize];
+                                                    
+                                                    [self setData: info];
+                                                    
+                                                }
+                                            })];
+
+        }
         
         _contentView = [[UITableView alloc] initWithFrame: [self bounds]];
         [_contentView setDataSource: self];
@@ -121,8 +77,20 @@
 - (void)dealloc
 {
     [_contentView release];
+    [_data release];
     
     [super dealloc];
+}
+
+- (void)setData: (NSArray *)data
+{
+    if (_data != data)
+    {
+        [_data release];
+        _data = [data retain];
+        
+        [_contentView reloadData];
+    }
 }
 
 - (NSInteger)numberOfSectionsInTableView: (UITableView *)tableView
