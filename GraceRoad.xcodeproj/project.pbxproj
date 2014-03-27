@@ -106,6 +106,8 @@
 		929989BF18768C750001EFDC /* MFRunLoopOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 929989BE18768C750001EFDC /* MFRunLoopOperation.m */; };
 		929989C218768C9C0001EFDC /* NSString+CMBExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 929989C118768C9C0001EFDC /* NSString+CMBExtensions.m */; };
 		929989C518768D550001EFDC /* NSData+CMBExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 929989C418768D550001EFDC /* NSData+CMBExtensions.m */; };
+		929FE4D818E3B5E800F131EC /* GRFellowshipView.m in Sources */ = {isa = PBXBuildFile; fileRef = 929FE4D718E3B5E800F131EC /* GRFellowshipView.m */; };
+		929FE4E218E3C33200F131EC /* GRFellowshipCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 929FE4E118E3C33200F131EC /* GRFellowshipCell.m */; };
 		92CE914318755BEB00C7D3A1 /* gr.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 92CE913C18755BEB00C7D3A1 /* gr.sqlite */; };
 		92CE914418755BEB00C7D3A1 /* GRLocationTab@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 92CE913F18755BEB00C7D3A1 /* GRLocationTab@2x.png */; };
 		92CE914518755BEB00C7D3A1 /* GRPreferenceTab@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 92CE914018755BEB00C7D3A1 /* GRPreferenceTab@2x.png */; };
@@ -333,6 +335,10 @@
 		929989C118768C9C0001EFDC /* NSString+CMBExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+CMBExtensions.m"; sourceTree = "<group>"; };
 		929989C318768D550001EFDC /* NSData+CMBExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+CMBExtensions.h"; sourceTree = "<group>"; };
 		929989C418768D550001EFDC /* NSData+CMBExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+CMBExtensions.m"; sourceTree = "<group>"; };
+		929FE4D618E3B5E800F131EC /* GRFellowshipView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRFellowshipView.h; sourceTree = "<group>"; };
+		929FE4D718E3B5E800F131EC /* GRFellowshipView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GRFellowshipView.m; sourceTree = "<group>"; };
+		929FE4E018E3C33200F131EC /* GRFellowshipCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRFellowshipCell.h; sourceTree = "<group>"; };
+		929FE4E118E3C33200F131EC /* GRFellowshipCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GRFellowshipCell.m; sourceTree = "<group>"; };
 		92CE913C18755BEB00C7D3A1 /* gr.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = gr.sqlite; sourceTree = "<group>"; };
 		92CE913F18755BEB00C7D3A1 /* GRLocationTab@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "GRLocationTab@2x.png"; sourceTree = "<group>"; };
 		92CE914018755BEB00C7D3A1 /* GRPreferenceTab@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "GRPreferenceTab@2x.png"; sourceTree = "<group>"; };
@@ -466,6 +472,7 @@
 				9261923C18865752001E0A72 /* GRUserProfileView.m */,
 				921619CC18E2A9760005FA52 /* GRCalendarView.h */,
 				921619CD18E2A9760005FA52 /* GRCalendarView.m */,
+				929FE4DF18E3C31200F131EC /* Fellowship */,
 			);
 			path = Preferences;
 			sourceTree = "<group>";
@@ -672,6 +679,17 @@
 				929989B518768C2E0001EFDC /* MFNetworkOperation.m */,
 			);
 			path = Network;
+			sourceTree = "<group>";
+		};
+		929FE4DF18E3C31200F131EC /* Fellowship */ = {
+			isa = PBXGroup;
+			children = (
+				929FE4D618E3B5E800F131EC /* GRFellowshipView.h */,
+				929FE4D718E3B5E800F131EC /* GRFellowshipView.m */,
+				929FE4E018E3C33200F131EC /* GRFellowshipCell.h */,
+				929FE4E118E3C33200F131EC /* GRFellowshipCell.m */,
+			);
+			name = Fellowship;
 			sourceTree = "<group>";
 		};
 		92CE913B18755BEB00C7D3A1 /* Resources */ = {
@@ -924,6 +942,7 @@
 				9200E25F18E008210067608A /* GRQTView.m in Sources */,
 				9261924E18865752001E0A72 /* GraceRoadMain.m in Sources */,
 				9261925418865752001E0A72 /* GRNibPackage.m in Sources */,
+				929FE4E218E3C33200F131EC /* GRFellowshipCell.m in Sources */,
 				9276F3341887758100E13763 /* GRSendMessageView.m in Sources */,
 				604F124B188D460B00AEB247 /* NSObject+GRExtensions.m in Sources */,
 				9261927518865790001E0A72 /* GRResourceInfoView.m in Sources */,
@@ -932,6 +951,7 @@
 				604F123C188C354800AEB247 /* GRContactUSView.m in Sources */,
 				92FA8246188F97010055C9B2 /* GRNetworkService.m in Sources */,
 				60F9438E1886D81A001F13E3 /* DKLiveBlurView.m in Sources */,
+				929FE4D818E3B5E800F131EC /* GRFellowshipView.m in Sources */,
 				9261925218865752001E0A72 /* GRUserProfileView.m in Sources */,
 				929989BC18768C2E0001EFDC /* MFNetworkOperation.m in Sources */,
 				9261927618865790001E0A72 /* GRResourceView.m in Sources */,

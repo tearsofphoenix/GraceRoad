@@ -17,12 +17,16 @@
 #import "GRFeedbackView.h"
 #import "GRContactUSView.h"
 #import "GRQTView.h"
+#import "GRFellowshipView.h"
 
 @interface GRPreferenceView ()<UITableViewDataSource, UITableViewDelegate>
 {
     UITableView *_tableView;
-    NSArray *_titles;
 }
+
+@property (nonatomic, strong) NSArray *titles;
+@property (nonatomic, strong) NSArray *viewClasses;
+
 @end
 
 @implementation GRPreferenceView
@@ -34,7 +38,8 @@
     {
         [self setTitle: @"设置"];
         
-        _titles = [@[ @"服事登录", @"每日灵修", @"代祷", @"联系我们", @"反馈"] retain];
+        [self setTitles: @[ @"服事登录", @"每日灵修", @"代祷", @"团契", @"联系我们", @"反馈"]];
+        [self setViewClasses: @[ [GRUserProfileView class], [GRQTView class], [GRPrayView class], [GRFellowshipView class], [GRContactUSView class], [GRFeedbackView class] ]];
         
         _tableView = [[UITableView alloc] initWithFrame: [self bounds]];
         [_tableView setDataSource: self];
@@ -80,47 +85,11 @@ heightForRowAtIndexPath: (NSIndexPath *)indexPath
 didSelectRowAtIndexPath: (NSIndexPath *)indexPath
 {
     NSInteger row = [indexPath row];
-    switch (row)
-    {
-        case 0:
-        {
-            GRUserProfileView *view = [[GRUserProfileView alloc] initWithFrame: [self frame]];
-            ERSC(GRViewServiceID, GRViewServicePushContentViewAction, @[ view ], nil);
-            [view release];            
-            break;
-        }
-        case 1:
-        {
-            GRQTView *view = [[GRQTView alloc] initWithFrame: [self frame]];
-            ERSC(GRViewServiceID, GRViewServicePushContentViewAction, @[ view ], nil);
-            [view release];
-            break;
-        }
-        case 2:
-        {
-            GRPrayView *prayView = [[GRPrayView alloc] initWithFrame: [self frame]];
-            ERSC(GRViewServiceID, GRViewServicePushContentViewAction, @[ prayView ], nil);            
-            [prayView release];
-            
-            break;
-        }
-        case 3:
-        {
-            GRContactUSView *view = [[GRContactUSView alloc] initWithFrame: [self frame]];
-            ERSC(GRViewServiceID, GRViewServicePushContentViewAction, @[ view ], nil);
-            [view release];
-            break;
-        }
-        case 4:
-        {
-            GRFeedbackView *feedbackView = [[GRFeedbackView alloc] initWithFrame: [self frame]];
-            ERSC(GRViewServiceID, GRViewServicePushContentViewAction, @[ feedbackView ], nil);
-            [feedbackView release];
-            break;
-        }
-        default:
-            break;
-    }
+    Class viewClass = _viewClasses[row];
+    
+    GRContentView *view = [[viewClass alloc] initWithFrame: [self frame]];
+    ERSC(GRViewServiceID, GRViewServicePushContentViewAction, @[ view ], nil);
+    [view release];
 }
 
 @end
