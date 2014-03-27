@@ -8,6 +8,7 @@
 
 #import "GRDatabaseService.h"
 #import "GRResourceManager.h"
+#import "NSString+NCAddition.h"
 
 #define GRLocalNotificationScheduleKey  GRPrefix ".hasScheduled"
 #define GRCurrentDatabaseVersion        @"1"
@@ -40,7 +41,7 @@
         NSString *path = [[GRResourceManager manager] databasePath];
         NSString *databasePath = [path stringByAppendingPathComponent: @"gr.sqlite"];
         NSFileManager *fileManager = [NSFileManager defaultManager];
-        NSString *versionFilePath = [path stringByAppendingString: @"db_version"];
+        NSString *versionFilePath = [path stringByAppendingPathComponent: @"db_version"];
         NSError *error = nil;
         
         BOOL needUpdateDatabase = NO;
@@ -131,9 +132,30 @@
                        (^
                         {
                             NSDate *date = [NSDate date];
+                            NSString *path = [[GRResourceManager manager] databasePath];
+
+                            NSString *targetDatabasePath = [path stringByAppendingPathComponent: @"target.sqlite"];
+                            NSFileManager *fileManager = [NSFileManager defaultManager];
+                            NSError *error = nil;
+                            
+                            NSString *sourcePath = [[NSBundle mainBundle] pathForResource: @"gr"
+                                                                                   ofType: @"sqlite"];
+
+                            [fileManager copyItemAtPath: sourcePath
+                                                 toPath: targetDatabasePath
+                                                  error: &error];
+                            if (error)
+                            {
+                                NSLog(@"in func: %s line: %d error: %@", __func__, __LINE__, error);
+                            }
+                            
+                            id<ERSQLDatabase> database = [[ERSQLiteDatabase alloc] initWithFilePath: targetDatabasePath];
+                            id<ERSQLBatchStatements> statements = [database prepareBatchStatements];
+                            [statements executeStatementForSQL: (@"delete from scripture")];
+                            
                             GRDBT(^(id<ERSQLBatchStatements> batchStatements)
                                   {
-                                      id<ERSQLResultSet> resultSet = [batchStatements resultSetFromSQL: (@"select * from scripture limit 10")];
+                                      id<ERSQLResultSet> resultSet = [batchStatements resultSetFromSQL: (@"select * from scripture")];
                                       NSInteger idx = 0;
                                       
                                       while ([resultSet moveCursorToNextRecord])
@@ -148,8 +170,21 @@
                                                       forKey: @"address"];
                                               [obj setObject: [record stringAtColumnWithName: @"en"]
                                                       forKey: @"en"];
-                                              [obj setObject: [record stringAtColumnWithName: @"zh_TW"]
+                                              NSString *str = [record stringAtColumnWithName: @"zh_TW"];
+                                              [obj setObject: str
                                                       forKey: @"zh_TW"];
+                                              
+                                              str = [str chineseStringCN];
+                                              
+                                              [statements addStatement: (@"insert into scripture(uuid, address, en, zh_TW, tag)"
+                                                                         "  values(?, ?, ?, ?, ?)")
+                                                        withParameters: (@[
+                                                                           @([record integerValueAtColumnWithName: @"uuid"]),
+                                                                           [address chineseStringCN],
+                                                                           [record stringAtColumnWithName: @"en"],
+                                                                           str,
+                                                                           @([record integerValueAtColumnWithName: @"tag"]),
+                                                                           ])];
                                               
                                               UILocalNotification *notificationLooper = [[UILocalNotification alloc] init];
                                               
@@ -166,6 +201,8 @@
                                           
                                           ++idx;
                                       }
+                                      
+                                      [statements executeAll];
                                   });
                             
                             [userDefaults setObject: @YES

@@ -106,6 +106,9 @@
 		929989BF18768C750001EFDC /* MFRunLoopOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 929989BE18768C750001EFDC /* MFRunLoopOperation.m */; };
 		929989C218768C9C0001EFDC /* NSString+CMBExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 929989C118768C9C0001EFDC /* NSString+CMBExtensions.m */; };
 		929989C518768D550001EFDC /* NSData+CMBExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 929989C418768D550001EFDC /* NSData+CMBExtensions.m */; };
+		9299C49218E4032F00618A63 /* NCChineseConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 9299C48E18E4032F00618A63 /* NCChineseConverter.m */; };
+		9299C49318E4032F00618A63 /* NSString+NCAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = 9299C49018E4032F00618A63 /* NSString+NCAddition.m */; };
+		9299C49418E4032F00618A63 /* zh2CN.txt in Resources */ = {isa = PBXBuildFile; fileRef = 9299C49118E4032F00618A63 /* zh2CN.txt */; };
 		929FE4D818E3B5E800F131EC /* GRFellowshipView.m in Sources */ = {isa = PBXBuildFile; fileRef = 929FE4D718E3B5E800F131EC /* GRFellowshipView.m */; };
 		929FE4E218E3C33200F131EC /* GRFellowshipCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 929FE4E118E3C33200F131EC /* GRFellowshipCell.m */; };
 		92CE914318755BEB00C7D3A1 /* gr.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 92CE913C18755BEB00C7D3A1 /* gr.sqlite */; };
@@ -335,6 +338,11 @@
 		929989C118768C9C0001EFDC /* NSString+CMBExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+CMBExtensions.m"; sourceTree = "<group>"; };
 		929989C318768D550001EFDC /* NSData+CMBExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+CMBExtensions.h"; sourceTree = "<group>"; };
 		929989C418768D550001EFDC /* NSData+CMBExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+CMBExtensions.m"; sourceTree = "<group>"; };
+		9299C48D18E4032F00618A63 /* NCChineseConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NCChineseConverter.h; sourceTree = "<group>"; };
+		9299C48E18E4032F00618A63 /* NCChineseConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NCChineseConverter.m; sourceTree = "<group>"; };
+		9299C48F18E4032F00618A63 /* NSString+NCAddition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+NCAddition.h"; sourceTree = "<group>"; };
+		9299C49018E4032F00618A63 /* NSString+NCAddition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+NCAddition.m"; sourceTree = "<group>"; };
+		9299C49118E4032F00618A63 /* zh2CN.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = zh2CN.txt; sourceTree = "<group>"; };
 		929FE4D618E3B5E800F131EC /* GRFellowshipView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRFellowshipView.h; sourceTree = "<group>"; };
 		929FE4D718E3B5E800F131EC /* GRFellowshipView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GRFellowshipView.m; sourceTree = "<group>"; };
 		929FE4E018E3C33200F131EC /* GRFellowshipCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRFellowshipCell.h; sourceTree = "<group>"; };
@@ -637,6 +645,7 @@
 		927CA014186D6FD500DC0EDC /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				9299C48C18E4032F00618A63 /* NCConverter */,
 				9288BA0C188D06A50095ADAE /* GRFoundation.h */,
 				920B56A518ADAB0E0062DA63 /* GRDefines.h */,
 				606E8FDF18894698000C5CB2 /* PDFReader.xcodeproj */,
@@ -679,6 +688,18 @@
 				929989B518768C2E0001EFDC /* MFNetworkOperation.m */,
 			);
 			path = Network;
+			sourceTree = "<group>";
+		};
+		9299C48C18E4032F00618A63 /* NCConverter */ = {
+			isa = PBXGroup;
+			children = (
+				9299C48D18E4032F00618A63 /* NCChineseConverter.h */,
+				9299C48E18E4032F00618A63 /* NCChineseConverter.m */,
+				9299C48F18E4032F00618A63 /* NSString+NCAddition.h */,
+				9299C49018E4032F00618A63 /* NSString+NCAddition.m */,
+				9299C49118E4032F00618A63 /* zh2CN.txt */,
+			);
+			path = NCConverter;
 			sourceTree = "<group>";
 		};
 		929FE4DF18E3C31200F131EC /* Fellowship */ = {
@@ -876,6 +897,7 @@
 				920B99941885259B006BD620 /* GRExampleAvatar.png in Resources */,
 				60E649681877ECA800D5466B /* GRHeart.jpg in Resources */,
 				921619C918E2A8D80005FA52 /* GRDate.png in Resources */,
+				9299C49418E4032F00618A63 /* zh2CN.txt in Resources */,
 				923E49A51888ECF6006E9029 /* GRSermonTab.png in Resources */,
 				920B999718852B21006BD620 /* GRAddButton@2x.png in Resources */,
 				9276F35E1887D22600E13763 /* GRShareButton@2x.png in Resources */,
@@ -947,6 +969,7 @@
 				604F124B188D460B00AEB247 /* NSObject+GRExtensions.m in Sources */,
 				9261927518865790001E0A72 /* GRResourceInfoView.m in Sources */,
 				9200E26318E020040067608A /* GRQTInfoView.m in Sources */,
+				9299C49318E4032F00618A63 /* NSString+NCAddition.m in Sources */,
 				9276F3311887729E00E13763 /* GRTheme.m in Sources */,
 				604F123C188C354800AEB247 /* GRContactUSView.m in Sources */,
 				92FA8246188F97010055C9B2 /* GRNetworkService.m in Sources */,
@@ -957,6 +980,7 @@
 				9261927618865790001E0A72 /* GRResourceView.m in Sources */,
 				609723E5188AC7000020AEA0 /* UIView+FirstResponder.m in Sources */,
 				9288BA09188D05DA0095ADAE /* GRConfiguration.m in Sources */,
+				9299C49218E4032F00618A63 /* NCChineseConverter.m in Sources */,
 				9276F34918877D6100E13763 /* ERGalleryViewThumbnail.m in Sources */,
 				9261924918865752001E0A72 /* GRAppDelegate.m in Sources */,
 				609723E1188AC7000020AEA0 /* UIActionSheet+BlockSupport.m in Sources */,
