@@ -60,7 +60,7 @@
     
     _tabbar = [[UITabBar alloc] initWithFrame: CGRectMake(0, bounds.size.height - 49, bounds.size.width, 49)];
     
-    UIEdgeInsets insets = UIEdgeInsetsMake(7, 5, 3, 5);
+//    UIEdgeInsets insets = UIEdgeInsetsMake(7, 5, 3, 5);
     
     UITabBarItem *item0 = [[UITabBarItem alloc] initWithTitle: @"教会简介"
                                                         image: [UIImage imageNamed: @"GRLocationTab"]
@@ -70,17 +70,17 @@
     UITabBarItem *item1 = [[UITabBarItem alloc] initWithTitle: @"资料"
                                                         image: [UIImage imageNamed: @"GRResourceTab"]
                                                           tag: 1];
-    [item1 setImageInsets: insets];
+//    [item1 setImageInsets: insets];
 
     UITabBarItem *item2 = [[UITabBarItem alloc] initWithTitle: @"讲道"
                                                         image: [UIImage imageNamed: @"GRSermonTab"]
                                                           tag: 2];
-    [item2 setImageInsets: insets];
+//    [item2 setImageInsets: insets];
 
     UITabBarItem *item3 = [[UITabBarItem alloc] initWithTitle: @"设置"
                                                         image: [UIImage imageNamed: @"GRPreferenceTab"]
                                                           tag: 3];
-    [item3 setImageInsets: insets];
+//    [item3 setImageInsets: insets];
 
     [_tabbar setItems: @[ item0, item1, item2, item3]];
     [_tabbar setDelegate: self];

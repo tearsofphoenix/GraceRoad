@@ -10,6 +10,7 @@
 #import "GRResourceManager.h"
 
 #define GRLocalNotificationScheduleKey  GRPrefix ".hasScheduled"
+#define GRCurrentDatabaseVersion        @"1"
 
 @interface GRDatabaseService ()
 {
@@ -33,22 +34,64 @@
 {
     if ((self = [super init]))
     {
+        NSString *sourcePath = [[NSBundle mainBundle] pathForResource: @"gr"
+                                                               ofType: @"sqlite"];
+
         NSString *path = [[GRResourceManager manager] databasePath];
         NSString *databasePath = [path stringByAppendingPathComponent: @"gr.sqlite"];
         NSFileManager *fileManager = [NSFileManager defaultManager];
+        NSString *versionFilePath = [path stringByAppendingString: @"db_version"];
+        NSError *error = nil;
         
-        if (![fileManager fileExistsAtPath: databasePath])
+        BOOL needUpdateDatabase = NO;
+        
+        if ([fileManager fileExistsAtPath: versionFilePath])
         {
-            NSString *sourcePath = [[NSBundle mainBundle] pathForResource: @"gr"
-                                                                   ofType: @"sqlite"];
-            NSError *error = nil;
+            //check version
+            NSString *version = [NSString stringWithContentsOfFile: versionFilePath
+                                                          encoding: NSUTF8StringEncoding
+                                                             error: &error];
+            if ([version integerValue] < [GRCurrentDatabaseVersion integerValue])
+            {
+                needUpdateDatabase = YES;
+            }
+        }else
+        {
+            needUpdateDatabase = YES;
+        }
+        
+        if (needUpdateDatabase)
+        {
+            //first update
+            if ([fileManager fileExistsAtPath: databasePath])
+            {
+                [fileManager removeItemAtPath: databasePath
+                                        error: &error];
+                if (error)
+                {
+                    NSLog(@"in func: %s error: %@", __func__, error);
+                }
+            }
+            
             [fileManager copyItemAtPath: sourcePath
                                  toPath: databasePath
                                   error: &error];
             if (error)
             {
                 NSLog(@"in func: %s error: %@", __func__, error);
+            }else
+            {
+                [GRCurrentDatabaseVersion writeToFile: versionFilePath
+                                           atomically: YES
+                                             encoding: NSUTF8StringEncoding
+                                                error: &error];
+                if (error)
+                {
+                    NSLog(@"in func: %s error: %@", __func__, error);
+                }
             }
+            
+            NSLog(@"updated database!");
         }
         
         _database = [[ERSQLiteDatabase alloc] initWithFilePath: databasePath];
