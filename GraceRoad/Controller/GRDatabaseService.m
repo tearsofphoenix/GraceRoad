@@ -133,7 +133,7 @@
                             NSDate *date = [NSDate date];
                             GRDBT(^(id<ERSQLBatchStatements> batchStatements)
                                   {
-                                      id<ERSQLResultSet> resultSet = [batchStatements resultSetFromSQL: (@"select * from scripture limit 10")];
+                                      id<ERSQLResultSet> resultSet = [batchStatements resultSetFromSQL: (@"select * from scripture limit 365")];
                                       NSInteger idx = 0;
                                       
                                       while ([resultSet moveCursorToNextRecord])
