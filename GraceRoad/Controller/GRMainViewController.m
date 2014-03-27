@@ -65,7 +65,7 @@
     UITabBarItem *item0 = [[UITabBarItem alloc] initWithTitle: @"教会简介"
                                                         image: [UIImage imageNamed: @"GRLocationTab"]
                                                           tag: 0];
-    [item0 setImageInsets: insets];
+//    [item0 setImageInsets: insets];
     
     UITabBarItem *item1 = [[UITabBarItem alloc] initWithTitle: @"资料"
                                                         image: [UIImage imageNamed: @"GRResourceTab"]
@@ -193,7 +193,6 @@
         [_contentView setFrame: frame];
         
         [self _resetTabbarFrame];
-        //[_tabbar setTransform: CGAffineTransformIdentity];
     }
 }
 
@@ -240,11 +239,6 @@
         [self didChangeValueForKey: @"currentIndex"];
     }
 }
-
-//- (BOOL)prefersStatusBarHidden
-//{
-//    return YES;
-//}
 
 - (void)pushContentView: (GRContentView *)contentView
 {

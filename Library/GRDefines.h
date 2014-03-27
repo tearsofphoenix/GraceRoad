@@ -9,12 +9,11 @@
 #ifndef GraceRoad_GRDefines_h
 #define GraceRoad_GRDefines_h
 
-#ifdef DEBUG
-
+#if DEBUG
+# define NSLog(fmt, ...) NSLog(fmt, ##__VA_ARGS__);
 #else
-
-#define NSLog(...) do{}while(0)
-
+# define NSLog(...) do{}while(0)
 #endif
+
 
 #endif
