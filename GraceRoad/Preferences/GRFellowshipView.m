@@ -11,9 +11,9 @@
 #import "ERGalleryViewThumbnail.h"
 #import "GRFellowshipCell.h"
 
-@interface GRFellowshipView ()<ERGalleryViewDataSource, ERGalleryViewDelegate>
+@interface GRFellowshipView ()<UITableViewDataSource, UITableViewDelegate>
 
-@property (nonatomic, strong) ERGalleryView *contentView;
+@property (nonatomic, strong) UITableView *contentView;
 @property (nonatomic, strong) NSArray *data;
 
 @end
@@ -57,7 +57,7 @@
         [self setTitle: @"团契"];
         [self setHideTabbar: YES];
         
-        _contentView = [[ERGalleryView alloc] initWithFrame: [self bounds]];
+        _contentView = [[UITableView alloc] initWithFrame: [self bounds]];
         [self addSubview: _contentView];
         
         [_contentView setDataSource: self];
@@ -66,28 +66,24 @@
     return self;
 }
 
-- (NSInteger)numberOfSectionsInGalleryView: (ERGalleryView *)galleryView
+- (void)setFrame: (CGRect)frame
 {
-    return 2;
-}
-
-- (NSInteger)          galleryView: (ERGalleryView *)galleryView
-numberOfThumbnailsInSectionAtIndex: (NSInteger)sectionIndex
-{
-    if (sectionIndex == 0)
-    {
-        return 3;
-    }
+    [super setFrame: frame];
     
-    return 2;
+    [_contentView setFrame: [self bounds]];
 }
 
-- (ERGalleryViewThumbnail *)galleryView: (ERGalleryView *)galleryView
-                   thumbnailAtIndexPath: (NSIndexPath *)indexPath
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return [_data count];
+}
+
+- (UITableViewCell *)tableView: (UITableView *)tableView
+         cellForRowAtIndexPath: (NSIndexPath *)indexPath
 {
     GRFellowshipCell *view = [[GRFellowshipCell alloc] initWithFrame: CGRectMake(0, 0, 100, 60)];
     
-    NSInteger idx = [indexPath section] * [self numberOfSectionsInGalleryView: galleryView] + [indexPath row];
+    NSInteger idx = [indexPath row];
     
     NSDictionary *info = _data[idx];
     [view setInfo: info];
@@ -95,10 +91,10 @@ numberOfThumbnailsInSectionAtIndex: (NSInteger)sectionIndex
     return [view autorelease];
 }
 
-- (CGSize)      galleryView: (ERGalleryView *)galleryView
-sizeForThumbnailAtIndexPath: (NSIndexPath *)indexPath
+- (CGFloat)      tableView: (UITableView *)tableView
+   heightForRowAtIndexPath: (NSIndexPath *)indexPath
 {
-    return CGSizeMake(100, 200);
+    return 100;
 }
 
 @end

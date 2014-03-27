@@ -18,17 +18,18 @@
 
 @implementation GRFellowshipCell
 
-- (id)initWithFrame:(CGRect)frame
+- (id)initWithFrame: (CGRect)frame
 {
-    self = [super initWithFrame:frame];
+    self = [super initWithFrame: frame];
     if (self)
     {
-        CGRect rect = CGRectMake(0, 0, frame.size.width, 30);
+        CGRect rect = CGRectMake(20, 0, 280, 30);
         _nameLabel = [[UILabel alloc] initWithFrame: rect];
+        [_nameLabel setTextAlignment: NSTextAlignmentCenter];
         [self addSubview: _nameLabel];
         
         rect.origin.y += rect.size.height + 2;
-        
+        rect.origin.x += 20;
         _addressLabel = [[UILabel alloc] initWithFrame: rect];
         [self addSubview: _addressLabel];
         

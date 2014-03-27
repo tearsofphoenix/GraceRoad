@@ -12,7 +12,7 @@
 #define GRFellowshipAddressKey      @"address"
 #define GRFellowshipPhoneKey        @"phone"
 
-@interface GRFellowshipCell : ERGalleryViewThumbnail
+@interface GRFellowshipCell : UITableViewCell
 
 @property (nonatomic, strong) NSDictionary *info;
 
