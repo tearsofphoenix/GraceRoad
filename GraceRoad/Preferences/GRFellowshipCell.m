@@ -41,22 +41,11 @@
     return self;
 }
 
-- (void)dealloc
-{
-    [_nameLabel release];
-    [_addressLabel release];
-    [_phoneLabel release];
-    [_info release];
-    
-    [super dealloc];
-}
-
 - (void)setInfo: (NSDictionary *)info
 {
     if (_info != info)
     {
-        [_info release];
-        _info = [info retain];
+        _info = info;
         
         [_nameLabel setText: _info[GRFellowshipNameKey]];
         [_addressLabel setText: [@"地址：  " stringByAppendingString: _info[GRFellowshipAddressKey]]];

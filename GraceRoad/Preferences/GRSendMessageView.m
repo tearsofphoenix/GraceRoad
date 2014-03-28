@@ -54,7 +54,6 @@
         UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget: self
                                                                                                action: @selector(_handleBackgroundTappedEvent:)];
         [self addGestureRecognizer: tapGestureRecognizer];
-        [tapGestureRecognizer release];
         
         CGRect bounds = [self bounds];
         _scrollView = [[UIScrollView alloc] initWithFrame: bounds];
@@ -67,7 +66,6 @@
         [galleryTitleLabel setText: @"收信人："];
         [galleryTitleLabel setFont: labelFont];
         [_scrollView addSubview: galleryTitleLabel];
-        [galleryTitleLabel release];
         
         rect.origin.y += rect.size.height;
         rect.size.width = frame.size.width - 2 * rect.origin.x;
@@ -94,7 +92,6 @@
         [notifyLabel setFont: labelFont];
         [notifyLabel setText: @"额外提醒："];
         [_scrollView addSubview: notifyLabel];
-        [notifyLabel release];
         
         rect.origin.x += rect.size.width;
         rect.size = CGSizeMake(90, 26);
@@ -119,7 +116,6 @@
         [typeLabel setText: @"类型："];
         [typeLabel setFont: labelFont];
         [_scrollView addSubview: typeLabel];
-        [typeLabel release];
         
         rect.origin.x += rect.size.width;
         rect.size = CGSizeMake(50, 26);
@@ -194,19 +190,6 @@
 - (void)dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver: self];
-    
-    [_targetAccounts release];
-    [_galleryView release];
-    
-    [_notifyButton release];
-    [_typeButton release];
-    
-    [_contentTitleLabel release];
-    [_textView release];
-    [_sendButton release];
-    [_messageType release];
-    
-    [super dealloc];
 }
 
 - (void)setFrame: (CGRect)frame
@@ -226,8 +209,7 @@
 {
     if (_targetAccounts != targetAccounts)
     {
-        [_targetAccounts release];
-        _targetAccounts = [targetAccounts retain];
+        _targetAccounts = targetAccounts;
         
         [_galleryView reloadData];
     }
@@ -288,9 +270,7 @@ numberOfThumbnailsInSectionAtIndex: (NSInteger)sectionIndex
     [[nameLabel layer] setBorderWidth: 0.5];
     [[nameLabel layer] setBorderColor: [[UIColor colorWithRed:0.67 green:0.72 blue:0.97 alpha:1] CGColor]];
     
-    [nameLabel release];
-    
-    return [thumbnail autorelease];
+    return thumbnail;
 }
 
 - (CGSize)      galleryView: (ERGalleryView *)galleryView
@@ -420,7 +400,7 @@ weightForHeaderOfSection: (NSInteger)section
                                               ERSC(GRViewServiceID, GRViewServiceAlertMessageAction, @[ @"发送成功！"], nil);
                                           }
                                       });
-        callback = Block_copy(callback);
+        callback = [callback copy];
         
         ERSC(GRViewServiceID, GRViewServiceShowLoadingIndicatorAction, nil, nil);
 
@@ -449,9 +429,7 @@ weightForHeaderOfSection: (NSInteger)section
         ERSSC(GRDataServiceID,
               GRDataServiceSendPushNotificationToAccountsWithCallbackAction,
               @[ info, recipients, callback ]);
-        
-        Block_release(callback);
-        
+                
     }else if ([_messageType isEqualToString: GRMessageTypeSMS])
     {
         NSMutableArray *recipients = [NSMutableArray arrayWithCapacity: [_targetAccounts count]];
@@ -501,7 +479,6 @@ weightForHeaderOfSection: (NSInteger)section
             [rootViewController presentViewController: controller
                                              animated: YES
                                            completion: nil];
-            [controller release];
             
         }else
         {

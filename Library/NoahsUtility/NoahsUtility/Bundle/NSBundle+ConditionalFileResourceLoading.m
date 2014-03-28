@@ -6,19 +6,30 @@
 //  Copyright (c) 2012 Shanghai e-Intelli Software Technology Co., Ltd. All rights reserved.
 //
 
-//#import "NSBundle+ConditionalFileResourceLoading.h"
-
-//#import "NSArray+NSNull.h"
-
-//#import "NSDictionary+NSNull.h"
-
-//#import "ERLocale.h"
-
 #import <NoahsUtility/NoahsUtility.h>
 
 #import <NoahsService/NoahsService.h>
 
 #import <objc/runtime.h>
+
+
+static inline id ERBlock(id block)
+{
+    
+    if (block)
+    {
+        
+        id copiedBlock = Block_copy(block);
+        
+        return [copiedBlock autorelease];
+        
+    }
+    else
+    {
+        return nil;
+    }
+    
+}
 
 #define ERUtilityCacheDomain @"com.eintsoft.gopher-wood.noahs-utility.cache.domain"
 

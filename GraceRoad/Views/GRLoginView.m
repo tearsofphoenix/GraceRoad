@@ -48,7 +48,6 @@
         UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget: self
                                                                                                action: @selector(_handleBackgroundTappedEvent:)];
         [_loginContentView addGestureRecognizer: tapGestureRecognizer];
-        [tapGestureRecognizer release];
         
         [self addSubview: _loginContentView];
         
@@ -87,7 +86,7 @@
         [[_userNameField layer] setCornerRadius: 3];
         
         [_userNameField setPlaceholder: @"手机号/邮箱/微信号/QQ"];
-        [_userNameField setLeftView: [[[UIView alloc] initWithFrame: CGRectMake(0, 0, 10, 10)] autorelease]];
+        [_userNameField setLeftView: [[UIView alloc] initWithFrame: CGRectMake(0, 0, 10, 10)]];
         [_userNameField setLeftViewMode: UITextFieldViewModeAlways];
         [_userNameField setFont: [UIFont fontWithName: fontName
                                                  size: 16]];
@@ -111,7 +110,7 @@
             [_userNameField setText: userName];
         }
         
-        [_passwordField setLeftView: [[[UIView alloc] initWithFrame: CGRectMake(0, 0, 10, 10)] autorelease]];
+        [_passwordField setLeftView: [[UIView alloc] initWithFrame: CGRectMake(0, 0, 10, 10)]];
         [_passwordField setLeftViewMode: UITextFieldViewModeAlways];
         [_passwordField setSecureTextEntry: YES];
         
@@ -139,8 +138,6 @@
                         action: @selector(_handleLoginButtonTappedEvent:)
               forControlEvents: UIControlEventTouchUpInside];
         [_loginContentView addSubview: loginButton];
-        [loginButton release];
-        
 
         rect = CGRectMake(29, 415 + offsetY, 263, 19);
         UIButton *forgotPassworButton = [[UIButton alloc] initWithFrame: rect];
@@ -160,7 +157,6 @@
                                 action: @selector(_handleForgotPasswordButtonTappedEvent:)
                       forControlEvents: UIControlEventTouchUpInside];
         [_loginContentView addSubview: forgotPassworButton];
-        [forgotPassworButton release];
         
         contentSize.height = rect.origin.y + rect.size.height + 20;
         
@@ -183,15 +179,6 @@
     NSLog(@"in func: %s", __func__);
     
     [[NSNotificationCenter defaultCenter] removeObserver: self];
-    
-    [_loginContentView release];
-    [_titleLabel release];
-    [_subtitleLabel release];
-    
-    [_userNameField release];
-    [_passwordField release];
-    
-    [super dealloc];
 }
 
 - (void)setFrame: (CGRect)frame
@@ -244,7 +231,7 @@
                                              ERSC(GRViewServiceID, GRViewServiceAlertMessageAction, @[ @"登录失败！"], nil);
                                           }
                                       });
-        callback = Block_copy(callback);
+        callback = [callback copy];
         
         ERSC(GRViewServiceID, GRViewServiceShowLoadingIndicatorAction, nil, nil);
         
@@ -253,8 +240,6 @@
         ERSC(GRDataServiceID,
              GRDataServiceLoginAction,
              @[userName, password, callback ], nil);
-        
-        Block_release(callback);
     }
 }
 

@@ -49,9 +49,7 @@ didFinishLaunchingWithOptions: (NSDictionary *)launchOptions
     ERSC(GRViewServiceID,
          GRViewServiceRegisterRootViewControllerAction,
          @[ rootViewController ], nil);
-    
-    [rootViewController release];
-    
+        
     [_window makeKeyAndVisible];
     
     [WXApi registerApp: @"wx862decf228c6b60b"

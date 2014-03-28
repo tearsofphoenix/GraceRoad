@@ -72,20 +72,11 @@
     return self;
 }
 
-- (void)dealloc
-{
-    [_data release];
-    [_contentView release];
-    
-    [super dealloc];
-}
-
 - (void)setData: (NSArray *)data
 {
     if (_data != data)
     {
-        [_data release];
-        _data = [data retain];
+        _data = data;
         
         [_contentView reloadData];
     }
@@ -113,7 +104,7 @@
     NSDictionary *info = _data[idx];
     [view setInfo: info];
     
-    return [view autorelease];
+    return view;
 }
 
 - (CGFloat)      tableView: (UITableView *)tableView

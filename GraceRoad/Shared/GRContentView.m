@@ -33,18 +33,13 @@
 - (void)dealloc
 {
     NSLog(@"in func: %s self: %@", __func__, self);
-
-    [_title release];
-    
-    [super dealloc];
 }
 
 - (void)setTitle: (NSString *)title
 {
     if (_title != title)
     {
-        [_title release];
-        _title = [title retain];
+        _title = title;
         
         if (_delegate)
         {

@@ -24,7 +24,7 @@ static inline void ERDB(NSString *databaseIdentifier, ERDatabaseServiceSQLExecut
     id executionBlock = nil;
     if (execution)
     {
-        executionBlock = [Block_copy(execution) autorelease];
+        executionBlock = [execution copy];
     }
     
     NSArray *arguments = [NSArray arrayWithObjects:
@@ -44,7 +44,7 @@ static inline void ERDBE(NSString *databaseIdentifier, ERDatabaseServiceSQLExecu
     id executionBlock = nil;
     if (execution)
     {
-        executionBlock = [Block_copy(execution) autorelease];
+        executionBlock = [execution copy];
     }
     
     NSArray *arguments = [NSArray arrayWithObjects:
@@ -64,7 +64,7 @@ static inline void ERDBT(NSString *databaseIdentifier, ERDatabaseServiceSQLExecu
     id executionBlock = nil;
     if (execution)
     {
-        executionBlock = [Block_copy(execution) autorelease];
+        executionBlock = [execution copy];
     }
     
     NSArray *arguments = [NSArray arrayWithObjects:

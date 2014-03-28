@@ -54,7 +54,7 @@ static NSString *_CreateFolderUnderLibraryDirectoryIfNeeded(NSString *folderName
 {
     if (!gsResourcePath)
     {
-        gsResourcePath = [_CreateFolderUnderLibraryDirectoryIfNeeded(@"/.grace-road-resources") retain];
+        gsResourcePath = _CreateFolderUnderLibraryDirectoryIfNeeded(@"/.grace-road-resources");
     }
     
     return gsResourcePath;
@@ -165,7 +165,7 @@ static NSString *gsDatabasePath = nil;
 {
     if (!gsDatabasePath)
     {
-        gsDatabasePath = [_CreateFolderUnderLibraryDirectoryIfNeeded(@"/.grace-road-database") retain];
+        gsDatabasePath = _CreateFolderUnderLibraryDirectoryIfNeeded(@"/.grace-road-database");
     }
     
     return gsDatabasePath;

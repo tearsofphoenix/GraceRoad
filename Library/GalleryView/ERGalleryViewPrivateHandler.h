@@ -21,54 +21,6 @@ typedef CGSize (^ERGalleryViewArranger)(ERGalleryView *self,
                                         ERGalleryViewIterator iterator);
 
 @interface ERGalleryViewPrivateHandler: NSObject<UIScrollViewDelegate, UIGestureRecognizerDelegate>
-{
-    
-    ERGalleryView *_galleryView;
-    
-    NSMutableDictionary *_thumbnails;
-    NSMutableDictionary *_thumbnailLayouts;
-    NSMutableDictionary *_preservedThumbnailIndexPaths;
-    NSMutableArray *_selfManagedIndexPaths;
-    
-    BOOL _needRearrangement;
-    
-    NSMutableArray *_animationIndexPaths;
-    
-    ERGalleryViewArranger _arranger;
-    
-    UIView *_separatorView;
-    
-    UIPanGestureRecognizer *_panGestureRecognizer;
-    UILongPressGestureRecognizer *_longPressGestureRecognizer;
-    UITapGestureRecognizer *_tapGestureRecognizer;
-    
-    BOOL _allowsSelection;
-    
-    BOOL _allowsReordering;
-    
-    BOOL _allowsMultipleSelection;
-    
-    BOOL _allowsSelectionDuringEditing;
-    
-    BOOL _allowsReorderingDuringEditing;
-    
-    BOOL _allowsMultipleSelectionDuringEditing;
-    
-    NSMutableArray *_selection;
-
-    CGPoint *_draggingPosition;
-    NSMutableArray *_draggingIndexPaths;
-    
-    NSIndexPath **_draggingTargetIndexPath;
-    
-    CGSize _targetContentSize;
-    NSDate *_targetContentSizeFinishTime;
-    
-    NSTimer *_scrollingTimer;
-    
-    NSTimer *_contentSizingTimer;
-    
-}
 
 @property (nonatomic) BOOL allowsSelection;
 

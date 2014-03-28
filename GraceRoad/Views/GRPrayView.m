@@ -48,7 +48,6 @@
                            action: @selector(_handleRefreshEvent:)
                  forControlEvents: UIControlEventValueChanged];
         [_prayListViewController setRefreshControl: refreshControl];
-        [refreshControl release];
         
         UITableView *prayListView = [_prayListViewController tableView];
         
@@ -86,14 +85,6 @@
 {
     [[NSNotificationCenter defaultCenter] removeObserver: self];
     
-    [_dateArray release];
-    [_prayMap release];
-    [_praySources release];
-    [_prayListViewController release];
-    
-    [_rightNavigationButton release];
-    
-    [super dealloc];
 }
 
 - (UIButton *)rightNavigationButton
@@ -126,7 +117,7 @@
     
     [[cell textLabel] setText: prayInfo[GRPrayTitleKey]];
     
-    return [cell autorelease];
+    return cell;
 }
 
 - (CGFloat)   tableView: (UITableView *)tableView
@@ -188,10 +179,11 @@ commitEditingStyle: (UITableViewCellEditingStyle)editingStyle
                                                 callback: nil];
     
     [alertView setAlertViewStyle: UIAlertViewStylePlainTextInput];
+    __block id fakeSelf = alertView;
     
     [alertView setCallback: (^(NSInteger buttonIndex)
                              {
-                                 NSString *text = [[alertView textFieldAtIndex: 0] text];
+                                 NSString *text = [[fakeSelf textFieldAtIndex: 0] text];
                                  if ([text length] > 0)
                                  {
                                      NSDictionary *prayInfo = (@{
@@ -262,11 +254,9 @@ commitEditingStyle: (UITableViewCellEditingStyle)editingStyle
                                       [self _reloadData];
                                   });
     
-    callback = Block_copy(callback);
+    callback = [callback copy];
     
     ERSC(GRDataServiceID, GRDataServiceRefreshPrayWithCallbackAction, @[ callback ], nil);
-    
-    Block_release(callback);
 }
 
 - (void)_notificationForPraySynchronized: (NSNotification *)notification

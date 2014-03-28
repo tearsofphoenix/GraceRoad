@@ -87,20 +87,6 @@
     return self;
 }
 
-- (void)dealloc
-{
-    [_blurView release];
-    [_contentView release];
-    [_imageView release];
-    [_contentTextView release];
-    [_player release];
-    [_sermonInfo release];
-    [_backgroundView release];
-    [_rightNavigationButton release];
-    
-    [super dealloc];
-}
-
 - (void)setFrame: (CGRect)frame
 {
     [super setFrame: frame];
@@ -117,8 +103,7 @@
 {
     if (_sermonInfo != sermonInfo)
     {
-        [_sermonInfo release];
-        _sermonInfo = [sermonInfo retain];
+        _sermonInfo = sermonInfo;
         
         [self setTitle: _sermonInfo[GRSermonTitle]];
         
@@ -151,7 +136,6 @@
     [rootViewController presentViewController: shareViewController
                                      animated: YES
                                    completion: nil];
-    [shareViewController release];
 }
 
 @end

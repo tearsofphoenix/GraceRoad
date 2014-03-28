@@ -9,16 +9,5 @@
 #import "GRMapAnnotation.h"
 
 @implementation GRMapAnnotation
-
-@synthesize title = _title;
-@synthesize subtitle = _subtitle;
-@synthesize coordinate = _coordinate;
-
-- (void)dealloc
-{
-    [_title release];
-    [_subtitle release];
-    
-    [super dealloc];
-}
+ 
 @end

@@ -67,23 +67,6 @@
     return self;
 }
 
-- (void)dealloc
-{
-    NSLog(@"in func: %s", __func__);
-    
-    [_rightNavigationButton release];
-    [_resourceInfo release];
-
-    [_doneButton release];
-    
-    [_package release];
-    [_packageView release];
-    
-    [_previewController release];
-    
-    [super dealloc];
-}
-
 - (void)setFrame: (CGRect)frame
 {
     [super setFrame: frame];
@@ -121,8 +104,7 @@
 {
     if (_resourceInfo != resourceInfo)
     {
-        [_resourceInfo release];
-        _resourceInfo = [resourceInfo retain];
+        _resourceInfo = resourceInfo;
         
         [self setTitle: _resourceInfo[GRResourceName]];
         
@@ -139,9 +121,6 @@
             ReaderView *view = [[ReaderView alloc] initWithDocument: document];
             
             [self setPackageView: view];
-            
-            [view release];
-            [document release];
             
             [_doneButton setAlpha: 0];
             
@@ -171,7 +150,6 @@
             }
             
             [self setPackage: package];
-            [package release];
             
             [self setPackageView: [_package view]];
         }
@@ -214,7 +192,6 @@
     [rootViewController presentViewController: shareViewController
                                      animated: YES
                                    completion: nil];
-    [shareViewController release];
 }
 
 @end

@@ -14,6 +14,5 @@
 {
     NSAttributedString *title = [[NSAttributedString alloc] initWithString: str];
     [self setAttributedTitle: title];
-    [title release];
 }
 @end

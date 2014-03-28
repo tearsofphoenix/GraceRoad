@@ -47,7 +47,6 @@
                            action: @selector(_handleRefreshEvent:)
                  forControlEvents: UIControlEventValueChanged];
         [_contentViewController setRefreshControl: refreshControl];
-        [refreshControl release];
         
         CGRect rect = CGRectMake(0, 0, frame.size.width, frame.size.height);
         
@@ -72,12 +71,6 @@
 - (void)dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver: self];
-    
-    [_contentViewController release];
-    [_sermonCategories release];
-    [_sermons release];
-    
-    [super dealloc];
 }
 
 - (NSInteger)numberOfSectionsInTableView: (UITableView *)tableView
@@ -110,7 +103,7 @@
     [[cell textLabel] setText: sermonInfo[GRSermonTitle]];
     [[cell imageView] setImage: [GRResourceManager imageForFileType: GRResourceTypeWAVE]];
     
-    return [cell autorelease];
+    return cell;
 }
 
 - (UIView *) tableView: (UITableView *)tableView
@@ -134,9 +127,7 @@ viewForHeaderInSection: (NSInteger)section
     
     ERSC(GRViewServiceID,
          GRViewServicePushContentViewAction,
-         @[ contentView ], nil);
-    
-    [contentView release];
+         @[ contentView ], nil);    
 }
 
 - (void)      tableView: (UITableView *)tableView
@@ -214,11 +205,9 @@ heightForRowAtIndexPath: (NSIndexPath *)indexPath
                                       [self _reloadData];
                                   });
     
-    callback = Block_copy(callback);
+    callback = [callback copy];
     
     ERSC(GRDataServiceID, GRDataServiceRefreshSermonWithCallbackAction, @[ callback ], nil);
-    
-    Block_release(callback);
 }
 
 - (void)_reloadData

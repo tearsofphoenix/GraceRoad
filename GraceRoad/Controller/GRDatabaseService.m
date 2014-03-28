@@ -102,13 +102,6 @@
     return self;
 }
 
-- (void)dealloc
-{
-    [_database release];
-    
-    [super dealloc];
-}
-
 - (void)executeTransaction: (ERDatabaseServiceSQLExecution)transactionBlock
 {
     if (transactionBlock)
@@ -159,9 +152,7 @@
                                               [notificationLooper setUserInfo: obj];
                                               [notificationLooper setAlertBody: [NSString stringWithFormat: @"每日读经： %@", address]];
                                               
-                                              [[UIApplication sharedApplication] scheduleLocalNotification: notificationLooper];
-                                              
-                                              [notificationLooper release];
+                                              [[UIApplication sharedApplication] scheduleLocalNotification: notificationLooper];                                              
                                           }
                                           
                                           ++idx;

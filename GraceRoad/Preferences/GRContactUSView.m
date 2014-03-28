@@ -36,10 +36,8 @@
         
         UIView *view = [[UIView alloc] initWithFrame: CGRectMake(0, 0, 320, 320)];
         [view addSubview: QRCodeView];
-        [QRCodeView release];
         
         [_tableView setTableHeaderView: view];
-        [view release];
         
         [_tableView setDataSource: self];
         [_tableView setDelegate: self];
@@ -49,13 +47,6 @@
         
     }
     return self;
-}
-
-- (void)dealloc
-{
-    [_tableView release];
-    
-    [super dealloc];
 }
 
 - (void)setFrame: (CGRect)frame
@@ -115,7 +106,7 @@
             break;
     }
     
-    return [cell autorelease];
+    return cell;
 }
 
 - (CGFloat)   tableView: (UITableView *)tableView

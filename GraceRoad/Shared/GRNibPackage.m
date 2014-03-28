@@ -55,15 +55,6 @@
     return self;
 }
 
-- (void)dealloc
-{
-    [_view release];
-    [_viewConfiguration release];
-    [_inputContext release];
-    
-    [super dealloc];
-}
-
 static void _GRPackageGatherInput(UIView *view, NSDictionary  *viewConfiguration, NSMutableDictionary *result)
 {
     Class swtichClass = [UISwitch class];

@@ -56,23 +56,11 @@
     return self;
 }
 
-- (void)dealloc
-{
-    [_titleLabel release];
-    [_scriptureView release];
-    [_questionView release];
-    
-    [_QTInfo release];
-    
-    [super dealloc];
-}
-
 - (void)setQTInfo: (NSDictionary *)QTInfo
 {
     if (_QTInfo != QTInfo)
     {
-        [_QTInfo release];
-        _QTInfo = [QTInfo retain];
+        _QTInfo = QTInfo;
 
         [self setTitle: _QTInfo[@"title"]];
         [_scriptureView setText: _QTInfo[@"scripture"]];

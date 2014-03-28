@@ -24,7 +24,7 @@ static NSURL *gsServerURL = nil;
 {
     if (!gsServerURL)
     {
-        gsServerURL = [[NSURL URLWithString: GRServerMessageURLString] retain];
+        gsServerURL = [NSURL URLWithString: GRServerMessageURLString];
     }
     
     return gsServerURL;

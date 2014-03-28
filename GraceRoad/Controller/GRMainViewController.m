@@ -86,11 +86,6 @@
     [_tabbar setDelegate: self];
     [[self view] addSubview: _tabbar];
     
-    [item0 release];
-    [item1 release];
-    [item2 release];
-    [item3 release];
-    
     _contentView = [[UIView alloc] initWithFrame: CGRectMake(0,
                                                              CGRectGetMaxY(navigationBarFrame),
                                                              bounds.size.width,
@@ -106,22 +101,18 @@
     GRIntroductView *introductView = [[GRIntroductView alloc] initWithFrame: contentBounds];
     [_viewStacks addObject: [NSMutableArray arrayWithObject: introductView]];
     [_contentView addSubview: introductView];
-    [introductView release];
     
     GRResourceView *resourceView = [[GRResourceView alloc] initWithFrame: contentBounds];
     [_viewStacks addObject: [NSMutableArray arrayWithObject: resourceView]];
     [_contentView addSubview: resourceView];
-    [resourceView release];
     
     GRSermonView *sermonView = [[GRSermonView alloc] initWithFrame: contentBounds];
     [_viewStacks addObject: [NSMutableArray arrayWithObject: sermonView]];
     [_contentView addSubview: sermonView];
-    [sermonView release];
     
     GRPreferenceView *preferenceView = [[GRPreferenceView alloc] initWithFrame: contentBounds];
     [_viewStacks addObject: [NSMutableArray arrayWithObject: preferenceView]];
     [_contentView addSubview: preferenceView];
-    [preferenceView release];
     
     [self setCurrentIndex: 0];
     [_tabbar setSelectedItem: [_tabbar items][0]];
@@ -135,17 +126,6 @@
     
     [[self view] addSubview: _modalPresentView];
     [[self view] bringSubviewToFront: _modalPresentView];
-}
-
-
-- (void)dealloc
-{
-    [_viewStacks release];
-    [_contentView release];
-    
-    [_navigationBarView release];
-    [_tabbar release];
-    [super dealloc];
 }
 
 #pragma mark - UITabBarDelegate

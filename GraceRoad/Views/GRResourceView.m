@@ -58,7 +58,6 @@
         UISearchBar *searchBar = [[UISearchBar alloc] initWithFrame: rect];
         [searchBar setDelegate: self];
         [self addSubview: searchBar];
-        [searchBar release];
         
         rect.origin.y += rect.size.height;
         rect.size.height = frame.size.height - rect.size.height;
@@ -73,7 +72,6 @@
                            action: @selector(_handleRefreshEvent:)
                  forControlEvents: UIControlEventValueChanged];
         [_contentViewController setRefreshControl: refreshControl];
-        [refreshControl release];
 
         UITableView *contentView = [_contentViewController tableView];
         [contentView setFrame: rect];
@@ -95,12 +93,6 @@
 - (void)dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver: self];
-    
-    [_resourceCategories release];
-    [_resources release];
-    [_contentViewController release];
-    
-    [super dealloc];
 }
 
 #pragma mark - search bar delegate
@@ -121,11 +113,10 @@
 {
     if (![_filterString isEqualToString: filterString])
     {
-        id oldValue = _filterString;
         [self willChangeValueForKey: @"filterString"];
         
-        _filterString = [filterString retain];
-        [oldValue release];
+        _filterString = filterString;
+
         [self _updateContent];
         
         [self didChangeValueForKey: @"filterString"];
@@ -236,7 +227,7 @@ viewForHeaderInSection: (NSInteger)section
     
     [[cell imageView] setImage: [GRResourceManager imageForFileType: resourceInfo[GRResourceTypeKey]]];
     
-    return [cell autorelease];
+    return cell;
 }
 
 - (CGFloat)    tableView: (UITableView *)tableView
@@ -259,8 +250,6 @@ heightForRowAtIndexPath: (NSIndexPath *)indexPath
     ERSC(GRViewServiceID,
          GRViewServicePushContentViewAction,
          @[ infoView ], nil);
-    
-    [infoView release];
 }
 
 - (void)tableView: (UITableView *)tableView
@@ -345,13 +334,11 @@ didSelectRowAtIndexPath: (NSIndexPath *)indexPath
                                       
                                       [self _reloadData];
                                   });
-    callback = Block_copy(callback);
+    callback = [callback copy];
     
     ERSC(GRDataServiceID,
          GRDataServiceRefreshResourceWithCallbackAction,
-         @[ callback ], nil);
-    
-    Block_release(callback);
+         @[ callback ], nil);    
 }
 
 - (void)_notificationForResourceSynchronize: (NSNotification *)notification

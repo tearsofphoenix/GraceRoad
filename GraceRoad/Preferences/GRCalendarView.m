@@ -74,20 +74,11 @@
     return self;
 }
 
-- (void)dealloc
-{
-    [_contentView release];
-    [_data release];
-    
-    [super dealloc];
-}
-
 - (void)setData: (NSArray *)data
 {
     if (_data != data)
     {
-        [_data release];
-        _data = [data retain];
+        _data = data;
         
         [_contentView reloadData];
     }
@@ -107,7 +98,7 @@ viewForHeaderInSection: (NSInteger)section
     NSDictionary *sectionInfo = _data[section];
     [label setText: [@"   " stringByAppendingString: sectionInfo[GRSectionTitleKey]]];
     
-    return [label autorelease];
+    return label;
 }
 
 - (NSInteger)tableView: (UITableView *)tableView
@@ -133,7 +124,7 @@ viewForHeaderInSection: (NSInteger)section
     
     [[cell textLabel] setText: [date stringByAppendingFormat: @"  %@", content]];
     
-    return [cell autorelease];
+    return cell;
 }
 
 @end

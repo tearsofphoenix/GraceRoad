@@ -62,7 +62,6 @@
         [label setFont: [UIFont systemFontOfSize: 14]];
         [label setText: @"姓名："];
         [self addSubview: label];
-        [label release];
         
         _nameLabel = [[UILabel alloc] initWithFrame: CGRectMake(144, 10, 260, 40)];
         [_nameLabel setTextColor: [UIColor whiteColor]];
@@ -76,7 +75,6 @@
         [label setFont: [UIFont systemFontOfSize: 14]];
         [label setText: @"所在组："];
         [self addSubview: label];
-        [label release];
         
         _teamNameButton = [[UIButton alloc] initWithFrame: CGRectMake(144, 50, 80, 36)];
         [_teamNameButton addTarget: self
@@ -124,7 +122,6 @@
                             action: @selector(_handleSelectAllTappedEvent:)
                   forControlEvents: UIControlEventTouchUpInside];
         [self addSubview: selectAllButton];
-        [selectAllButton release];
         
         UIButton *sendMessageButton = [[UIButton alloc] initWithFrame: CGRectMake(frame.size.width - 80, 78, 70, 36)];
         [sendMessageButton setTitle: @"发送消息"
@@ -137,7 +134,6 @@
                               action: @selector(_handleSendMessageButtonTappedEvent:)
                     forControlEvents: UIControlEventTouchUpInside];
         [self addSubview: sendMessageButton];
-        [sendMessageButton release];
         
         _memberList = [[NSMutableArray alloc] init];
         
@@ -158,31 +154,11 @@
     return self;
 }
 
-- (void)dealloc
-{
-    [_avatarBackgroundView release];
-    [_avatarView release];
-    [_nameLabel release];
-    [_teamNameButton release];
-    
-    [_logoutButton release];
-    
-    [_memberList release];
-    [_memberListView release];
-    [_selectedIndexPaths release];
-    
-    [_teams release];
-    [_selectedTeam release];
-    
-    [super dealloc];
-}
-
 - (void)setSelectedTeam: (NSDictionary *)selectedTeam
 {
     if (_selectedTeam != selectedTeam)
     {
-        [_selectedTeam release];
-        _selectedTeam = [selectedTeam retain];
+        _selectedTeam = selectedTeam;
         
         [_teamNameButton setTitle: _selectedTeam[GRTeamNameKey]
                          forState: UIControlStateNormal];
@@ -240,7 +216,7 @@ viewForHeaderInSection: (NSInteger)section
         [headerLabel setText: @"    成员"];
     }
     
-    return [headerLabel autorelease];
+    return headerLabel;
 }
 
 - (NSInteger)tableView: (UITableView *)tableView
@@ -266,7 +242,7 @@ viewForHeaderInSection: (NSInteger)section
         [cell setAccessoryType: UITableViewCellAccessoryNone];
     }
     
-    return [cell autorelease];
+    return cell;
 }
 
 - (void)      tableView: (UITableView *)tableView
@@ -364,8 +340,6 @@ heightForRowAtIndexPath: (NSIndexPath *)indexPath
         [sendMessageView setTargetAccounts: targetAccounts];
         
         ERSC(GRViewServiceID, GRViewServicePushContentViewAction, @[ sendMessageView ], nil);
-        
-        [sendMessageView release];
     }
 }
 

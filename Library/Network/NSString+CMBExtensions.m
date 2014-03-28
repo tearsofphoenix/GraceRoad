@@ -108,16 +108,16 @@
     
     CFRelease(uuidRef);
     
-    NSString *returnValue = (NSString *)result;
+    NSString *returnValue = (__bridge NSString *)result;
     
-    return [returnValue autorelease];
+    return returnValue;
 }
 
 + (id)stringWithData: (NSData *)data
             encoding: (NSStringEncoding)encoding
 {
-    return [[[self alloc] initWithData: data
-                              encoding: encoding] autorelease];
+    return [[self alloc] initWithData: data
+                              encoding: encoding];
 }
 
 static char sources[] = "qwertyuiopasdfghjklzxcvbnm1234567890";
@@ -138,6 +138,6 @@ static char sources[] = "qwertyuiopasdfghjklzxcvbnm1234567890";
     
     free(buffer);
     
-    return [str autorelease];
+    return str;
 }
 @end

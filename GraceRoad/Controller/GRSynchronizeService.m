@@ -63,13 +63,6 @@
     return self;
 }
 
-- (void)dealloc
-{
-    [_database release];
-    
-    [super dealloc];
-}
-
 - (void)addRecords: (NSArray *)records
 {
     @autoreleasepool

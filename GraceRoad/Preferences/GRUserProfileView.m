@@ -84,16 +84,6 @@
     return self;
 }
 
-- (void)dealloc
-{
-    [_detailView release];
-    [_loginView release];
-    [_rightNavigationButton release];
-    [_calendarView release];
-    
-    [super dealloc];
-}
-
 - (void)setFrame: (CGRect)frame
 {
     [super setFrame: frame];
@@ -108,7 +98,6 @@
 {
     GRCalendarView *view = [[GRCalendarView alloc] initWithFrame: [self frame]];
     ERSC(GRViewServiceID, GRViewServicePushContentViewAction, @[ view ], nil);
-    [view release];
 }
 
 @end

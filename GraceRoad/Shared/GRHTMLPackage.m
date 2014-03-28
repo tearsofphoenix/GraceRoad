@@ -38,20 +38,10 @@
                       baseURL: nil];
         
         NSString *path = [bundlePath stringByAppendingPathComponent: @"info.plist"];
-        _viewConfiguration = [[NSArray arrayWithContentsOfFile: path] retain];
+        _viewConfiguration = [NSArray arrayWithContentsOfFile: path];
     }
     
     return self;
-}
-
-- (void)dealloc
-{
-    [_view release];
-    [_viewConfiguration release];
-    [_inputContext release];
-    [_cachedUpdateContext release];
-    
-    [super dealloc];
 }
 
 - (UIView *)view

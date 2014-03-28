@@ -20,11 +20,9 @@
 
 static inline void GRDBT(ERDatabaseServiceSQLExecution execution)
 {
-    execution = Block_copy(execution);
+    execution = [execution copy];
     
     ERSSC(GRDatabaseServiceID,
           GRDatabaseServiceExecuteTransactionAction,
           @[ execution ]);
-    
-    Block_release(execution);
 }

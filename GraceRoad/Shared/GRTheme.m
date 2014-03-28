@@ -16,7 +16,7 @@
     
     if (!darkColor)
     {
-        darkColor = [[UIColor colorWithRed:10.0/255 green:78.0/255 blue:108.0/255 alpha:1.0f] retain];
+        darkColor = [UIColor colorWithRed:10.0/255 green:78.0/255 blue:108.0/255 alpha:1.0f];
     }
     
     return darkColor;
@@ -27,10 +27,10 @@
     static UIColor *blueColor = nil;
     if (!blueColor)
     {
-        blueColor = [[UIColor colorWithRed: 0.16f
-                                     green: 0.56f
-                                      blue: 0.87f
-                                     alpha: 1.00f] retain];
+        blueColor = [UIColor colorWithRed: 0.16f
+                                    green: 0.56f
+                                     blue: 0.87f
+                                    alpha: 1.00f];
     }
     
     return blueColor;
@@ -41,10 +41,10 @@
     static UIColor *lightBlueColor = nil;
     if (!lightBlueColor)
     {
-        lightBlueColor = [[UIColor colorWithRed: 0.79
-                                          green: 0.85
-                                           blue: 0.96
-                                          alpha: 1] retain];
+        lightBlueColor = [UIColor colorWithRed: 0.79
+                                         green: 0.85
+                                          blue: 0.96
+                                         alpha: 1];
     }
     
     return lightBlueColor;
@@ -56,10 +56,10 @@
     
     if (!headerBlueColor)
     {
-        headerBlueColor = [[UIColor colorWithRed: 83 / 255.0
-                                          green: 152 / 255.0
-                                           blue: 253 / 255.0
-                                           alpha: 0.8] retain];
+        headerBlueColor = [UIColor colorWithRed: 83 / 255.0
+                                           green: 152 / 255.0
+                                            blue: 253 / 255.0
+                                           alpha: 0.8];
     }
     
     return headerBlueColor;
@@ -72,7 +72,7 @@
     [headerLabel setBackgroundColor: [GRTheme headerBlueColor]];
     [headerLabel setTextColor: [UIColor whiteColor]];
     
-    return [headerLabel autorelease];
+    return headerLabel;
 }
 
 @end

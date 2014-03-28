@@ -54,16 +54,8 @@
         UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget: self
                                                                                                action: @selector(_handleBackgroundTappedEvent:)];
         [self addGestureRecognizer: tapGestureRecognizer];
-        [tapGestureRecognizer release];
     }
     return self;
-}
-
-- (void)dealloc
-{
-    [_textView release];
-    
-    [super dealloc];
 }
 
 - (void)_handleSendButtonTappedEvent: (id)sender
@@ -82,11 +74,10 @@
                                           ERSC(GRViewServiceID, GRViewServiceAlertMessageAction, @[@"反馈成功！谢谢。"], nil);
                                       });
         
-        callback = Block_copy(callback);
+        callback = [callback copy];
         
         ERSC(GRDataServiceID, GRDataServiceSendFeedbackAction, @[ feedback, callback ], nil);
         
-        Block_release(callback);
     }else
     {
         ERSC(GRViewServiceID, GRViewServiceAlertMessageAction, @[ @"请检查您的输入！"], nil);

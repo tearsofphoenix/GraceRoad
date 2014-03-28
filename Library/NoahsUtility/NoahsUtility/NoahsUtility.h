@@ -115,9 +115,9 @@ static inline id ERBlock(id block)
     if (block)
     {
         
-        id copiedBlock = Block_copy(block);
+        id copiedBlock = [block copy];
         
-        return [copiedBlock autorelease];
+        return copiedBlock;
         
     }
     else
@@ -129,10 +129,10 @@ static inline id ERBlock(id block)
 
 static inline id ERBlockCopy(id block)
 {
-    return Block_copy(block);
+    return [block copy];
 }
 
 static inline void ERBlockRelease(id block)
 {
-    Block_release(block);
+//    Block_release(block);
 }

@@ -50,14 +50,6 @@
     return self;
 }
 
-- (void)dealloc
-{
-    [_titles release];
-    [_tableView release];
-    
-    [super dealloc];
-}
-
 - (NSInteger)tableView: (UITableView *)tableView
  numberOfRowsInSection: (NSInteger)section
 {
@@ -72,7 +64,7 @@
     //[[cell textLabel] setTextAlignment: NSTextAlignmentCenter];
     [[cell textLabel] setText: _titles[[indexPath row]]];
     
-    return [cell autorelease];
+    return cell;
 }
 
 - (CGFloat)   tableView: (UITableView *)tableView
@@ -89,7 +81,6 @@ didSelectRowAtIndexPath: (NSIndexPath *)indexPath
     
     GRContentView *view = [[viewClass alloc] initWithFrame: [self frame]];
     ERSC(GRViewServiceID, GRViewServicePushContentViewAction, @[ view ], nil);
-    [view release];
 }
 
 @end

@@ -41,7 +41,7 @@ static char UIAlertViewCallbackKey;
         [alertView addButtonWithTitle: tLooper];
     }
     
-    return [alertView autorelease];
+    return alertView;
 }
 
 + (void)alertWithMessage: (NSString *)message

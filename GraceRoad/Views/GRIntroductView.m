@@ -44,9 +44,9 @@
     self = [super initWithFrame: frame];
     if (self)
     {
-        _telephones = [@[@"137-9535-2317",
+        _telephones = @[@"137-9535-2317",
                          @"135-6426-9605",
-                         @"158-0193-5868",] retain];
+                         @"158-0193-5868",];
         
         [self setTitle: @"新松江恩典教会"];
         
@@ -76,7 +76,6 @@
                                "愿在以后的生活里我们共同学习神的话语。耶稣爱你！\n"
                                "")];
         [_tableView setTableHeaderView: contentView];
-        [contentView release];
 
         rect.origin.x = 0;
         rect.origin.y = 0;
@@ -111,16 +110,6 @@
 {
     [[Reachability reachabilityForInternetConnection] stopNotifier];
     [[NSNotificationCenter defaultCenter] removeObserver: self];
-    
-    [_telephones release];
-    [_tableView release];
-#if GRHasMap
-    [_mapView release];
-    [_annotation release];
-#endif
-    [_placeHolderImageView release];
-    
-    [super dealloc];
 }
 
 - (void)_updateMapForChurchLocation
@@ -318,7 +307,7 @@ viewForHeaderInSection: (NSInteger)section
         }
     }
 
-    return [cell autorelease];
+    return cell;
 }
 
 - (CGFloat)   tableView: (UITableView *)tableView
@@ -386,7 +375,7 @@ didSelectRowAtIndexPath: (NSIndexPath *)indexPath
     CallOutAnnotationVifew *annotationView = (CallOutAnnotationVifew *)[mapView dequeueReusableAnnotationViewWithIdentifier:@"CalloutView"];
     if (!annotationView)
     {
-        annotationView = [[[CallOutAnnotationVifew alloc] initWithAnnotation:annotation reuseIdentifier:@"CalloutView"] autorelease];
+        annotationView = [[CallOutAnnotationVifew alloc] initWithAnnotation:annotation reuseIdentifier:@"CalloutView"];
         JingDianMapCell  *cell = [[[NSBundle mainBundle] loadNibNamed:@"JingDianMapCell" owner:self options:nil] objectAtIndex:0];
         [annotationView.contentView addSubview:cell];
         

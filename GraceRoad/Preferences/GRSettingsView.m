@@ -35,12 +35,6 @@
     return self;
 }
 
-- (void)dealloc
-{
-    [_tableView release];
-    [super dealloc];
-}
-
 - (void)setFrame: (CGRect)frame
 {
     [super setFrame: frame];
@@ -71,9 +65,10 @@
             
             UISwitch *switchView = [[UISwitch alloc] initWithFrame: CGRectMake(320 - 60, 7, 40, 30)];
             [[cell contentView] addSubview: switchView];
+            __block id fakeSwitchView = switchView;
             [switchView setCallback: (^
                                       {
-                                          if ([switchView isOn])
+                                          if ([fakeSwitchView isOn])
                                           {
                                               
                                           }else
@@ -81,14 +76,13 @@
                                               
                                           }
                                       })];
-            [switchView release];
             break;
         }
         default:
             break;
     }
     
-    return [cell autorelease];
+    return cell;
 }
 
 - (CGFloat)   tableView: (UITableView *)tableView

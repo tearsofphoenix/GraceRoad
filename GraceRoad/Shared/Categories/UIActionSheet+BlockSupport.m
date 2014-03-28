@@ -36,8 +36,6 @@ static char *UIActionSheetCallbackKey;
     }
     
     [sheet showInView: view];
-    
-    [sheet autorelease];
 }
 
 - (void)setCallback: (GRActionSheetCallback)callback

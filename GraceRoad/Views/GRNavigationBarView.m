@@ -106,14 +106,6 @@
     return self;
 }
 
-- (void)dealloc
-{
-    [_leftNavigationButton release];
-    [_titleLabel release];
-    
-    [super dealloc];
-}
-
 - (void)setTitle: (NSString *)title
 {
     [_titleLabel setText: title];

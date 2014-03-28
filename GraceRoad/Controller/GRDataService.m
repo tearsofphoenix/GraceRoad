@@ -406,9 +406,7 @@
             [req setBText: YES];
             [req setScene: WXSceneSession];
             
-            [WXApi sendReq: req];
-            
-            [req release];
+            [WXApi sendReq: req];            
         }
     }
 }

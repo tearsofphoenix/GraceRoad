@@ -88,7 +88,6 @@
 		[_rootViewController presentViewController: readerViewController
                                           animated: YES
                                         completion: nil];
-        [readerViewController release];
 	}
 }
 
@@ -112,7 +111,6 @@
         [rootViewController presentViewController: controller
                                          animated: YES
                                        completion: nil];
-        [controller release];
     }else
     {
         [self alertMessage: @"您的设备无法发送短息！"];

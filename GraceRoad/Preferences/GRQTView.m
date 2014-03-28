@@ -42,7 +42,6 @@
                            action: @selector(_handleRefreshEvent:)
                  forControlEvents: UIControlEventValueChanged];
         [_contentViewController setRefreshControl: refreshControl];
-        [refreshControl release];
         
         CGRect rect = CGRectMake(0, 0, frame.size.width, frame.size.height);
         
@@ -81,11 +80,9 @@
                                       [self _reloadData];
                                   });
     
-    callback = Block_copy(callback);
+    callback = [callback copy];
     
     ERSC(GRDataServiceID, GRDataServiceRefreshQTDataAction, @[ callback ], nil);
-    
-    Block_release(callback);
 }
 
 - (NSInteger)tableView: (UITableView *)tableView
@@ -108,7 +105,7 @@
     [[cell textLabel] setTextAlignment: NSTextAlignmentCenter];
     [[cell textLabel] setText: [NSString stringWithFormat: @"%@ %@", [date substringWithRange: NSMakeRange(5, 5)], title]];
     
-    return [cell autorelease];
+    return cell;
 }
 
 - (void)      tableView: (UITableView *)tableView
@@ -124,9 +121,6 @@ didSelectRowAtIndexPath: (NSIndexPath *)indexPath
     ERSC(GRViewServiceID,
          GRViewServicePushContentViewAction,
          @[ contentView ], nil);
-    
-    [contentView release];
-
 }
 
 

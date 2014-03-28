@@ -51,14 +51,6 @@
     return self;
 }
 
-- (void)dealloc
-{
-    [_backgroundImageView release];
-    [_backgroundGlassView release];
-    
-    [super dealloc];
-}
-
 - (void)setGlassColor: (UIColor *)glassColor
 {
     _glassColor = glassColor;
@@ -166,8 +158,6 @@
                                             }
                                         }));
                     }));
-    
-    dispatch_release(queue);
 }
 
 - (void)observeValueForKeyPath: (NSString *)keyPath
