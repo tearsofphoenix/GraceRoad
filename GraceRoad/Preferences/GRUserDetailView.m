@@ -337,6 +337,8 @@ heightForRowAtIndexPath: (NSIndexPath *)indexPath
         }
         
         GRMessageViewController *messageViewController = [[GRMessageViewController alloc] init];
+        
+        [messageViewController setRecipients: targetAccounts];
         UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController: messageViewController];
 
         UIViewController *rootViewController = ERSSC(GRViewServiceID, GRViewServiceRootViewControllerAction, nil);

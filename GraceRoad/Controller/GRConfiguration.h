@@ -18,4 +18,6 @@
 
 + (NSDate *)dateFromString: (NSString *)str;
 
++ (NSString *)timeStampStringForDate: (NSDate *)date;
+
 @end

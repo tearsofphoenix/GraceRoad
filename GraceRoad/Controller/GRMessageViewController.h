@@ -18,5 +18,6 @@
 
 @property (strong, nonatomic) NSMutableArray *messages;
 @property (strong, nonatomic) NSDictionary *avatars;
+@property (strong, nonatomic) NSMutableArray *recipients;
 
 @end

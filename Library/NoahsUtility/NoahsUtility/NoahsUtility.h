@@ -109,24 +109,6 @@
 #   define ERMachineFloatMeaningfulMaximum ERFloatMeaningfulMax
 #endif
 
-static inline id ERBlock(id block)
-{
-    
-    if (block)
-    {
-        
-        id copiedBlock = [block copy];
-        
-        return copiedBlock;
-        
-    }
-    else
-    {
-        return nil;
-    }
-    
-}
-
 static inline id ERBlockCopy(id block)
 {
     return [block copy];

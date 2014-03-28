@@ -15,12 +15,58 @@
 #import "GRMessageViewController.h"
 #import "JSMessage.h"
 #import "GRViewService.h"
+#import "GRDataService.h"
+#import "GRConfiguration.h"
+#import "GRAccountKeys.h"
+#import <NoahsUtility/NoahsUtility.h>
 
-#define kSubtitleJobs @"Jobs"
-#define kSubtitleWoz @"Steve Wozniak"
-#define kSubtitleCook @"Mr. Cook"
+@interface GRMessageViewController ()
+
+@property (nonatomic, strong) NSDictionary *currentAccount;
+
+@end
 
 @implementation GRMessageViewController
+
+- (id)initWithNibName: (NSString *)nibNameOrNil
+               bundle: (NSBundle *)nibBundleOrNil
+{
+    if ((self = [super initWithNibName: nibNameOrNil
+                                bundle: nibBundleOrNil]))
+    {
+        _messages = [[NSMutableArray alloc] init];
+        [self setCurrentAccount: ERSSC(GRDataServiceID, GRDataServiceCurrentAccountAction, nil)];
+        
+        [[NSNotificationCenter serviceCenter] addObserver: self
+                                                 selector: @selector(_notificationForReceivedChatMessage:)
+                                                     name: GRNotificationDidReceivedChatMessage
+                                                   object: nil];
+    }
+    
+    return self;
+}
+
+- (void)dealloc
+{
+    [[NSNotificationCenter serviceCenter] removeObserver: self];
+}
+
+- (void)_notificationForReceivedChatMessage: (NSNotification *)notification
+{
+    NSDictionary *userInfo = [notification userInfo];
+    NSLog(@"line: %d args: %@", __LINE__, userInfo);
+    NSDictionary *aps = userInfo[@"aps"];
+    NSDictionary *args = userInfo[GRPushArgumentsKey];
+    
+    NSDate *date = [GRConfiguration dateFromString: args[GRPushArgumentDateKey]];
+    
+    JSMessage *message = [[JSMessage alloc] initWithText: aps[@"alert"]
+                                                  sender: args[GRPushArgumentSenderKey]
+                                                    date: date];
+    [_messages addObject: message];
+    
+    [[self tableView] reloadData];
+}
 
 #pragma mark - View lifecycle
 
@@ -28,39 +74,32 @@
 {
     [self setDelegate: self];
     [self setDataSource: self];
-
+    
     [super viewDidLoad];
     
-    [[JSBubbleView appearance] setFont: [UIFont systemFontOfSize:16.0f]];
+    [[JSBubbleView appearance] setFont: [UIFont systemFontOfSize: 16.0f]];
     
-    [self setTitle: @"Messages"];
-    
-    [[[self messageInputView] textView] setPlaceHolder: @"New Message"];
-    [self setSender: @"Jobs"];
+    [self setSender: _currentAccount[GRAccountNameKey]];
     
     [self setBackgroundColor: [UIColor whiteColor]];
     
-    self.messages = [[NSMutableArray alloc] initWithObjects:
-                     [[JSMessage alloc] initWithText:@"JSMessagesViewController is simple and easy to use." sender:kSubtitleJobs date:[NSDate distantPast]],
-                     [[JSMessage alloc] initWithText:@"It's highly customizable." sender:kSubtitleWoz date:[NSDate distantPast]],
-                     [[JSMessage alloc] initWithText:@"It even has data detectors. You can call me tonight. My cell number is 452-123-4567. \nMy website is www.hexedbits.com." sender:kSubtitleJobs date:[NSDate distantPast]],
-                     nil];
-    
-    
-    for (NSUInteger i = 0; i < 3; i++)
-    {
-        [self.messages addObjectsFromArray: self.messages];
-    }
-    
-    self.avatars = [[NSDictionary alloc] initWithObjectsAndKeys:
-                    [JSAvatarImageFactory avatarImageNamed:@"demo-avatar-jobs" croppedToCircle:YES], kSubtitleJobs,
-                    [JSAvatarImageFactory avatarImageNamed:@"demo-avatar-woz" croppedToCircle:YES], kSubtitleWoz,
-                    [JSAvatarImageFactory avatarImageNamed:@"demo-avatar-cook" croppedToCircle:YES], kSubtitleCook,
-                    nil];
-    
     [[self navigationItem] setLeftBarButtonItem: [[UIBarButtonItem alloc] initWithBarButtonSystemItem: UIBarButtonSystemItemCancel
-                                                                                              target: self
+                                                                                               target: self
                                                                                                action: @selector(_handleBackButtonEvent:)]];
+}
+
+- (void)setRecipients: (NSMutableArray *)recipients
+{
+    if (_recipients != recipients)
+    {
+        _recipients = recipients;
+        if ([_recipients count] == 1)
+        {
+            NSDictionary *account = _recipients[0];
+            
+            [self setTitle: account[GRAccountNameKey]];
+        }
+    }
 }
 
 - (void)viewWillAppear: (BOOL)animated
@@ -82,43 +121,86 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.messages.count;
+    return [_messages count];
 }
 
 #pragma mark - Messages view delegate: REQUIRED
 
-- (void)didSendText:(NSString *)text fromSender:(NSString *)sender onDate:(NSDate *)date
+- (void)didSendText: (NSString *)text
+         fromSender: (NSString *)sender
+             onDate: (NSDate *)date
 {
-    if ((self.messages.count - 1) % 2) {
-        [JSMessageSoundEffect playMessageSentSound];
-    }
-    else {
-        // for demo purposes only, mimicing received messages
-        [JSMessageSoundEffect playMessageReceivedSound];
-        sender = arc4random_uniform(10) % 2 ? kSubtitleCook : kSubtitleWoz;
-    }
-    
-    [self.messages addObject:[[JSMessage alloc] initWithText:text sender:sender date:date]];
+    [_messages addObject: [[JSMessage alloc] initWithText: text
+                                                       sender: sender
+                                                         date: date]];
     
     [self finishSend];
     [self scrollToBottomAnimated:YES];
-}
-
-- (JSBubbleMessageType)messageTypeForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    return (indexPath.row % 2) ? JSBubbleMessageTypeIncoming : JSBubbleMessageTypeOutgoing;
-}
-
-- (UIImageView *)bubbleImageViewWithType:(JSBubbleMessageType)type
-                       forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (indexPath.row % 2) {
-        return [JSBubbleImageViewFactory bubbleImageViewForType:type
-                                                          color:[UIColor js_bubbleLightGrayColor]];
+    
+    NSMutableArray *recipients = [NSMutableArray arrayWithCapacity: [_recipients count]];
+    
+    for (NSDictionary *tLooper in _recipients)
+    {
+        [recipients addObject: tLooper[GRAccountIDKey]];
     }
     
-    return [JSBubbleImageViewFactory bubbleImageViewForType:type
-                                                      color:[UIColor js_bubbleBlueColor]];
+
+    NSMutableDictionary *info = [NSMutableDictionary dictionary];
+    
+    [info setObject: text
+             forKey: @"message"];
+    
+    [info setObject: GRPushActionChat
+             forKey: GRPushActionKey];
+    [info setObject: (@{
+                        GRPushArgumentDateKey : [GRConfiguration stringFromDate: [[NSDate date] sundayInSameWeek]],
+                        GRPushArgumentTypeKey : GRPushChatTypeText,
+                        GRPushArgumentSenderKey : _currentAccount[GRAccountIDKey],
+                        })
+             forKey: GRPushArgumentsKey];
+    
+    ERServiceCallback callback = (^(id result, NSError *error)
+                                  {
+                                      if (error)
+                                      {
+                                          ERSC(GRViewServiceID, GRViewServiceAlertMessageAction, @[ [error localizedDescription]], nil);
+                                      }else
+                                      {
+                                          [JSMessageSoundEffect playMessageSentSound];
+                                      }
+                                  });
+    callback = [callback copy];
+    
+    ERSSC(GRDataServiceID,
+          GRDataServiceSendPushNotificationToAccountsWithCallbackAction,
+          @[ info, _recipients, callback]);
+    
+}
+
+- (JSBubbleMessageType)messageTypeForRowAtIndexPath: (NSIndexPath *)indexPath
+{
+    JSMessage *message = (JSMessage *)[self messageForRowAtIndexPath: indexPath];
+    
+    if ([[message sender] isEqualToString: [self sender]])
+    {
+        return JSBubbleMessageTypeOutgoing;
+    }else
+    {
+        return JSBubbleMessageTypeIncoming;
+    }
+}
+
+- (UIImageView *)bubbleImageViewWithType: (JSBubbleMessageType)type
+                       forRowAtIndexPath: (NSIndexPath *)indexPath
+{
+    if (JSBubbleMessageTypeIncoming == type)
+    {
+        return [JSBubbleImageViewFactory bubbleImageViewForType: type
+                                                          color: [UIColor js_bubbleLightGrayColor]];
+    }
+    
+    return [JSBubbleImageViewFactory bubbleImageViewForType: type
+                                                      color: [UIColor js_bubbleBlueColor]];
 }
 
 - (JSMessageInputViewStyle)inputViewStyle
@@ -130,21 +212,26 @@
 
 - (BOOL)shouldDisplayTimestampForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.row % 3 == 0) {
+    if (indexPath.row % 3 == 0)
+    {
         return YES;
     }
+    
     return NO;
 }
 
 //
 //  *** Implement to customize cell further
 //
-- (void)configureCell:(JSBubbleMessageCell *)cell atIndexPath:(NSIndexPath *)indexPath
+- (void)configureCell: (JSBubbleMessageCell *)cell
+          atIndexPath: (NSIndexPath *)indexPath
 {
-    if ([cell messageType] == JSBubbleMessageTypeOutgoing) {
+    if ([cell messageType] == JSBubbleMessageTypeOutgoing)
+    {
         cell.bubbleView.textView.textColor = [UIColor whiteColor];
-    
-        if ([cell.bubbleView.textView respondsToSelector:@selector(linkTextAttributes)]) {
+        
+        if ([cell.bubbleView.textView respondsToSelector:@selector(linkTextAttributes)])
+        {
             NSMutableDictionary *attrs = [cell.bubbleView.textView.linkTextAttributes mutableCopy];
             [attrs setValue:[UIColor blueColor] forKey:UITextAttributeTextColor];
             
@@ -152,28 +239,23 @@
         }
     }
     
-    if (cell.timestampLabel) {
+    if (cell.timestampLabel)
+    {
         cell.timestampLabel.textColor = [UIColor lightGrayColor];
         cell.timestampLabel.shadowOffset = CGSizeZero;
     }
     
-    if (cell.subtitleLabel) {
+    if (cell.subtitleLabel)
+    {
         cell.subtitleLabel.textColor = [UIColor lightGrayColor];
     }
     
-    #if TARGET_IPHONE_SIMULATOR
-        cell.bubbleView.textView.dataDetectorTypes = UIDataDetectorTypeNone;
-    #else
-        cell.bubbleView.textView.dataDetectorTypes = UIDataDetectorTypeAll;
-    #endif
+#if TARGET_IPHONE_SIMULATOR
+    cell.bubbleView.textView.dataDetectorTypes = UIDataDetectorTypeNone;
+#else
+    cell.bubbleView.textView.dataDetectorTypes = UIDataDetectorTypeAll;
+#endif
 }
-
-//  *** Implement to use a custom send button
-//
-//  The button's frame is set automatically for you
-//
-//  - (UIButton *)sendButtonForInputView
-//
 
 //  *** Implement to prevent auto-scrolling when message is added
 //
@@ -191,15 +273,16 @@
 
 #pragma mark - Messages view data source: REQUIRED
 
-- (JSMessage *)messageForRowAtIndexPath:(NSIndexPath *)indexPath
+- (JSMessage *)messageForRowAtIndexPath: (NSIndexPath *)indexPath
 {
-    return [self.messages objectAtIndex:indexPath.row];
+    return _messages[[indexPath row]];
 }
 
-- (UIImageView *)avatarImageViewForRowAtIndexPath:(NSIndexPath *)indexPath sender:(NSString *)sender
+- (UIImageView *)avatarImageViewForRowAtIndexPath: (NSIndexPath *)indexPath
+                                           sender: (NSString *)sender
 {
-    UIImage *image = [self.avatars objectForKey:sender];
-    return [[UIImageView alloc] initWithImage:image];
+    UIImage *image = _avatars[sender];
+    return [[UIImageView alloc] initWithImage: image];
 }
 
 @end

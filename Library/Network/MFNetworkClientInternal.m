@@ -76,7 +76,7 @@ static NSUInteger MFNetworkTransferQueueCapacity = 4;
 - (void)_addOperation: (MFNetworkOperation *)operation
                forURL: (NSURL *)targetURL
 {
-    NSLog(@"network.internal: %@ %@ %@ %@", _connectionInformations, operation, [operation parameters], _connections);
+    //NSLog(@"network.internal: %@ %@ %@ %@", _connectionInformations, operation, [operation parameters], _connections);
     
     [_connectionInformations addObject: operation];
     

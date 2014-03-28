@@ -61,12 +61,25 @@
 #define GRNotificationPraySynchronizeFinished       GRPrefix ".notification.pray.synchronized"
 #define GRNotificationQTSynchronizeFinished         GRPrefix ".notification.qt.synchronized"
 
+#define GRNotificationDidReceivedChatMessage        GRPrefix ".notification.chat"
+
+#pragma mark - push notification protocol
+
 #define GRPushActionKey             @"action"
 #define GRPushArgumentsKey          @"args"
 
 #define GRPushActionReminder        @"r"    //for `reminder'
+#define GRPushActionChat            @"c"    //for `chat'
+
 #define GRPushArgumentDateKey       @"d"    //for `date'
 #define GRPushArgumentOffsetKey     @"o"    //for `offset'
+
+#define GRPushArgumentSenderKey     @"s"    //for `sender'
+#define GRPushArgumentTypeKey       @"t"    //for `type'
+
+#define GRPushChatTypeText          @"0"    //text message
+#define GRPushChatTypeAudio         @"1"    //audio chat message
+#define GRPushChatTypeImage         @"2"    //image chat message
 
 #define GRSavedUserNameKey      GRPrefix ".saved-user-name"
 

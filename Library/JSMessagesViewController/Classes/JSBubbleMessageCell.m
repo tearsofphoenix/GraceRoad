@@ -16,6 +16,7 @@
 
 #import "JSAvatarImageFactory.h"
 #import "UIColor+JSMessagesView.h"
+#import "GRConfiguration.h"
 
 static const CGFloat kJSLabelPadding = 5.0f;
 static const CGFloat kJSTimeStampLabelHeight = 15.0f;
@@ -236,11 +237,13 @@ static const CGFloat kJSSubtitleLabelHeight = 15.0f;
     self.bubbleView.textView.text = text;
 }
 
-- (void)setTimestamp:(NSDate *)date
+- (void)setTimestamp: (NSDate *)date
 {
-    self.timestampLabel.text = [NSDateFormatter localizedStringFromDate:date
-                                                              dateStyle:NSDateFormatterMediumStyle
-                                                              timeStyle:NSDateFormatterShortStyle];
+    [[self timestampLabel] setText: [GRConfiguration timeStampStringForDate: date]];
+    
+//    self.timestampLabel.text = [NSDateFormatter localizedStringFromDate:date
+//                                                              dateStyle:NSDateFormatterMediumStyle
+//                                                              timeStyle:NSDateFormatterShortStyle];
 }
 
 - (void)setSubtitle:(NSString *)subtitle

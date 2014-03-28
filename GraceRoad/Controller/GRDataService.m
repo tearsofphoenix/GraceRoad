@@ -417,7 +417,13 @@
     NSString *action = userInfo[GRPushActionKey];
     NSDictionary *args = userInfo[GRPushArgumentsKey];
     
-    if ([action isEqualToString: GRPushActionReminder])
+    if ([action isEqualToString: GRPushActionChat])
+    {
+        [[NSNotificationCenter serviceCenter] postNotificationName: GRNotificationDidReceivedChatMessage
+                                                            object: self
+                                                          userInfo: args];
+        
+    }else if ([action isEqualToString: GRPushActionReminder])
     {
         EKAuthorizationStatus status = [EKEventStore authorizationStatusForEntityType: EKEntityTypeEvent];
         if (EKAuthorizationStatusAuthorized == status)
