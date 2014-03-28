@@ -200,7 +200,7 @@
     
     CGRect bounds = [self bounds];
     
-    [_sendButton setFrame: CGRectMake(30, bounds.size.height - 60,
+    [_sendButton setFrame: CGRectMake(30, bounds.size.height - 80,
                                       bounds.size.width - 30 * 2,
                                       40)];
 }

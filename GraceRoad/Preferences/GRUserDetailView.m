@@ -14,6 +14,7 @@
 #import "GRTheme.h"
 #import "GRSendMessageView.h"
 #import "UIActionSheet+BlockSupport.h"
+#import "GRMessageViewController.h"
 
 @interface GRUserDetailView ()<UITableViewDataSource, UITableViewDelegate>
 {
@@ -335,11 +336,19 @@ heightForRowAtIndexPath: (NSIndexPath *)indexPath
             [targetAccounts addObject: _memberList[[iLooper row]]];
         }
         
-        GRSendMessageView *sendMessageView = [[GRSendMessageView alloc] initWithFrame: [self frame]];
+        GRMessageViewController *messageViewController = [[GRMessageViewController alloc] init];
+        UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController: messageViewController];
+
+        UIViewController *rootViewController = ERSSC(GRViewServiceID, GRViewServiceRootViewControllerAction, nil);
+        [rootViewController presentViewController: nc
+                                         animated: YES
+                                       completion: nil];
         
-        [sendMessageView setTargetAccounts: targetAccounts];
-        
-        ERSC(GRViewServiceID, GRViewServicePushContentViewAction, @[ sendMessageView ], nil);
+//        GRSendMessageView *sendMessageView = [[GRSendMessageView alloc] initWithFrame: [self frame]];
+//        
+//        [sendMessageView setTargetAccounts: targetAccounts];
+//        
+//        ERSC(GRViewServiceID, GRViewServicePushContentViewAction, @[ sendMessageView ], nil);
     }
 }
 

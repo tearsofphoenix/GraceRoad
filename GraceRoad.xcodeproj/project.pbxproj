@@ -166,6 +166,7 @@
 		92C5778818E5119500F8A4BC /* input-bar-flat@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 92C5774D18E5119500F8A4BC /* input-bar-flat@2x.png */; };
 		92C5778918E5119500F8A4BC /* message-received.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 92C5774F18E5119500F8A4BC /* message-received.aiff */; };
 		92C5778A18E5119500F8A4BC /* message-sent.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 92C5775018E5119500F8A4BC /* message-sent.aiff */; };
+		92C5779818E5282500F8A4BC /* GRMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 92C5779718E5282500F8A4BC /* GRMessageViewController.m */; };
 		92CE914318755BEB00C7D3A1 /* gr.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 92CE913C18755BEB00C7D3A1 /* gr.sqlite */; };
 		92CE914418755BEB00C7D3A1 /* GRLocationTab@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 92CE913F18755BEB00C7D3A1 /* GRLocationTab@2x.png */; };
 		92CE914518755BEB00C7D3A1 /* GRPreferenceTab@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 92CE914018755BEB00C7D3A1 /* GRPreferenceTab@2x.png */; };
@@ -470,6 +471,8 @@
 		92C5774D18E5119500F8A4BC /* input-bar-flat@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "input-bar-flat@2x.png"; sourceTree = "<group>"; };
 		92C5774F18E5119500F8A4BC /* message-received.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = "message-received.aiff"; sourceTree = "<group>"; };
 		92C5775018E5119500F8A4BC /* message-sent.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = "message-sent.aiff"; sourceTree = "<group>"; };
+		92C5779618E5282500F8A4BC /* GRMessageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRMessageViewController.h; sourceTree = "<group>"; };
+		92C5779718E5282500F8A4BC /* GRMessageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GRMessageViewController.m; sourceTree = "<group>"; };
 		92CE913C18755BEB00C7D3A1 /* gr.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = gr.sqlite; sourceTree = "<group>"; };
 		92CE913F18755BEB00C7D3A1 /* GRLocationTab@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "GRLocationTab@2x.png"; sourceTree = "<group>"; };
 		92CE914018755BEB00C7D3A1 /* GRPreferenceTab@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "GRPreferenceTab@2x.png"; sourceTree = "<group>"; };
@@ -557,6 +560,8 @@
 		9261922818865752001E0A72 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				92C5779618E5282500F8A4BC /* GRMessageViewController.h */,
+				92C5779718E5282500F8A4BC /* GRMessageViewController.m */,
 				9261922918865752001E0A72 /* GRAppDelegate.h */,
 				9261922A18865752001E0A72 /* GRAppDelegate.m */,
 				92217057189631B100A625EC /* GRDatabaseService.h */,
@@ -1262,6 +1267,7 @@
 				9276F34718877D6100E13763 /* ERGalleryView.m in Sources */,
 				9261927418865790001E0A72 /* GRPrayView.m in Sources */,
 				921619CE18E2A9760005FA52 /* GRCalendarView.m in Sources */,
+				92C5779818E5282500F8A4BC /* GRMessageViewController.m in Sources */,
 				60E8D95F1889131900C2EFC2 /* ILTranslucentView.m in Sources */,
 				9261927718865790001E0A72 /* GRSermonContentView.m in Sources */,
 				604F1237188BFB5F00AEB247 /* GRFeedbackView.m in Sources */,
@@ -1443,7 +1449,7 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_STATIC_ANALYZER_MODE = deep;
 				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Bing Xue (GLX4AG8795)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "GraceRoad/GraceRoad-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
@@ -1462,7 +1468,7 @@
 					"-all_load",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "5C2C38E1-EA78-4786-AFF1-5C1FFC1B76AA";
 				RUN_CLANG_STATIC_ANALYZER = NO;
 				WRAPPER_EXTENSION = app;
 			};
@@ -1480,7 +1486,7 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_STATIC_ANALYZER_MODE = deep;
 				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Bing Xue (UU37DKREZ7)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "GraceRoad/GraceRoad-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
@@ -1499,7 +1505,7 @@
 					"-all_load",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "5C2C38E1-EA78-4786-AFF1-5C1FFC1B76AA";
 				RUN_CLANG_STATIC_ANALYZER = NO;
 				WRAPPER_EXTENSION = app;
 			};

@@ -37,7 +37,7 @@ didFinishLaunchingWithOptions: (NSDictionary *)launchOptions
     //[iOSHierarchyViewer start];
     
 //    [[UIApplication sharedApplication] setStatusBarHidden: YES];
-    
+
     _window = [[UIWindow alloc] initWithFrame: [[UIScreen mainScreen] bounds]];
     
     [_window setBackgroundColor: [GRTheme blueColor]];
@@ -120,6 +120,8 @@ didReceiveRemoteNotification: (NSDictionary *)userInfo
 didRegisterForRemoteNotificationsWithDeviceToken: (NSData *)deviceToken
 {
     NSString *deviceTokenString = [deviceToken hexBytesStringDescription];
+    
+    NSLog(@"line: %@", deviceTokenString);
     
     ERSC(GRDataServiceID,
          GRDataServiceRegisterDeviceTokenAction,

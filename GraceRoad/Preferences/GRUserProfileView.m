@@ -69,9 +69,10 @@
         if (!ERSSC(GRDataServiceID, GRDataServiceCurrentAccountAction, nil))
         {
             _loginView = [[GRLoginView alloc] initWithFrame: bounds];
+            __block id fakeSelf = self;
             [_loginView setDisposableCallback: (^
                                                 {
-                                                    [self _createDetailViewWithAnimation: YES];
+                                                    [fakeSelf _createDetailViewWithAnimation: YES];
                                                 })];
             
             [self addSubview: _loginView];
