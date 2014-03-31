@@ -18,12 +18,13 @@
 #import "GRDataService.h"
 #import "GRConfiguration.h"
 #import "GRAccountKeys.h"
+#import "GRChatRoom.h"
 #import <NoahsUtility/NoahsUtility.h>
 
 @interface GRMessageViewController ()
 
 @property (nonatomic, strong) NSDictionary *currentAccount;
-
+@property (nonatomic, strong) GRChatRoom *currentChatRoom;
 @end
 
 @implementation GRMessageViewController
@@ -35,6 +36,8 @@
                                 bundle: nibBundleOrNil]))
     {
         _messages = [[NSMutableArray alloc] init];
+        _currentChatRoom = [[GRChatRoom alloc] init];
+        
         [self setCurrentAccount: ERSSC(GRDataServiceID, GRDataServiceCurrentAccountAction, nil)];
         
         [[NSNotificationCenter serviceCenter] addObserver: self
@@ -60,8 +63,12 @@
     
     NSDate *date = [GRConfiguration dateFromString: args[GRPushArgumentDateKey]];
     
+    
+    NSString *senderID = args[GRPushArgumentSenderKey];
+    NSDictionary *accountInfo = [_currentChatRoom memberOfID: senderID];
+    
     JSMessage *message = [[JSMessage alloc] initWithText: aps[@"alert"]
-                                                  sender: args[GRPushArgumentSenderKey]
+                                                  sender: accountInfo[GRAccountNameKey]
                                                     date: date];
     [_messages addObject: message];
     
@@ -97,6 +104,9 @@
     if (_recipients != recipients)
     {
         _recipients = recipients;
+        
+        [_currentChatRoom addMembers: _recipients];
+        
         if ([_recipients count] == 1)
         {
             NSDictionary *account = _recipients[0];
@@ -157,7 +167,7 @@
     [info setObject: GRPushActionChat
              forKey: GRPushActionKey];
     [info setObject: (@{
-                        GRPushArgumentDateKey : [GRConfiguration stringFromDate: [[NSDate date] sundayInSameWeek]],
+                        GRPushArgumentDateKey : [GRConfiguration stringFromDate: [NSDate date]],
                         GRPushArgumentTypeKey : GRPushChatTypeText,
                         GRPushArgumentSenderKey : _currentAccount[GRAccountIDKey],
                         })
@@ -214,19 +224,29 @@
 
 #pragma mark - Messages view delegate: OPTIONAL
 
-- (BOOL)shouldDisplayTimestampForRowAtIndexPath:(NSIndexPath *)indexPath
+- (BOOL)shouldDisplayTimestampForRowAtIndexPath: (NSIndexPath *)indexPath
 {
-    if (indexPath.row % 3 == 0)
+    NSInteger count = [_messages count];
+    NSInteger row = [indexPath row];
+    
+    if (row == 0)
     {
         return YES;
+        
+    }else if (row >= 2 && row == count - 1)
+    {
+        JSMessage *lastMessage = _messages[count - 1];
+        JSMessage *compMessage = _messages[count - 2];
+        
+        if ([[lastMessage date] timeIntervalSinceDate: [compMessage date]] > GRChatMessageTimeStampInterval)
+        {
+            return YES;
+        }
     }
     
     return NO;
 }
 
-//
-//  *** Implement to customize cell further
-//
 - (void)configureCell: (JSBubbleMessageCell *)cell
           atIndexPath: (NSIndexPath *)indexPath
 {

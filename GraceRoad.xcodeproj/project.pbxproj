@@ -93,6 +93,7 @@
 		927C9FA7186D66DC00DC0EDC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 927C9FA6186D66DC00DC0EDC /* UIKit.framework */; };
 		927C9FAD186D66DC00DC0EDC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 927C9FAB186D66DC00DC0EDC /* InfoPlist.strings */; };
 		927C9FB5186D66DC00DC0EDC /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 927C9FB4186D66DC00DC0EDC /* Images.xcassets */; };
+		9281A5F518E94FEF0079EA45 /* GRChatRoom.m in Sources */ = {isa = PBXBuildFile; fileRef = 9281A5F418E94FEF0079EA45 /* GRChatRoom.m */; };
 		9288BA09188D05DA0095ADAE /* GRConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 9288BA08188D05DA0095ADAE /* GRConfiguration.m */; };
 		9294D45118766369009352DB /* GRAudio.png in Resources */ = {isa = PBXBuildFile; fileRef = 9294D44F18766369009352DB /* GRAudio.png */; };
 		9294D45218766369009352DB /* GRAudio@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9294D45018766369009352DB /* GRAudio@2x.png */; };
@@ -370,6 +371,8 @@
 		927C9FB0186D66DC00DC0EDC /* GraceRoad-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GraceRoad-Prefix.pch"; sourceTree = "<group>"; };
 		927C9FB4186D66DC00DC0EDC /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		927C9FBB186D66DC00DC0EDC /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		9281A5F318E94FEF0079EA45 /* GRChatRoom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRChatRoom.h; sourceTree = "<group>"; };
+		9281A5F418E94FEF0079EA45 /* GRChatRoom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GRChatRoom.m; sourceTree = "<group>"; };
 		9288BA07188D05DA0095ADAE /* GRConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRConfiguration.h; sourceTree = "<group>"; };
 		9288BA08188D05DA0095ADAE /* GRConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GRConfiguration.m; sourceTree = "<group>"; };
 		9288BA0C188D06A50095ADAE /* GRFoundation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GRFoundation.h; path = Library/GRFoundation.h; sourceTree = SOURCE_ROOT; };
@@ -565,6 +568,8 @@
 			children = (
 				92C5779618E5282500F8A4BC /* GRMessageViewController.h */,
 				92C5779718E5282500F8A4BC /* GRMessageViewController.m */,
+				9281A5F318E94FEF0079EA45 /* GRChatRoom.h */,
+				9281A5F418E94FEF0079EA45 /* GRChatRoom.m */,
 				9261922918865752001E0A72 /* GRAppDelegate.h */,
 				9261922A18865752001E0A72 /* GRAppDelegate.m */,
 				92217057189631B100A625EC /* GRDatabaseService.h */,
@@ -1341,6 +1346,7 @@
 				60F9438E1886D81A001F13E3 /* DKLiveBlurView.m in Sources */,
 				92C5775C18E5119500F8A4BC /* JSMessagesViewController.m in Sources */,
 				92C5775B18E5119500F8A4BC /* JSMessageSoundEffect.m in Sources */,
+				9281A5F518E94FEF0079EA45 /* GRChatRoom.m in Sources */,
 				929FE4D818E3B5E800F131EC /* GRFellowshipView.m in Sources */,
 				92C5775218E5119500F8A4BC /* UIColor+JSMessagesView.m in Sources */,
 				9261925218865752001E0A72 /* GRUserProfileView.m in Sources */,

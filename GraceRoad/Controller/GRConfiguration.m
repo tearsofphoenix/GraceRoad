@@ -145,3 +145,5 @@ static NSString *noonStringForDate(NSDate *date)
 }
 
 @end
+
+NSTimeInterval GRChatMessageTimeStampInterval = 5 * 60; //5 minutes

@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+extern NSTimeInterval GRChatMessageTimeStampInterval;
+
 @interface GRConfiguration : NSObject
 
 + (NSURL *)serverURL;
