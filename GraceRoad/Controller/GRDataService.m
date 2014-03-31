@@ -377,6 +377,21 @@
                   toAccounts: (NSArray *)accountIDs
                     callback: (ERServiceCallback)callback
 {
+//    NSMutableDictionary *arguments = [NSMutableDictionary dictionaryWithDictionary: info];
+//    [arguments setObject: accountIDs[0]
+//                  forKey: @"account_id"];
+//    
+//    [GRNetworkService postMessage: (@{
+//                                      GRNetworkActionKey : @"push",
+//                                      GRNetworkArgumentsKey : arguments
+//                                      })
+//                         callback: (^(NSDictionary *result, id exception)
+//                                    {
+//                                        if (callback)
+//                                        {
+//                                            callback(result, exception);
+//                                        }
+//                                    })];
     NSMutableDictionary *arguments = [NSMutableDictionary dictionaryWithDictionary: info];
     [arguments setObject: accountIDs
                   forKey: @"account_ids"];
@@ -421,7 +436,7 @@
     {
         [[NSNotificationCenter serviceCenter] postNotificationName: GRNotificationDidReceivedChatMessage
                                                             object: self
-                                                          userInfo: args];
+                                                          userInfo: userInfo];
         
     }else if ([action isEqualToString: GRPushActionReminder])
     {

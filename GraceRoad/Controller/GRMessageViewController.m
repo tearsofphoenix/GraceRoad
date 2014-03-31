@@ -66,6 +66,10 @@
     [_messages addObject: message];
     
     [[self tableView] reloadData];
+    [[self tableView] scrollToRowAtIndexPath: [NSIndexPath indexPathForRow: [_messages count] - 1
+                                                                 inSection: 0]
+                            atScrollPosition: UITableViewScrollPositionBottom
+                                    animated: YES];
 }
 
 #pragma mark - View lifecycle
@@ -173,7 +177,7 @@
     
     ERSSC(GRDataServiceID,
           GRDataServiceSendPushNotificationToAccountsWithCallbackAction,
-          @[ info, _recipients, callback]);
+          @[ info, recipients, callback]);
     
 }
 
@@ -261,7 +265,7 @@
 //
 - (BOOL)shouldPreventScrollToBottomWhileUserScrolling
 {
-    return YES;
+    return NO;
 }
 
 // *** Implemnt to enable/disable pan/tap todismiss keyboard
